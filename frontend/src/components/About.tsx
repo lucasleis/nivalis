@@ -26,7 +26,7 @@ export default function About() {
   ];
 
   return (
-    <section ref={ref} className="py-32 bg-white">
+    <section id="about" ref={ref} className="py-32 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

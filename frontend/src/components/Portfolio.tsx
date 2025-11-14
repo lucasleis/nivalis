@@ -47,7 +47,7 @@ export default function Portfolio() {
   ];
 
   return (
-    <section ref={ref} className="py-32 bg-white">
+    <section id="portfolio" ref={ref} className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
