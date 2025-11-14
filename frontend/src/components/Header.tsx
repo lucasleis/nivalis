@@ -38,7 +38,13 @@ export default function Header() {
 
           {/* LOGO */}
           <a href="#inicio" className="flex items-center gap-2">
-            <span className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-blue-500 bg-clip-text text-transparent">
+            <span
+              className={`text-2xl font-bold transition-all duration-300 ${
+                scrolled
+                  ? "bg-gradient-to-r from-blue-500 to-orange-400 bg-clip-text text-transparent"
+                  : "bg-gradient-to-r from-orange-400 to-blue-500 bg-clip-text text-transparent"
+              }`}
+            >
               NIVALIS
             </span>
             <span
