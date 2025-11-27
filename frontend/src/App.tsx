@@ -8,8 +8,8 @@ import Header from './components/Header';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
-      <Header />    {/* ← nuevo */}
+    <div className="min-h-screen bg-white dark:bg-black overflow-x-hidden">
+      <Header />
       <Hero />
       <About />
       <Services />

@@ -57,11 +57,11 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h2 className="text-3xl md:text-5xl font-semibold mb-6 text-gray-800 max-w-4xl mx-auto leading-tight">
+          <h2 className="text-3xl md:text-5xl font-semibold mb-6 text-gray-800 dark:text-gray-200 max-w-4xl mx-auto leading-tight">
             Marketing, tecnología e ideas que{' '}
             <span className="text-orange-500">impulsan negocios</span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed">
             Combinamos creatividad, estrategia y tecnología para llevar tu marca al siguiente nivel
           </p>
         </motion.div>

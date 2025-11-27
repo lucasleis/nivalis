@@ -12,7 +12,7 @@ export default function CTA() {
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
-    <section ref={ref} id="contacto" className="py-32 bg-gradient-to-br from-gray-50 via-orange-50/30 to-blue-50/40 relative overflow-hidden">
+    <section ref={ref} id="contacto" className="py-32 bg-gradient-to-br from-gray-50 via-orange-50/30 to-blue-50/40 dark:from-black dark:via-gray-900 dark:to-gray-950 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-orange-400/20 to-orange-500/10 blur-3xl"
@@ -51,7 +51,7 @@ export default function CTA() {
             <MessageCircle className="w-10 h-10 text-white" />
           </div>
 
-          <h2 className="text-5xl md:text-7xl font-bold mb-8 text-gray-900 leading-tight">
+          <h2 className="text-5xl md:text-7xl font-bold mb-8 text-gray-900 dark:text-gray-100 leading-tight">
             ¿Listo para{' '}
             <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-blue-600 bg-clip-text text-transparent">
               transformar
@@ -59,7 +59,7 @@ export default function CTA() {
             tu negocio?
           </h2>
 
-          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
             Conversemos sobre tu proyecto y descubre cómo podemos ayudarte a alcanzar tus objetivos
           </p>
 
@@ -85,7 +85,7 @@ export default function CTA() {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-12 text-gray-500"
+            className="mt-12 text-gray-500 dark:text-gray-400"
           >
             Respuesta en menos de 24 horas
           </motion.p>

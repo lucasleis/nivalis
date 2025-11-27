@@ -47,7 +47,7 @@ export default function Portfolio() {
   ];
 
   return (
-    <section id="portfolio" ref={ref} className="py-32 bg-white">
+    <section id="portfolio" ref={ref} className="py-32 bg-white dark:bg-black">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -55,11 +55,11 @@ export default function Portfolio() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-gray-100">
             Nuestro <span className="text-blue-600">Portfolio</span>
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 to-blue-600 mx-auto rounded-full mb-8" />
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Proyectos que demuestran nuestra pasión por la excelencia y la innovación
           </p>
         </motion.div>

@@ -44,7 +44,7 @@ export default function Services() {
   ];
 
   return (
-    <section id="servicios" ref={ref} className="py-32 bg-gradient-to-br from-gray-50 via-white to-gray-50">
+    <section id="servicios" ref={ref} className="py-32 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-950 dark:to-black">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -52,11 +52,11 @@ export default function Services() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-gray-100">
             Nuestros <span className="text-orange-500">Servicios</span>
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 to-blue-600 mx-auto rounded-full mb-8" />
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Soluciones integrales para impulsar tu presencia digital y acelerar tu crecimiento
           </p>
         </motion.div>
@@ -68,7 +68,7 @@ export default function Services() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden"
+              className="group relative bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 via-transparent to-blue-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -77,11 +77,11 @@ export default function Services() {
                   <service.icon className="w-7 h-7 text-white" />
                 </div>
 
-                <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-orange-600 transition-colors duration-300">
+                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100 group-hover:text-orange-600 transition-colors duration-300">
                   {service.title}
                 </h3>
 
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                   {service.description}
                 </p>
               </div>

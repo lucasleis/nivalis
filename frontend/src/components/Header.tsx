@@ -23,6 +23,23 @@ export default function Header() {
     { label: 'Contacto', href: '#contacto' },
   ];
 
+  const [dark, setDark] = useState(
+    document.documentElement.classList.contains("dark")
+  );
+
+  const toggleTheme = () => {
+    const newTheme = !dark;
+    setDark(newTheme);
+
+    if (newTheme) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
+
   return (
     <motion.header
       animate={{
@@ -31,7 +48,7 @@ export default function Header() {
         boxShadow: scrolled ? "0 4px 20px rgba(0,0,0,0.08)" : "0 0 0 rgba(0,0,0,0)",
       }}
       transition={{ duration: 0.25 }}
-      className="fixed top-0 left-0 w-full z-50 bg-white"
+      className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-black/90 backdrop-blur"
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
@@ -63,20 +80,30 @@ export default function Header() {
                 key={link.label}
                 href={link.href}
                 whileHover={{ scale: 1.08 }}
-                className="text-gray-700 hover:text-orange-500 transition-colors text-sm font-medium"
+                className="text-gray-700 dark:text-gray-200 hover:text-orange-500 transition-colors text-sm font-medium"
               >
                 {link.label}
               </motion.a>
             ))}
           </nav>
 
-          {/* MENU MOBILE */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="md:hidden text-gray-700"
-          >
-            {open ? <X size={26} /> : <Menu size={26} />}
-          </button>
+          <div className="flex items-center gap-4">
+            {/* Dark mode toggle */}
+            <button
+              onClick={toggleTheme}
+              className="text-gray-700 dark:text-gray-300 transition-colors"
+            >
+              {dark ? "🌙" : "☀️"}
+            </button>
+
+            {/* MENU MOBILE */}
+            <button
+              onClick={() => setOpen(!open)}
+              className="md:hidden text-gray-700 dark:text-gray-300"
+            >
+              {open ? <X size={26} /> : <Menu size={26} />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -85,14 +112,14 @@ export default function Header() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-white shadow-md py-6 px-6 space-y-4"
+          className="md:hidden bg-white dark:bg-gray-900 shadow-md py-6 px-6 space-y-4"
         >
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="block text-gray-700 py-3 text-lg border-b border-gray-200"
+              className="block text-gray-700 dark:text-gray-200 py-3 text-lg border-b border-gray-200 dark:border-gray-700"
             >
               {link.label}
             </a>

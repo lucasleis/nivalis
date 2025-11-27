@@ -26,7 +26,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" ref={ref} className="py-32 bg-white">
+    <section id="about" ref={ref} className="py-32 bg-white dark:bg-black">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -34,11 +34,11 @@ export default function About() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-gray-100">
             Somos <span className="text-blue-600">NIVALIS</span>
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 to-blue-600 mx-auto rounded-full mb-8" />
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Una agencia boutique formada por dos personas apasionadas por la innovación.
             Transformamos ideas en experiencias digitales que generan impacto real.
           </p>
@@ -51,13 +51,13 @@ export default function About() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="text-center p-8 rounded-3xl bg-gradient-to-br from-gray-50 to-white hover:shadow-xl transition-shadow duration-300"
+              className="text-center p-8 rounded-3xl bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 hover:shadow-xl transition-shadow duration-300"
             >
               <div className="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-orange-500 to-blue-600 shadow-lg">
                 <feature.icon className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900">{feature.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">{feature.title}</h3>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}
         </div>
@@ -66,17 +66,17 @@ export default function About() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="bg-gradient-to-br from-orange-50 via-white to-blue-50 rounded-[2rem] p-12 md:p-16 text-center"
+          className=" rounded-[2rem] p-12 md:p-16 text-center bg-gradient-to-br from-orange-50 via-white to-blue-50 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-xl dark:shadow-none"
         >
-          <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+          <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
             Nuestro enfoque
           </h3>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Creemos en la potencia de la{' '}
             <span className="font-semibold text-orange-600">creatividad</span> unida a la{' '}
             <span className="font-semibold text-blue-600">tecnología</span>. Cada proyecto es una
             oportunidad para innovar, sorprender y entregar{' '}
-            <span className="font-semibold text-gray-900">resultados extraordinarios</span> que
+            <span className="font-semibold text-gray-900 dark:text-gray-100">resultados extraordinarios</span> que
             superen expectativas.
           </p>
         </motion.div>

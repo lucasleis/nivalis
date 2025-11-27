@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --bg-light: #ffffff;
+    --bg-dark: #0f0f0f;
+
+    --text-light: #111111;
+    --text-dark: #e5e5e5;
+  }
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+/* Smooth transition between themes (ligth and dark) */
+* {
+  transition: 
+    background-color 0.35s ease, 
+    color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+/* Disable transitions when class is present */
+.notransition * {
+  transition: none !important;
 }
