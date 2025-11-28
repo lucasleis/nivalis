@@ -46,7 +46,7 @@ sudo systemctl reload nginx
 
 ### GENERAL
 - [ ] Más coherencia visual entre secciones (algunas tienen gradients intensos, otras muy blancos).
-- [ ] Mejor tipografía (fuentes custom → Roca, Inter, Manrope, Poppins).
+- [✅] Mejor tipografía (fuentes custom → Roca, Inter, Manrope, Poppins).
 - [ ] Mayor uso de espacios negativos (padding/margin más amplios para respirar).
 - [ ] Llamadas a la acción más claras y repetidas.
 - [✅] Componentes reutilizables (botones, secciones, headings).
@@ -59,7 +59,7 @@ sudo systemctl reload nginx
 
 ### MEJORAS GLOBALES A TODA LA LANDING
 - [✅] Crear 3 componentes globales
-- [ ] Tipografía Premium
+- [✅] Tipografía Premium
 - [ ] Scroll Spy (sección activa en la navbar)
 - [ ] Cohesión visual
 - [ ] Animaciones más “profesionales”

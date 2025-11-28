@@ -3,10 +3,10 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 
-// 1. Disable transitions during first load
+// Disable transitions ONLY during first paint
 document.documentElement.classList.add('notransition');
 
-// 2. Load theme from localStorage (default: light)
+// (ANTES de leer el tema)
 const savedTheme = localStorage.getItem('theme');
 
 if (savedTheme === 'dark') {
@@ -15,10 +15,10 @@ if (savedTheme === 'dark') {
   document.documentElement.classList.remove('dark');
 }
 
-// 3. Re-enable transitions shortly after paint
-setTimeout(() => {
+// (Importante) Esperar un frame y volver a habilitar transiciones
+requestAnimationFrame(() => {
   document.documentElement.classList.remove('notransition');
-}, 50);
+});
 
 
 createRoot(document.getElementById('root')!).render(
