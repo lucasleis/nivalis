@@ -31,14 +31,9 @@ export default {
         },
       },
       fontFamily: {
-        sans: [
-          'Inter',
-          '-apple-system',
-          'BlinkMacSystemFont',
-          'Segoe UI',
-          'Roboto',
-          'sans-serif',
-        ],
+        inter: ["Inter", "sans-serif"],
+        manrope: ["Manrope", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
     },
   },

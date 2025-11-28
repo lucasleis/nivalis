@@ -46,7 +46,7 @@ export default function Hero() {
             <span className="text-4xl font-bold text-white">N</span>
           </div>
 
-          <h1 className="text-7xl md:text-8xl font-bold mb-6 tracking-tight">
+          <h1 className="font-manrope text-7xl md:text-8xl font-bold mb-6 tracking-tight">
             <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-blue-600 
                              bg-clip-text text-transparent">
               NIVALIS
@@ -64,13 +64,13 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h2 className="text-3xl md:text-5xl font-semibold mb-6 
+          <h2 className="font-manrope text-3xl md:text-5xl font-semibold mb-6 
                          text-gray-800 dark:text-gray-200 max-w-4xl mx-auto leading-tight">
             Marketing, tecnología e ideas que{' '}
             <span className="text-orange-500">impulsan negocios</span>
           </h2>
 
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 
+          <p className="font-inter text-lg md:text-xl text-gray-600 dark:text-gray-400 
                         max-w-2xl mx-auto mb-12 leading-relaxed">
             Combinamos creatividad, estrategia y tecnología para llevar tu marca al siguiente nivel.
           </p>
@@ -82,7 +82,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <Button href="#contacto">
+          <Button className="font-poppins" href="#contacto">
             Hablemos
             <ArrowRight className="w-5 h-5" />
           </Button>

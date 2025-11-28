@@ -51,11 +51,11 @@ export default function About() {
                 <feature.icon className="w-8 h-8 text-white" />
               </div>
 
-              <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">
+              <h3 className="font-manrope text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">
                 {feature.title}
               </h3>
 
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="font-inter text-gray-600 dark:text-gray-400 leading-relaxed">
                 {feature.description}
               </p>
             </Card>
@@ -72,11 +72,11 @@ export default function About() {
                      dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 
                      shadow-xl dark:shadow-none"
         >
-          <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+          <h3 className="font-manrope text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
             Nuestro enfoque
           </h3>
 
-          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-inter text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Creemos en la potencia de la{' '}
             <span className="font-semibold text-orange-600">creatividad</span> unida a la{' '}
             <span className="font-semibold text-blue-600">tecnología</span>. Cada proyecto es una

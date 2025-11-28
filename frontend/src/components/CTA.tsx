@@ -54,7 +54,7 @@ export default function CTA() {
             <MessageCircle className="w-10 h-10 text-white" />
           </div>
 
-          <h2 className="text-5xl md:text-7xl font-bold mb-8 text-gray-900 dark:text-gray-100 leading-tight">
+          <h2 className="font-manrope text-5xl md:text-7xl font-bold mb-8 text-gray-900 dark:text-gray-100 leading-tight">
             ¿Listo para{' '}
             <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-blue-600 
                             bg-clip-text text-transparent">
@@ -63,7 +63,7 @@ export default function CTA() {
             tu negocio?
           </h2>
 
-          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-inter text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
             Conversemos sobre tu proyecto y descubre cómo podemos ayudarte a alcanzar tus objetivos
           </p>
         </motion.div>
@@ -75,7 +75,7 @@ export default function CTA() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="flex justify-center"
         >
-          <Button href={whatsappUrl}>
+          <Button className="font-poppins" href={whatsappUrl}>
             <MessageCircle className="w-6 h-6" />
             Escríbenos por WhatsApp
             <ArrowRight className="w-5 h-5" />

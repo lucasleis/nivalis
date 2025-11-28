@@ -1,30 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --bg-light: #ffffff;
-    --bg-dark: #0f0f0f;
+:root {
+  --bg-light: #ffffff;
+  --bg-dark: #0f0f0f;
 
-    --text-light: #111111;
-    --text-dark: #e5e5e5;
-  }
+  --text-light: #111111;
+  --text-dark: #e5e5e5;
 }
 
+/* Fuente global (body) */
 html {
+  font-family: 'Inter', sans-serif;
   scroll-behavior: smooth;
 }
 
-/* Smooth transition between themes (ligth and dark) */
+/* Títulos globales */
+h1, h2, h3, h4 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+}
+
+/* Smooth theme transition */
 * {
-  transition: 
-    background-color 0.35s ease, 
+  transition:
+    background-color 0.35s ease,
     color 0.35s ease,
     border-color 0.35s ease;
 }
 
-/* Disable transitions when class is present */
 .notransition * {
   transition: none !important;
 }

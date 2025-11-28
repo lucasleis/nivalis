@@ -73,15 +73,15 @@ export default function Portfolio() {
               <div className="relative h-80 flex flex-col justify-end p-8 text-white">
 
                 <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-sm font-semibold uppercase tracking-wider mb-2 opacity-90">
+                  <p className="font-inter text-sm font-semibold uppercase tracking-wider mb-2 opacity-90">
                     {project.category}
                   </p>
 
-                  <h3 className="text-3xl font-bold mb-3">
+                  <h3 className="font-manrope text-3xl font-bold mb-3">
                     {project.title}
                   </h3>
 
-                  <p className="text-white/90 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <p className="font-inter text-white/90 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     {project.description}
                   </p>
 

@@ -38,12 +38,12 @@ export default function Footer() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h3 className="text-2xl font-bold">
+            <h3 className="font-manrope text-2xl font-bold">
               <span className="bg-gradient-to-r from-orange-400 to-blue-500 bg-clip-text text-transparent">
                 NIVALIS
               </span>
             </h3>
-            <p className="text-xs uppercase tracking-[0.35em] text-gray-400 mt-1">
+            <p className="font-inter text-xs uppercase tracking-[0.35em] text-gray-400 mt-1">
               Marketing & Tech Lab
             </p>
           </motion.div>
@@ -80,10 +80,10 @@ export default function Footer() {
             viewport={{ once: true }}
             className="pt-2 border-t border-white/10 w-full"
           >
-            <p className="text-gray-400 text-sm">
+            <p className="font-inter text-gray-400 text-sm">
               © {currentYear} NIVALIS. Todos los derechos reservados.
             </p>
-            <p className="text-gray-500 text-xs mt-1">
+            <p className="font-inter text-gray-500 text-xs mt-1">
               Diseñado con <span className="text-orange-400">pasión</span> para impulsar tu éxito digital.
             </p>
           </motion.div>

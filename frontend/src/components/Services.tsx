@@ -65,12 +65,12 @@ export default function Services() {
               </div>
 
               {/* Título */}
-              <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+              <h3 className="font-manrope text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 {service.title}
               </h3>
 
               {/* Descripción */}
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="font-inter text-gray-600 dark:text-gray-400 leading-relaxed">
                 {service.description}
               </p>
             </Card>
