@@ -2,13 +2,17 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./theme/ThemeToggle";
-import { useTheme } from "./theme/ThemeProvider";
 
-const navLinks = [
+type NavLink = {
+  label: string;
+  href: string;
+};
+
+const navLinks: NavLink[] = [
   { label: "Inicio", href: "#inicio" },
+  { label: "Sobre Nosotros", href: "#about" },
   { label: "Servicios", href: "#servicios" },
   { label: "Portfolio", href: "#portfolio" },
-  { label: "Sobre Nosotros", href: "#about" },
   { label: "Contacto", href: "#contacto" },
 ];
 
@@ -20,38 +24,49 @@ const primaryButtonClasses =
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("#inicio");
+  const [activeSection, setActiveSection] = useState<string>("#inicio");
 
-  const { theme } = useTheme();
-
-  // Detectar scroll
+  // Efecto de scroll para tamaño/sombra del header
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll spy
+  // Scroll spy basado en posición del scroll (no IntersectionObserver)
   useEffect(() => {
-    const sections = navLinks
-      .map((l) => document.querySelector(l.href))
-      .filter(Boolean);
+    const handleScrollSpy = () => {
+      // Usamos el centro de la pantalla como referencia
+      const scrollPos = window.scrollY + window.innerHeight / 2;
+      let current = "#inicio";
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+      navLinks.forEach((link) => {
+        const el = document.querySelector(link.href) as HTMLElement | null;
+        if (!el) return;
 
-        if (visible[0]) {
-          setActiveSection(`#${visible[0].target.id}`);
+        const top = el.offsetTop;
+        const height = el.offsetHeight;
+
+        if (scrollPos >= top && scrollPos < top + height) {
+          current = link.href;
         }
-      },
-      { threshold: 0.4 }
-    );
+      });
 
-    //sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
+      setActiveSection(current);
+    };
+
+    handleScrollSpy(); // para que marque bien al cargar
+    window.addEventListener("scroll", handleScrollSpy);
+    window.addEventListener("resize", handleScrollSpy);
+
+    return () => {
+      window.removeEventListener("scroll", handleScrollSpy);
+      window.removeEventListener("resize", handleScrollSpy);
+    };
   }, []);
 
   const handleNavClick = (href: string) => {
@@ -64,7 +79,7 @@ export default function Header() {
 
   return (
     <>
-      {/* HEADER DESKTOP */}
+      {/* HEADER */}
       <motion.header
         animate={{
           paddingTop: scrolled ? "0.4rem" : "0.9rem",
@@ -88,18 +103,19 @@ export default function Header() {
             <button
               onClick={() => handleNavClick("#inicio")}
               className="flex items-center gap-2 group"
+              aria-label="Ir al inicio"
             >
               <span
                 className={`
-                text-2xl font-extrabold bg-clip-text text-transparent 
-                transition-all duration-300
-                ${
-                  scrolled
-                    ? "bg-gradient-to-r from-blue-500 to-orange-400"
-                    : "bg-gradient-to-r from-orange-400 to-blue-600"
-                }
-                dark:bg-gradient-to-r dark:from-blue-400 dark:to-orange-300
-              `}
+                  text-2xl font-extrabold bg-clip-text text-transparent 
+                  transition-all duration-300
+                  ${
+                    scrolled
+                      ? "bg-gradient-to-r from-blue-500 to-orange-400"
+                      : "bg-gradient-to-r from-orange-400 to-blue-600"
+                  }
+                  dark:bg-gradient-to-r dark:from-blue-400 dark:to-orange-300
+                `}
               >
                 NIVALIS
               </span>
@@ -119,14 +135,19 @@ export default function Header() {
                     className="relative text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors group"
                   >
                     {link.label}
+                    {/* underline animado */}
                     <span
                       className={`
-                      absolute left-0 -bottom-1 h-[2px] rounded-full 
-                      bg-gradient-to-r from-orange-500 to-blue-600 
-                      dark:from-orange-400 dark:to-blue-400
-                      transition-all duration-300
-                      ${isActive ? "w-full opacity-100" : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"}
-                    `}
+                        absolute left-0 -bottom-1 h-[2px] rounded-full 
+                        bg-gradient-to-r from-orange-500 to-blue-600 
+                        dark:from-orange-400 dark:to-blue-400
+                        transition-all duration-300
+                        ${
+                          isActive
+                            ? "w-full opacity-100"
+                            : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
+                        }
+                      `}
                     />
                   </button>
                 );
@@ -142,10 +163,11 @@ export default function Header() {
               </button>
             </nav>
 
-            {/* MENU MOBILE BUTTON */}
+            {/* BOTÓN MENU MOBILE */}
             <button
               onClick={() => setOpen(true)}
               className="md:hidden text-gray-800 dark:text-white p-1 rounded-full"
+              aria-label="Abrir menú"
             >
               <Menu size={26} />
             </button>
@@ -153,7 +175,7 @@ export default function Header() {
         </div>
       </motion.header>
 
-      {/* BACKDROP OVERLAY */}
+      {/* BACKDROP MOBILE */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -162,16 +184,13 @@ export default function Header() {
             animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="
-              fixed inset-0 bg-black/60 backdrop-blur-sm 
-              z-40 md:hidden
-            "
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
             onClick={() => setOpen(false)}
           />
         )}
       </AnimatePresence>
 
-      {/* SIDE PANEL SLIDE-IN */}
+      {/* PANEL LATERAL MOBILE */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -188,15 +207,16 @@ export default function Header() {
               px-6 py-8 flex flex-col gap-6
             "
           >
-            {/* CLOSE BUTTON */}
+            {/* CERRAR */}
             <button
               onClick={() => setOpen(false)}
               className="self-end mb-4 text-gray-700 dark:text-gray-300"
+              aria-label="Cerrar menú"
             >
               <X size={26} />
             </button>
 
-            {/* LINKS */}
+            {/* LINKS MOBILE */}
             <nav className="flex flex-col gap-4 text-lg">
               {navLinks.map((link) => (
                 <button
@@ -214,18 +234,15 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* DARK MODE TOGGLE */}
+            {/* DARK MODE */}
             <div className="mt-4">
               <ThemeToggle />
             </div>
 
-            {/* CTA */}
+            {/* CTA MOBILE */}
             <button
               onClick={() => handleNavClick("#contacto")}
-              className={`
-                ${primaryButtonClasses} mt-6
-                w-full justify-center
-              `}
+              className={`${primaryButtonClasses} mt-6 w-full justify-center`}
             >
               Hablemos
             </button>

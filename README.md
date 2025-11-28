@@ -50,7 +50,7 @@ sudo systemctl reload nginx
 - [ ] Mayor uso de espacios negativos (padding/margin más amplios para respirar).
 - [ ] Llamadas a la acción más claras y repetidas.
 - [✅] Componentes reutilizables (botones, secciones, headings).
-- [ ] Navegación más sólida (highlight de sección activa, scroll spy).
+- [✅] Navegación más sólida (highlight de sección activa, scroll spy).
 - [ ] Portfolio con proyectos reales, mockups o placeholders reales.
 - [ ] Footer con más estructura.
 - [ ] Mejor accesibilidad (aria-labels, alt, contraste).
