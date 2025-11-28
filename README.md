@@ -55,6 +55,7 @@ sudo systemctl reload nginx
 - [ ] Footer con más estructura.
 - [ ] Mejor accesibilidad (aria-labels, alt, contraste).
 - [✅] Dark mode opcional.
+- [ ] Optimización global (motion variants, performance y coherencia), o
 
 
 ### MEJORAS GLOBALES A TODA LA LANDING

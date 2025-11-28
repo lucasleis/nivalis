@@ -1,7 +1,13 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
+  const { scrollY } = useScroll();
+
+  // PARALLAX — Movimiento suave de los blobs
+  const blobOrangeY = useTransform(scrollY, [0, 500], [0, 40]);
+  const blobBlueY = useTransform(scrollY, [0, 500], [0, -40]);
+
   return (
     <section
       id="inicio"
@@ -9,10 +15,12 @@ export default function Hero() {
       bg-gradient-to-br from-white via-orange-50/20 to-blue-50/30
       dark:from-slate-900 dark:via-slate-900/80 dark:to-slate-800/80"
     >
-      {/* FONDOS ANIMADOS */}
+      {/* FONDOS ANIMADOS + PARALLAX */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
+
         {/* BLOB NARANJA */}
         <motion.div
+          style={{ y: blobOrangeY }}
           className="
             absolute -top-1/3 -right-1/4 
             w-[900px] h-[900px] rounded-full 
@@ -26,12 +34,13 @@ export default function Hero() {
           transition={{
             duration: 9,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
         />
 
         {/* BLOB AZUL */}
         <motion.div
+          style={{ y: blobBlueY }}
           className="
             absolute -bottom-1/3 -left-1/4 
             w-[900px] h-[900px] rounded-full 
@@ -45,7 +54,7 @@ export default function Hero() {
           transition={{
             duration: 10,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: 'easeInOut',
             delay: 0.8,
           }}
         />
@@ -92,7 +101,7 @@ export default function Hero() {
           </p>
         </motion.div>
 
-        {/* SUBTITULO + COPY */}
+        {/* SUBTÍTULO */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}

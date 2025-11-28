@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { MessageCircle, ArrowRight } from "lucide-react";
@@ -6,6 +6,12 @@ import { MessageCircle, ArrowRight } from "lucide-react";
 export default function CTA() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const { scrollY } = useScroll();
+
+  // PARALLAX — movimiento suave
+  const blobOrangeY = useTransform(scrollY, [0, 600], [0, 35]);
+  const blobBlueY = useTransform(scrollY, [0, 600], [0, -35]);
 
   const whatsappNumber = "5491151232153";
   const whatsappMessage = encodeURIComponent(
@@ -24,10 +30,12 @@ export default function CTA() {
         transition-colors duration-300
       "
     >
-      {/* BLOBS ANIMADOS */}
+      {/* BLOBS + PARALLAX */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        
         {/* Blob naranja */}
         <motion.div
+          style={{ y: blobOrangeY }}
           className="
             absolute top-1/4 right-1/3 
             w-[550px] h-[550px] rounded-full 
@@ -38,15 +46,12 @@ export default function CTA() {
             scale: [1, 1.25, 1],
             opacity: [0.2, 0.45, 0.2],
           }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
 
         {/* Blob azul */}
         <motion.div
+          style={{ y: blobBlueY }}
           className="
             absolute bottom-1/4 left-1/3 
             w-[550px] h-[550px] rounded-full 
@@ -85,7 +90,7 @@ export default function CTA() {
             <MessageCircle className="w-10 h-10 text-white" />
           </div>
 
-          {/* TITULO */}
+          {/* TÍTULO */}
           <h2
             className="
               text-5xl md:text-7xl font-extrabold mb-8 
@@ -116,7 +121,7 @@ export default function CTA() {
             al siguiente nivel.
           </p>
 
-          {/* CTA PRINCIPAL */}
+          {/* CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
