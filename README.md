@@ -45,7 +45,7 @@ sudo systemctl reload nginx
 ## Posibles upgrades TODO
 
 ### GENERAL
-- [ ] Más coherencia visual entre secciones (algunas tienen gradients intensos, otras muy blancos).
+- [✅] Más coherencia visual entre secciones (algunas tienen gradients intensos, otras muy blancos).
 - [✅] Mejor tipografía (fuentes custom → Roca, Inter, Manrope, Poppins).
 - [ ] Mayor uso de espacios negativos (padding/margin más amplios para respirar).
 - [ ] Llamadas a la acción más claras y repetidas.
@@ -61,7 +61,7 @@ sudo systemctl reload nginx
 - [✅] Crear 3 componentes globales
 - [✅] Tipografía Premium
 - [ ] Scroll Spy (sección activa en la navbar)
-- [ ] Cohesión visual
+- [✅] Cohesión visual
 - [ ] Animaciones más “profesionales”
 
 

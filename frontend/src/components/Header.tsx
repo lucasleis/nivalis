@@ -27,7 +27,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("#inicio");
 
-  const { theme, toggleTheme } = useTheme();
+  /* const { theme, toggleTheme } = useTheme(); */
 
   // Detectar scroll
   useEffect(() => {

@@ -1,79 +1,161 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { TrendingUp, Code, Zap } from 'lucide-react';
-
-import SectionTitle from "./common/SectionTitle";
-import Card from "./common/Card";
+import { motion } from "framer-motion";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
+import { TrendingUp, Code, Zap, Palette, Brain } from "lucide-react";
 
 export default function Services() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-150px" });
 
   const services = [
     {
       icon: Code,
-      title: 'Desarrollo Web',
-      description: 'Sitios web y aplicaciones modernas, rápidas y escalables.',
-      gradient: 'from-orange-500 to-orange-700',
+      title: "Desarrollo Web",
+      description:
+        "Sitios web modernos, rápidos y escalables. Landing pages, e-commerce, sistemas, y aplicaciones personalizadas.",
+      gradient: "from-orange-500 to-orange-700",
     },
     {
       icon: TrendingUp,
-      title: 'Marketing Digital',
-      description: 'Estrategias, SEO, campañas pagadas y analítica.',
-      gradient: 'from-orange-600 to-blue-600',
+      title: "Marketing Digital",
+      description:
+        "Estrategias de contenido, SEO, campañas pagas y analítica para maximizar el alcance y las conversiones.",
+      gradient: "from-blue-600 to-blue-700",
     },
     {
       icon: Zap,
-      title: 'Automatizaciones',
-      description: 'Flujos de trabajo automatizados personalizados.',
-      gradient: 'from-blue-500 to-blue-700',
+      title: "Automatizaciones",
+      description:
+        "Optimizamos operaciones mediante automatizaciones inteligentes: bots, flujos, integraciones y sistemas ágiles.",
+      gradient: "from-orange-600 to-blue-600",
+    },
+    {
+      icon: Palette,
+      title: "Branding & Identidad",
+      description:
+        "Creamos marcas sólidas con identidad visual, tono, estética y coherencia estratégica.",
+      gradient: "from-orange-500 to-orange-600",
+    },
+    {
+      icon: Brain,
+      title: "IA aplicada a negocios",
+      description:
+        "Soluciones inteligentes para potenciar equipos, acelerar procesos y mejorar decisiones.",
+      gradient: "from-blue-600 to-blue-800",
     },
   ];
 
   return (
-    <section id="servicios" ref={ref} className="py-32 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-950 dark:to-black">
+    <section
+      id="servicios"
+      ref={ref}
+      className="
+        py-32 
+        bg-gradient-to-br from-gray-50 via-white to-gray-50 
+        dark:from-slate-900 dark:via-slate-900/90 dark:to-slate-900
+        transition-colors duration-300
+      "
+    >
       <div className="max-w-7xl mx-auto px-6">
+        
+        {/* TÍTULO */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <h2
+            className="
+              text-5xl md:text-6xl font-extrabold mb-6 
+              text-gray-900 dark:text-white
+            "
+          >
+            Nuestros{" "}
+            <span className="text-orange-600 dark:text-orange-400">Servicios</span>
+          </h2>
 
-        <SectionTitle
-          title="Nuestros"
-          highlight="Servicios"
-          description="Soluciones integrales para impulsar tu presencia digital y acelerar tu crecimiento"
-        />
+          <div
+            className="
+              w-24 h-1.5 rounded-full mx-auto mb-8
+              bg-gradient-to-r from-orange-500 to-blue-600
+              dark:from-orange-400 dark:to-blue-400
+            "
+          />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <p
+            className="
+              text-xl text-gray-600 dark:text-gray-300 
+              max-w-3xl mx-auto leading-relaxed
+            "
+          >
+            Soluciones integrales diseñadas para impulsar tu presencia digital y
+            acelerar tu crecimiento.
+          </p>
+        </motion.div>
+
+        {/* GRID SERVICIOS */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {services.map((service, index) => (
-            <Card
+            <motion.div
               key={index}
-              delay={index * 0.1}
+              initial={{ opacity: 0, y: 35 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: index * 0.1 }}
               className="
-                relative 
-                bg-white dark:bg-gray-900 
-                p-8 
-                rounded-3xl 
-                shadow-md hover:shadow-xl 
-                transition-all 
-                duration-500 
+                group relative p-8 rounded-3xl 
+                bg-white dark:bg-slate-800 
+                shadow-sm dark:shadow-md 
+                hover:shadow-2xl hover:-translate-y-1 
+                transition-all duration-300 overflow-hidden
               "
             >
-              {/* Icono */}
+              {/* Hover Glow */}
               <div
-                className={`inline-flex items-center justify-center w-14 h-14 mb-6 
-                  rounded-2xl bg-gradient-to-br ${service.gradient} shadow-lg`}
-              >
-                <service.icon className="w-7 h-7 text-white" />
+                className="
+                  absolute inset-0 opacity-0 group-hover:opacity-100 
+                  bg-gradient-to-br from-orange-50/60 to-blue-50/60 
+                  dark:from-orange-400/10 dark:to-blue-400/10 
+                  transition-opacity duration-500
+                "
+              />
+
+              {/* ICONO */}
+              <div className="relative z-10">
+                <div
+                  className={`
+                    inline-flex items-center justify-center
+                    w-16 h-16 mb-6 rounded-2xl shadow-lg
+                    bg-gradient-to-br ${service.gradient} 
+                    text-white group-hover:scale-110 group-hover:shadow-xl
+                    transition-transform duration-300
+                  `}
+                >
+                  <service.icon className="w-8 h-8" />
+                </div>
+
+                {/* TÍTULO */}
+                <h3
+                  className="
+                    text-2xl font-bold mb-4 
+                    text-gray-900 dark:text-white
+                    group-hover:text-orange-600 dark:group-hover:text-orange-400 
+                    transition-colors duration-300
+                  "
+                >
+                  {service.title}
+                </h3>
+
+                {/* DESCRIPCIÓN */}
+                <p
+                  className="
+                    text-gray-600 dark:text-gray-300 leading-relaxed
+                  "
+                >
+                  {service.description}
+                </p>
               </div>
-
-              {/* Título */}
-              <h3 className="font-manrope text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-                {service.title}
-              </h3>
-
-              {/* Descripción */}
-              <p className="font-inter text-gray-600 dark:text-gray-400 leading-relaxed">
-                {service.description}
-              </p>
-            </Card>
+            </motion.div>
           ))}
         </div>
       </div>
