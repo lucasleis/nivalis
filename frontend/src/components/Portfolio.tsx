@@ -1,12 +1,16 @@
-import { motion } from "framer-motion";
+import { motion, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { fadeUp, fadeScale, staggerContainer } from "../motion/variants";
+import { useSmoothScroll } from "../components/scroll/ScrollProvider";
 
 export default function Portfolio() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-150px" });
+
+  const { smoothScrollY } = useSmoothScroll();
+  const cardsY = useTransform(smoothScrollY, [0, 350], [0, -8]);
 
   const projects = [
     {
@@ -57,10 +61,7 @@ export default function Portfolio() {
     <section
       id="portfolio"
       ref={ref}
-      className="
-        py-32 bg-white dark:bg-slate-900
-        transition-colors duration-300
-      "
+      className="py-32 bg-white dark:bg-slate-900 transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto px-6">
 
@@ -108,6 +109,7 @@ export default function Portfolio() {
           initial="initial"
           animate={isInView ? "animate" : "initial"}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
+          style={{ y: cardsY }}
         >
           {projects.map((project, index) => (
             <motion.div
@@ -137,18 +139,10 @@ export default function Portfolio() {
               />
 
               {/* CONTENIDO */}
-              <div
-                className="relative h-80 flex flex-col justify-end p-8 text-white"
-              >
-                {/* OVERLAY */}
-                <div
-                  className="
-                    absolute inset-0 
-                    bg-gradient-to-t from-black/60 via-black/20 to-transparent 
-                  "
-                />
+              <div className="relative h-80 flex flex-col justify-end p-8 text-white">
+                
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 
-                {/* TEXTO */}
                 <div
                   className="
                     relative z-10 transform translate-y-3 

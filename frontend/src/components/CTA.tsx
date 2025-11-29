@@ -1,18 +1,22 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { MessageCircle, ArrowRight } from "lucide-react";
 import { fadeUp, fadeUpDelayed, fadeScale, staggerContainer } from "../motion/variants";
+import { useSmoothScroll } from "../components/scroll/ScrollProvider";
 
 export default function CTA() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const { scrollY } = useScroll();
+  const { smoothScrollY } = useSmoothScroll();
 
-  // PARALLAX
-  const blobOrangeY = useTransform(scrollY, [0, 600], [0, 35]);
-  const blobBlueY   = useTransform(scrollY, [0, 600], [0, -35]);
+  // PARALLAX BLOB SUAVE
+  const blobOrangeY = useTransform(smoothScrollY, [0, 700], [0, 35]);
+  const blobBlueY   = useTransform(smoothScrollY, [0, 700], [0, -35]);
+
+  // MICRO PARALLAX DEL CONTENIDO
+  const contentY = useTransform(smoothScrollY, [0, 300], [0, -10]);
 
   const whatsappNumber = "5491151232153";
   const whatsappMessage = encodeURIComponent(
@@ -31,10 +35,9 @@ export default function CTA() {
         transition-colors duration-300
       "
     >
-      {/* BLOBS + PARALLAX */}
+      {/* BLOBS PARALLAX */}
       <div className="absolute inset-0 pointer-events-none">
-        
-        {/* Blob naranja */}
+
         <motion.div
           style={{ y: blobOrangeY }}
           className="
@@ -47,7 +50,6 @@ export default function CTA() {
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* Blob azul */}
         <motion.div
           style={{ y: blobBlueY }}
           className="
@@ -67,6 +69,7 @@ export default function CTA() {
         variants={staggerContainer}
         initial="initial"
         animate={isInView ? "animate" : "initial"}
+        style={{ y: contentY }}
       >
         {/* ICONO */}
         <motion.div variants={fadeScale}>
@@ -82,7 +85,7 @@ export default function CTA() {
           </div>
         </motion.div>
 
-        {/* TÍTULO */}
+        {/* TITULO */}
         <motion.h2
           variants={fadeUp}
           className="
@@ -91,13 +94,7 @@ export default function CTA() {
           "
         >
           ¿Listo para dar{" "}
-          <span
-            className="
-              bg-gradient-to-r from-orange-500 via-orange-600 to-blue-600
-              bg-clip-text text-transparent
-              dark:from-orange-400 dark:via-orange-500 dark:to-blue-400
-            "
-          >
+          <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-blue-600 bg-clip-text text-transparent">
             el próximo paso
           </span>
           ?
@@ -111,11 +108,11 @@ export default function CTA() {
             mb-12 max-w-3xl mx-auto leading-relaxed
           "
         >
-          Conversemos sobre tu proyecto y descubramos cómo llevar tu marca
+          Hablemos sobre tu proyecto y descubramos cómo llevar tu marca
           al siguiente nivel.
         </motion.p>
 
-        {/* CTA */}
+        {/* CTA BUTTON */}
         <motion.div variants={fadeUpDelayed(0.2)}>
           <a
             href={whatsappUrl}

@@ -1,12 +1,16 @@
-import { motion } from "framer-motion";
+import { motion, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { TrendingUp, Code, Zap, Palette, Brain } from "lucide-react";
 import { fadeUp, fadeScale, staggerContainer } from "../motion/variants";
+import { useSmoothScroll } from "../components/scroll/ScrollProvider";
 
 export default function Services() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-150px" });
+
+  const { smoothScrollY } = useSmoothScroll();
+  const cardsY = useTransform(smoothScrollY, [0, 300], [0, -8]);
 
   const services = [
     {
@@ -94,6 +98,7 @@ export default function Services() {
           variants={staggerContainer}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
+          style={{ y: cardsY }}
         >
           {services.map((service, index) => (
             <motion.div
@@ -138,11 +143,7 @@ export default function Services() {
                 </h3>
 
                 {/* DESCRIPCIÓN */}
-                <p
-                  className="
-                    text-gray-600 dark:text-gray-300 leading-relaxed
-                  "
-                >
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                   {service.description}
                 </p>
               </div>

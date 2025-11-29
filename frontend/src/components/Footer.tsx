@@ -1,8 +1,12 @@
-import { motion } from "framer-motion";
+import { motion, useTransform } from "framer-motion";
 import { Instagram, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { fadeUp, staggerContainer } from "../motion/variants";
+import { useSmoothScroll } from "../components/scroll/ScrollProvider";
 
 export default function Footer() {
+  const { smoothScrollY } = useSmoothScroll();
+  const bgY = useTransform(smoothScrollY, [0, 300], [0, -5]);
+
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -29,7 +33,8 @@ export default function Footer() {
   ];
 
   return (
-    <footer
+    <motion.footer
+      style={{ y: bgY }}
       className="
         bg-gradient-to-br from-gray-900 via-gray-950 to-gray-900 
         dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 
@@ -39,7 +44,7 @@ export default function Footer() {
     >
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* GRID PRINCIPAL ANIMADO */}
+        {/* GRID PRINCIPAL */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-12 text-center md:text-left"
           variants={staggerContainer}
@@ -129,6 +134,6 @@ export default function Footer() {
           </a>
         </motion.div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

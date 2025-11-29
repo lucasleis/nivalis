@@ -6,19 +6,22 @@ import CTA from './components/CTA';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import { ThemeProvider } from "./components/theme/ThemeProvider";
+import { ScrollProvider } from "./components/scroll/ScrollProvider";
 
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
-        <Header />
-        <Hero />
-        <About />
-        <Services />
-        <Portfolio />
-        <CTA />
-        <Footer />
-      </div>
+      <ScrollProvider>
+        <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
+          <Header />
+          <Hero />
+          <About />
+          <Services />
+          <Portfolio />
+          <CTA />
+          <Footer />
+        </div>
+      </ScrollProvider>
     </ThemeProvider>
   );
 }

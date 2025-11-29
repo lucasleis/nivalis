@@ -120,11 +120,11 @@ sudo systemctl reload nginx
 
 
 Optimización global (motion variants, performance y coherencia)
-- [✅] 1️⃣ Prepararte todos los Motion Variants + aplicar en cada sección
-- [ ] 2️⃣ Prepararte ScrollProvider e integrar parallax global (más fluido)
-- [ ] 3️⃣ Unificar gradientes + design tokens
-- [ ] 4️⃣ Optimizar imágenes + lazy load
-- [ ] 5️⃣ Unificar listeners (scroll spy + header + parallax)
-- [ ] 6️⃣ Hacer un “Performance Audit” final (como en Vercel/Next)
+- [✅] Prepararte todos los Motion Variants + aplicar en cada sección
+- [✅] Prepararte ScrollProvider e integrar parallax global (más fluido)
+- [ ] Unificar gradientes + design tokens
+- [ ] Optimizar imágenes + lazy load
+- [ ] Unificar listeners (scroll spy + header + parallax)
+- [ ] Hacer un “Performance Audit” final (como en Vercel/Next)
 
 Decime qué opción querés que hagamos primero y lo implemento 100% listo para pegar.
