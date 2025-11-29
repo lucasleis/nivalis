@@ -1,51 +1,89 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./theme/ThemeToggle";
+import {
+  fadeUp,
+  fadeIn,
+  fadeScale,
+} from "../motion/variants";
 
-type NavLink = {
-  label: string;
-  href: string;
-};
-
-const navLinks: NavLink[] = [
+// ======== NAV LINKS ==========
+const navLinks = [
   { label: "Inicio", href: "#inicio" },
-  { label: "Sobre Nosotros", href: "#about" },
   { label: "Servicios", href: "#servicios" },
   { label: "Portfolio", href: "#portfolio" },
+  { label: "Sobre Nosotros", href: "#about" },
   { label: "Contacto", href: "#contacto" },
 ];
 
+// ======== BUTTON STYLE ==========
 const primaryButtonClasses =
   "inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-semibold " +
   "bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-md shadow-orange-500/30 " +
   "hover:shadow-orange-500/50 hover:scale-[1.03] transition-all duration-200";
 
+// ======== HEADER VARIANTS ==========
+const headerVariants = {
+  initial: {
+    paddingTop: "0.9rem",
+    paddingBottom: "0.9rem",
+    boxShadow: "0 0 0 rgba(0,0,0,0)",
+    backgroundColor: "rgba(255,255,255,1)",
+  },
+  scrolled: {
+    paddingTop: "0.4rem",
+    paddingBottom: "0.4rem",
+    boxShadow: "0 10px 35px rgba(15,23,42,0.08)",
+    backgroundColor: "rgba(255,255,255,0.85)",
+    transition: { duration: 0.25 },
+  },
+};
+
+// ======== MOBILE OVERLAY ==========
+const overlayVariants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 0.5 },
+  exit: { opacity: 0 },
+};
+
+// ======== MOBILE PANEL ==========
+const panelVariants = {
+  initial: { x: "100%" },
+  animate: {
+    x: "0%",
+    transition: {
+      stiffness: 220,
+      damping: 25,
+    },
+  },
+  exit: {
+    x: "100%",
+    transition: { duration: 0.25 },
+  },
+};
+
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("#inicio");
+  const [activeSection, setActiveSection] = useState("#inicio");
 
-  // Efecto de scroll para tamaño/sombra del header
+  // ============= SHRINK ON SCROLL =============
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll spy basado en posición del scroll (no IntersectionObserver)
+  // ============= SCROLL SPY ROBUSTO =============
   useEffect(() => {
     const handleScrollSpy = () => {
-      // Usamos el centro de la pantalla como referencia
       const scrollPos = window.scrollY + window.innerHeight / 2;
-      let current = "#inicio";
 
+      let current = "#inicio";
       navLinks.forEach((link) => {
-        const el = document.querySelector(link.href) as HTMLElement | null;
+        const el = document.querySelector(link.href) as HTMLElement;
         if (!el) return;
 
         const top = el.offsetTop;
@@ -59,7 +97,7 @@ export default function Header() {
       setActiveSection(current);
     };
 
-    handleScrollSpy(); // para que marque bien al cargar
+    handleScrollSpy();
     window.addEventListener("scroll", handleScrollSpy);
     window.addEventListener("resize", handleScrollSpy);
 
@@ -69,31 +107,32 @@ export default function Header() {
     };
   }, []);
 
-  const handleNavClick = (href: string) => {
+  // ============= SCROLL TO SECTION OPTIMIZADO =============
+  const handleNavClick = useCallback((href: string) => {
     setOpen(false);
-    document.querySelector(href)?.scrollIntoView({
+
+    const el = document.querySelector(href);
+    if (!el) return;
+
+    const y =
+      el.getBoundingClientRect().top + window.scrollY - 80;
+
+    window.scrollTo({
+      top: y,
       behavior: "smooth",
-      block: "start",
     });
-  };
+  }, []);
 
   return (
     <>
-      {/* HEADER */}
+      {/* ================= HEADER ================= */}
       <motion.header
-        animate={{
-          paddingTop: scrolled ? "0.4rem" : "0.9rem",
-          paddingBottom: scrolled ? "0.4rem" : "0.9rem",
-          boxShadow: scrolled
-            ? "0 10px 35px rgba(15,23,42,0.08)"
-            : "0 0 0 rgba(0,0,0,0)",
-          backgroundColor: scrolled
-            ? "rgba(255,255,255,0.85)"
-            : "rgba(255,255,255,1)",
-        }}
-        transition={{ duration: 0.25 }}
+        variants={headerVariants}
+        initial="initial"
+        animate={scrolled ? "scrolled" : "initial"}
         className="
-          fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-white/50
+          fixed top-0 left-0 w-full z-50 
+          backdrop-blur-md border-b border-white/50
           dark:bg-slate-900/90 dark:border-slate-700 dark:shadow-xl
         "
       >
@@ -102,8 +141,7 @@ export default function Header() {
             {/* LOGO */}
             <button
               onClick={() => handleNavClick("#inicio")}
-              className="flex items-center gap-2 group"
-              aria-label="Ir al inicio"
+              className="flex items-center gap-2"
             >
               <span
                 className={`
@@ -119,28 +157,36 @@ export default function Header() {
               >
                 NIVALIS
               </span>
-              <span className="text-[0.65rem] uppercase tracking-[0.3em] text-gray-500/80 dark:text-gray-400 hidden sm:block">
+              <span className="
+                text-[0.65rem] uppercase tracking-[0.3em] 
+                text-gray-500/80 dark:text-gray-400 hidden sm:block
+              ">
                 Marketing & Tech Lab
               </span>
             </button>
 
-            {/* NAV DESKTOP */}
+            {/* DESKTOP NAV */}
             <nav className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => {
                 const isActive = activeSection === link.href;
+
                 return (
                   <button
                     key={link.label}
                     onClick={() => handleNavClick(link.href)}
-                    className="relative text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors group"
+                    className="relative text-sm font-medium 
+                    text-gray-700 hover:text-gray-900 
+                    dark:text-gray-300 dark:hover:text-white 
+                    transition-colors group"
                   >
                     {link.label}
-                    {/* underline animado */}
+
+                    {/* underline */}
                     <span
                       className={`
                         absolute left-0 -bottom-1 h-[2px] rounded-full 
                         bg-gradient-to-r from-orange-500 to-blue-600 
-                        dark:from-orange-400 dark:to-blue-400
+                        dark:from-orange-400 dark:to-blue-400 
                         transition-all duration-300
                         ${
                           isActive
@@ -163,11 +209,10 @@ export default function Header() {
               </button>
             </nav>
 
-            {/* BOTÓN MENU MOBILE */}
+            {/* BOTÓN MOBILE */}
             <button
               onClick={() => setOpen(true)}
               className="md:hidden text-gray-800 dark:text-white p-1 rounded-full"
-              aria-label="Abrir menú"
             >
               <Menu size={26} />
             </button>
@@ -175,30 +220,30 @@ export default function Header() {
         </div>
       </motion.header>
 
-      {/* BACKDROP MOBILE */}
+      {/* ================= OVERLAY MOBILE ================= */}
       <AnimatePresence>
         {open && (
           <motion.div
-            key="backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            key="overlay"
+            variants={overlayVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
             onClick={() => setOpen(false)}
           />
         )}
       </AnimatePresence>
 
-      {/* PANEL LATERAL MOBILE */}
+      {/* ================= PANEL MOBILE ================= */}
       <AnimatePresence>
         {open && (
           <motion.div
-            key="mobileMenu"
-            initial={{ x: "100%" }}
-            animate={{ x: "0%" }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", stiffness: 220, damping: 25 }}
+            key="panel"
+            variants={panelVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             className="
               fixed top-0 right-0 h-full w-72 z-50 md:hidden 
               bg-white/90 dark:bg-slate-900/90 
@@ -207,20 +252,20 @@ export default function Header() {
               px-6 py-8 flex flex-col gap-6
             "
           >
-            {/* CERRAR */}
+            {/* CLOSE */}
             <button
               onClick={() => setOpen(false)}
               className="self-end mb-4 text-gray-700 dark:text-gray-300"
-              aria-label="Cerrar menú"
             >
               <X size={26} />
             </button>
 
-            {/* LINKS MOBILE */}
+            {/* NAV MOBILE */}
             <nav className="flex flex-col gap-4 text-lg">
               {navLinks.map((link) => (
-                <button
+                <motion.button
                   key={link.label}
+                  variants={fadeUp}
                   onClick={() => handleNavClick(link.href)}
                   className="
                     text-left py-2 font-medium 
@@ -230,22 +275,23 @@ export default function Header() {
                   "
                 >
                   {link.label}
-                </button>
+                </motion.button>
               ))}
             </nav>
 
-            {/* DARK MODE */}
-            <div className="mt-4">
+            {/* TOGGLE */}
+            <motion.div variants={fadeIn}>
               <ThemeToggle />
-            </div>
+            </motion.div>
 
-            {/* CTA MOBILE */}
-            <button
+            {/* CTA */}
+            <motion.button
+              variants={fadeScale}
               onClick={() => handleNavClick("#contacto")}
               className={`${primaryButtonClasses} mt-6 w-full justify-center`}
             >
               Hablemos
-            </button>
+            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>

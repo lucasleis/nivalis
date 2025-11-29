@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { TrendingUp, Code, Zap, Palette, Brain } from "lucide-react";
+import { fadeUp, fadeScale, staggerContainer } from "../motion/variants";
 
 export default function Services() {
   const ref = useRef(null);
@@ -26,7 +27,7 @@ export default function Services() {
       icon: Zap,
       title: "Automatizaciones",
       description:
-        "Optimizamos operaciones mediante automatizaciones inteligentes: bots, flujos, integraciones y sistemas ágiles.",
+        "Optimizamos operaciones mediante automatizaciones inteligentes: bots, flujos, integraciones y sistemas ágil.",
       gradient: "from-orange-600 to-blue-600",
     },
     {
@@ -57,51 +58,47 @@ export default function Services() {
       "
     >
       <div className="max-w-7xl mx-auto px-6">
-        
-        {/* TÍTULO */}
+
+        {/* TÍTULO + INTRO */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          variants={staggerContainer}
+          initial="initial"
+          animate={isInView ? "animate" : "initial"}
           className="text-center mb-20"
         >
-          <h2
-            className="
-              text-5xl md:text-6xl font-extrabold mb-6 
-              text-gray-900 dark:text-white
-            "
+          <motion.h2
+            className="text-5xl md:text-6xl font-extrabold mb-6 text-gray-900 dark:text-white"
+            variants={fadeUp}
           >
             Nuestros{" "}
             <span className="text-orange-600 dark:text-orange-400">Servicios</span>
-          </h2>
+          </motion.h2>
 
-          <div
-            className="
-              w-24 h-1.5 rounded-full mx-auto mb-8
-              bg-gradient-to-r from-orange-500 to-blue-600
-              dark:from-orange-400 dark:to-blue-400
-            "
+          <motion.div
+            className="w-24 h-1.5 mx-auto mb-8 rounded-full bg-gradient-to-r from-orange-500 to-blue-600 dark:from-orange-400 dark:to-blue-400"
+            variants={fadeUp}
           />
 
-          <p
-            className="
-              text-xl text-gray-600 dark:text-gray-300 
-              max-w-3xl mx-auto leading-relaxed
-            "
+          <motion.p
+            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+            variants={fadeUp}
           >
-            Soluciones integrales diseñadas para impulsar tu presencia digital y
-            acelerar tu crecimiento.
-          </p>
+            Soluciones integrales diseñadas para impulsar tu presencia digital
+            y acelerar tu crecimiento.
+          </motion.p>
         </motion.div>
 
-        {/* GRID SERVICIOS */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {/* GRID DE SERVICIOS */}
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
+          variants={staggerContainer}
+          initial="initial"
+          animate={isInView ? "animate" : "initial"}
+        >
           {services.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 35 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: index * 0.1 }}
+              variants={fadeScale}
               className="
                 group relative p-8 rounded-3xl 
                 bg-white dark:bg-slate-800 
@@ -123,13 +120,7 @@ export default function Services() {
               {/* ICONO */}
               <div className="relative z-10">
                 <div
-                  className={`
-                    inline-flex items-center justify-center
-                    w-16 h-16 mb-6 rounded-2xl shadow-lg
-                    bg-gradient-to-br ${service.gradient} 
-                    text-white group-hover:scale-110 group-hover:shadow-xl
-                    transition-transform duration-300
-                  `}
+                  className={`inline-flex items-center justify-center w-16 h-16 mb-6 rounded-2xl shadow-lg bg-gradient-to-br ${service.gradient} text-white group-hover:scale-110 group-hover:shadow-xl transition-transform duration-300`}
                 >
                   <service.icon className="w-8 h-8" />
                 </div>
@@ -157,7 +148,7 @@ export default function Services() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

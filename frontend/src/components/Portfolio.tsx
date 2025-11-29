@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import { fadeUp, fadeScale, staggerContainer } from "../motion/variants";
 
 export default function Portfolio() {
   const ref = useRef(null);
@@ -62,32 +63,35 @@ export default function Portfolio() {
       "
     >
       <div className="max-w-7xl mx-auto px-6">
-        {/* HEADER */}
+
+        {/* HEADER + INTRO */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          variants={staggerContainer}
+          initial="initial"
+          animate={isInView ? "animate" : "initial"}
           className="text-center mb-20"
         >
-          <h2
-            className="
-              text-5xl md:text-6xl font-extrabold mb-6
-              text-gray-900 dark:text-white
-            "
+          <motion.h2
+            variants={fadeUp}
+            className="text-5xl md:text-6xl font-extrabold mb-6 text-gray-900 dark:text-white"
           >
             Nuestro{" "}
-            <span className="text-blue-600 dark:text-blue-400">Portfolio</span>
-          </h2>
+            <span className="text-blue-600 dark:text-blue-400">
+              Portfolio
+            </span>
+          </motion.h2>
 
-          <div
+          <motion.div
+            variants={fadeUp}
             className="
-              w-24 h-1.5 rounded-full mx-auto mb-8
+              w-24 h-1.5 mx-auto mb-8 rounded-full
               bg-gradient-to-r from-orange-500 to-blue-600
               dark:from-orange-400 dark:to-blue-400
             "
           />
 
-          <p
+          <motion.p
+            variants={fadeUp}
             className="
               text-xl text-gray-600 dark:text-gray-300 
               max-w-3xl mx-auto leading-relaxed
@@ -95,24 +99,27 @@ export default function Portfolio() {
           >
             Proyectos que reflejan creatividad, estrategia e innovación.  
             Cada caso representa un desafío convertido en resultados reales.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* GRID DE PROYECTOS */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          animate={isInView ? "animate" : "initial"}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
+        >
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.92 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              variants={fadeScale}
               className="
                 group relative overflow-hidden rounded-3xl cursor-pointer 
                 shadow-lg dark:shadow-xl hover:shadow-2xl 
                 transition-all duration-500
               "
             >
-              {/* CAPA DE COLOR GRADIENT */}
+              {/* FONDO GRADIENTE */}
               <div
                 className={`
                   absolute inset-0 bg-gradient-to-br ${project.gradient} 
@@ -121,23 +128,19 @@ export default function Portfolio() {
                 `}
               />
 
-              {/* IMAGEN O BACKDROP */}
+              {/* CAPA OSCURA */}
               <div
                 className="
-                  absolute inset-0 
-                  bg-black/30 group-hover:bg-black/40 
+                  absolute inset-0 bg-black/30 group-hover:bg-black/40 
                   transition-colors duration-300
                 "
               />
 
               {/* CONTENIDO */}
               <div
-                className="
-                  relative h-80 flex flex-col justify-end p-8 
-                  text-white
-                "
+                className="relative h-80 flex flex-col justify-end p-8 text-white"
               >
-                {/* OVERLAY GRADIENT */}
+                {/* OVERLAY */}
                 <div
                   className="
                     absolute inset-0 
@@ -145,39 +148,35 @@ export default function Portfolio() {
                   "
                 />
 
+                {/* TEXTO */}
                 <div
                   className="
                     relative z-10 transform translate-y-3 
-                    group-hover:translate-y-0 transition-all duration-300
+                    group-hover:translate-y-0 
+                    transition-all duration-300
                   "
                 >
-                  {/* CATEGORÍA */}
-                  <p
-                    className="
-                      text-sm font-semibold uppercase tracking-wider mb-2 
-                      opacity-90
-                    "
-                  >
+                  <p className="text-sm font-semibold uppercase tracking-wider mb-2 opacity-90">
                     {project.category}
                   </p>
 
-                  {/* TÍTULO */}
-                  <h3 className="text-3xl font-bold mb-3">{project.title}</h3>
+                  <h3 className="text-3xl font-bold mb-3">
+                    {project.title}
+                  </h3>
 
-                  {/* DESCRIPCIÓN */}
                   <p
                     className="
                       text-white/90 mb-4 opacity-0 
-                      group-hover:opacity-100 transition-opacity duration-300
+                      group-hover:opacity-100 
+                      transition-opacity duration-300
                     "
                   >
                     {project.description}
                   </p>
 
-                  {/* CTA */}
                   <div
                     className="
-                      inline-flex items-center gap-2 text-sm font-semibold 
+                      inline-flex items-center gap-2 text-sm font-semibold
                       opacity-0 group-hover:opacity-100 
                       transition-opacity duration-300
                     "
@@ -189,7 +188,7 @@ export default function Portfolio() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

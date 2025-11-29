@@ -52,10 +52,10 @@ sudo systemctl reload nginx
 - [✅] Componentes reutilizables (botones, secciones, headings).
 - [✅] Navegación más sólida (highlight de sección activa, scroll spy).
 - [ ] Portfolio con proyectos reales, mockups o placeholders reales.
-- [ ] Footer con más estructura.
+- [✅] Footer con más estructura.
 - [ ] Mejor accesibilidad (aria-labels, alt, contraste).
 - [✅] Dark mode opcional.
-- [ ] Optimización global (motion variants, performance y coherencia), o
+- [✅] Optimización global (motion variants, performance y coherencia)
 
 
 ### MEJORAS GLOBALES A TODA LA LANDING
@@ -115,3 +115,16 @@ sudo systemctl reload nginx
 - [ ] Metatags + SEO: Título, OG tags, structured metadata → te lo hago.
 - [ ] Versión en inglés: Si vas a trabajar internacionalmente, es clave.
 
+
+
+
+
+Optimización global (motion variants, performance y coherencia)
+- [✅] 1️⃣ Prepararte todos los Motion Variants + aplicar en cada sección
+- [ ] 2️⃣ Prepararte ScrollProvider e integrar parallax global (más fluido)
+- [ ] 3️⃣ Unificar gradientes + design tokens
+- [ ] 4️⃣ Optimizar imágenes + lazy load
+- [ ] 5️⃣ Unificar listeners (scroll spy + header + parallax)
+- [ ] 6️⃣ Hacer un “Performance Audit” final (como en Vercel/Next)
+
+Decime qué opción querés que hagamos primero y lo implemento 100% listo para pegar.

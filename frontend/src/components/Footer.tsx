@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Instagram, Linkedin, Mail, MessageCircle } from "lucide-react";
+import { fadeUp, staggerContainer } from "../motion/variants";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -38,17 +39,17 @@ export default function Footer() {
     >
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* GRID DE DOS COLUMNAS */}
-        <div className="
-          grid grid-cols-1 md:grid-cols-2 gap-12 
-          text-center md:text-left
-        ">
-          {/* BRANDING + TEXTO */}
+        {/* GRID PRINCIPAL ANIMADO */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-12 text-center md:text-left"
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          {/* BRANDING */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            variants={fadeUp}
             className="flex flex-col items-center md:items-start"
           >
             <h3
@@ -77,10 +78,7 @@ export default function Footer() {
 
           {/* REDES SOCIALES */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            variants={fadeUp}
             className="flex flex-col items-center md:items-end"
           >
             <h4 className="text-lg font-semibold mb-6 text-gray-200">
@@ -106,14 +104,14 @@ export default function Footer() {
               ))}
             </div>
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* LÍNEA FINAL */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          variants={fadeUp}
+          initial="initial"
+          whileInView="animate"
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-16 pt-8 border-t border-white/10 text-center"
         >
           <p className="text-gray-500 text-sm">
