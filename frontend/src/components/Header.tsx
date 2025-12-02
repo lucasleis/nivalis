@@ -2,11 +2,8 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./theme/ThemeToggle";
-import {
-  fadeUp,
-  fadeIn,
-  fadeScale,
-} from "../motion/variants";
+import { fadeUp, fadeIn, fadeScale } from "../motion/variants";
+import { useParallax } from "./scroll/useParallax";
 
 // ======== NAV LINKS ==========
 const navLinks = [
@@ -52,10 +49,7 @@ const panelVariants = {
   initial: { x: "100%" },
   animate: {
     x: "0%",
-    transition: {
-      stiffness: 220,
-      damping: 25,
-    },
+    transition: { stiffness: 220, damping: 25 },
   },
   exit: {
     x: "100%",
@@ -80,8 +74,8 @@ export default function Header() {
   useEffect(() => {
     const handleScrollSpy = () => {
       const scrollPos = window.scrollY + window.innerHeight / 2;
-
       let current = "#inicio";
+
       navLinks.forEach((link) => {
         const el = document.querySelector(link.href) as HTMLElement;
         if (!el) return;
@@ -107,21 +101,30 @@ export default function Header() {
     };
   }, []);
 
-  // ============= SCROLL TO SECTION OPTIMIZADO =============
+  // ============ SCROLL TO ============
   const handleNavClick = useCallback((href: string) => {
     setOpen(false);
 
     const el = document.querySelector(href);
     if (!el) return;
 
-    const y =
-      el.getBoundingClientRect().top + window.scrollY - 80;
+    const y = el.getBoundingClientRect().top + window.scrollY - 80;
 
     window.scrollTo({
       top: y,
       behavior: "smooth",
     });
   }, []);
+
+  // ================================
+  // ⭐ PREMIUM LOGO ANIMATIONS
+  // ================================
+
+  // Micro-parallax vertical
+  const logoY = useParallax({ range: 250, offset: -6 });
+
+  // Scroll glow (opacity dinámica)
+  const glowOpacity = useParallax({ range: 200, from: 0.9, to: 0.3 });
 
   return (
     <>
@@ -138,34 +141,39 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-14 md:h-16">
-            {/* LOGO */}
-            <button
+            
+            {/* ⭐ LOGO CON ANIMACIONES PREMIUM */}
+            <motion.button
               onClick={() => handleNavClick("#inicio")}
               className="flex items-center gap-2"
+              style={{ y: logoY }}
             >
-              <span
+              <motion.span
+                style={{ opacity: glowOpacity }}
+                whileHover={{ scale: 1.08 }}
+                transition={{ type: "spring", stiffness: 200, damping: 14 }}
                 className={`
                   text-2xl font-extrabold bg-clip-text text-transparent 
-                  transition-all duration-300
-                  ${
-                    scrolled
-                      ? "bg-gradient-to-r from-blue-500 to-orange-400"
-                      : "bg-gradient-to-r from-orange-400 to-blue-600"
+                  bg-gradient-to-r 
+                  ${scrolled
+                    ? "from-blue-500 to-orange-400"
+                    : "from-orange-400 to-blue-600"
                   }
-                  dark:bg-gradient-to-r dark:from-blue-400 dark:to-orange-300
+                  transition-all duration-300
                 `}
               >
                 NIVALIS
-              </span>
+              </motion.span>
+
               <span className="
                 text-[0.65rem] uppercase tracking-[0.3em] 
                 text-gray-500/80 dark:text-gray-400 hidden sm:block
               ">
                 Marketing & Tech Lab
               </span>
-            </button>
+            </motion.button>
 
-            {/* DESKTOP NAV */}
+            {/* ================= DESKTOP NAV ================= */}
             <nav className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => {
                 const isActive = activeSection === link.href;
@@ -175,18 +183,17 @@ export default function Header() {
                     key={link.label}
                     onClick={() => handleNavClick(link.href)}
                     className="relative text-sm font-medium 
-                    text-gray-700 hover:text-gray-900 
-                    dark:text-gray-300 dark:hover:text-white 
-                    transition-colors group"
+                      text-gray-700 hover:text-gray-900 
+                      dark:text-gray-300 dark:hover:text-white 
+                      transition-colors group"
                   >
                     {link.label}
 
-                    {/* underline */}
                     <span
                       className={`
                         absolute left-0 -bottom-1 h-[2px] rounded-full 
                         bg-gradient-to-r from-orange-500 to-blue-600 
-                        dark:from-orange-400 dark:to-blue-400 
+                        dark:from-orange-400 dark:to-blue-400
                         transition-all duration-300
                         ${
                           isActive
@@ -209,7 +216,7 @@ export default function Header() {
               </button>
             </nav>
 
-            {/* BOTÓN MOBILE */}
+            {/* BOTON MOBILE */}
             <button
               onClick={() => setOpen(true)}
               className="md:hidden text-gray-800 dark:text-white p-1 rounded-full"
