@@ -1,12 +1,10 @@
-import { motion, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { fadeUp, fadeScale, staggerContainer } from "../motion/variants";
-import { useSmoothScroll } from "../components/scroll/ScrollProvider";
+import { useParallax } from "../components/scroll/useParallax";
 
 export default function About() {
-  const { smoothScrollY } = useSmoothScroll();
-
-  const headingY = useTransform(smoothScrollY, [0, 350], [0, -8]);
-  const cardY = useTransform(smoothScrollY, [0, 400], [0, -10]);
+  const headingY = useParallax({ range: 350, offset: -8 });
+  const cardY = useParallax({ range: 400, offset: -10 });
 
   return (
     <section
@@ -50,7 +48,6 @@ export default function About() {
           </motion.p>
         </motion.div>
 
-        {/* CARD PARALLAX */}
         <motion.div
           variants={fadeScale}
           className="

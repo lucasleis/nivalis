@@ -1,16 +1,16 @@
-import { motion, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { TrendingUp, Code, Zap, Palette, Brain } from "lucide-react";
 import { fadeUp, fadeScale, staggerContainer } from "../motion/variants";
-import { useSmoothScroll } from "../components/scroll/ScrollProvider";
+import { useParallax } from "../components/scroll/useParallax";
 
 export default function Services() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-150px" });
 
-  const { smoothScrollY } = useSmoothScroll();
-  const cardsY = useTransform(smoothScrollY, [0, 300], [0, -8]);
+  // Parallax para todo el grid
+  const cardsY = useParallax({ range: 300, offset: -8 });
 
   const services = [
     {
@@ -62,8 +62,8 @@ export default function Services() {
       "
     >
       <div className="max-w-7xl mx-auto px-6">
-
-        {/* TÍTULO + INTRO */}
+        
+        {/* TÍTULO */}
         <motion.div
           variants={staggerContainer}
           initial="initial"
@@ -71,33 +71,33 @@ export default function Services() {
           className="text-center mb-20"
         >
           <motion.h2
-            className="text-5xl md:text-6xl font-extrabold mb-6 text-gray-900 dark:text-white"
             variants={fadeUp}
+            className="text-5xl md:text-6xl font-extrabold mb-6 text-gray-900 dark:text-white"
           >
             Nuestros{" "}
             <span className="text-orange-600 dark:text-orange-400">Servicios</span>
           </motion.h2>
 
           <motion.div
-            className="w-24 h-1.5 mx-auto mb-8 rounded-full bg-gradient-to-r from-orange-500 to-blue-600 dark:from-orange-400 dark:to-blue-400"
             variants={fadeUp}
+            className="w-24 h-1.5 mx-auto mb-8 rounded-full bg-gradient-to-r from-orange-500 to-blue-600 dark:from-orange-400 dark:to-blue-400"
           />
 
           <motion.p
-            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
             variants={fadeUp}
+            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
             Soluciones integrales diseñadas para impulsar tu presencia digital
             y acelerar tu crecimiento.
           </motion.p>
         </motion.div>
 
-        {/* GRID DE SERVICIOS */}
+        {/* GRID */}
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
           variants={staggerContainer}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
           style={{ y: cardsY }}
         >
           {services.map((service, index) => (
@@ -112,7 +112,7 @@ export default function Services() {
                 transition-all duration-300 overflow-hidden
               "
             >
-              {/* Hover Glow */}
+              {/* Glow */}
               <div
                 className="
                   absolute inset-0 opacity-0 group-hover:opacity-100 
@@ -125,19 +125,14 @@ export default function Services() {
               {/* ICONO */}
               <div className="relative z-10">
                 <div
-                  className={`inline-flex items-center justify-center w-16 h-16 mb-6 rounded-2xl shadow-lg bg-gradient-to-br ${service.gradient} text-white group-hover:scale-110 group-hover:shadow-xl transition-transform duration-300`}
+                  className={`inline-flex items-center justify-center w-16 h-16 mb-6 rounded-2xl shadow-lg bg-gradient-to-br ${service.gradient} text-white group-hover:scale-110 transition-transform`}
                 >
                   <service.icon className="w-8 h-8" />
                 </div>
 
                 {/* TÍTULO */}
                 <h3
-                  className="
-                    text-2xl font-bold mb-4 
-                    text-gray-900 dark:text-white
-                    group-hover:text-orange-600 dark:group-hover:text-orange-400 
-                    transition-colors duration-300
-                  "
+                  className="text-2xl font-bold mb-4 text-gray-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors"
                 >
                   {service.title}
                 </h3>

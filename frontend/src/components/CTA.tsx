@@ -1,22 +1,17 @@
-import { motion, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { MessageCircle, ArrowRight } from "lucide-react";
 import { fadeUp, fadeUpDelayed, fadeScale, staggerContainer } from "../motion/variants";
-import { useSmoothScroll } from "../components/scroll/ScrollProvider";
+import { useParallax } from "../components/scroll/useParallax";
 
 export default function CTA() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const { smoothScrollY } = useSmoothScroll();
-
-  // PARALLAX BLOB SUAVE
-  const blobOrangeY = useTransform(smoothScrollY, [0, 700], [0, 35]);
-  const blobBlueY   = useTransform(smoothScrollY, [0, 700], [0, -35]);
-
-  // MICRO PARALLAX DEL CONTENIDO
-  const contentY = useTransform(smoothScrollY, [0, 300], [0, -10]);
+  const blobOrangeY = useParallax({ range: 700, offset: 35 });
+  const blobBlueY = useParallax({ range: 700, offset: -35 });
+  const contentY = useParallax({ range: 300, offset: -10 });
 
   const whatsappNumber = "5491151232153";
   const whatsappMessage = encodeURIComponent(
@@ -35,9 +30,8 @@ export default function CTA() {
         transition-colors duration-300
       "
     >
-      {/* BLOBS PARALLAX */}
+      {/* BLOBS */}
       <div className="absolute inset-0 pointer-events-none">
-
         <motion.div
           style={{ y: blobOrangeY }}
           className="
@@ -74,12 +68,10 @@ export default function CTA() {
         {/* ICONO */}
         <motion.div variants={fadeScale}>
           <div
-            className="
-              inline-flex items-center justify-center 
+            className="inline-flex items-center justify-center 
               w-20 h-20 mb-8 rounded-3xl 
               bg-gradient-to-br from-orange-500 to-blue-600 
-              shadow-2xl shadow-orange-500/30 dark:shadow-orange-400/20
-            "
+              shadow-2xl"
           >
             <MessageCircle className="w-10 h-10 text-white" />
           </div>
@@ -88,10 +80,7 @@ export default function CTA() {
         {/* TITULO */}
         <motion.h2
           variants={fadeUp}
-          className="
-            text-5xl md:text-7xl font-extrabold mb-8 
-            text-gray-900 dark:text-white leading-tight
-          "
+          className="text-5xl md:text-7xl font-extrabold mb-8 text-gray-900 dark:text-white"
         >
           ¿Listo para dar{" "}
           <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-blue-600 bg-clip-text text-transparent">
@@ -103,12 +92,9 @@ export default function CTA() {
         {/* COPY */}
         <motion.p
           variants={fadeUp}
-          className="
-            text-xl md:text-2xl text-gray-600 dark:text-gray-300 
-            mb-12 max-w-3xl mx-auto leading-relaxed
-          "
+          className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12"
         >
-          Hablemos sobre tu proyecto y descubramos cómo llevar tu marca
+          Conversemos sobre tu proyecto y descubramos cómo llevar tu marca
           al siguiente nivel.
         </motion.p>
 
@@ -118,14 +104,7 @@ export default function CTA() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="
-              inline-flex items-center gap-3 px-10 py-5 
-              bg-gradient-to-r from-orange-500 to-orange-600 
-              text-white rounded-full font-bold text-lg
-              shadow-2xl shadow-orange-500/40 dark:shadow-orange-400/20
-              hover:shadow-orange-500/60 hover:scale-105 
-              transition-all duration-300
-            "
+            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-full font-bold text-lg hover:scale-105 transition-all"
           >
             <MessageCircle className="w-6 h-6" />
             Escríbenos por WhatsApp
