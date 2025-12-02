@@ -1,59 +1,72 @@
-import { motion, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { fadeUp, fadeScale, staggerContainer } from "../motion/variants";
-import { useSmoothScroll } from "../components/scroll/ScrollProvider";
+import { useParallax } from "../components/scroll/useParallax";
 
 export default function Portfolio() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-150px" });
 
-  const { smoothScrollY } = useSmoothScroll();
-  const cardsY = useTransform(smoothScrollY, [0, 350], [0, -8]);
+  // Reemplazo de useTransform → useParallax para consistencia global
+  const cardsY = useParallax({ range: 350, offset: -8 });
 
   const projects = [
+    // ===============================
+    // ✔ MVP Burgers (FULLSTACK)
+    // ===============================
     {
-      title: "Restyling + Sistema de reservas",
-      category: "Branding & Web",
+      title: "MVP Burgers – Plataforma de pedidos",
+      category: "Fullstack Development",
       description:
-        "Identidad visual renovada y desarrollo de un sistema de reservas 100% automatizado.",
-      gradient: "from-orange-500 to-orange-700",
+        "Aplicación completa desarrollada con React + Flask + Redis para gestionar pedidos de hamburguesas en tiempo real. Incluye UI/UX moderna, carrito persistente, sistema de órdenes, gestión de estado global, endpoints REST y lógica de impresión en cocina.",
+      gradient: "from-orange-600 to-orange-800",
     },
+
+    // ===============================
+    // ✔ Buscando con Lupa (Lupa Supermercados)
+    // ===============================
     {
-      title: "Campaña de performance",
-      category: "Marketing Digital",
+      title: "Buscando con Lupa – Micrositio Gamificado",
+      category: "Web & Gamification",
       description:
-        "Diseño de estrategia, contenido, anuncios y optimización de ROI.",
-      gradient: "from-blue-600 to-blue-700",
-    },
-    {
-      title: "Automatización con IA",
-      category: "IA & Desarrollo",
-      description:
-        "Integración de modelos de lenguaje, bots y workflows automáticos.",
-      gradient: "from-orange-600 to-blue-600",
-    },
-    {
-      title: "Tienda online escalable",
-      category: "E-commerce",
-      description:
-        "Desarrollo de tienda con pasarela de pagos, notificaciones y panel de administración.",
-      gradient: "from-blue-700 to-blue-900",
-    },
-    {
-      title: "Aplicación mobile",
-      category: "App Development",
-      description:
-        "Aplicación multiplataforma diseñada para mejorar la experiencia del usuario.",
-      gradient: "from-orange-500 to-orange-700",
-    },
-    {
-      title: "Optimización avanzada",
-      category: "Performance",
-      description:
-        "Mejoras de velocidad, SEO técnico, analítica y A/B testing.",
+        "Micrositio interactivo desarrollado para Lupa Supermercados con PHP, MySQL y JavaScript. Incluye animaciones, popups, transición entre categorías, sliders, validaciones, sistema de pistas y flujo completo del juego.",
       gradient: "from-blue-600 to-orange-500",
+    },
+
+    // ===============================
+    // ✔ Sistema de Gestión de Pagos (Peluquerías)
+    // ===============================
+    {
+      title: "Sistema de Gestión de Pagos",
+      category: "Backend & Systems",
+      description:
+        "Plataforma administrativa para peluquerías con Flask + PostgreSQL: gestión de barberos, servicios, turnos, productos, métodos de pago múltiples, membresías, reportes, usuarios admins y lógica completa de validación.",
+      gradient: "from-orange-500 to-blue-600",
+    },
+
+    // ===============================
+    // 🔜 Espacios libres para marketing
+    // ===============================
+
+    {
+      title: "Proyecto de Marketing 1",
+      category: "Marketing",
+      description: "Espacio reservado para un próximo caso de éxito.",
+      gradient: "from-gray-400 to-gray-600",
+    },
+    {
+      title: "Proyecto de Marketing 2",
+      category: "Marketing",
+      description: "Espacio reservado para un próximo caso de éxito.",
+      gradient: "from-gray-400 to-gray-600",
+    },
+    {
+      title: "Proyecto de Marketing 3",
+      category: "Marketing",
+      description: "Espacio reservado para un próximo caso de éxito.",
+      gradient: "from-gray-400 to-gray-600",
     },
   ];
 
@@ -65,7 +78,7 @@ export default function Portfolio() {
     >
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* HEADER + INTRO */}
+        {/* HEADER */}
         <motion.div
           variants={staggerContainer}
           initial="initial"
@@ -103,7 +116,7 @@ export default function Portfolio() {
           </motion.p>
         </motion.div>
 
-        {/* GRID DE PROYECTOS */}
+        {/* GRID */}
         <motion.div
           variants={staggerContainer}
           initial="initial"
@@ -121,7 +134,7 @@ export default function Portfolio() {
                 transition-all duration-500
               "
             >
-              {/* FONDO GRADIENTE */}
+              {/* GRADIENT BG */}
               <div
                 className={`
                   absolute inset-0 bg-gradient-to-br ${project.gradient} 
@@ -130,54 +143,66 @@ export default function Portfolio() {
                 `}
               />
 
-              {/* CAPA OSCURA */}
+              {/* DARK LAYER */}
               <div
                 className="
-                  absolute inset-0 bg-black/30 group-hover:bg-black/40 
+                  absolute inset-0 bg-black/20 group-hover:bg-black/35 
                   transition-colors duration-300
                 "
               />
 
-              {/* CONTENIDO */}
+              {/* CONTENT */}
               <div className="relative h-80 flex flex-col justify-end p-8 text-white">
                 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                {/* BOTTOM GRADIENT */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
 
-                <div
-                  className="
-                    relative z-10 transform translate-y-3 
-                    group-hover:translate-y-0 
-                    transition-all duration-300
-                  "
-                >
-                  <p className="text-sm font-semibold uppercase tracking-wider mb-2 opacity-90">
+                <div className="relative z-10 flex flex-col gap-3 transition-all duration-300">
+
+                  {/* CATEGORY */}
+                  <p className="
+                    text-xs font-semibold uppercase tracking-wider 
+                    opacity-75 group-hover:opacity-90 transition-opacity
+                  ">
                     {project.category}
                   </p>
 
-                  <h3 className="text-3xl font-bold mb-3">
+                  {/* TITLE */}
+                  <h3
+                    className="
+                      text-2xl font-bold mb-1 
+                      transform transition-all duration-300
+                      group-hover:-translate-y-1
+                    "
+                  >
                     {project.title}
                   </h3>
 
+                  {/* DESCRIPTION */}
                   <p
                     className="
-                      text-white/90 mb-4 opacity-0 
-                      group-hover:opacity-100 
-                      transition-opacity duration-300
+                      text-sm text-white/90 leading-relaxed 
+                      opacity-0 max-h-0 
+                      group-hover:max-h-40 group-hover:opacity-100 
+                      transition-all duration-300
                     "
                   >
                     {project.description}
                   </p>
 
+                  {/* CTA */}
                   <div
                     className="
                       inline-flex items-center gap-2 text-sm font-semibold
-                      opacity-0 group-hover:opacity-100 
-                      transition-opacity duration-300
+                      opacity-0 translate-y-2 
+                      group-hover:opacity-100 group-hover:translate-y-0
+                      transition-all duration-300
                     "
                   >
                     Ver proyecto
                     <ExternalLink className="w-4 h-4" />
                   </div>
+
                 </div>
               </div>
             </motion.div>
