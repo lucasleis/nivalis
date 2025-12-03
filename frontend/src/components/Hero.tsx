@@ -3,6 +3,8 @@ import { ArrowRight } from "lucide-react";
 import { fadeUp, fadeUpDelayed } from "../motion/variants";
 import { useParallax } from "../components/scroll/useParallax";
 
+import logo from "../assets/logos/logo2.png";
+
 export default function Hero() {
   const blobOrangeY = useParallax({ range: 800, offset: 55 });
   const blobBlueY = useParallax({ range: 800, offset: -55 });
@@ -47,17 +49,11 @@ export default function Hero() {
       >
         {/* LOGO + NOMBRE */}
         <motion.div {...fadeUp} className="mb-10">
-          <div className="inline-flex items-center justify-center w-24 h-24 mb-8 rounded-3xl bg-gradient-to-br from-orange-500 to-blue-600 shadow-2xl shadow-orange-500/20">
-            <span className="text-4xl font-bold text-white">N</span>
-          </div>
-
-          <h1 className="text-6xl md:text-8xl font-extrabold bg-gradient-to-r from-orange-500 via-orange-600 to-blue-600 bg-clip-text text-transparent">
-            NIVALIS
-          </h1>
-
-          <p className="mt-4 text-sm uppercase tracking-[0.3em] text-gray-600 dark:text-gray-400">
-            Marketing & Tech Lab
-          </p>
+          <img
+            src={logo}
+            alt="Nivalis Marketing & Tech Lab"
+            className="w-[420px] max-w-full mx-auto drop-shadow-lg dark:drop-shadow-xl"
+          />
         </motion.div>
 
         {/* SUBTÍTULO */}
