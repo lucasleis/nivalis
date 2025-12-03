@@ -18,6 +18,7 @@ export default function Portfolio() {
     // ===============================
     {
       title: "MVP Burgers – Plataforma de pedidos",
+      slug: "mvp-burgers",
       category: "Fullstack Development",
       description:
         "Aplicación completa desarrollada con React + Flask + Redis para gestionar pedidos de hamburguesas en tiempo real. Incluye UI/UX moderna, carrito persistente, sistema de órdenes, gestión de estado global, endpoints REST y lógica de impresión en cocina.",
@@ -29,6 +30,7 @@ export default function Portfolio() {
     // ===============================
     {
       title: "Buscando con Lupa – Micrositio Gamificado",
+      slug: "lupa",
       category: "Web & Gamification",
       description:
         "Micrositio interactivo desarrollado para Lupa Supermercados con PHP, MySQL y JavaScript. Incluye animaciones, popups, transición entre categorías, sliders, validaciones, sistema de pistas y flujo completo del juego.",
@@ -40,35 +42,37 @@ export default function Portfolio() {
     // ===============================
     {
       title: "Sistema de Gestión de Pagos",
+      slug: "pagos",
       category: "Backend & Systems",
       description:
         "Plataforma administrativa para peluquerías con Flask + PostgreSQL: gestión de barberos, servicios, turnos, productos, métodos de pago múltiples, membresías, reportes, usuarios admins y lógica completa de validación.",
       gradient: "from-orange-500 to-blue-600",
     },
 
-    // ===============================
-    // 🔜 Espacios libres para marketing
-    // ===============================
-
+    // Marketing placeholders
     {
       title: "Proyecto de Marketing 1",
+      slug: "marketing-1",
       category: "Marketing",
       description: "Espacio reservado para un próximo caso de éxito.",
       gradient: "from-gray-400 to-gray-600",
     },
     {
       title: "Proyecto de Marketing 2",
+      slug: "marketing-2",
       category: "Marketing",
       description: "Espacio reservado para un próximo caso de éxito.",
       gradient: "from-gray-400 to-gray-600",
     },
     {
       title: "Proyecto de Marketing 3",
+      slug: "marketing-3",
       category: "Marketing",
       description: "Espacio reservado para un próximo caso de éxito.",
       gradient: "from-gray-400 to-gray-600",
     },
   ];
+
 
   return (
     <section
@@ -191,7 +195,8 @@ export default function Portfolio() {
                   </p>
 
                   {/* CTA */}
-                  <div
+                  <a
+                    href={`/case-study/${project.slug}`}
                     className="
                       inline-flex items-center gap-2 text-sm font-semibold
                       opacity-0 translate-y-2 
@@ -201,7 +206,7 @@ export default function Portfolio() {
                   >
                     Ver proyecto
                     <ExternalLink className="w-4 h-4" />
-                  </div>
+                  </a>
 
                 </div>
               </div>

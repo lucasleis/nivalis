@@ -127,4 +127,3 @@ Optimización global (motion variants, performance y coherencia)
 - [ ] Unificar listeners (scroll spy + header + parallax)
 - [ ] Hacer un “Performance Audit” final (como en Vercel/Next)
 
-Decime qué opción querés que hagamos primero y lo implemento 100% listo para pegar.

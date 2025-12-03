@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeUp, fadeIn, staggerContainer } from "../../../motion/variants";
 import { ArrowLeft, ExternalLink } from "lucide-react";
-import { useParallax } from "../../../components/scroll/useParallax";
+import { useParallax } from "../../scroll/useParallax";
 
 interface CaseStudyProps {
   title: string;
@@ -50,9 +50,28 @@ export default function CaseStudyTemplate({
 
         <motion.h1
           variants={fadeUp}
-          className="text-5xl md:text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-blue-600 mt-4"
+          className="
+            text-5xl md:text-7xl font-extrabold 
+            bg-clip-text text-transparent 
+            bg-gradient-to-r from-orange-500 to-blue-600 
+            mt-4 leading-tight
+          "
         >
-          {title}
+          {title.includes("–") ? (
+            <>
+              {title.split("–")[0].trim()}
+              <br />
+              <span className="
+                bg-gradient-to-r from-orange-500 to-blue-600 
+                bg-clip-text text-transparent 
+                font-semibold
+              ">
+                {title.split("–")[1].trim()}
+              </span>
+            </>
+          ) : (
+            title
+          )}
         </motion.h1>
 
         {subtitle && (
