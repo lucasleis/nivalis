@@ -53,7 +53,7 @@ export default function CaseStudyTemplate({
           className="
             text-5xl md:text-7xl font-extrabold 
             bg-clip-text text-transparent 
-            bg-gradient-to-r from-orange-500 to-blue-600 
+            bg-gradient-to-r from-nivOrange to-nivBlue 
             mt-4 leading-tight
           "
         >
@@ -62,7 +62,7 @@ export default function CaseStudyTemplate({
               {title.split("–")[0].trim()}
               <br />
               <span className="
-                bg-gradient-to-r from-orange-500 to-blue-600 
+                bg-gradient-to-r from-nivOrange to-nivBlue 
                 bg-clip-text text-transparent 
                 font-semibold
               ">
@@ -169,7 +169,7 @@ export default function CaseStudyTemplate({
             <a
               href={externalLink}
               target="_blank"
-              className="px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-full flex items-center gap-2"
+              className="px-6 py-3 bg-gradient-to-r from-nivOrange to-orange-600 text-white rounded-full flex items-center gap-2"
             >
               Ver proyecto en vivo
               <ExternalLink className="w-4 h-4" />

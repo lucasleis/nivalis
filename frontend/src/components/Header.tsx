@@ -5,6 +5,8 @@ import ThemeToggle from "./theme/ThemeToggle";
 import { fadeUp, fadeIn, fadeScale } from "../motion/variants";
 import { useParallax } from "./scroll/useParallax";
 
+import logo from "../assets/logos/logo6.png"; 
+
 // ======== NAV LINKS ==========
 const navLinks = [
   { label: "Inicio", href: "#inicio" },
@@ -16,23 +18,22 @@ const navLinks = [
 
 // ======== BUTTON STYLE ==========
 const primaryButtonClasses =
-  "inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-semibold " +
-  "bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-md shadow-orange-500/30 " +
-  "hover:shadow-orange-500/50 hover:scale-[1.03] transition-all duration-200";
+  "inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-semibold font-body " +
+  "bg-nivOrange text-white shadow-md hover:shadow-lg hover:scale-[1.05] transition-all duration-200";
 
 // ======== HEADER VARIANTS ==========
 const headerVariants = {
   initial: {
-    paddingTop: "0.9rem",
-    paddingBottom: "0.9rem",
+    paddingTop: "1rem",
+    paddingBottom: "1rem",
     boxShadow: "0 0 0 rgba(0,0,0,0)",
     backgroundColor: "rgba(255,255,255,1)",
   },
   scrolled: {
-    paddingTop: "0.4rem",
-    paddingBottom: "0.4rem",
-    boxShadow: "0 10px 35px rgba(15,23,42,0.08)",
-    backgroundColor: "rgba(255,255,255,0.85)",
+    paddingTop: "0.45rem",
+    paddingBottom: "0.45rem",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+    backgroundColor: "rgba(255,255,255,0.8)",
     transition: { duration: 0.25 },
   },
 };
@@ -62,7 +63,10 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("#inicio");
 
-  // ============= SHRINK ON SCROLL =============
+  const logoY = useParallax({ range: 250, offset: -6 });
+  const glowOpacity = useParallax({ range: 200, from: 1, to: 0.35 });
+
+  // ============= SCROLL EFFECTS =============
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     handleScroll();
@@ -70,7 +74,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ============= SCROLL SPY ROBUSTO =============
+  // ============= SCROLL SPY =============
   useEffect(() => {
     const handleScrollSpy = () => {
       const scrollPos = window.scrollY + window.innerHeight / 2;
@@ -79,10 +83,8 @@ export default function Header() {
       navLinks.forEach((link) => {
         const el = document.querySelector(link.href) as HTMLElement;
         if (!el) return;
-
         const top = el.offsetTop;
         const height = el.offsetHeight;
-
         if (scrollPos >= top && scrollPos < top + height) {
           current = link.href;
         }
@@ -104,27 +106,12 @@ export default function Header() {
   // ============ SCROLL TO ============
   const handleNavClick = useCallback((href: string) => {
     setOpen(false);
-
     const el = document.querySelector(href);
     if (!el) return;
 
     const y = el.getBoundingClientRect().top + window.scrollY - 80;
-
-    window.scrollTo({
-      top: y,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: y, behavior: "smooth" });
   }, []);
-
-  // ================================
-  // ⭐ PREMIUM LOGO ANIMATIONS
-  // ================================
-
-  // Micro-parallax vertical
-  const logoY = useParallax({ range: 250, offset: -6 });
-
-  // Scroll glow (opacity dinámica)
-  const glowOpacity = useParallax({ range: 200, from: 0.9, to: 0.3 });
 
   return (
     <>
@@ -135,46 +122,31 @@ export default function Header() {
         animate={scrolled ? "scrolled" : "initial"}
         className="
           fixed top-0 left-0 w-full z-50 
-          backdrop-blur-md border-b border-white/50
-          dark:bg-slate-900/90 dark:border-slate-700 dark:shadow-xl
+          backdrop-blur-md border-b border-white/40
+          dark:bg-slate-900/80 dark:border-slate-700
         "
       >
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-14 md:h-16">
+          <div className="flex items-center justify-between h-16">
             
-            {/* ⭐ LOGO CON ANIMACIONES PREMIUM */}
+            {/* LOGO */}
             <motion.button
               onClick={() => handleNavClick("#inicio")}
-              className="flex items-center gap-2"
+              className="flex items-center gap-3"
               style={{ y: logoY }}
             >
-              <motion.span
+              <motion.img
+                src={logo}
+                alt="Nivalis Logo"
                 style={{ opacity: glowOpacity }}
-                whileHover={{ scale: 1.08 }}
-                transition={{ type: "spring", stiffness: 200, damping: 14 }}
-                className={`
-                  text-2xl font-extrabold bg-clip-text text-transparent 
-                  bg-gradient-to-r 
-                  ${scrolled
-                    ? "from-blue-500 to-orange-400"
-                    : "from-orange-400 to-blue-600"
-                  }
-                  transition-all duration-300
-                `}
-              >
-                NIVALIS
-              </motion.span>
-
-              <span className="
-                text-[0.65rem] uppercase tracking-[0.3em] 
-                text-gray-500/80 dark:text-gray-400 hidden sm:block
-              ">
-                Marketing & Tech Lab
-              </span>
+                className="h-10 w-auto object-contain drop-shadow-md"
+                whileHover={{ scale: 1.06 }}
+                transition={{ type: "spring", stiffness: 180, damping: 14 }}
+              />
             </motion.button>
 
             {/* ================= DESKTOP NAV ================= */}
-            <nav className="hidden md:flex items-center gap-8">
+            <nav className="hidden md:flex items-center gap-8 font-body">
               {navLinks.map((link) => {
                 const isActive = activeSection === link.href;
 
@@ -182,18 +154,14 @@ export default function Header() {
                   <button
                     key={link.label}
                     onClick={() => handleNavClick(link.href)}
-                    className="relative text-sm font-medium 
-                      text-gray-700 hover:text-gray-900 
-                      dark:text-gray-300 dark:hover:text-white 
-                      transition-colors group"
+                    className="relative text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-nivBlue transition-colors group"
                   >
                     {link.label}
 
                     <span
                       className={`
                         absolute left-0 -bottom-1 h-[2px] rounded-full 
-                        bg-gradient-to-r from-orange-500 to-blue-600 
-                        dark:from-orange-400 dark:to-blue-400
+                        bg-gradient-to-r from-nivOrange to-nivBlue
                         transition-all duration-300
                         ${
                           isActive
@@ -256,7 +224,7 @@ export default function Header() {
               bg-white/90 dark:bg-slate-900/90 
               backdrop-blur-xl shadow-xl 
               border-l border-white/20 dark:border-slate-800
-              px-6 py-8 flex flex-col gap-6
+              px-6 py-8 flex flex-col gap-6 font-body
             "
           >
             {/* CLOSE */}
@@ -277,8 +245,7 @@ export default function Header() {
                   className="
                     text-left py-2 font-medium 
                     text-gray-800 dark:text-gray-200
-                    hover:text-orange-500 dark:hover:text-orange-400
-                    transition-colors
+                    hover:text-nivBlue transition-colors
                   "
                 >
                   {link.label}

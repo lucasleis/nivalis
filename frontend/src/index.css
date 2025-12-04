@@ -1,9 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@400;500;600&display=swap');
-
+/* ================================
+   1) IMPORT TAILWIND
+================================ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ================================
+   2) FUENTES LOCALES (OFICIALES)
+================================ */
+@font-face {
+  font-family: "NauryzRedKeds";
+  src: url("/src/assets/fonts/NauryzRedKeds.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AcuminPro";
+  src: url("/src/assets/fonts/AcuminPro-Regular.otf") format("opentype");
+  font-display: swap;
+}
+
+/* ================================
+   3) VARIABLES DE COLOR LIGHT/DARK
+================================ */
 :root {
   --bg-light: #ffffff;
   --bg-dark: #0f0f0f;
@@ -12,19 +31,27 @@
   --text-dark: #e5e5e5;
 }
 
-/* Fuente global (body) */
+/* ================================
+   4) FUENTE GLOBAL DEL SITIO
+   (Todo el texto usa font-body)
+================================ */
 html {
-  font-family: 'Inter', sans-serif;
+  font-family: "AcuminPro", sans-serif;
   scroll-behavior: smooth;
 }
 
-/* Títulos globales */
+/* ================================
+   5) TITULARES (Usan NauryzRedKeds)
+================================ */
 h1, h2, h3, h4 {
-  font-family: "Manrope", sans-serif;
+  font-family: "NauryzRedKeds", sans-serif;
   font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
-/* Smooth theme transition */
+/* ================================
+   6) TRANSICIÓN SMOOTH ENTRE MODOS
+================================ */
 * {
   transition:
     background-color 0.35s ease,

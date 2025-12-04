@@ -25,35 +25,38 @@ export default function CTA() {
       ref={ref}
       className="
         relative py-32 overflow-hidden
-        bg-gradient-to-br from-gray-50 via-orange-50/30 to-blue-50/40
+        bg-gradient-to-br from-[#ffffff] via-[#ffe0d6]/25 to-[#83aefa]/25
         dark:from-slate-900 dark:via-slate-900/90 dark:to-slate-800
         transition-colors duration-300
       "
     >
       {/* BLOBS */}
       <div className="absolute inset-0 pointer-events-none">
+        
+        {/* ORANGE BLOB */}
         <motion.div
           style={{ y: blobOrangeY }}
           className="
             absolute top-1/4 right-1/3 
-            w-[550px] h-[550px] rounded-full 
-            bg-gradient-to-br from-orange-400/20 to-orange-500/10 
-            blur-3xl dark:from-orange-500/10 dark:to-orange-600/5
+            w-[500px] h-[500px] rounded-full 
+            bg-gradient-to-br from-[#fd6647]/25 to-[#ffe0d6]/20
+            blur-3xl
           "
-          animate={{ scale: [1, 1.25, 1], opacity: [0.2, 0.45, 0.2] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.45, 0.2] }}
+          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
         />
 
+        {/* BLUE BLOB */}
         <motion.div
           style={{ y: blobBlueY }}
           className="
             absolute bottom-1/4 left-1/3 
-            w-[550px] h-[550px] rounded-full 
-            bg-gradient-to-tr from-blue-600/20 to-blue-500/10 
-            blur-3xl dark:from-blue-500/10 dark:to-blue-700/5
+            w-[500px] h-[500px] rounded-full 
+            bg-gradient-to-tr from-[#0259dd]/25 to-[#83aefa]/20
+            blur-3xl
           "
-          animate={{ scale: [1.2, 1, 1.2], opacity: [0.15, 0.35, 0.15] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          animate={{ scale: [1.15, 1, 1.15], opacity: [0.15, 0.35, 0.15] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
         />
       </div>
 
@@ -68,10 +71,12 @@ export default function CTA() {
         {/* ICONO */}
         <motion.div variants={fadeScale}>
           <div
-            className="inline-flex items-center justify-center 
+            className="
+              inline-flex items-center justify-center 
               w-20 h-20 mb-8 rounded-3xl 
-              bg-gradient-to-br from-orange-500 to-blue-600 
-              shadow-2xl"
+              bg-gradient-to-br from-nivOrange to-nivBlue 
+              shadow-2xl
+            "
           >
             <MessageCircle className="w-10 h-10 text-white" />
           </div>
@@ -80,10 +85,14 @@ export default function CTA() {
         {/* TITULO */}
         <motion.h2
           variants={fadeUp}
-          className="text-5xl md:text-7xl font-extrabold mb-8 text-gray-900 dark:text-white"
+          className="
+            font-display font-bold
+            text-5xl md:text-7xl 
+            mb-8 text-gray-900 dark:text-white
+          "
         >
           ¿Listo para dar{" "}
-          <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-blue-600 bg-clip-text text-transparent">
+          <span className="text-nivOrange dark:text-nivLightBlue">
             el próximo paso
           </span>
           ?
@@ -92,10 +101,15 @@ export default function CTA() {
         {/* COPY */}
         <motion.p
           variants={fadeUp}
-          className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12"
+          className="
+            font-body 
+            text-xl md:text-2xl 
+            text-gray-700 dark:text-gray-300 
+            mb-12 max-w-2xl mx-auto leading-relaxed
+          "
         >
           Conversemos sobre tu proyecto y descubramos cómo llevar tu marca
-          al siguiente nivel.
+          al siguiente nivel con soluciones modernas, ágiles y creativas.
         </motion.p>
 
         {/* CTA BUTTON */}
@@ -104,7 +118,14 @@ export default function CTA() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-full font-bold text-lg hover:scale-105 transition-all"
+            className="
+              inline-flex items-center gap-3 
+              px-10 py-5 rounded-full font-body font-semibold text-lg
+              bg-nivOrange text-white 
+              hover:bg-[#e85a40] hover:scale-105 
+              shadow-lg hover:shadow-xl 
+              transition-all
+            "
           >
             <MessageCircle className="w-6 h-6" />
             Escríbenos por WhatsApp
@@ -115,7 +136,7 @@ export default function CTA() {
         {/* MICROCOPY */}
         <motion.p
           variants={fadeUpDelayed(0.4)}
-          className="mt-12 text-gray-500 dark:text-gray-400"
+          className="font-body mt-12 text-gray-600 dark:text-gray-400"
         >
           Respuesta garantizada en menos de 24 horas
         </motion.p>

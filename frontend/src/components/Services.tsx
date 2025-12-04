@@ -17,36 +17,36 @@ export default function Services() {
       icon: Code,
       title: "Desarrollo Web",
       description:
-        "Sitios web modernos, rápidos y escalables. Landing pages, e-commerce, sistemas, y aplicaciones personalizadas.",
-      gradient: "from-orange-500 to-orange-700",
+        "Sitios y aplicaciones modernas, rápidas, escalables y diseñadas a medida. Landing pages, e-commerce, sistemas y plataformas completas.",
+      gradient: "from-nivOrange to-nivBlue",
     },
     {
       icon: TrendingUp,
       title: "Marketing Digital",
       description:
-        "Estrategias de contenido, SEO, campañas pagas y analítica para maximizar el alcance y las conversiones.",
-      gradient: "from-blue-600 to-blue-700",
+        "Estrategias basadas en datos: contenido, campañas, SEO y automatización para maximizar alcance, rendimiento y conversión.",
+      gradient: "from-nivBlue to-nivLightBlue",
     },
     {
       icon: Zap,
       title: "Automatizaciones",
       description:
-        "Optimizamos operaciones mediante automatizaciones inteligentes: bots, flujos, integraciones y sistemas ágil.",
-      gradient: "from-orange-600 to-blue-600",
+        "Optimizamos procesos con integraciones, bots, flujos inteligentes y sistemas que aceleran tareas repetitivas.",
+      gradient: "from-nivOrange to-nivLightBlue",
     },
     {
       icon: Palette,
       title: "Branding & Identidad",
       description:
-        "Creamos marcas sólidas con identidad visual, tono, estética y coherencia estratégica.",
-      gradient: "from-orange-500 to-orange-600",
+        "Construimos identidades visuales sólidas, coherentes y creativas que representan la esencia de cada marca.",
+      gradient: "from-nivOrange to-[#ffb199]",
     },
     {
       icon: Brain,
       title: "IA aplicada a negocios",
       description:
-        "Soluciones inteligentes para potenciar equipos, acelerar procesos y mejorar decisiones.",
-      gradient: "from-blue-600 to-blue-800",
+        "Soluciones inteligentes para potenciar equipos, automatizar tareas y mejorar procesos de decisión.",
+      gradient: "from-nivBlue to-nivOrange",
     },
   ];
 
@@ -56,13 +56,13 @@ export default function Services() {
       ref={ref}
       className="
         py-32 
-        bg-gradient-to-br from-gray-50 via-white to-gray-50 
+        bg-gradient-to-b from-[#ffffff] via-[#ffe0d6]/20 to-[#83aefa]/20
         dark:from-slate-900 dark:via-slate-900/90 dark:to-slate-900
         transition-colors duration-300
       "
     >
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* TÍTULO */}
         <motion.div
           variants={staggerContainer}
@@ -72,23 +72,35 @@ export default function Services() {
         >
           <motion.h2
             variants={fadeUp}
-            className="text-5xl md:text-6xl font-extrabold mb-6 text-gray-900 dark:text-white"
+            className="
+              font-display font-bold 
+              text-5xl md:text-6xl 
+              mb-6 text-gray-900 dark:text-white
+            "
           >
             Nuestros{" "}
-            <span className="text-orange-600 dark:text-orange-400">Servicios</span>
+            <span className="text-nivOrange dark:text-nivLightBlue">Servicios</span>
           </motion.h2>
 
           <motion.div
             variants={fadeUp}
-            className="w-24 h-1.5 mx-auto mb-8 rounded-full bg-gradient-to-r from-orange-500 to-blue-600 dark:from-orange-400 dark:to-blue-400"
+            className="
+              w-28 h-1.5 mx-auto mb-8 rounded-full
+              bg-gradient-to-r from-nivOrange to-nivBlue
+              dark:from-nivLightBlue dark:to-nivBlue
+            "
           />
 
           <motion.p
             variants={fadeUp}
-            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+            className="
+              font-body 
+              text-xl text-gray-700 dark:text-gray-300 
+              max-w-3xl mx-auto leading-relaxed
+            "
           >
-            Soluciones integrales diseñadas para impulsar tu presencia digital
-            y acelerar tu crecimiento.
+            Soluciones integrales que combinan creatividad, estrategia y tecnología
+            para impulsar tu presencia digital y acelerar tu crecimiento.
           </motion.p>
         </motion.div>
 
@@ -107,17 +119,17 @@ export default function Services() {
               className="
                 group relative p-8 rounded-3xl 
                 bg-white dark:bg-slate-800 
-                shadow-sm dark:shadow-md 
+                shadow-md dark:shadow-lg 
                 hover:shadow-2xl hover:-translate-y-1 
                 transition-all duration-300 overflow-hidden
               "
             >
-              {/* Glow */}
+              {/* Glow Hover */}
               <div
                 className="
                   absolute inset-0 opacity-0 group-hover:opacity-100 
-                  bg-gradient-to-br from-orange-50/60 to-blue-50/60 
-                  dark:from-orange-400/10 dark:to-blue-400/10 
+                  bg-gradient-to-br from-[#ffe0d6]/40 to-[#83aefa]/40
+                  dark:from-nivLightBlue/10 dark:to-nivOrange/10
                   transition-opacity duration-500
                 "
               />
@@ -125,20 +137,35 @@ export default function Services() {
               {/* ICONO */}
               <div className="relative z-10">
                 <div
-                  className={`inline-flex items-center justify-center w-16 h-16 mb-6 rounded-2xl shadow-lg bg-gradient-to-br ${service.gradient} text-white group-hover:scale-110 transition-transform`}
+                  className={`
+                    inline-flex items-center justify-center 
+                    w-16 h-16 mb-6 rounded-2xl shadow-lg 
+                    text-white group-hover:scale-110 
+                    transition-transform bg-gradient-to-br ${service.gradient}
+                  `}
                 >
                   <service.icon className="w-8 h-8" />
                 </div>
 
                 {/* TÍTULO */}
                 <h3
-                  className="text-2xl font-bold mb-4 text-gray-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors"
+                  className="
+                    font-display text-2xl font-bold mb-4 
+                    text-gray-900 dark:text-white 
+                    group-hover:text-nivOrange dark:group-hover:text-nivLightBlue 
+                    transition-colors
+                  "
                 >
                   {service.title}
                 </h3>
 
                 {/* DESCRIPCIÓN */}
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p
+                  className="
+                    font-body text-gray-600 dark:text-gray-300 
+                    leading-relaxed relative z-10
+                  "
+                >
                   {service.description}
                 </p>
               </div>

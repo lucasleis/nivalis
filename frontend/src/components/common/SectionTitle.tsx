@@ -13,7 +13,7 @@ export default function SectionTitle({ title, highlight, description }: Props) {
         {title} <span className="text-orange-500">{highlight}</span>
       </h2>
 
-      <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 to-blue-600 mx-auto rounded-full mb-8" />
+      <div className="w-24 h-1.5 bg-gradient-to-r from-nivOrange to-nivBlue mx-auto rounded-full mb-8" />
 
       {description && (
         <p className="font-inter text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">

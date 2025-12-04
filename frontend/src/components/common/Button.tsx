@@ -20,7 +20,7 @@ export default function Button({
 
   const variants = {
     primary:
-      "bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 hover:scale-105",
+      "bg-gradient-to-r from-nivOrange to-orange-600 text-white shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 hover:scale-105",
     secondary:
       "bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 hover:scale-105",
   };

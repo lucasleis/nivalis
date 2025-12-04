@@ -9,7 +9,6 @@ export default function Portfolio() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-150px" });
 
-  // Reemplazo de useTransform → useParallax para consistencia global
   const cardsY = useParallax({ range: 350, offset: -8 });
 
   const projects = [
@@ -21,8 +20,8 @@ export default function Portfolio() {
       slug: "mvp-burgers",
       category: "Fullstack Development",
       description:
-        "Aplicación completa desarrollada con React + Flask + Redis para gestionar pedidos de hamburguesas en tiempo real. Incluye UI/UX moderna, carrito persistente, sistema de órdenes, gestión de estado global, endpoints REST y lógica de impresión en cocina.",
-      gradient: "from-orange-600 to-orange-800",
+        "Aplicación completa con React + Flask + Redis. Carrito persistente, gestión de órdenes, UI/UX moderna y flujo completo de cocina.",
+      gradient: "from-nivOrange to-nivBlue",
     },
 
     // ===============================
@@ -33,8 +32,8 @@ export default function Portfolio() {
       slug: "lupa",
       category: "Web & Gamification",
       description:
-        "Micrositio interactivo desarrollado para Lupa Supermercados con PHP, MySQL y JavaScript. Incluye animaciones, popups, transición entre categorías, sliders, validaciones, sistema de pistas y flujo completo del juego.",
-      gradient: "from-blue-600 to-orange-500",
+        "Micrositio interactivo para Lupa Supermercados. Animaciones, transiciones, pistas, sliders y lógica gamificada.",
+      gradient: "from-nivBlue to-nivLightBlue",
     },
 
     // ===============================
@@ -45,8 +44,8 @@ export default function Portfolio() {
       slug: "pagos",
       category: "Backend & Systems",
       description:
-        "Plataforma administrativa para peluquerías con Flask + PostgreSQL: gestión de barberos, servicios, turnos, productos, métodos de pago múltiples, membresías, reportes, usuarios admins y lógica completa de validación.",
-      gradient: "from-orange-500 to-blue-600",
+        "Plataforma administrativa con Flask + PostgreSQL. Gestión de servicios, métodos de pago, membresías, reportes y usuarios.",
+      gradient: "from-nivOrange to-nivLightBlue",
     },
 
     // Marketing placeholders
@@ -73,12 +72,16 @@ export default function Portfolio() {
     },
   ];
 
-
   return (
     <section
       id="portfolio"
       ref={ref}
-      className="py-32 bg-white dark:bg-slate-900 transition-colors duration-300"
+      className="
+        py-32 
+        bg-gradient-to-b from-[#ffffff] via-[#ffe0d6]/20 to-[#83aefa]/20
+        dark:bg-slate-900
+        transition-colors duration-300
+      "
     >
       <div className="max-w-7xl mx-auto px-6">
 
@@ -91,32 +94,35 @@ export default function Portfolio() {
         >
           <motion.h2
             variants={fadeUp}
-            className="text-5xl md:text-6xl font-extrabold mb-6 text-gray-900 dark:text-white"
+            className="
+              font-display font-bold 
+              text-5xl md:text-6xl 
+              mb-6 text-gray-900 dark:text-white
+            "
           >
             Nuestro{" "}
-            <span className="text-blue-600 dark:text-blue-400">
-              Portfolio
-            </span>
+            <span className="text-nivBlue dark:text-nivLightBlue">Portfolio</span>
           </motion.h2>
 
           <motion.div
             variants={fadeUp}
             className="
-              w-24 h-1.5 mx-auto mb-8 rounded-full
-              bg-gradient-to-r from-orange-500 to-blue-600
-              dark:from-orange-400 dark:to-blue-400
+              w-28 h-1.5 mx-auto mb-8 rounded-full
+              bg-gradient-to-r from-nivOrange to-nivBlue
+              dark:from-nivLightBlue dark:to-nivBlue
             "
           />
 
           <motion.p
             variants={fadeUp}
             className="
-              text-xl text-gray-600 dark:text-gray-300 
+              font-body 
+              text-xl text-gray-700 dark:text-gray-300 
               max-w-3xl mx-auto leading-relaxed
             "
           >
-            Proyectos que reflejan creatividad, estrategia e innovación.  
-            Cada caso representa un desafío convertido en resultados reales.
+            Proyectos que combinan diseño, tecnología y creatividad.
+            Cada caso refleja nuestra forma de trabajar: profesional, ágil y cercana.
           </motion.p>
         </motion.div>
 
@@ -134,7 +140,8 @@ export default function Portfolio() {
               variants={fadeScale}
               className="
                 group relative overflow-hidden rounded-3xl cursor-pointer 
-                shadow-lg dark:shadow-xl hover:shadow-2xl 
+                shadow-lg dark:shadow-xl 
+                hover:shadow-2xl hover:-translate-y-1 
                 transition-all duration-500
               "
             >
@@ -147,10 +154,12 @@ export default function Portfolio() {
                 `}
               />
 
-              {/* DARK LAYER */}
+              {/* SOFT GLOW OVERLAY */}
               <div
                 className="
-                  absolute inset-0 bg-black/20 group-hover:bg-black/35 
+                  absolute inset-0 bg-black/20 
+                  group-hover:bg-black/40 
+                  dark:group-hover:bg-black/50
                   transition-colors duration-300
                 "
               />
@@ -158,23 +167,25 @@ export default function Portfolio() {
               {/* CONTENT */}
               <div className="relative h-80 flex flex-col justify-end p-8 text-white">
                 
-                {/* BOTTOM GRADIENT */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+                {/* BOTTOM FADE */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 
                 <div className="relative z-10 flex flex-col gap-3 transition-all duration-300">
 
                   {/* CATEGORY */}
-                  <p className="
-                    text-xs font-semibold uppercase tracking-wider 
-                    opacity-75 group-hover:opacity-90 transition-opacity
-                  ">
+                  <p
+                    className="
+                      font-body text-[0.75rem] font-semibold uppercase tracking-wider 
+                      opacity-70 group-hover:opacity-90 transition-opacity
+                    "
+                  >
                     {project.category}
                   </p>
 
                   {/* TITLE */}
                   <h3
                     className="
-                      text-2xl font-bold mb-1 
+                      font-display text-2xl font-bold 
                       transform transition-all duration-300
                       group-hover:-translate-y-1
                     "
@@ -185,7 +196,7 @@ export default function Portfolio() {
                   {/* DESCRIPTION */}
                   <p
                     className="
-                      text-sm text-white/90 leading-relaxed 
+                      font-body text-sm text-white/95 leading-relaxed 
                       opacity-0 max-h-0 
                       group-hover:max-h-40 group-hover:opacity-100 
                       transition-all duration-300
