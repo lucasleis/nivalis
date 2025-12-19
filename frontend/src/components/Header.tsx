@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle, Calendar } from "lucide-react";
 import ThemeToggle from "./theme/ThemeToggle";
 import { fadeUp, fadeIn, fadeScale } from "../motion/variants";
 import { useParallax } from "./scroll/useParallax";
@@ -136,12 +136,18 @@ export default function Header() {
 
                 {/* ACTIONS */}
                 <div className="flex items-center gap-6">
-                  <button className={`${primaryButtonClasses} font-[AcuminPro]`}>
+                  <a
+                    href="https://calendly.com/lucas-mateo-leis/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={primaryButtonClasses}
+                  >
                     Agendar una reunión
-                  </button>
+                  </a>
+
 
                   <a
-                    href="https://wa.me/5491151232153"
+                    href="https://wa.me/5491123456789?text=Hola%20Nivalis%20quiero%20agendar%20una%20reunión"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-11 h-11 rounded-full bg-green-500 text-white flex items-center justify-center hover:scale-105 transition"
@@ -185,9 +191,22 @@ export default function Header() {
 
                 {/* ICONS */}
                 <div className="flex items-center gap-3">
-                  <button className="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center">
-                    📅
-                  </button>
+                  <a
+                    href="https://calendly.com/lucas-mateo-leis/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Agendar una reunión"
+                    className="
+                      w-10 h-10 rounded-full
+                      flex items-center justify-center
+                      border border-black
+                      text-black
+                      hover:bg-black hover:text-white
+                      transition-all duration-200
+                    "
+                  >
+                    <Calendar size={20} />
+                  </a>
 
                   <button
                     onClick={() => setOpen(true)}
