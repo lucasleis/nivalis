@@ -5,7 +5,7 @@ import ThemeToggle from "./theme/ThemeToggle";
 import { fadeUp, fadeIn, fadeScale } from "../motion/variants";
 import { useParallax } from "./scroll/useParallax";
 
-import logo from "../assets/logos/logo6.png";
+import logo from "../assets/logos/NVL6.png";
 import logo_mini from "../assets/logos/A6.png";
 
 // ======== NAV LINKS ==========
