@@ -23,6 +23,7 @@ const cases = [
     title: "Buscando con Lupa",
     subtitle: "Micrositio gamificado · Frontend",
   },
+  /*
   {
     image: nivalis,
     title: "Nivalis TechLab",
@@ -38,6 +39,7 @@ const cases = [
     title: "Nivalis TechLab",
     subtitle: "Branding · Web · Animaciones",
   },
+  */
 ]
 
 export default function Portfolio() {
