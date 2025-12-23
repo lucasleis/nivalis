@@ -4,6 +4,7 @@ import { Menu, X, MessageCircle, Calendar } from "lucide-react";
 import ThemeToggle from "./theme/ThemeToggle";
 import { fadeUp, fadeIn, fadeScale } from "../motion/variants";
 import { useParallax } from "./scroll/useParallax";
+import FullscreenMenu from "./FullscreenMenu";
 
 import logo from "../assets/logos/NVL6.png";
 import logo_mini from "../assets/logos/A6.png";
@@ -221,72 +222,79 @@ export default function Header() {
         )}
       </AnimatePresence>
 
-      {/* ================= OVERLAY MOBILE ================= */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            key="overlay"
-            variants={overlayVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
-            onClick={() => setOpen(false)}
-          />
-        )}
-      </AnimatePresence>
+      {/* ================= MOBILE MENU ================= */}
+      <div className="md:hidden">
+        <AnimatePresence>
+          {open && (
+            <>
+              {/* Overlay */}
+              <motion.div
+                key="overlay"
+                variants={overlayVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+                onClick={() => setOpen(false)}
+              />
 
-      {/* ================= PANEL MOBILE ================= */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            key="panel"
-            variants={panelVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            className="
-              fixed top-0 right-0 h-full w-72 z-50 md:hidden
-              bg-white/90 dark:bg-slate-900/90
-              backdrop-blur-xl shadow-xl
-              border-l border-white/20 dark:border-slate-800
-              px-6 py-8 flex flex-col gap-6 font-body
-            "
-          >
-            <button
-              onClick={() => setOpen(false)}
-              className="self-end mb-4 text-gray-700 dark:text-gray-300"
-            >
-              <X size={26} />
-            </button>
-
-            <nav className="flex flex-col gap-4 text-lg">
-              {navLinks.map((link) => (
-                <motion.button
-                  key={link.label}
-                  variants={fadeUp}
-                  onClick={() => handleNavClick(link.href)}
-                  className="text-left py-2 font-medium text-gray-800 dark:text-gray-200"
+              {/* Panel */}
+              <motion.div
+                key="panel"
+                variants={panelVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="
+                  fixed top-0 right-0 h-full w-72 z-50
+                  bg-white/90 dark:bg-slate-900/90
+                  backdrop-blur-xl shadow-xl
+                  border-l border-white/20 dark:border-slate-800
+                  px-6 py-8 flex flex-col gap-6 font-body
+                "
+              >
+                <button
+                  onClick={() => setOpen(false)}
+                  className="self-end mb-4 text-gray-700 dark:text-gray-300"
                 >
-                  {link.label}
+                  <X size={26} />
+                </button>
+
+                <nav className="flex flex-col gap-4 text-lg">
+                  {navLinks.map((link) => (
+                    <motion.button
+                      key={link.label}
+                      variants={fadeUp}
+                      onClick={() => handleNavClick(link.href)}
+                      className="text-left py-2 font-medium"
+                    >
+                      {link.label}
+                    </motion.button>
+                  ))}
+                </nav>
+
+                <ThemeToggle />
+
+                <motion.button
+                  variants={fadeScale}
+                  onClick={() => handleNavClick("#contacto")}
+                  className={`${primaryButtonClasses} mt-6 w-full`}
+                >
+                  Hablemos
                 </motion.button>
-              ))}
-            </nav>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+      </div>
 
-            <motion.div variants={fadeIn}>
-              <ThemeToggle />
-            </motion.div>
+      {/* ================= FULLSCREEN MENU (DESKTOP) ================= */}
+      <FullscreenMenu
+        open={open}
+        onClose={() => setOpen(false)}
+        onNavigate={(href: string) => handleNavClick(href)}
+      />
 
-            <motion.button
-              variants={fadeScale}
-              onClick={() => handleNavClick("#contacto")}
-              className={`${primaryButtonClasses} mt-6 w-full justify-center`}
-            >
-              Hablemos
-            </motion.button>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }

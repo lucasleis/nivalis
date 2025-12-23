@@ -4,7 +4,7 @@ import CaseCard from "./common/CaseCard"
 import mvp from "../assets/portfolio/test_mvp.webp"
 import barberpay from "../assets/portfolio/barberpay.webp"
 import lupa from "../assets/portfolio/lupa.webp"
-import nivalis from "../assets/portfolio/nivalis.webp"
+// import nivalis from "../assets/portfolio/nivalis.webp"
 
 
 const cases = [
@@ -54,7 +54,7 @@ export default function Portfolio() {
           <p className="mt-4 text-gray-600 dark:text-gray-400">
             Casos de éxito
           </p>
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100">
+          <h2 className="text-4xl font-nauryz font-bold text-gray-900 dark:text-gray-100">
             Últimos proyectos
           </h2>
         </div>
