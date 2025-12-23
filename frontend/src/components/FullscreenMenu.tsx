@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
+import logo from "../assets/logos/A5.png";
 
 interface Props {
   open: boolean;
@@ -61,16 +62,11 @@ const itemVariants: Variants = {
 };
 
 
-export default function FullscreenMenu({ open, onClose, onNavigate }: Props) {
-  /* =========================
-     BLOQUEAR SCROLL
-  ========================= */
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "auto";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [open]);
+export default function FullscreenMenu({
+  open,
+  onClose,
+  onNavigate,
+}: Props) {
 
   return (
     <AnimatePresence>
@@ -119,30 +115,87 @@ export default function FullscreenMenu({ open, onClose, onNavigate }: Props) {
             </button>
 
             <div className="h-full w-full grid grid-cols-3 px-20 py-24">
-              {/* SERVICIOS */}
-              <motion.div variants={itemVariants}>
-                <h3 className="text-4xl mb-8">Servicios</h3>
-                <ul className="space-y-4 text-lg opacity-80">
-                  <li>Desarrollo web</li>
-                  <li>E-commerce</li>
-                  <li>UX/UI</li>
-                  <li>Apps y sistemas</li>
-                  <li>Branding</li>
-                  <li>SEO</li>
-                  <li>SEM</li>
-                  <li>Redes sociales</li>
-                </ul>
-              </motion.div>
+              {/* ================= LEFT: LOGO + SERVICIOS ================= */}
+                <motion.div
+                variants={itemVariants}
+                className="flex flex-col"
+                >
+                {/* Logo */}
+                <motion.img
+                    src={logo}
+                    alt="Nivalis"
+                    className="w-40 mb-16"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4 }}
+                />
 
-              {/* NAVEGACIÓN */}
+
+                {/* Servicios */}
+                <h3 className="text-4xl mb-10">Servicios</h3>
+
+                <ul className="space-y-4 text-lg text-white/80 hover:text-white transition">
+                    <li>Desarrollo web</li>
+                    <li>E-commerce</li>
+                    <li>Experiencia de Usuario (UX)</li>
+                    <li>Desarrollo de apps y sistemas</li>
+                    <li>Branding y diseño de marca</li>
+                    <li>SEM - Google ads</li>
+                    <li>Gestión de redes sociales</li>
+                </ul>
+                </motion.div>
+
+              {/* ================= CENTER: NAVEGACIÓN ================= */}
               <motion.div
                 variants={itemVariants}
-                className="text-5xl font-semibold space-y-6"
-              >
-                <button onClick={() => onNavigate("#inicio")}>Home</button>
-                <button onClick={() => onNavigate("#agencia")}>Agencia</button>
-                <button onClick={() => onNavigate("#trabajos")}>Trabajos</button>
-                <button onClick={() => onNavigate("#contacto")}>Contacto</button>
+                className="
+                    flex flex-col
+                    text-6xl font-semibold
+                    space-y-10
+                    pt-[72px]
+                "
+                >
+
+                <button
+                    onClick={() => {
+                        onClose();
+                        onNavigate("#inicio");
+                    }}
+                    className="text-left hover:opacity-70 transition"
+                    >
+                    Home
+                </button>
+
+                <button
+                    onClick={() => {
+                        onClose();
+                        onNavigate("#inicio");
+                    }}
+                    className="text-left hover:opacity-70 transition"
+                    >
+                    Nivalis
+                </button>
+
+                <button
+                    onClick={() => {
+                        onClose();
+                        onNavigate("#servicios");
+                    }}
+                    className="text-left hover:opacity-70 transition"
+                    >
+                    Servicios
+                </button>
+
+                <button
+                    onClick={() => {
+                        onClose();
+                        onNavigate("#proyectos");
+                    }}
+                    className="text-left hover:opacity-70 transition"
+                    >
+                    Proyectos
+                </button>
+
               </motion.div>
 
               {/* CTA */}

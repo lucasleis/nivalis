@@ -5,8 +5,9 @@ import ThemeToggle from "./theme/ThemeToggle";
 import { fadeUp, fadeIn, fadeScale } from "../motion/variants";
 import { useParallax } from "./scroll/useParallax";
 import FullscreenMenu from "./FullscreenMenu";
+import { useRef } from "react";
 
-import logo from "../assets/logos/NVL6.png";
+import logo from "../assets/logos/A6.png";
 import logo_mini from "../assets/logos/A6.png";
 
 // ======== NAV LINKS ==========
@@ -53,6 +54,19 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [isTop, setIsTop] = useState(true);
   const [activeSection, setActiveSection] = useState("#inicio");
+
+  // ============= BODY SCROLL LOCK (MENU) =============
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [open]);
 
   const logoY = useParallax({ range: 250, offset: -6 });
   const glowOpacity = useParallax({ range: 200, from: 1, to: 0.35 });
@@ -158,7 +172,7 @@ export default function Header() {
                   </a>
 
                   <button
-                    onClick={() => setOpen(true)}
+                    onClick={() => setOpen(prev => !prev)}
                     className="w-11 h-11 rounded-full bg-black text-white flex items-center justify-center"
                   >
                     <Menu size={22} />
@@ -210,7 +224,7 @@ export default function Header() {
                   </a>
 
                   <button
-                    onClick={() => setOpen(true)}
+                    onClick={() => setOpen(prev => !prev)}
                     className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center"
                   >
                     <Menu size={20} />
