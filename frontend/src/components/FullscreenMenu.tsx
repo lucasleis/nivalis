@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
 import logo from "../assets/logos/A5.png";
+import LazoHover from "./LazoHover";
 
 interface Props {
   open: boolean;
@@ -68,6 +69,15 @@ export default function FullscreenMenu({
   onNavigate,
 }: Props) {
 
+  const [hovered, setHovered] = useState<string | null>(null);
+
+  const navItems = [
+    { id: "home", label: "Home", href: "#inicio" },
+    { id: "nivalis", label: "Nivalis", href: "#inicio" },
+    { id: "servicios", label: "Servicios", href: "#servicios" },
+    { id: "proyectos", label: "Proyectos", href: "#proyectos" },
+    ];
+
   return (
     <AnimatePresence>
       {open && (
@@ -115,7 +125,7 @@ export default function FullscreenMenu({
             </button>
 
             <div className="h-full w-full grid grid-cols-3 px-20 py-24">
-              {/* ================= LEFT: LOGO + SERVICIOS ================= */}
+                {/* ================= LEFT: LOGO + SERVICIOS ================= */}
                 <motion.div
                 variants={itemVariants}
                 className="flex flex-col"
@@ -145,8 +155,8 @@ export default function FullscreenMenu({
                 </ul>
                 </motion.div>
 
-              {/* ================= CENTER: NAVEGACIÓN ================= */}
-              <motion.div
+                {/* ================= CENTER: NAVEGACIÓN ================= */}
+                <motion.div
                 variants={itemVariants}
                 className="
                     flex flex-col
@@ -155,64 +165,47 @@ export default function FullscreenMenu({
                     pt-[72px]
                 "
                 >
-
-                <button
-                    onClick={() => {
-                        onClose();
-                        onNavigate("#inicio");
-                    }}
-                    className="text-left hover:opacity-70 transition"
+                {navItems.map((item) => (
+                    <div
+                    key={item.id}
+                    className="relative inline-block"
+                    onMouseEnter={() => setHovered(item.id)}
+                    onMouseLeave={() => setHovered(null)}
                     >
-                    Home
-                </button>
-
-                <button
-                    onClick={() => {
+                    <button
+                        onClick={() => {
                         onClose();
-                        onNavigate("#inicio");
-                    }}
-                    className="text-left hover:opacity-70 transition"
+                        onNavigate(item.href);
+                        }}
+                        className="relative z-10 transition"
                     >
-                    Nivalis
-                </button>
+                        <span className="relative inline-block px-0.5 pb-2">
+                            <span className="relative z-10">
+                                {item.label}
+                            </span>
+                            <LazoHover active={hovered === item.id} />
+                        </span>
+                    </button>
+                    </div>
+                ))}
+                </motion.div>
 
-                <button
-                    onClick={() => {
-                        onClose();
-                        onNavigate("#servicios");
-                    }}
-                    className="text-left hover:opacity-70 transition"
-                    >
-                    Servicios
-                </button>
 
-                <button
-                    onClick={() => {
-                        onClose();
-                        onNavigate("#proyectos");
-                    }}
-                    className="text-left hover:opacity-70 transition"
-                    >
-                    Proyectos
-                </button>
-
-              </motion.div>
-
-              {/* CTA */}
-              <motion.div
-                variants={itemVariants}
-                className="flex flex-col justify-end"
-              >
-                <p className="text-4xl leading-tight">
-                  ¿Tenés un proyecto en mente?
-                </p>
-                <button
-                  onClick={() => onNavigate("#contacto")}
-                  className="mt-6 text-yellow-400 text-5xl flex items-center gap-4"
+                {/* CTA */}
+                <motion.div
+                    variants={itemVariants}
+                    className="flex flex-col justify-end"
                 >
-                  Hablemos <span>↗</span>
-                </button>
-              </motion.div>
+                    <p className="text-4xl leading-tight">
+                    ¿Tenés un proyecto en mente?
+                    </p>
+                    <button
+                    onClick={() => onNavigate("#contacto")}
+                    className="mt-6 text-yellow-400 text-5xl flex items-center gap-4"
+                    >
+                    Hablemos <span>↗</span>
+                    </button>
+                </motion.div>
             </div>
           </motion.div>
         </motion.div>
