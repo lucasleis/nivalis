@@ -23,7 +23,7 @@ export default function Hero() {
         {/* COLUMNA IZQUIERDA */}
         <motion.div
           {...fadeUp}
-          className="flex flex-col justify-center"
+          className="flex flex-col justify-center order-2 md:order-1"
         >
           {/* SUBTEXTO */}
           <span
@@ -77,17 +77,26 @@ export default function Hero() {
 
         {/* COLUMNA DERECHA */}
         <motion.div
-  initial={{ opacity: 0, scale: 0.95 }}
-  animate={{ opacity: 1, scale: 1 }}
-  transition={{ duration: 0.8, delay: 0.2 }}
-  className="hidden md:flex items-center justify-center"
->
-  <img
-    src={logo}
-    alt="Nivalis Marketing & Tech Lab"
-    className="w-[300px] opacity-80"
-  />
-</motion.div>
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="
+            flex items-center justify-center
+            order-1 md:order-2
+            mt-12 md:mt-0
+          "
+        >
+          <img
+            src={logo}
+            alt="Nivalis Marketing & Tech Lab"
+            className="
+              w-[180px]
+              md:w-[300px]
+              opacity-80
+              mb-8 md:mb-0
+            "
+          />
+        </motion.div>
 
 
       </div>

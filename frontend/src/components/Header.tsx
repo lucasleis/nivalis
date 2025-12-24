@@ -108,7 +108,7 @@ export default function Header() {
                   ) : (
                     /* ================= ICON BUTTON (SCROLL) ================= */
                     <motion.a
-                      key="agenda-icon"
+                      key="agenda-icon-desktop"
                       href="https://calendly.com/lucas-mateo-leis/30min"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -133,6 +133,26 @@ export default function Header() {
                     </motion.a>
                   )}
                 </AnimatePresence>
+
+                <a
+                  href="https://calendly.com/lucas-mateo-leis/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    md:hidden
+                    w-11 h-11
+                    rounded-full
+                    border border-black
+                    text-black
+                    flex items-center justify-center
+                    transition-all duration-200
+                    hover:scale-105
+                    hover:ring-2 hover:ring-black hover:ring-offset-2
+                  "
+                  aria-label="Agendar reunión"
+                >
+                  <Calendar size={20} />
+                </a>
 
                 <a
                   href="https://wa.me/5491123456789"
