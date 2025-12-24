@@ -69,15 +69,20 @@ export default function FullscreenMenu({
     setMounted(true);
   }, []);
 
+  const isMobile = window.matchMedia("(max-width: 1024px)").matches;
+
   /* =========================
      SCROLL LOCK (GLOBAL)
   ========================= */
   useEffect(() => {
     const el = document.documentElement;
+    const isMobile = window.matchMedia("(max-width: 1024px)").matches;
 
-    if (open) {
+    if (open && !isMobile) {
+      // Desktop → bloquear scroll
       el.style.overflow = "hidden";
     } else {
+      // Mobile o cerrado → permitir scroll
       el.style.overflow = "";
     }
 
@@ -106,8 +111,8 @@ export default function FullscreenMenu({
   const navItems = [
     { id: "home", label: "Home", href: "#inicio" },
     { id: "nivalis", label: "Nivalis", href: "#inicio" },
-    { id: "servicios", label: "Servicios", href: "#servicios" },
     { id: "proyectos", label: "Proyectos", href: "#proyectos" },
+    { id: "contacto", label: "Contacto", href: "#contacto" },
   ];
 
   const services = [
@@ -148,14 +153,14 @@ export default function FullscreenMenu({
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="relative z-10 w-full h-full"
+            className="relative z-10 w-full h-full overflow-y-auto lg:overflow-hidden"
           >
             {/* CONTENT */}
             <motion.div
               variants={contentVariants}
               initial="hidden"
               animate="visible"
-              className="h-full w-full"
+              className="min-h-full w-full"
             >
               {/* CLOSE */}
               <button
@@ -172,13 +177,17 @@ export default function FullscreenMenu({
               </button>
 
               {/* GRID */}
-              <div className="h-full w-full grid grid-cols-3 px-20 py-24">
+              <div className=" min-h-full w-full grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16 px-6 pt-16 pb-12 lg:py-24 lg:px-20 ">
 
                 {/* LEFT */}
-                <motion.div variants={itemVariants} className="flex flex-col">
-                  <img src={logo} alt="Nivalis" className="w-40 mb-16" />
-                  <h3 className="text-4xl mb-10">Servicios</h3>
-                  <ul className="space-y-4 text-lg text-white/80">
+                <motion.div
+                  variants={itemVariants}
+                  className=" flex flex-col order-2 lg:order-1">
+                  <img src={logo} alt="Nivalis" className="w-40 mb-16 hidden lg:block"
+                />
+
+                  <h3 className="text-4xl mb-2 lg:mb-10">Servicios</h3>
+                  <ul className="space-y-1 lg:space-y-4 text-lg text-white/80">
                     {services.map((service) => (
                       <li key={service} className="hover:text-[#fd6647] transition">
                         {service}
@@ -187,10 +196,15 @@ export default function FullscreenMenu({
                   </ul>
                 </motion.div>
 
+                {/* LOGO – SOLO MOBILE */}
+                <div className="mb-10 lg:hidden">
+                  <img src={logo} alt="Nivalis" className="w-24"/>
+                </div>
+
                 {/* CENTER */}
                 <motion.div
                   variants={itemVariants}
-                  className="flex flex-col text-6xl font-semibold space-y-4"
+                  className=" flex flex-col text-4xl lg:text-6xl font-semibold space-y-1 lg:space-y-6 order-1 lg:order-2"
                 >
                   {navItems.map((item) => (
                     <div
@@ -218,9 +232,10 @@ export default function FullscreenMenu({
                 {/* RIGHT */}
                 <motion.div
                   variants={itemVariants}
-                  className="flex flex-col justify-end"
+                  className=" flex flex-col justify-end gap-1 lg:gap-6 order-3 text-right"
                 >
-                  <p className="text-4xl leading-tight whitespace-nowrap self-end">
+
+                  <p className=" text-2xl lg:text-4xl leading-tight whitespace-nowrap self-end">
                     ¿Tenés un proyecto en mente?
                   </p>
 
@@ -236,7 +251,7 @@ export default function FullscreenMenu({
                   >
                     <span className="relative inline-block">
                       {/* TEXTO */}
-                      <span className="text-[#fd6647] text-5xl">
+                      <span className="text-[#fd6647] text-3xl lg:text-5xl">
                         Hablemos ↗
                       </span>
 
