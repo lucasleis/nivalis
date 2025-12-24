@@ -197,14 +197,23 @@ export default function FullscreenMenu({
                     className="flex flex-col justify-end"
                 >
                     <p className="text-4xl leading-tight">
-                    ¿Tenés un proyecto en mente?
+                        ¿Tenés un proyecto en mente?
                     </p>
-                    <button
-                    onClick={() => onNavigate("#contacto")}
-                    className="mt-6 text-[#fd6647] text-5xl flex items-center gap-4"
-                    >
-                    Hablemos <span>↗</span>
-                    </button>
+                    <motion.button
+                        onClick={() => onNavigate("#contacto")}
+                        className="
+                            mt-6
+                            text-[#fd6647] text-5xl
+                            flex items-center gap-4
+                            origin-left
+                        "
+                        whileHover={{ scale: 1.12 }}
+                        transition={{ duration: 0.25, ease: "easeOut" }}
+                        >
+                        Hablemos <span>↗</span>
+                    </motion.button>
+
+
                 </motion.div>
             </div>
           </motion.div>
