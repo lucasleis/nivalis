@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, MessageCircle, Calendar } from "lucide-react";
-import ThemeToggle from "./theme/ThemeToggle";
+//import ThemeToggle from "./theme/ThemeToggle";
 import { useParallax } from "./scroll/useParallax";
 import FullscreenMenu from "./FullscreenMenu";
 
@@ -89,14 +89,50 @@ export default function Header() {
               {/* ACTIONS */}
               <div className="flex items-center gap-4">
 
-                <a
-                  href="https://calendly.com/lucas-mateo-leis/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={primaryButtonClasses}
-                >
-                  Agendar una reunión
-                </a>
+                <AnimatePresence mode="wait">
+                  {isTop ? (
+                    /* ================= TEXT BUTTON (TOP) ================= */
+                    <motion.a
+                      key="agenda-text"
+                      href="https://calendly.com/lucas-mateo-leis/30min"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${primaryButtonClasses} hidden md:inline-flex`}
+                      initial={{ opacity: 0, scale: 0.96 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.96 }}
+                      transition={{ duration: 0.18, ease: "easeOut" }}
+                    >
+                      Agendar una reunión
+                    </motion.a>
+                  ) : (
+                    /* ================= ICON BUTTON (SCROLL) ================= */
+                    <motion.a
+                      key="agenda-icon"
+                      href="https://calendly.com/lucas-mateo-leis/30min"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="
+                        hidden md:flex
+                        w-11 h-11
+                        rounded-full
+                        border border-black
+                        text-black
+                        items-center justify-center
+                        transition-all duration-200
+                        hover:scale-105
+                        hover:ring-2 hover:ring-black hover:ring-offset-2
+                      "
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.9 }}
+                      transition={{ duration: 0.18, ease: "easeOut" }}
+                      aria-label="Agendar reunión"
+                    >
+                      <Calendar size={20} />
+                    </motion.a>
+                  )}
+                </AnimatePresence>
 
                 <a
                   href="https://wa.me/5491123456789"
