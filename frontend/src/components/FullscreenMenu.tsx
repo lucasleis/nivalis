@@ -89,16 +89,27 @@ export default function FullscreenMenu({
   onNavigate,
 }: Props) {
 
-  const [hovered, setHovered] = useState<string | null>(null);
+    const [hovered, setHovered] = useState<string | null>(null);
 
-  const navItems = [
-    { id: "home", label: "Home", href: "#inicio" },
-    { id: "nivalis", label: "Nivalis", href: "#inicio" },
-    { id: "servicios", label: "Servicios", href: "#servicios" },
-    { id: "proyectos", label: "Proyectos", href: "#proyectos" },
+    const navItems = [
+        { id: "home", label: "Home", href: "#inicio" },
+        { id: "nivalis", label: "Nivalis", href: "#inicio" },
+        { id: "servicios", label: "Servicios", href: "#servicios" },
+        { id: "proyectos", label: "Proyectos", href: "#proyectos" },
     ];
 
-  return (
+    const services = [
+        "Desarrollo web",
+        "E-commerce",
+        "Experiencia de Usuario (UX)",
+        "Desarrollo de apps y sistemas",
+        "Branding y diseño de marca",
+        "SEM - Google ads",
+        "Gestión de redes sociales",
+    ];
+
+
+    return (
     <AnimatePresence>
       {open && (
         <motion.div
@@ -147,32 +158,37 @@ export default function FullscreenMenu({
             <div className="h-full w-full grid grid-cols-3 px-20 py-24">
                 {/* ================= LEFT: LOGO + SERVICIOS ================= */}
                 <motion.div
-                variants={itemVariants}
-                className="flex flex-col"
-                >
-                {/* Logo */}
-                <motion.img
-                    src={logo}
-                    alt="Nivalis"
-                    className="w-40 mb-16"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }}
-                />
+                    variants={itemVariants}
+                    className="flex flex-col"
+                    >
+                    {/* Logo */}
+                    <motion.img
+                        src={logo}
+                        alt="Nivalis"
+                        className="w-40 mb-16"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4 }}
+                    />
 
+                    {/* Servicios */}
+                    <h3 className="text-4xl mb-10">Servicios</h3>
 
-                {/* Servicios */}
-                <h3 className="text-4xl mb-10">Servicios</h3>
+                    <ul className="space-y-4 text-lg text-white/80">
+                    {services.map((service) => (
+                        <li
+                        key={service}
+                        className="
+                            transition-all duration-200
+                            hover:text-[#fd6647]
+                            hover:translate-x-1
+                        "
+                        >
+                        {service}
+                        </li>
+                    ))}
+                    </ul>
 
-                <ul className="space-y-4 text-lg text-white/80 hover:text-white transition">
-                    <li>Desarrollo web</li>
-                    <li>E-commerce</li>
-                    <li>Experiencia de Usuario (UX)</li>
-                    <li>Desarrollo de apps y sistemas</li>
-                    <li>Branding y diseño de marca</li>
-                    <li>SEM - Google ads</li>
-                    <li>Gestión de redes sociales</li>
-                </ul>
                 </motion.div>
 
                 {/* ================= CENTER: NAVEGACIÓN ================= */}
