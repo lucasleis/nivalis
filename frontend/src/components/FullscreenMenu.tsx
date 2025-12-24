@@ -62,6 +62,26 @@ const itemVariants: Variants = {
   },
 };
 
+const ctaVariants = {
+  rest: {},
+  hover: {},
+};
+
+const underlineVariants = {
+  rest: { scaleX: 0 },
+  hover: { scaleX: 1 },
+};
+
+const textVariants = {
+  rest: { scale: 1 },
+  hover: { scale: 1.12 },
+};
+
+const arrowVariants = {
+  rest: { scale: 1 },
+  hover: { scale: 1.12 },
+};
+
 
 export default function FullscreenMenu({
   open,
@@ -199,18 +219,36 @@ export default function FullscreenMenu({
                     <p className="text-4xl leading-tight">
                         ¿Tenés un proyecto en mente?
                     </p>
+
                     <motion.button
                         onClick={() => onNavigate("#contacto")}
-                        className="
-                            mt-6
-                            text-[#fd6647] text-5xl
-                            flex items-center gap-4
-                            origin-left
-                        "
-                        whileHover={{ scale: 1.12 }}
-                        transition={{ duration: 0.25, ease: "easeOut" }}
+                        className="mt-6 flex items-center gap-4 text-[#fd6647] text-5xl"
+                        initial="rest"
+                        animate="rest"
+                        whileHover="hover"
                         >
-                        Hablemos <span>↗</span>
+                        <span className="relative inline-block origin-left">
+                            {/* TEXTO */}
+                            <motion.span
+                            variants={textVariants}
+                            transition={{ duration: 0.25, ease: "easeOut" }}
+                            className="relative z-10 inline-block origin-left"
+                            >
+                            Hablemos ↗
+                            </motion.span>
+
+                            {/* UNDERLINE */}
+                            <motion.span
+                            variants={underlineVariants}
+                            transition={{ duration: 0.25, ease: "easeOut" }}
+                            className="
+                                absolute left-0 -bottom-1
+                                h-[3px] w-full
+                                bg-[#fd6647]
+                                origin-left
+                            "
+                            />
+                        </span>
                     </motion.button>
 
 
