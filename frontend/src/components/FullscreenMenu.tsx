@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
-import logo from "../assets/logos/A5.png";
 import LazoHover from "./LazoHover";
+
+import logo from "../assets/logos/A5.png";
 
 interface Props {
   open: boolean;
@@ -15,30 +17,19 @@ interface Props {
 ========================= */
 
 const menuVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    scale: 1.02,
-  },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.4,
-    },
+    transition: { duration: 0.35, ease: "easeOut" },
   },
   exit: {
     opacity: 0,
-    scale: 0.98,
-    transition: {
-      duration: 0.25,
-    },
+    transition: { duration: 0.2, ease: "easeIn" },
   },
 };
 
 const contentVariants: Variants = {
-  hidden: {
-    opacity: 0,
-  },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
@@ -49,240 +40,204 @@ const contentVariants: Variants = {
 };
 
 const itemVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-  },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.35,
-    },
+    transition: { duration: 0.35 },
   },
 };
-
-const ctaVariants = {
-  rest: {},
-  hover: {},
-};
-
-const underlineVariants = {
-  rest: { scaleX: 0 },
-  hover: { scaleX: 1 },
-};
-
-const textVariants = {
-  rest: { scale: 1 },
-  hover: { scale: 1.12 },
-};
-
-const arrowVariants = {
-  rest: { scale: 1 },
-  hover: { scale: 1.12 },
-};
-
 
 export default function FullscreenMenu({
   open,
   onClose,
   onNavigate,
 }: Props) {
+  const [mounted, setMounted] = useState(false);
+  const [hovered, setHovered] = useState<string | null>(null);
 
-    const [hovered, setHovered] = useState<string | null>(null);
+  /* =========================
+     MOUNT (PORTAL SAFE)
+  ========================= */
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-    const navItems = [
-        { id: "home", label: "Home", href: "#inicio" },
-        { id: "nivalis", label: "Nivalis", href: "#inicio" },
-        { id: "servicios", label: "Servicios", href: "#servicios" },
-        { id: "proyectos", label: "Proyectos", href: "#proyectos" },
-    ];
+  /* =========================
+     SCROLL LOCK (GLOBAL)
+  ========================= */
+  useEffect(() => {
+    const el = document.documentElement;
 
-    const services = [
-        "Desarrollo web",
-        "E-commerce",
-        "Experiencia de Usuario (UX)",
-        "Desarrollo de apps y sistemas",
-        "Branding y diseño de marca",
-        "SEM - Google ads",
-        "Gestión de redes sociales",
-    ];
+    if (open) {
+      el.style.overflow = "hidden";
+    } else {
+      el.style.overflow = "";
+    }
+
+    return () => {
+      el.style.overflow = "";
+    };
+  }, [open]);
+
+  useEffect(() => {
+    const root = document.getElementById("root");
+
+    if (!root) return;
+
+    if (open) {
+      root.style.transform = "none";
+    }
+
+    return () => {
+      root.style.transform = "";
+    };
+  }, [open]);
 
 
-    return (
+  if (!mounted) return null;
+
+  const navItems = [
+    { id: "home", label: "Home", href: "#inicio" },
+    { id: "nivalis", label: "Nivalis", href: "#inicio" },
+    { id: "servicios", label: "Servicios", href: "#servicios" },
+    { id: "proyectos", label: "Proyectos", href: "#proyectos" },
+  ];
+
+  const services = [
+    "Desarrollo web",
+    "E-commerce",
+    "Experiencia de Usuario (UX)",
+    "Desarrollo de apps y sistemas",
+    "Branding y diseño de marca",
+    "SEM - Google ads",
+    "Gestión de redes sociales",
+  ];
+
+  return createPortal(
     <AnimatePresence>
       {open && (
-        <motion.div
-          variants={menuVariants}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          className="
-            fixed inset-0 z-[100]
-            w-screen h-screen
-            bg-nivalis-pattern
-            relative overflow-hidden
-            text-white
-            hidden md:block
-          "
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            zIndex: 9999,
+            transform: "none", 
+          }}
+          className="bg-nivalis-pattern text-white overflow-hidden"
         >
-          {/* Overlay oscuro */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="absolute inset-0 bg-black/40 z-0"
+
+          {/* OVERLAY */}
+          <div
+            className="absolute inset-0 bg-black/40"
+            onClick={onClose}
           />
 
-          {/* CONTENIDO */}
+          {/* ANIMATED WRAPPER */}
           <motion.div
-            variants={contentVariants}
+            variants={menuVariants}
             initial="hidden"
             animate="visible"
-            className="relative z-10 h-full w-full"
+            exit="exit"
+            className="relative z-10 w-full h-full"
           >
-            {/* Close */}
-            <button
+            {/* CONTENT */}
+            <motion.div
+              variants={contentVariants}
+              initial="hidden"
+              animate="visible"
+              className="h-full w-full"
+            >
+              {/* CLOSE */}
+              <button
                 onClick={onClose}
                 className="
-                    absolute top-6 right-6
-                    w-12 h-12 rounded-full
-                    bg-[#fd6647] text-black
-                    text-xl flex items-center justify-center
+                  absolute top-6 right-6
+                  w-12 h-12 rounded-full
+                  bg-[#fd6647] text-black
+                  text-xl flex items-center justify-center
                 "
-            >
-              ✕
-            </button>
+                aria-label="Cerrar menú"
+              >
+                ✕
+              </button>
 
-            <div className="h-full w-full grid grid-cols-3 px-20 py-24">
+              {/* GRID */}
+              <div className="h-full w-full grid grid-cols-3 px-20 py-24">
 
-                {/* ================= LEFT: LOGO + SERVICIOS ================= */}
-                <motion.div
-                    variants={itemVariants}
-                    className="flex flex-col"
-                    >
-                    {/* Logo */}
-                    <motion.img
-                        src={logo}
-                        alt="Nivalis"
-                        className="w-40 mb-16"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4 }}
-                    />
-
-                    {/* Servicios */}
-                    <h3 className="text-4xl mb-10">Servicios</h3>
-
-                    <ul className="space-y-4 text-lg text-white/80">
+                {/* LEFT */}
+                <motion.div variants={itemVariants} className="flex flex-col">
+                  <img src={logo} alt="Nivalis" className="w-40 mb-16" />
+                  <h3 className="text-4xl mb-10">Servicios</h3>
+                  <ul className="space-y-4 text-lg text-white/80">
                     {services.map((service) => (
-                        <li
-                        key={service}
-                        className="
-                            transition-all duration-200
-                            hover:text-[#fd6647]
-                            hover:translate-x-1
-                        "
-                        >
+                      <li key={service} className="hover:text-[#fd6647] transition">
                         {service}
-                        </li>
+                      </li>
                     ))}
-                    </ul>
-
+                  </ul>
                 </motion.div>
 
-                {/* ================= CENTER: NAVEGACIÓN ================= */}
+                {/* CENTER */}
                 <motion.div
                   variants={itemVariants}
-
-                  className="
-                      flex flex-col
-                      text-6xl font-semibold
-                      space-y-4
-                      pt-[10px]
-                  "
-                  >
-
+                  className="flex flex-col text-6xl font-semibold space-y-4"
+                >
                   {navItems.map((item) => (
                     <div
                       key={item.id}
                       className="relative inline-block"
                       onMouseEnter={() => setHovered(item.id)}
                       onMouseLeave={() => setHovered(null)}
-                      >
+                    >
                       <button
-                          onClick={() => {
+                        onClick={() => {
                           onClose();
                           onNavigate(item.href);
-                          }}
-                          className="relative z-10 transition"
+                        }}
+                        className="relative z-10"
                       >
-                          <span className="relative inline-block px-0.5 pb-2">
-                              <span className="relative z-10">
-                                  {item.label}
-                              </span>
-                              <LazoHover active={hovered === item.id} />
-                          </span>
+                        <span className="relative inline-block px-0.5 pb-2">
+                          <span className="relative z-10">{item.label}</span>
+                          <LazoHover active={hovered === item.id} />
+                        </span>
                       </button>
                     </div>
                   ))}
                 </motion.div>
 
-                {/* CTA */}
+                {/* RIGHT */}
                 <motion.div
                   variants={itemVariants}
                   className="flex flex-col justify-end"
                 >
-
-                  <p
-                    className="
-                      text-4xl leading-tight
-                      whitespace-nowrap
-                      inline-block
-                      self-end
-                    "
-                  >
+                  <p className="text-4xl leading-tight whitespace-nowrap self-end">
                     ¿Tenés un proyecto en mente?
                   </p>
-
-                  <motion.button
-                      onClick={() => onNavigate("#contacto")}
-                      className="mt-6 flex items-center gap-4 text-[#fd6647] text-5xl"
-                      initial="rest"
-                      animate="rest"
-                      whileHover="hover"
-                    >
-                    <span className="relative inline-block origin-left">
-                      {/* TEXTO */}
-                      <motion.span
-                        variants={textVariants}
-                        transition={{ duration: 0.25, ease: "easeOut" }}
-                        className="relative z-10 inline-block origin-left"
-                      >
-                        Hablemos ↗
-                      </motion.span>
-
-                      {/* UNDERLINE */}
-                      <motion.span
-                        variants={underlineVariants}
-                        transition={{ duration: 0.25, ease: "easeOut" }}
-                        className="
-                          absolute left-0 -bottom-1
-                          h-[3px] w-full
-                          bg-[#fd6647]
-                          origin-left
-                        "
-                      />
-                    </span>
-                  </motion.button>
-
+                  <button
+                    onClick={() => {
+                      onClose();
+                      onNavigate("#contacto");
+                    }}
+                    className="mt-6 text-[#fd6647] text-5xl self-end"
+                  >
+                    Hablemos ↗
+                  </button>
                 </motion.div>
                 
-            </div>
+              </div>
+
+            </motion.div>
+            
           </motion.div>
-        </motion.div>
+
+        </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
+
 }
