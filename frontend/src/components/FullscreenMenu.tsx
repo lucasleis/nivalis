@@ -48,6 +48,12 @@ const itemVariants: Variants = {
   },
 };
 
+const underlineVariants = {
+  rest: { scaleX: 0 },
+  hover: { scaleX: 1 },
+};
+
+
 export default function FullscreenMenu({
   open,
   onClose,
@@ -217,21 +223,43 @@ export default function FullscreenMenu({
                   <p className="text-4xl leading-tight whitespace-nowrap self-end">
                     ¿Tenés un proyecto en mente?
                   </p>
-                  <button
+
+                  <motion.button
                     onClick={() => {
                       onClose();
                       onNavigate("#contacto");
                     }}
-                    className="mt-6 text-[#fd6647] text-5xl self-end"
+                    className="mt-6 self-end"
+                    initial="rest"
+                    animate="rest"
+                    whileHover="hover"
                   >
-                    Hablemos ↗
-                  </button>
+                    <span className="relative inline-block">
+                      {/* TEXTO */}
+                      <span className="text-[#fd6647] text-5xl">
+                        Hablemos ↗
+                      </span>
+
+                      {/* SUBRAYADO */}
+                      <motion.span
+                        variants={underlineVariants}
+                        transition={{ duration: 0.25, ease: "easeOut" }}
+                        className="
+                          absolute left-0 -bottom-1
+                          h-[3px] w-full
+                          bg-[#fd6647]
+                          origin-left
+                        "
+                      />
+                    </span>
+                  </motion.button>
+
                 </motion.div>
                 
               </div>
 
             </motion.div>
-            
+
           </motion.div>
 
         </div>
