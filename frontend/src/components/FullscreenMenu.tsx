@@ -234,11 +234,15 @@ export default function FullscreenMenu({
                   variants={itemVariants}
                   className="flex flex-col justify-end"
                 >
-                  <p className="
-                    text-[clamp(1.75rem,3vw,2.25rem)]
-                    leading-tight
-                    whitespace-nowrap
-                  ">
+
+                  <p
+                    className="
+                      text-4xl leading-tight
+                      whitespace-nowrap
+                      inline-block
+                      self-end
+                    "
+                  >
                     ¿Tenés un proyecto en mente?
                   </p>
 
