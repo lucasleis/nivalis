@@ -156,6 +156,7 @@ export default function FullscreenMenu({
             </button>
 
             <div className="h-full w-full grid grid-cols-3 px-20 py-24">
+
                 {/* ================= LEFT: LOGO + SERVICIOS ================= */}
                 <motion.div
                     variants={itemVariants}
@@ -193,50 +194,69 @@ export default function FullscreenMenu({
 
                 {/* ================= CENTER: NAVEGACIÓN ================= */}
                 <motion.div
-                variants={itemVariants}
-                className="
-                    flex flex-col
-                    text-6xl font-semibold
-                    space-y-10
-                    pt-[10px]
-                "
-                >
-                {navItems.map((item) => (
+                  variants={itemVariants}
+
+                  className="
+                      flex flex-col
+                      text-6xl font-semibold
+                      space-y-8
+                      pt-[10px]
+                  "
+                  >
+
+                  {navItems.map((item) => (
                     <div
-                    key={item.id}
-                    className="relative inline-block"
-                    onMouseEnter={() => setHovered(item.id)}
-                    onMouseLeave={() => setHovered(null)}
-                    >
-                    <button
-                        onClick={() => {
-                        onClose();
-                        onNavigate(item.href);
-                        }}
-                        className="relative z-10 transition"
-                    >
-                        <span className="relative inline-block px-0.5 pb-2">
-                            <span className="relative z-10">
-                                {item.label}
-                            </span>
-                            <LazoHover active={hovered === item.id} />
-                        </span>
-                    </button>
+                      key={item.id}
+                      className="relative inline-block"
+                      onMouseEnter={() => setHovered(item.id)}
+                      onMouseLeave={() => setHovered(null)}
+                      >
+                      <button
+                          onClick={() => {
+                          onClose();
+                          onNavigate(item.href);
+                          }}
+                          className="relative z-10 transition"
+                      >
+                          <span className="relative inline-block px-0.5 pb-2">
+                              <span className="relative z-10">
+                                  {item.label}
+                              </span>
+                              <LazoHover active={hovered === item.id} />
+                          </span>
+                      </button>
                     </div>
-                ))}
+                  ))}
                 </motion.div>
 
 
-                {/* CTA */}
                 <motion.div
-                    variants={itemVariants}
-                    className="flex flex-col justify-end"
+                  variants={itemVariants}
+                  className="flex flex-col justify-end h-full"
                 >
-                    <p className="text-4xl leading-tight">
-                        ¿Tenés un proyecto en mente?
-                    </p>
+                </motion.div>
 
-                    <motion.button
+                <motion.div
+                  variants={itemVariants}
+                  className="flex flex-col justify-end h-full"
+                >
+                </motion.div>
+
+                <motion.div
+                  variants={itemVariants}
+                  className="flex flex-col justify-end h-full"
+                >
+                  <p className="text-4xl leading-tight">
+                    ¿Tenés un proyecto en mente?
+                  </p>
+
+                </motion.div>
+
+                <motion.div
+                  variants={itemVariants}
+                  className="flex flex-col justify-end h-full"
+                >
+                  <motion.button
                         onClick={() => onNavigate("#contacto")}
                         className="mt-6 flex items-center gap-4 text-[#fd6647] text-5xl"
                         initial="rest"
@@ -267,8 +287,8 @@ export default function FullscreenMenu({
                         </span>
                     </motion.button>
 
-
                 </motion.div>
+                
             </div>
           </motion.div>
         </motion.div>
