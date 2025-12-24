@@ -199,7 +199,7 @@ export default function FullscreenMenu({
                   className="
                       flex flex-col
                       text-6xl font-semibold
-                      space-y-8
+                      space-y-4
                       pt-[10px]
                   "
                   >
@@ -229,63 +229,49 @@ export default function FullscreenMenu({
                   ))}
                 </motion.div>
 
-
+                {/* CTA */}
                 <motion.div
                   variants={itemVariants}
-                  className="flex flex-col justify-end h-full"
+                  className="flex flex-col justify-end"
                 >
-                </motion.div>
-
-                <motion.div
-                  variants={itemVariants}
-                  className="flex flex-col justify-end h-full"
-                >
-                </motion.div>
-
-                <motion.div
-                  variants={itemVariants}
-                  className="flex flex-col justify-end h-full"
-                >
-                  <p className="text-4xl leading-tight">
+                  <p className="
+                    text-[clamp(1.75rem,3vw,2.25rem)]
+                    leading-tight
+                    whitespace-nowrap
+                  ">
                     ¿Tenés un proyecto en mente?
                   </p>
 
-                </motion.div>
-
-                <motion.div
-                  variants={itemVariants}
-                  className="flex flex-col justify-end h-full"
-                >
                   <motion.button
-                        onClick={() => onNavigate("#contacto")}
-                        className="mt-6 flex items-center gap-4 text-[#fd6647] text-5xl"
-                        initial="rest"
-                        animate="rest"
-                        whileHover="hover"
-                        >
-                        <span className="relative inline-block origin-left">
-                            {/* TEXTO */}
-                            <motion.span
-                            variants={textVariants}
-                            transition={{ duration: 0.25, ease: "easeOut" }}
-                            className="relative z-10 inline-block origin-left"
-                            >
-                            Hablemos ↗
-                            </motion.span>
+                      onClick={() => onNavigate("#contacto")}
+                      className="mt-6 flex items-center gap-4 text-[#fd6647] text-5xl"
+                      initial="rest"
+                      animate="rest"
+                      whileHover="hover"
+                    >
+                    <span className="relative inline-block origin-left">
+                      {/* TEXTO */}
+                      <motion.span
+                        variants={textVariants}
+                        transition={{ duration: 0.25, ease: "easeOut" }}
+                        className="relative z-10 inline-block origin-left"
+                      >
+                        Hablemos ↗
+                      </motion.span>
 
-                            {/* UNDERLINE */}
-                            <motion.span
-                            variants={underlineVariants}
-                            transition={{ duration: 0.25, ease: "easeOut" }}
-                            className="
-                                absolute left-0 -bottom-1
-                                h-[3px] w-full
-                                bg-[#fd6647]
-                                origin-left
-                            "
-                            />
-                        </span>
-                    </motion.button>
+                      {/* UNDERLINE */}
+                      <motion.span
+                        variants={underlineVariants}
+                        transition={{ duration: 0.25, ease: "easeOut" }}
+                        className="
+                          absolute left-0 -bottom-1
+                          h-[3px] w-full
+                          bg-[#fd6647]
+                          origin-left
+                        "
+                      />
+                    </span>
+                  </motion.button>
 
                 </motion.div>
                 
