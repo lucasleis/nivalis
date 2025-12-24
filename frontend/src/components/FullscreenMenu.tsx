@@ -177,7 +177,7 @@ export default function FullscreenMenu({
               </button>
 
               {/* GRID */}
-              <div className=" min-h-full w-full grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16 px-6 pt-16 pb-12 lg:py-24 lg:px-20 ">
+              <div className=" min-h-full w-full grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16 px-6 pt-16 pb-22 lg:py-24 lg:px-20 ">
 
                 {/* LEFT */}
                 <motion.div
