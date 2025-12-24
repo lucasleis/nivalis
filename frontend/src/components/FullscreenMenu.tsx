@@ -113,13 +113,13 @@ export default function FullscreenMenu({
           >
             {/* Close */}
             <button
-              onClick={onClose}
-              className="
-                absolute top-6 right-6
-                w-12 h-12 rounded-full
-                bg-yellow-400 text-black
-                text-xl flex items-center justify-center
-              "
+                onClick={onClose}
+                className="
+                    absolute top-6 right-6
+                    w-12 h-12 rounded-full
+                    bg-[#fd6647] text-black
+                    text-xl flex items-center justify-center
+                "
             >
               ✕
             </button>
@@ -162,7 +162,7 @@ export default function FullscreenMenu({
                     flex flex-col
                     text-6xl font-semibold
                     space-y-10
-                    pt-[72px]
+                    pt-[10px]
                 "
                 >
                 {navItems.map((item) => (
@@ -201,7 +201,7 @@ export default function FullscreenMenu({
                     </p>
                     <button
                     onClick={() => onNavigate("#contacto")}
-                    className="mt-6 text-yellow-400 text-5xl flex items-center gap-4"
+                    className="mt-6 text-[#fd6647] text-5xl flex items-center gap-4"
                     >
                     Hablemos <span>↗</span>
                     </button>

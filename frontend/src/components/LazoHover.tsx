@@ -22,13 +22,13 @@ export default function LazoHover({ active }: Props) {
             "
             stroke="#fd6647"
             strokeOpacity="0.85"
-            strokeWidth="2"
+            strokeWidth="4"
             strokeLinecap="round"
             strokeLinejoin="round"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={
                 active
-                    ? { pathLength: 1, opacity: 0.55, rotate: [0, 0.5, 0] }
+                    ? { pathLength: 1, opacity: 0.65, rotate: [0, 0.5, 0] }
                     : { pathLength: 0, opacity: 0 }
                 }
                 transition={{

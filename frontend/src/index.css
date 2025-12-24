@@ -95,7 +95,7 @@ h1, h2, h3, h4 {
   transform: rotate(-30deg);
   transform-origin: center;
 
-  opacity: 0.25;
+  opacity: 0.12;
   pointer-events: none;
 }
 
