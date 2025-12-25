@@ -23,7 +23,12 @@ export default function Hero() {
         {/* COLUMNA IZQUIERDA */}
         <motion.div
           {...fadeUp}
-          className="flex flex-col justify-center order-2 md:order-1"
+          className="
+            flex flex-col justify-center
+            items-center text-center
+            md:items-start md:text-left
+            order-2 md:order-1
+          "
         >
           {/* SUBTEXTO */}
           <span

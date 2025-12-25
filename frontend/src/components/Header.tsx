@@ -84,7 +84,7 @@ export default function Header() {
                     opacity: 0,
                   }}
                   transition={{
-                    duration: 0.6,
+                    duration: 1.8,
                     ease: [0.22, 1, 0.36, 1],
                     delay: 0.05,
                   }}
