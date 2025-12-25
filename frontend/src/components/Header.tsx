@@ -8,14 +8,6 @@ import FullscreenMenu from "./FullscreenMenu";
 import logo from "../assets/logos/A6.png";
 import logo_mini from "../assets/logos/A6.png";
 
-// ======== NAV LINKS ==========
-const navLinks = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Sobre Nosotros", href: "#about" },
-  { label: "Contacto", href: "#contacto" },
-];
 
 // ======== BUTTON STYLE ==========
 const primaryButtonClasses =
@@ -38,7 +30,7 @@ export default function Header() {
 
   // ===== PARALLAX =====
   const logoY = useParallax({ range: 250, offset: -6 });
-  const glowOpacity = useParallax({ range: 200, from: 1, to: 0.35 });
+  //const glowOpacity = useParallax({ range: 200, from: 1, to: 0.35 });
 
   // ===== DETECT TOP =====
   useEffect(() => {
@@ -74,15 +66,49 @@ export default function Header() {
               {/* LOGO */}
               <motion.button
                 onClick={() => handleNavClick("#inicio")}
-                className="flex items-center gap-3"
+                className="relative flex items-center overflow-hidden"
                 style={isTop ? { y: logoY } : undefined}
               >
+                {/* LOGO TOP */}
                 <motion.img
-                  src={isTop ? logo : logo_mini}
+                  src={logo}
                   alt="Nivalis Logo"
-                  style={isTop ? { opacity: glowOpacity } : undefined}
                   className={`${isTop ? "h-14" : "h-10"} w-auto object-contain`}
-                  whileHover={{ scale: 1.05 }}
+                  initial={false}
+                  animate={{
+                    y: isTop ? 0 : -40,
+                    opacity: isTop ? 1 : 0,
+                  }}
+                  whileHover={{
+                    y: -40,
+                    opacity: 0,
+                  }}
+                  transition={{
+                    duration: 0.6,
+                    ease: [0.22, 1, 0.36, 1],
+                    delay: 0.05,
+                  }}
+                />
+
+                {/* LOGO SCROLL */}
+                <motion.img
+                  src={logo_mini}
+                  alt="Nivalis Logo Scroll"
+                  className={`${isTop ? "h-14" : "h-10"} w-auto object-contain absolute`}
+                  initial={false}
+                  animate={{
+                    y: isTop ? 40 : 0,
+                    opacity: isTop ? 0 : 1,
+                  }}
+                  whileHover={{
+                    y: 0,
+                    opacity: 1,
+                  }}
+                  transition={{
+                    duration: 0.6,
+                    ease: [0.22, 1, 0.36, 1],
+                    delay: 0.05,
+                  }}
                 />
               </motion.button>
 
