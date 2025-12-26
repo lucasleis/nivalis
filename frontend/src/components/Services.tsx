@@ -1,177 +1,54 @@
-import { motion } from "framer-motion";
-import { useRef } from "react";
-import { useInView } from "framer-motion";
-import { TrendingUp, Code, Zap, Palette, Brain } from "lucide-react";
-import { fadeUp, fadeScale, staggerContainer } from "../motion/variants";
-import { useParallax } from "../components/scroll/useParallax";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-export default function Services() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-150px" });
+const words = ["sistemas a medida", "websites", "campañas digitales"];
 
-  // Parallax para todo el grid
-  const cardsY = useParallax({ range: 300, offset: -8 });
+export default function Hero() {
+  const [index, setIndex] = useState(0);
 
-  const services = [
-    {
-      icon: Code,
-      title: "Desarrollo Web",
-      description:
-        "Sitios y aplicaciones modernas, rápidas, escalables y diseñadas a medida. Landing pages, e-commerce, sistemas y plataformas completas.",
-      gradient: "from-nivOrange to-nivBlue",
-    },
-    {
-      icon: TrendingUp,
-      title: "Marketing Digital",
-      description:
-        "Estrategias basadas en datos: contenido, campañas, SEO y automatización para maximizar alcance, rendimiento y conversión.",
-      gradient: "from-nivBlue to-nivLightBlue",
-    },
-    {
-      icon: Zap,
-      title: "Automatizaciones",
-      description:
-        "Optimizamos procesos con integraciones, bots, flujos inteligentes y sistemas que aceleran tareas repetitivas.",
-      gradient: "from-nivOrange to-nivLightBlue",
-    },
-    {
-      icon: Palette,
-      title: "Branding & Identidad",
-      description:
-        "Construimos identidades visuales sólidas, coherentes y creativas que representan la esencia de cada marca.",
-      gradient: "from-nivOrange to-[#ffb199]",
-    },
-    {
-      icon: Brain,
-      title: "IA aplicada a negocios",
-      description:
-        "Soluciones inteligentes para potenciar equipos, automatizar tareas y mejorar procesos de decisión.",
-      gradient: "from-nivBlue to-nivOrange",
-    },
-  ];
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 2750); // 2 segundos
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // const nextWord = () => setIndex((prev) => (prev + 1) % words.length);
 
   return (
-    <section
-      id="servicios"
-      ref={ref}
-      className="
-        py-32 
-        bg-gradient-to-b from-[#ffffff] via-[#ffe0d6]/20 to-[#83aefa]/20
-        dark:from-slate-900 dark:via-slate-900/90 dark:to-slate-900
-        transition-colors duration-300
-      "
-    >
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="min-h-screen flex items-center bg-white">
+      <div className="max-w-6xl mx-auto px-6 w-full">
+        <p className="text-sm tracking-[0.25em] text-gray-500 mb-10">
+          AGENCIA DIGITAL CON VISIÓN 360
+        </p>
 
-        {/* TÍTULO */}
-        <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          animate={isInView ? "animate" : "initial"}
-          className="text-center mb-20"
-        >
-          <motion.h2
-            variants={fadeUp}
-            className="
-              font-display font-bold 
-              text-5xl md:text-6xl 
-              mb-6 text-gray-900 dark:text-white
-            "
-          >
-            Nuestros{" "}
-            <span className="text-nivOrange dark:text-nivLightBlue">Servicios</span>
-          </motion.h2>
-
-          <motion.div
-            variants={fadeUp}
-            className="
-              w-28 h-1.5 mx-auto mb-8 rounded-full
-              bg-gradient-to-r from-nivOrange to-nivBlue
-              dark:from-nivLightBlue dark:to-nivBlue
-            "
-          />
-
-          <motion.p
-            variants={fadeUp}
-            className="
-              font-body 
-              text-xl text-gray-700 dark:text-gray-300 
-              max-w-3xl mx-auto leading-relaxed
-            "
-          >
-            Soluciones integrales que combinan creatividad, estrategia y tecnología
-            para impulsar tu presencia digital y acelerar tu crecimiento.
-          </motion.p>
-        </motion.div>
-
-        {/* GRID */}
-        <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          animate={isInView ? "animate" : "initial"}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
-          style={{ y: cardsY }}
-        >
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              variants={fadeScale}
-              className="
-                group relative p-8 rounded-3xl 
-                bg-white dark:bg-slate-800 
-                shadow-md dark:shadow-lg 
-                hover:shadow-2xl hover:-translate-y-1 
-                transition-all duration-300 overflow-hidden
-              "
-            >
-              {/* Glow Hover */}
-              <div
-                className="
-                  absolute inset-0 opacity-0 group-hover:opacity-100 
-                  bg-gradient-to-br from-[#ffe0d6]/40 to-[#83aefa]/40
-                  dark:from-nivLightBlue/10 dark:to-nivOrange/10
-                  transition-opacity duration-500
-                "
-              />
-
-              {/* ICONO */}
-              <div className="relative z-10">
-                <div
-                  className={`
-                    inline-flex items-center justify-center 
-                    w-16 h-16 mb-6 rounded-2xl shadow-lg 
-                    text-white group-hover:scale-110 
-                    transition-transform bg-gradient-to-br ${service.gradient}
-                  `}
+        <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-medium text-gray-900 leading-tight">
+          Creamos{" "}
+          <span className="relative inline-flex align-baseline px-1 -mx-1">
+            <span className="relative inline-block overflow-hidden h-[1.2em] align-bottom">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={index}
+                  initial={{ y: "110%" }}
+                  animate={{ y: "0%" }}
+                  exit={{ y: "-110%" }}
+                  transition={{
+                    duration: 0.5,
+                    ease: [0.4, 0, 0.2, 1],
+                  }}
+                  className="block will-change-transform text-[#fd6647]"
                 >
-                  <service.icon className="w-8 h-8" />
-                </div>
+                  {words[index]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
+          </span>
+        </h1>
 
-                {/* TÍTULO */}
-                <h3
-                  className="
-                    font-display text-2xl font-bold mb-4 
-                    text-gray-900 dark:text-white 
-                    group-hover:text-nivOrange dark:group-hover:text-nivLightBlue 
-                    transition-colors
-                  "
-                >
-                  {service.title}
-                </h3>
-
-                {/* DESCRIPCIÓN */}
-                <p
-                  className="
-                    font-body text-gray-600 dark:text-gray-300 
-                    leading-relaxed relative z-10
-                  "
-                >
-                  {service.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        <p className="mt-6 text-5xl md:text-6xl lg:text-7xl font-display font-medium text-gray-900">
+          A medida. A tiempo. A otro nivel
+        </p>
       </div>
     </section>
   );
