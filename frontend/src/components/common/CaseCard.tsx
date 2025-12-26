@@ -42,10 +42,11 @@ export default function CaseCard({
           <button
             className="
               w-fit rounded-full
-              bg-yellow-400 px-5 py-2
-              text-sm font-semibold text-black
-              transition-colors
-              hover:bg-yellow-300
+              bg-[#fd6647] px-5 py-2
+              text-sm font-semibold text-white
+              transition-all duration-300
+              hover:bg-[#e85a3f]
+              hover:scale-[1.03]
             "
           >
             Ver proyecto
