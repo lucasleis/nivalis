@@ -49,6 +49,26 @@ export default function Hero() {
         <p className="mt-6 text-5xl md:text-6xl lg:text-7xl font-display font-medium text-gray-900">
           A medida. A tiempo. A otro nivel
         </p>
+
+        <div className="mt-10">
+          <a
+            href="#"
+            className="group inline-block text-lg text-gray-900 relative"
+          >
+            Más detalles
+
+            {/* underline */}
+            <span
+              className="
+                underline-slide
+                pointer-events-none
+                absolute left-0 -bottom-2 h-[2px] w-full
+                bg-gray-900
+              "
+            />
+          </a>
+        </div>
+
       </div>
     </section>
   );
