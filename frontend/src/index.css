@@ -144,3 +144,45 @@ html, body, #root {
   transition: background-color 0.35s ease;
 }
 
+
+
+/* ================================
+   pattern nivalis SOBRE imagen
+   (no define fondo)
+================================ */
+.bg-nivalis-pattern-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-nivalis-pattern-overlay::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+
+  background-image:
+    url("/src/assets/logos/nivalis.png"),
+    url("/src/assets/logos/nivalis.png");
+
+  background-repeat: repeat, repeat;
+  background-size:
+    240px 180px,
+    240px 180px;
+  background-position:
+    0 0,
+    370px 90px;
+
+  transform: rotate(-30deg);
+  transform-origin: center;
+
+  opacity: 0.12;
+  pointer-events: none;
+
+  z-index: 1; 
+}
+
+@media (max-width: 768px) {
+  .bg-nivalis-pattern-overlay::before {
+    opacity: 0.06;
+  }
+}
