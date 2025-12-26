@@ -62,7 +62,7 @@ export default function Header() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.25 }}
-        className="fixed top-0 left-0 w-full z-50 bg-transparent"
+        className="fixed top-0 left-0 w-full z-[100] bg-transparent"
       >
         <div className={`w-full ${isTop ? "py-0" : "py-2"}`}>
           <div className="max-w-7xl mx-auto px-6">
@@ -137,7 +137,7 @@ export default function Header() {
             {!isTop && (
               <motion.button
                 onClick={() => handleNavClick("#inicio")}
-                className="fixed top-4 left-4 z-50 flex items-center"
+                className="fixed top-4 left-4 z-[100] flex items-center"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
@@ -156,7 +156,7 @@ export default function Header() {
           <AnimatePresence>
             {!isTop && (
               <motion.div
-                className="fixed top-4 right-4 z-50 flex items-center gap-3"
+                className="fixed top-4 right-4 z-[100] flex items-center gap-3"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
