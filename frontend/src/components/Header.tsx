@@ -30,7 +30,6 @@ export default function Header() {
 
   // ===== PARALLAX =====
   const logoY = useParallax({ range: 250, offset: -6 });
-  //const glowOpacity = useParallax({ range: 200, from: 1, to: 0.35 });
 
   // ===== DETECT TOP =====
   useEffect(() => {
@@ -50,6 +49,12 @@ export default function Header() {
     window.scrollTo({ top: y, behavior: "smooth" });
   }, []);
 
+  // ===== HOVER / TRANSITION DE LOGOS =====
+  const logoTransition = {
+    duration: 0.8,
+    ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+  };
+
   return (
     <>
       {/* ================= HEADER ================= */}
@@ -63,117 +68,112 @@ export default function Header() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex items-center justify-between h-24">
 
-              {/* LOGO */}
-              <motion.button
-                onClick={() => handleNavClick("#inicio")}
-                className="relative flex items-center overflow-hidden"
-                style={isTop ? { y: logoY } : undefined}
-              >
-                {/* LOGO TOP */}
-                <motion.img
-                  src={logo}
-                  alt="Nivalis Logo"
-                  className={`${isTop ? "h-14" : "h-10"} w-auto object-contain`}
-                  initial={false}
-                  animate={{
-                    y: isTop ? 0 : -40,
-                    opacity: isTop ? 1 : 0,
-                  }}
-                  whileHover={{
-                    y: -40,
-                    opacity: 0,
-                  }}
-                  transition={{
-                    duration: 1.8,
-                    ease: [0.22, 1, 0.36, 1],
-                    delay: 0.05,
-                  }}
-                />
+              {/* ================= LOGO TOP ================= */}
+              <AnimatePresence>
+                {isTop && (
+                  <motion.button
+                    onClick={() => handleNavClick("#inicio")}
+                    className="relative flex items-center"
+                    style={{ y: logoY }}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={logoTransition}
+                  >
+                    <img
+                      src={logo}
+                      alt="Nivalis Logo"
+                      className="h-14 w-auto object-contain"
+                    />
+                  </motion.button>
+                )}
+              </AnimatePresence>
 
-                {/* LOGO SCROLL */}
-                <motion.img
-                  src={logo_mini}
-                  alt="Nivalis Logo Scroll"
-                  className={`${isTop ? "h-14" : "h-10"} w-auto object-contain absolute`}
-                  initial={false}
-                  animate={{
-                    y: isTop ? 40 : 0,
-                    opacity: isTop ? 0 : 1,
-                  }}
-                  whileHover={{
-                    y: 0,
-                    opacity: 1,
-                  }}
-                  transition={{
-                    duration: 0.6,
-                    ease: [0.22, 1, 0.36, 1],
-                    delay: 0.05,
-                  }}
-                />
-              </motion.button>
-
-              {/* ACTIONS */}
-              <div className="flex items-center gap-4">
-
-                <AnimatePresence mode="wait">
-                  {isTop ? (
-                    /* ================= TEXT BUTTON (TOP) ================= */
-                    <motion.a
-                      key="agenda-text"
+              {/* ================= BOTONES TOP ================= */}
+              <AnimatePresence>
+                {isTop && (
+                  <motion.div
+                    className="flex items-center gap-4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={logoTransition}
+                  >
+                    <a
                       href="https://calendly.com/lucas-mateo-leis/30min"
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`${primaryButtonClasses} hidden md:inline-flex`}
-                      initial={{ opacity: 0, scale: 0.96 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.96 }}
-                      transition={{ duration: 0.18, ease: "easeOut" }}
                     >
                       Agendar una reunión
-                    </motion.a>
-                  ) : (
-                    /* ================= ICON BUTTON (SCROLL) ================= */
-                    <motion.a
-                      key="agenda-icon-desktop"
-                      href="https://calendly.com/lucas-mateo-leis/30min"
+                    </a>
+
+                    <a
+                      href="https://wa.me/5491123456789"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="
-                        hidden md:flex
-                        w-11 h-11
-                        rounded-full
-                        border border-black
-                        text-black
-                        items-center justify-center
-                        transition-all duration-200
-                        hover:scale-105
-                        hover:ring-2 hover:ring-black hover:ring-offset-2
-                      "
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.18, ease: "easeOut" }}
-                      aria-label="Agendar reunión"
+                      className="w-11 h-11 rounded-full bg-green-500 text-white flex items-center justify-center hover:scale-105 transition"
+                      aria-label="WhatsApp"
                     >
-                      <Calendar size={20} />
-                    </motion.a>
-                  )}
-                </AnimatePresence>
+                      <MessageCircle size={22} />
+                    </a>
 
+                    <button
+                      onClick={toggleMenu}
+                      className="w-11 h-11 rounded-full bg-black text-white flex items-center justify-center"
+                      aria-label="Abrir menú"
+                    >
+                      <Menu size={22} />
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+            </div>
+          </div>
+
+          {/* ================= LOGO SCROLL ================= */}
+          <AnimatePresence>
+            {!isTop && (
+              <motion.button
+                onClick={() => handleNavClick("#inicio")}
+                className="fixed top-4 left-4 z-50 flex items-center"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={logoTransition}
+              >
+                <img
+                  src={logo_mini}
+                  alt="Nivalis Logo Scroll"
+                  className="h-10 w-auto object-contain"
+                />
+              </motion.button>
+            )}
+          </AnimatePresence>
+
+          {/* ================= BOTONES SCROLL ================= */}
+          <AnimatePresence>
+            {!isTop && (
+              <motion.div
+                className="fixed top-4 right-4 z-50 flex items-center gap-3"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={logoTransition}
+              >
                 <a
                   href="https://calendly.com/lucas-mateo-leis/30min"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="
-                    md:hidden
                     w-11 h-11
                     rounded-full
                     border border-black
                     text-black
                     flex items-center justify-center
-                    transition-all duration-200
                     hover:scale-105
-                    hover:ring-2 hover:ring-black hover:ring-offset-2
+                    transition
                   "
                   aria-label="Agendar reunión"
                 >
@@ -197,10 +197,10 @@ export default function Header() {
                 >
                   <Menu size={22} />
                 </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
-              </div>
-            </div>
-          </div>
         </div>
       </motion.header>
 
