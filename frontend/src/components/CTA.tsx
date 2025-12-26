@@ -26,8 +26,8 @@ export default function CTA() {
       id="contacto"
       ref={ref}
       className="
-  relative py-32 overflow-hidden
-  bg-white dark:bg-black
+        relative py-32 overflow-hidden
+        bg-white dark:bg-black
       "
     >
       {/* BLOBS EXTERIORES (IGUAL QUE ANTES) */}
@@ -68,7 +68,7 @@ export default function CTA() {
       <motion.div
         className="
           relative z-10
-          max-w-7xl mx-auto
+          w-[80%] mx-auto
           rounded-[32px]
           px-10 py-16 md:px-16 md:py-20
           overflow-hidden
