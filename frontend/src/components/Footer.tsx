@@ -2,11 +2,13 @@ import { ArrowUp } from "lucide-react";
 
 export default function Footer() {
   return (
+    <footer className="bg-black text-white">
+      
+      {/* FRANJA NEGRA SUPERIOR */}
+      <div className="h-8" />
 
-  <footer className="bg-black text-white">
-    <div className="w-[90vw] mx-auto h-32">
-        
-        {/* GRID 4x2 */}
+      {/* CONTENIDO */}
+      <div className="w-[90vw] mx-auto h-32">
         <div
           className="
             grid
@@ -76,7 +78,6 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Celdas vacías para mantener la grilla */}
           <div />
           <div />
           <div />
