@@ -62,7 +62,8 @@ export default function Hero() {
             <a
               href="#contacto"
               className="
-                inline-flex items-center gap-3
+                group
+                inline-flex items-center
                 px-8 py-4
                 rounded-full
                 bg-nivOrange
@@ -70,14 +71,56 @@ export default function Hero() {
                 font-body font-semibold
                 text-lg
                 hover:bg-[#e95b40]
-                transition-all duration-300
+                transition-colors duration-300 ease-out
+                overflow-hidden
                 w-fit
               "
             >
-              Hablemos
-              <ArrowRight className="w-5 h-5" />
+              {/* Flecha izquierda (hover) */}
+              <span
+                className="
+                  inline-flex items-center
+                  w-0 opacity-0
+                  -translate-x-2
+                  transition-all duration-300 ease-out
+                  group-hover:w-5
+                  group-hover:opacity-100
+                  group-hover:translate-x-0
+                  mr-0 group-hover:mr-2
+                "
+              >
+                <ArrowRight className="w-5 h-5" />
+              </span>
+
+              {/* Texto */}
+              <span
+                className="
+                  inline-block
+                  transition-transform duration-300 ease-out
+                  group-hover:translate-x-1
+                "
+              >
+                Hablemos
+              </span>
+
+              {/* Flecha derecha (default) */}
+              <span
+                className="
+                  inline-flex items-center
+                  ml-2
+                  transition-all duration-300 ease-out
+                  group-hover:opacity-0
+                  group-hover:translate-x-3
+                "
+              >
+                <ArrowRight 
+                  strokeWidth={3} 
+                  className="w-5 h-5" 
+                />
+              </span>
             </a>
           </motion.div>
+
         </motion.div>
 
         {/* COLUMNA DERECHA */}

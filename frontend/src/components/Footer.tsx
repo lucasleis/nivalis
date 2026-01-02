@@ -146,7 +146,7 @@ export default function Footer() {
                 "
               >
                 <ArrowUp
-                  strokeWidth={2.5}
+                  strokeWidth={3}
                   className="
                     w-4 h-4
                     text-black

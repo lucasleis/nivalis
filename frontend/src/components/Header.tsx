@@ -16,8 +16,9 @@ const primaryButtonClasses =
   "border border-black " +
   "bg-transparent text-black " +
   "font-nauryz text-base " +
-  "transition-all duration-200 " +
-  "hover:bg-black hover:text-white";
+  "transition-all duration-200 ease-out " +
+  "hover:bg-nivOrange hover:text-white hover:border-nivOrange " +
+  "hover:scale-105";
 
 export default function Header() {
   // ===== MENU STATE =====
@@ -112,19 +113,37 @@ export default function Header() {
                       href="https://wa.me/5491123456789"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-11 h-11 rounded-full bg-green-500 text-white flex items-center justify-center hover:scale-105 transition"
+                      className="
+                        w-11 h-11
+                        rounded-full
+                        bg-green-500 text-white
+                        flex items-center justify-center
+                        transition-all duration-200 ease-out
+                        hover:bg-nivOrange
+                        hover:scale-105
+                      "
                       aria-label="WhatsApp"
                     >
                       <MessageCircle size={22} />
                     </a>
 
+
                     <button
                       onClick={toggleMenu}
-                      className="w-11 h-11 rounded-full bg-black text-white flex items-center justify-center"
+                      className="
+                        w-11 h-11
+                        rounded-full
+                        bg-black text-white
+                        flex items-center justify-center
+                        transition-all duration-200 ease-out
+                        hover:bg-nivOrange
+                        hover:scale-105
+                      "
                       aria-label="Abrir menú"
                     >
                       <Menu size={22} />
                     </button>
+
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -172,8 +191,11 @@ export default function Header() {
                     border border-black
                     text-black
                     flex items-center justify-center
+                    transition-all duration-200 ease-out
+                    hover:bg-nivOrange
+                    hover:text-white
+                    hover:border-nivOrange
                     hover:scale-105
-                    transition
                   "
                   aria-label="Agendar reunión"
                 >
@@ -184,7 +206,15 @@ export default function Header() {
                   href="https://wa.me/5491123456789"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 rounded-full bg-green-500 text-white flex items-center justify-center hover:scale-105 transition"
+                  className="
+                    w-11 h-11
+                    rounded-full
+                    bg-green-500 text-white
+                    flex items-center justify-center
+                    transition-all duration-200 ease-out
+                    hover:bg-nivOrange
+                    hover:scale-105
+                  "
                   aria-label="WhatsApp"
                 >
                   <MessageCircle size={22} />
@@ -192,11 +222,20 @@ export default function Header() {
 
                 <button
                   onClick={toggleMenu}
-                  className="w-11 h-11 rounded-full bg-black text-white flex items-center justify-center"
+                  className="
+                    w-11 h-11
+                    rounded-full
+                    bg-black text-white
+                    flex items-center justify-center
+                    transition-all duration-200 ease-out
+                    hover:bg-nivOrange
+                    hover:scale-105
+                  "
                   aria-label="Abrir menú"
                 >
                   <Menu size={22} />
                 </button>
+
               </motion.div>
             )}
           </AnimatePresence>
