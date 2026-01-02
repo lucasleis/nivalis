@@ -8,105 +8,25 @@ export default function Footer() {
       <div className="h-8" />
 
       {/* CONTENIDO */}
-      <div className="w-[90vw] mx-auto h-32">
+      <div className="w-[90vw] mx-auto py-8">
         <div
           className="
             grid
             grid-cols-4
-            grid-rows-2
             w-full
-            h-full
+            h-32
             text-sm
             uppercase
             tracking-wide
           "
         >
-          {/* FILA 1 */}
-          <div className="flex items-center justify-center font-medium">
-            ¿Tenés un proyecto?
-          </div>
+          {/* COLUMNA 1 */}
+          <div className="flex flex-col items-center justify-center gap-1 font-medium">
+            <span>¿Tenés un proyecto?</span>
 
-          <div className="flex items-center justify-center font-medium">
-            <a
-              href="https://www.instagram.com/nivalis.techlab/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                transition-all
-                duration-300
-                ease-out
-                hover:text-nivOrange
-                hover:-translate-y-[1px]
-              "
-            >
-              Instagram
-            </a>
-          </div>
-
-          <div className="flex items-center justify-center font-medium">
-            <a
-              href="https://linkedin.com/company/nivalis"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                transition-all
-                duration-300
-                ease-out
-                hover:text-nivOrange
-                hover:-translate-y-[1px]
-              "
-            >
-              Linkedin
-            </a>
-          </div>
-
-          <div className="flex items-center justify-center font-medium">
-            <a
-              href="#inicio"
-              className="
-                group
-                flex items-center gap-3
-                font-medium
-                transition-colors
-                duration-300
-                ease-out
-                hover:text-nivOrange
-              "
-            >
-              {/* CÍRCULO */}
-              <span
-                className="
-                  w-8 h-8
-                  flex items-center justify-center
-                  rounded-full
-                  bg-white
-                  transition-colors
-                  duration-300
-                  ease-out
-                  group-hover:bg-nivOrange
-                  overflow-hidden
-                "
-              >
-                <ArrowUp
-                  strokeWidth={2.5}
-                  className="
-                    w-4 h-4
-                    text-black
-                    group-hover:animate-arrowUpLoop
-                  "
-                />
-              </span>
-
-              <span>Back to top</span>
-            </a>
-          </div>
-
-          {/* FILA 2 */}
-          <div className="flex items-start justify-center">
             <a
               href="#contacto"
               className="
-                mt-1
                 px-5 py-2
                 rounded-full
                 bg-white
@@ -136,9 +56,135 @@ export default function Footer() {
             </a>
           </div>
 
-          <div />
-          <div />
-          <div />
+          {/* COLUMNA 2 */}
+          <div className="flex flex-col items-center justify-center gap-1 font-medium">
+            <a
+              href="https://www.instagram.com/nivalis.techlab/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                transition-all
+                duration-300
+                ease-out
+                hover:text-nivOrange
+                hover:-translate-y-[1px]
+              "
+            >
+              Instagram
+            </a>
+            <a
+              aria-hidden
+              className="
+                px-5 py-2
+                rounded-full
+                text-xs
+                font-semibold
+                invisible
+              "
+            >
+              Hablemos!
+            </a>
+          </div>
+
+          {/* COLUMNA 3 */}
+          <div className="flex flex-col items-center justify-center gap-1 font-medium">
+
+            <a
+              href="https://linkedin.com/company/nivalis"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                transition-all
+                duration-300
+                ease-out
+                hover:text-nivOrange
+                hover:-translate-y-[1px]
+              "
+            >
+              Linkedin
+            </a>
+            <a
+              aria-hidden
+              className="
+                px-5 py-2
+                rounded-full
+                text-xs
+                font-semibold
+                invisible
+              "
+            >
+              Hablemos!
+            </a>
+          </div>
+
+          {/* COLUMNA 4 */}
+          <div className="flex flex-col items-center justify-center gap-1 font-medium">
+            <a
+              href="#inicio"
+              className="
+                group
+                flex items-center gap-3
+                transition-colors
+                duration-300
+                ease-out
+                hover:text-nivOrange
+              "
+            >
+              <span>Back to top</span>
+
+              <span
+                className="
+                  w-8 h-8
+                  flex items-center justify-center
+                  rounded-full
+                  bg-white
+                  transition-colors
+                  duration-300
+                  ease-out
+                  group-hover:bg-nivOrange
+                  overflow-hidden
+                "
+              >
+                <ArrowUp
+                  strokeWidth={2.5}
+                  className="
+                    w-4 h-4
+                    text-black
+                    group-hover:animate-arrowUpLoop
+                  "
+                />
+              </span>
+
+            </a>
+
+            {/* BOTÓN INVISIBLE PARA ALINEAR ALTURAS */}
+            <a
+              aria-hidden
+              className="
+                px-5 py-2
+                rounded-full
+                text-xs
+                font-semibold
+                invisible
+              "
+            >
+              Hablemos!
+            </a>
+          </div>
+          
+        </div>
+
+        {/* COPYRIGHT (ya dentro del fondo negro) */}
+        <div className="mt-6 text-center text-xs text-white/60">
+          © 2026 Nivalis Marketing and Tech Lab {/* · All rights reserved ·{" "} */}
+          {/*
+            <a
+              href="/terminos-y-condiciones"
+              className="hover:text-nivOrange transition-colors"
+            >
+              Términos y Condiciones
+            </a>
+          */}
         </div>
       </div>
     </footer>
