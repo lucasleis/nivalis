@@ -31,7 +31,13 @@ export default function Footer() {
               href="https://www.instagram.com/nivalis.techlab/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:opacity-70 transition-opacity"
+              className="
+                transition-all
+                duration-300
+                ease-out
+                hover:text-nivOrange
+                hover:-translate-y-[1px]
+              "
             >
               Instagram
             </a>
@@ -42,7 +48,13 @@ export default function Footer() {
               href="https://linkedin.com/company/nivalis"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:opacity-70 transition-opacity"
+              className="
+                transition-all
+                duration-300
+                ease-out
+                hover:text-nivOrange
+                hover:-translate-y-[1px]
+              "
             >
               Linkedin
             </a>
@@ -51,9 +63,40 @@ export default function Footer() {
           <div className="flex items-center justify-center font-medium">
             <a
               href="#inicio"
-              className="flex items-center gap-2 hover:opacity-70 transition-opacity"
+              className="
+                group
+                flex items-center gap-3
+                font-medium
+                transition-colors
+                duration-300
+                ease-out
+                hover:text-nivOrange
+              "
             >
-              <ArrowUp className="w-4 h-4" />
+              {/* CÍRCULO */}
+              <span
+                className="
+                  w-8 h-8
+                  flex items-center justify-center
+                  rounded-full
+                  bg-white
+                  transition-colors
+                  duration-300
+                  ease-out
+                  group-hover:bg-nivOrange
+                  overflow-hidden
+                "
+              >
+                <ArrowUp
+                  strokeWidth={2.5}
+                  className="
+                    w-4 h-4
+                    text-black
+                    group-hover:animate-arrowUpLoop
+                  "
+                />
+              </span>
+
               <span>Back to top</span>
             </a>
           </div>
@@ -70,11 +113,26 @@ export default function Footer() {
                 text-black
                 text-xs
                 font-semibold
-                hover:bg-neutral-200
                 transition-colors
+                duration-300
+                ease-out
+                hover:bg-nivOrange
+                overflow-hidden
+                group
               "
             >
-              Hablemos!
+              <span
+                className="
+                  inline-block
+                  text-black
+                  transition-transform
+                  duration-300
+                  ease-out
+                  group-hover:animate-arrowUpLoop
+                "
+              >
+                Hablemos!
+              </span>
             </a>
           </div>
 

@@ -14,6 +14,18 @@ export default {
         display: ["NauryzRedKeds", "sans-serif"],
         body: ["AcuminPro", "sans-serif"],
       },
+      // footers hooverr animation 
+      keyframes: {
+        arrowUpLoop: {
+          '0%': { transform: 'translateY(0)', opacity: '1' },
+          '40%': { transform: 'translateY(-6px)', opacity: '0' },
+          '60%': { transform: 'translateY(6px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+      },
+      animation: {
+        arrowUpLoop: 'arrowUpLoop 0.6s ease-in-out',
+      },
     },
   },
   plugins: [],
