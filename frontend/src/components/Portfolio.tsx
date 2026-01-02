@@ -4,7 +4,7 @@ import CaseCard from "./common/CaseCard"
 import mvp from "../assets/portfolio/test_mvp.webp"
 import barberpay from "../assets/portfolio/barberpay.webp"
 import lupa from "../assets/portfolio/lupa.webp"
-// import nivalis from "../assets/portfolio/nivalis.webp"
+import temptation from "../assets/portfolio/temptation.webp"
 
 
 const cases = [
@@ -23,12 +23,12 @@ const cases = [
     title: "Buscando con Lupa",
     subtitle: "Micrositio gamificado · Frontend",
   },
-  /*
   {
-    image: nivalis,
-    title: "Nivalis TechLab",
-    subtitle: "Branding · Web · Animaciones",
+    image: temptation,
+    title: "Temptation Lingerie",
+    subtitle: "Pauta digital · Redes sociales",
   },
+  /*
   {
     image: nivalis,
     title: "Nivalis TechLab",
