@@ -8,26 +8,76 @@ export default function ContactForm() {
               COLUMNA IZQUIERDA
           ====================== */}
           <div className="flex flex-col gap-10">
+
             <p className="text-2xl leading-snug max-w-md">
               Contáctanos hoy mismo y empecemos una conversación
               sobre tu proyecto.
             </p>
 
             <div className="flex flex-col gap-6 text-xl font-medium">
-              <a
-                href="mailto:comercial@wesagencia.com"
-                className="underline underline-offset-4 w-fit"
-              >
-                nivalis.techlab@gmail.com
-              </a>
 
-              <a
-                href="tel:+5493412422567"
-                className="underline underline-offset-4 w-fit"
-              >
-                +54 9 1151232153
-              </a>
+                {/* Email */}
+                <a
+                    href="mailto:nivalis.techlab@gmail.com"
+                    className="
+                    group
+                    relative
+                    inline-block
+                    w-fit
+                    text-gray-900
+                    transition-colors
+                    duration-300
+                    hover:text-[#fd6647]
+                    "
+                >
+                    nivalis.techlab@gmail.com
+
+                    <span
+                    className="
+                        underline-slide
+                        pointer-events-none
+                        absolute left-0 -bottom-[2px]
+                        h-[2px] w-full
+                        bg-gray-900
+                        transition-colors
+                        duration-300
+                        group-hover:bg-[#fd6647]
+                    "
+                    />
+                </a>
+
+                {/* Teléfono */}
+                <a
+                    href="tel:+5491151232153"
+                    className="
+                    group
+                    relative
+                    inline-block
+                    w-fit
+                    text-gray-900
+                    transition-colors
+                    duration-300
+                    hover:text-[#fd6647]
+                    "
+                >
+                    +54 9 1151232153
+
+                    <span
+                    className="
+                        underline-slide
+                        pointer-events-none
+                        absolute left-0 -bottom-[2px]
+                        h-[2px] w-full
+                        bg-gray-900
+                        transition-colors
+                        duration-300
+                        group-hover:bg-[#fd6647]
+                    "
+                    />
+                </a>
+
             </div>
+
           </div>
 
           {/* ======================

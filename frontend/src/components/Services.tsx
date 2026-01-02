@@ -53,20 +53,34 @@ export default function Hero() {
         <div className="mt-10">
           <a
             href="#"
-            className="group inline-block text-lg text-gray-900 relative"
+            className="
+              group
+              relative
+              inline-block
+              w-fit
+              text-lg
+              text-gray-900
+              transition-colors
+              duration-300
+              hover:text-[#fd6647]
+            "
           >
             Más detalles
 
-            {/* underline */}
             <span
               className="
                 underline-slide
                 pointer-events-none
-                absolute left-0 -bottom-2 h-[2px] w-full
+                absolute left-0 -bottom-[2px]
+                h-[2px] w-full
                 bg-gray-900
+                transition-colors
+                duration-300
+                group-hover:bg-[#fd6647]
               "
             />
           </a>
+
         </div>
 
       </div>
