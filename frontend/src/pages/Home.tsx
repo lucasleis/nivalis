@@ -5,6 +5,7 @@ import Services from "../components/Services";
 import Portfolio from "../components/Portfolio";
 import CTA from "../components/CTA";
 import Footer from "../components/Footer";
+import Form from "../components/ContactForm";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Services />
       <Portfolio />
       <CTA />
+      <Form />
       <Footer />
     </>
   );
