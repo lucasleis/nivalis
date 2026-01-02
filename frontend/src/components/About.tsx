@@ -1,93 +1,88 @@
 import { motion } from "framer-motion";
 import { fadeUp, fadeScale, staggerContainer } from "../motion/variants";
 import { useParallax } from "../components/scroll/useParallax";
+import aboutImage from "../assets/licha.jpg"
+
 
 export default function About() {
-  const headingY = useParallax({ range: 350, offset: -8 });
-  const cardY = useParallax({ range: 400, offset: -10 });
+  const imageY = useParallax({ range: 300, offset: -10 });
+  const textY = useParallax({ range: 350, offset: -8 });
 
   return (
     <section
       id="about"
       className="
         py-32 
-        bg-gradient-to-b from-[#ffffff] via-[#ffe0d6]/20 to-[#83aefa]/20
+        bg-white
         dark:bg-slate-900
         transition-colors duration-300
       "
     >
-      <div className="max-w-6xl mx-auto px-6">
+      
+      <div className="max-w-7xl mx-auto px-6">
 
-        {/* CONTENEDOR CON STAGGER */}
         <motion.div
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.3 }}
-          className="text-center"
-          style={{ y: headingY }}
+          className="
+            grid grid-cols-1 md:grid-cols-2 
+            gap-14 items-center
+          "
         >
-          {/* TÍTULO */}
-          <motion.h2
-            className="
-              font-display font-bold 
-              text-5xl md:text-6xl 
-              mb-8 text-gray-900 dark:text-white
-            "
-            variants={fadeUp}
-          >
-            Sobre{" "}
-            <span className="text-nivOrange dark:text-nivLightBlue">
-              Nosotros
-            </span>
-          </motion.h2>
 
-          {/* SUBRAYADO */}
+          {/* IMAGEN IZQUIERDA */}
+          <motion.div
+            variants={fadeScale}
+            style={{ y: imageY }}
+            className="
+              relative w-full h-[420px] md:h-[520px]
+              rounded-3xl overflow-hidden shadow-xl
+            "
+          >
+            <img
+              src={aboutImage}
+              alt="Equipo creativo Nivalis"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+
+          {/* TEXTO DERECHA */}
           <motion.div
             variants={fadeUp}
-            className="
-              w-28 h-1.5 mx-auto mb-10 rounded-full 
-              bg-gradient-to-r from-nivOrange to-nivBlue
-              dark:from-nivLightBlue dark:to-nivBlue
-            "
-          />
-
-          {/* TEXTO PRINCIPAL */}
-          <motion.p
-            className="
-              font-body text-xl md:text-2xl 
-              text-gray-700 dark:text-gray-300 
-              max-w-3xl mx-auto leading-relaxed mb-10
-            "
-            variants={fadeUp}
+            style={{ y: textY }}
+            className="text-left"
           >
-            Somos un estudio creativo y tecnológico especializado en diseño,
-            desarrollo y marketing digital. Ayudamos a marcas y negocios a crecer
-            mediante soluciones modernas, humanas y adaptadas a cada necesidad.
-          </motion.p>
-        </motion.div>
+            <motion.h2
+              variants={fadeUp}
+              className="
+                font-display font-bold 
+                text-5xl md:text-6xl 
+                mb-6 text-gray-900 dark:text-white
+              "
+            >
+              Agencia <br />
+              <span className="text-nivOrange dark:text-nivLightBlue">
+                creativa digital
+              </span>
+            </motion.h2>
 
-        {/* CARD CENTRAL */}
-        <motion.div
-          variants={fadeScale}
-          className="
-            mt-14 p-10 md:p-14 rounded-3xl text-white shadow-lg
-            bg-gradient-to-br from-nivOrange to-nivBlue
-            dark:from-[#fd6647]/70 dark:to-[#0259dd]/70
-            max-w-3xl mx-auto
-          "
-          style={{ y: cardY }}
-        >
-          <h3 className="font-display text-3xl md:text-4xl font-bold mb-4">
-            Un enfoque diferente
-          </h3>
+            <motion.p
+              variants={fadeUp}
+              className="
+                font-body text-xl md:text-2xl 
+                text-gray-700 dark:text-gray-300 
+                leading-relaxed max-w-xl
+              "
+            >
+              Nuestro equipo con base en Buenos Aires responde a las
+              necesidades de marcas que buscan destacarse en el mundo digital.
+              Diseñamos, desarrollamos y posicionamos experiencias con foco en
+              resultados reales.
+            </motion.p>
+          </motion.div>
 
-          <p className="font-body text-lg md:text-xl leading-relaxed opacity-95">
-            Combinamos creatividad, estrategia y tecnología para crear experiencias
-            digitales memorables. Nuestra misión es potenciar empresas con herramientas
-            modernas, eficientes y de impacto real — siempre con agilidad, claridad y
-            un trato cercano.
-          </p>
         </motion.div>
       </div>
     </section>
