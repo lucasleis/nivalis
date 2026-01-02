@@ -167,9 +167,14 @@ export default function FullscreenMenu({
                 onClick={onClose}
                 className="
                   absolute top-6 right-6
-                  w-12 h-12 rounded-full
-                  bg-[#fd6647] text-black
-                  text-xl flex items-center justify-center
+                  w-12 h-12
+                  rounded-full
+                  bg-black text-white
+                  text-xl
+                  flex items-center justify-center
+                  transition-all duration-200 ease-out
+                  hover:bg-nivOrange
+                  hover:scale-105
                 "
                 aria-label="Cerrar menú"
               >
@@ -239,35 +244,52 @@ export default function FullscreenMenu({
                     ¿Tenés un proyecto en mente?
                   </p>
 
-                  <motion.button
+                  <button
                     onClick={() => {
                       onClose();
                       onNavigate("#contacto");
                     }}
-                    className="mt-6 self-end"
-                    initial="rest"
-                    animate="rest"
-                    whileHover="hover"
+                    className="
+                      group
+                      relative
+                      mt-6
+                      self-end
+                      inline-block
+                      w-fit
+                      text-3xl lg:text-5xl
+                      text-white
+                      transition-colors
+                      duration-300
+                      hover:text-[#fd6647]
+                    "
                   >
-                    <span className="relative inline-block">
-                      {/* TEXTO */}
-                      <span className="text-[#fd6647] text-3xl lg:text-5xl">
-                        Hablemos ↗
-                      </span>
+                    <span className="inline-flex items-center gap-2">
+                      <span>Hablemos</span>
 
-                      {/* SUBRAYADO */}
-                      <motion.span
-                        variants={underlineVariants}
-                        transition={{ duration: 0.25, ease: "easeOut" }}
+                      <span
                         className="
-                          absolute left-0 -bottom-1
-                          h-[3px] w-full
-                          bg-[#fd6647]
-                          origin-left
+                          inline-block
+                          transition-transform duration-300 ease-out
+                          group-hover:translate-x-1
                         "
-                      />
+                      >
+                        ↗
+                      </span>
                     </span>
-                  </motion.button>
+
+                    <span
+                      className="
+                        pointer-events-none
+                        absolute left-0 -bottom-[4px]
+                        h-[3px] w-full
+                        bg-[#fd6647]
+                        origin-left
+                        scale-x-0
+                        transition-transform duration-300 ease-out
+                        group-hover:scale-x-100
+                      "
+                    />
+                  </button>
 
                 </motion.div>
                 
