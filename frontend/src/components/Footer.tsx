@@ -142,17 +142,29 @@ export default function Footer() {
               href="#inicio"
               className="
                 group
-                flex items-center gap-3
-                transition-colors
+                flex flex-col items-center
+                transition-all
                 duration-300
                 ease-out
                 hover:text-nivOrange
               "
             >
-              <span>Back to top</span>
-
+              {/* TEXTO */}
               <span
                 className="
+                  transition-transform
+                  duration-300
+                  ease-out
+                  group-hover:-translate-y-[1px]
+                "
+              >
+                Back to top
+              </span>
+
+              {/* FLECHA */}
+              <span
+                className="
+                  mt-1
                   w-8 h-8
                   flex items-center justify-center
                   rounded-full
@@ -173,22 +185,8 @@ export default function Footer() {
                   "
                 />
               </span>
-
             </a>
 
-            {/* BOTÓN INVISIBLE PARA ALINEAR ALTURAS */}
-            <a
-              aria-hidden
-              className="
-                px-5 py-2
-                rounded-full
-                text-xs
-                font-semibold
-                invisible
-              "
-            >
-              Hablemos!
-            </a>
           </div>
           
         </div>
