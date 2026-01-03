@@ -48,8 +48,10 @@ export default function ContactForm() {
 
                 {/* Teléfono */}
                 <a
-                    href="tel:+5491151232153"
-                    className="
+                  href="https://wa.me/5491151232153"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
                     group
                     relative
                     inline-block
@@ -58,22 +60,22 @@ export default function ContactForm() {
                     transition-colors
                     duration-300
                     hover:text-[#fd6647]
-                    "
+                  "
                 >
-                    +54 9 1151232153
+                  +54 9 11 5123 2153
 
-                    <span
+                  <span
                     className="
-                        underline-slide
-                        pointer-events-none
-                        absolute left-0 -bottom-[2px]
-                        h-[2px] w-full
-                        bg-gray-900
-                        transition-colors
-                        duration-300
-                        group-hover:bg-[#fd6647]
+                      underline-slide
+                      pointer-events-none
+                      absolute left-0 -bottom-[2px]
+                      h-[2px] w-full
+                      bg-gray-900
+                      transition-colors
+                      duration-300
+                      group-hover:bg-[#fd6647]
                     "
-                    />
+                  />
                 </a>
 
             </div>
@@ -169,7 +171,7 @@ export default function ContactForm() {
               "
             >
               ENVIAR MENSAJE
-              <span className="text-xl">✦</span>
+              {/*<span className="text-xl">✦</span>*/}
             </button>
           </form>
 

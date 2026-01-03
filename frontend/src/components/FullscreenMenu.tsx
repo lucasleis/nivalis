@@ -109,9 +109,10 @@ export default function FullscreenMenu({
   if (!mounted) return null;
 
   const navItems = [
-    { id: "home", label: "Home", href: "#inicio" },
-    { id: "nivalis", label: "Nivalis", href: "#inicio" },
-    { id: "proyectos", label: "Proyectos", href: "#proyectos" },
+    { id: "inicio", label: "Inicio", href: "#inicio" },
+    { id: "about", label: "Nivalis", href: "#about" },
+    { id: "services", label: "Servicios", href: "#services" },
+    { id: "portfolio", label: "Proyectos", href: "#portfolio" },
     { id: "contacto", label: "Contacto", href: "#contacto" },
   ];
 
@@ -244,52 +245,53 @@ export default function FullscreenMenu({
                     ¿Tenés un proyecto en mente?
                   </p>
 
-                  <button
-                    onClick={() => {
-                      onClose();
-                      onNavigate("#contacto");
-                    }}
-                    className="
-                      group
-                      relative
-                      mt-6
-                      self-end
-                      inline-block
-                      w-fit
-                      text-3xl lg:text-5xl
-                      text-white
-                      transition-colors
-                      duration-300
-                      hover:text-[#fd6647]
-                    "
-                  >
-                    <span className="inline-flex items-center gap-2">
-                      <span>Hablemos</span>
+                    <a
+                      href="https://wa.me/5491151232153"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={onClose}
+                      className="
+                        group
+                        relative
+                        mt-6
+                        self-end
+                        inline-block
+                        w-fit
+                        text-3xl lg:text-5xl
+                        text-white
+                        transition-colors
+                        duration-300
+                        hover:text-[#fd6647]
+                      "
+                    >
+                      <span className="inline-flex items-center gap-2">
+                        <span>Hablemos</span>
+
+                        <span
+                          className="
+                            inline-block
+                            transition-transform duration-300 ease-out
+                            group-hover:translate-x-1
+                          "
+                        >
+                          ↗
+                        </span>
+                      </span>
 
                       <span
                         className="
-                          inline-block
+                          pointer-events-none
+                          absolute left-0 -bottom-[4px]
+                          h-[3px] w-full
+                          bg-[#fd6647]
+                          origin-left
+                          scale-x-0
                           transition-transform duration-300 ease-out
-                          group-hover:translate-x-1
+                          group-hover:scale-x-100
                         "
-                      >
-                        ↗
-                      </span>
-                    </span>
+                      />
+                    </a>
 
-                    <span
-                      className="
-                        pointer-events-none
-                        absolute left-0 -bottom-[4px]
-                        h-[3px] w-full
-                        bg-[#fd6647]
-                        origin-left
-                        scale-x-0
-                        transition-transform duration-300 ease-out
-                        group-hover:scale-x-100
-                      "
-                    />
-                  </button>
 
                 </motion.div>
                 

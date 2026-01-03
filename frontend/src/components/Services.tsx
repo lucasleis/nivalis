@@ -17,7 +17,7 @@ export default function Hero() {
   // const nextWord = () => setIndex((prev) => (prev + 1) % words.length);
 
   return (
-    <section className="min-h-screen flex items-center bg-white">
+    <section id="services" className="min-h-screen flex items-center bg-white">
       <div className="max-w-6xl mx-auto px-6 w-full">
         <p className="text-sm tracking-[0.25em] text-gray-500 mb-10">
           AGENCIA DIGITAL CON VISIÓN 360

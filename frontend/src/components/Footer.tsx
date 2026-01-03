@@ -21,11 +21,29 @@ export default function Footer() {
           "
         >
           {/* COLUMNA 1 */}
-          <div className="flex flex-col items-center justify-center gap-1 font-medium">
-            <span>¿Tenés un proyecto?</span>
+          <div className="group flex flex-col items-center justify-center gap-1 font-medium">
 
+            {/* TEXTO */}
             <a
-              href="#contacto"
+              href="https://wa.me/5491151232153"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                transition-all
+                duration-300
+                ease-out
+                group-hover:text-nivOrange
+                group-hover:-translate-y-[1px]
+              "
+            >
+              ¿Tenés un proyecto?
+            </a>
+
+            {/* BOTÓN */}
+            <a
+              href="https://wa.me/5491151232153"
+              target="_blank"
+              rel="noopener noreferrer"
               className="
                 px-5 py-2
                 rounded-full
@@ -36,9 +54,8 @@ export default function Footer() {
                 transition-colors
                 duration-300
                 ease-out
-                hover:bg-nivOrange
+                group-hover:bg-nivOrange
                 overflow-hidden
-                group
               "
             >
               <span
@@ -54,6 +71,7 @@ export default function Footer() {
                 Hablemos!
               </span>
             </a>
+
           </div>
 
           {/* COLUMNA 2 */}
@@ -90,7 +108,7 @@ export default function Footer() {
           <div className="flex flex-col items-center justify-center gap-1 font-medium">
 
             <a
-              href="https://linkedin.com/company/nivalis"
+              href="https://www.facebook.com/nivalis.techlab"
               target="_blank"
               rel="noopener noreferrer"
               className="
@@ -101,8 +119,9 @@ export default function Footer() {
                 hover:-translate-y-[1px]
               "
             >
-              Linkedin
+              Facebook
             </a>
+
             <a
               aria-hidden
               className="
