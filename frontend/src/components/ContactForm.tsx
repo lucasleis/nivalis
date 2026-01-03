@@ -166,13 +166,16 @@ export default function ContactForm() {
                 px-12 py-5
                 text-lg font-semibold
                 flex items-center gap-3
-                transition-all
-                hover:bg-black hover:text-white
+                transition-all duration-200 ease-out
+                hover:bg-nivOrange
+                hover:text-white
+                hover:border-nivOrange
+                hover:scale-105
               "
             >
               ENVIAR MENSAJE
-              {/*<span className="text-xl">✦</span>*/}
             </button>
+
           </form>
 
         </div>
