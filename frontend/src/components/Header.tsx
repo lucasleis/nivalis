@@ -7,6 +7,7 @@ import FullscreenMenu from "./FullscreenMenu";
 
 import logo from "../assets/logos/A6.png";
 import logo_mini from "../assets/logos/A6.png";
+import logo_mini_orange from "../assets/logos/A1.png";
 
 
 // ======== BUTTON STYLE ==========
@@ -156,16 +157,40 @@ export default function Header() {
             {!isTop && (
               <motion.button
                 onClick={() => handleNavClick("#inicio")}
-                className="fixed top-4 left-4 z-[100] flex items-center"
+                className="
+                  fixed top-4 left-4 z-[100]
+                  group
+                  flex items-center
+                "
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={logoTransition}
+                aria-label="Volver al inicio"
               >
+                {/* Logo normal */}
                 <img
                   src={logo_mini}
-                  alt="Nivalis Logo Scroll"
-                  className="h-10 w-auto object-contain"
+                  alt="Nivalis Logo"
+                  className="
+                    h-10 w-auto object-contain
+                    transition-opacity duration-200 ease-out
+                    group-hover:opacity-0
+                  "
+                />
+
+                {/* Logo naranja */}
+                <img
+                  src={logo_mini_orange}
+                  alt="Nivalis Logo Hover"
+                  className="
+                    h-10 w-auto object-contain
+                    absolute
+                    opacity-0
+                    transition-all duration-200 ease-out
+                    group-hover:opacity-100
+                    group-hover:scale-105
+                  "
                 />
               </motion.button>
             )}
