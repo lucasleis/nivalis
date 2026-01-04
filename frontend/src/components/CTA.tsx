@@ -65,77 +65,79 @@ export default function CTA() {
       </div>
 
       {/* CARD */}
-      <motion.div
-        className="
-          relative z-10
-          w-[80%] mx-auto
-          rounded-[32px]
-          px-10 py-16 md:px-16 md:py-20
-          overflow-hidden
-          bg-cover bg-center
-          bg-nivalis-pattern-overlay
-        "
-        style={{
-          y: contentY,
-          backgroundImage: `url(${nivalisGradient})`,
-        }}
-      >
-        {/* OVERLAY MÍNIMO */}
-        <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <motion.div
+          className="
+            relative
+            w-full
+            rounded-[32px]
+            px-10 py-16 md:px-16 md:py-20
+            overflow-hidden
+            bg-cover bg-center
+            bg-nivalis-pattern-overlay
+          "
+          style={{
+            y: contentY,
+            backgroundImage: `url(${nivalisGradient})`,
+          }}
+        >
+          {/* OVERLAY MÍNIMO */}
+          <div className="absolute inset-0 bg-black/10 pointer-events-none" />
 
-        {/* CONTENIDO */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center text-white">
-          {/* LEFT */}
-          <div>
-            <motion.span
-              variants={fadeUp}
-              className="block mb-4 text-xs tracking-[0.3em] uppercase text-white/80"
-            >
-              Trabajemos juntos y en equipo
-            </motion.span>
-
-            <motion.p
-              variants={fadeUp}
-              className="text-lg md:text-xl text-white/85 mb-10 max-w-md"
-            >
-              Construyendo el camino hacia un resultado plug and play.
-            </motion.p>
-
-            <motion.div variants={fadeUpDelayed(0.2)}>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                  inline-flex items-center gap-3
-                  px-8 py-4 rounded-full
-                  border border-white
-                  text-white
-                  hover:bg-white hover:text-black
-                  transition-all
-                "
+          {/* CONTENIDO */}
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center text-white">
+            {/* LEFT */}
+            <div>
+              <motion.span
+                variants={fadeUp}
+                className="block mb-4 text-xs tracking-[0.3em] uppercase text-white/80"
               >
-                Contactanos
-              </a>
-            </motion.div>
-          </div>
+                Trabajemos juntos y en equipo
+              </motion.span>
 
-          {/* RIGHT */}
-          <motion.h2
-            variants={fadeUp}
-            className="
-              font-display font-black
-              text-5xl md:text-7xl
-              leading-tight
-              uppercase
-              text-white
-              drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]
-            "
-          >
-            Hacemos todo <br /> en un solo lugar
-          </motion.h2>
-        </div>
-      </motion.div>
+              <motion.p
+                variants={fadeUp}
+                className="text-lg md:text-xl text-white/85 mb-10 max-w-md"
+              >
+                Construyendo el camino hacia un resultado plug and play.
+              </motion.p>
+
+              <motion.div variants={fadeUpDelayed(0.2)}>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    inline-flex items-center gap-3
+                    px-8 py-4 rounded-full
+                    border border-white
+                    text-white
+                    hover:bg-white hover:text-black
+                    transition-all
+                  "
+                >
+                  Contactanos
+                </a>
+              </motion.div>
+            </div>
+
+            {/* RIGHT */}
+            <motion.h2
+              variants={fadeUp}
+              className="
+                font-display font-black
+                text-5xl md:text-7xl
+                leading-tight
+                uppercase
+                text-white
+                drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]
+              "
+            >
+              Hacemos todo <br /> en un solo lugar
+            </motion.h2>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }
