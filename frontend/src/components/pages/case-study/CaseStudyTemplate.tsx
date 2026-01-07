@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { X } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { fadeUp, fadeIn, staggerContainer } from "../../../motion/variants";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { useParallax } from "../../scroll/useParallax";
@@ -37,6 +37,62 @@ export default function CaseStudyTemplate({
 
   const heroY = useParallax({ range: 300, offset: -10 });
   const [activeImage, setActiveImage] = useState<string | null>(null);
+  const activeIndex = gallery?.indexOf(activeImage ?? "") ?? -1;
+  const [scale, setScale] = useState(1);
+  const [origin, setOrigin] = useState({ x: "50%", y: "50%" });
+
+  const clamp = (v: number, min: number, max: number) => Math.min(Math.max(v, min), max);
+
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setZoomOriginFromEvent(e);
+
+    setScale((prev) => {
+      const next = prev - e.deltaY * 0.0012;
+      return clamp(next, 1, 3);
+    });
+  };
+
+  const handleDoubleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setZoomOriginFromEvent(e);
+
+    setScale((prev) => (prev === 1 ? 2 : 1));
+  };
+
+  const resetZoom = () => {
+    setScale(1);
+    setOrigin({ x: "50%", y: "50%" });
+  };
+
+  const showPrev = () => {
+    if (!gallery || activeIndex <= 0) return;
+    setActiveImage(gallery[activeIndex - 1]);
+  };
+
+  const showNext = () => {
+    if (!gallery || activeIndex >= gallery.length - 1) return;
+    setActiveImage(gallery[activeIndex + 1]);
+  };
+
+  const setZoomOriginFromEvent = (
+    e: React.MouseEvent | React.WheelEvent
+  ) => {
+    const rect = (e.target as HTMLElement).getBoundingClientRect();
+
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+    setOrigin({
+      x: `${x}%`,
+      y: `${y}%`,
+    });
+  };
+
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -57,6 +113,23 @@ export default function CaseStudyTemplate({
     return () => {
       document.body.style.overflow = "";
     };
+  }, [activeImage]);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActiveImage(null);
+      if (e.key === "ArrowLeft") showPrev();
+      if (e.key === "ArrowRight") showNext();
+    };
+
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [activeIndex, gallery]);
+
+  useEffect(() => {
+    if (activeImage) {
+      resetZoom();
+    }
   }, [activeImage]);
 
 
@@ -259,48 +332,96 @@ export default function CaseStudyTemplate({
             className="relative inline-block"
             onMouseDown={(e) => e.stopPropagation()}
           >
-            <button
-              type="button"
-              onMouseDown={(e) => {
-                e.stopPropagation();
-                setActiveImage(null);
-              }}
-              className="
-                absolute top-3 right-3 z-10
-                w-8 h-8
-                flex items-center justify-center
-                rounded-full
-                bg-white
-                text-black
-                shadow
-                hover:scale-105
-                transition
-              "
-              aria-label="Cerrar imagen"
-            >
-              <X className="w-4 h-4" />
-            </button>
+
+            {/* Flecha izquierda */}
+            {activeIndex > 0 && (
+              <button
+                type="button"
+                onClick={showPrev}
+                className="
+                  absolute top-1/2 -left-12 -translate-y-1/2
+                  w-10 h-10
+                  flex items-center justify-center
+                  rounded-full
+                  bg-white/90
+                  text-black
+                  shadow
+                  hover:scale-105
+                  transition
+                "
+                aria-label="Imagen anterior"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+            )}
+
+            {/* Flecha derecha */}
+            {gallery && activeIndex < gallery.length - 1 && (
+              <button
+                type="button"
+                onClick={showNext}
+                className="
+                  absolute top-1/2 -right-12 -translate-y-1/2
+                  w-10 h-10
+                  flex items-center justify-center
+                  rounded-full
+                  bg-white/90
+                  text-black
+                  shadow
+                  hover:scale-105
+                  transition
+                "
+                aria-label="Imagen siguiente"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            )}
+
+            {/* Button X */}
+            {scale === 1 && (
+              <button
+                type="button"
+                onMouseDown={(e) => {
+                  e.stopPropagation();
+                  setActiveImage(null);
+                }}
+                className="
+                  absolute top-3 right-3 z-10
+                  w-8 h-8
+                  flex items-center justify-center
+                  rounded-full
+                  bg-white
+                  text-black
+                  shadow
+                  hover:scale-105
+                  transition
+                "
+                aria-label="Cerrar imagen"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
 
             <motion.img
               src={activeImage}
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="
+              onWheel={handleWheel}
+              onDoubleClick={handleDoubleClick}
+              style={{
+                scale,
+                transformOrigin: `${origin.x} ${origin.y}`,
+              }}
+              className={`
                 max-w-[90vw]
                 max-h-[85vh]
                 rounded-2xl
                 shadow-2xl
-                cursor-zoom-out
-                block
-              "
+                select-none
+                ${scale > 1 ? "cursor-zoom-out" : "cursor-zoom-in"}
+              `}
             />
           </div>
         </motion.div>
       )}
-
-
 
     </section>
   );
