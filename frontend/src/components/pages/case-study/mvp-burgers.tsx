@@ -1,7 +1,17 @@
 import Header from "../../Header";
+import Footer from "../../Footer";
 import CaseStudyTemplate from "./CaseStudyTemplate";
 
 import mvpLogo from "../../../assets/portfolio/mascota_sinfondo_volteada.ico";
+import img1 from "../../../assets/imgs/mvp-img-1.png";
+import img2 from "../../../assets/imgs/mvp-img-2.png";
+import img3 from "../../../assets/imgs/mvp-img-3.png";
+import img4 from "../../../assets/imgs/mvp-img-4.png";
+import img5 from "../../../assets/imgs/mvp-img-5.png";
+import img6 from "../../../assets/imgs/mvp-img-6.png";
+import img7 from "../../../assets/imgs/mvp-img-7.png";
+import img8 from "../../../assets/imgs/mvp-img-8.png";
+
 
 export default function MvpBurgersCaseStudy() {
   return (
@@ -23,7 +33,7 @@ export default function MvpBurgersCaseStudy() {
         Los sistemas manuales ya no permitían escalar."
         
         solution="
-        Desarrollé un MVP completo que permite tomar pedidos, mostrar un resumen claro, 
+        Desarrollamos un MVP completo que permite tomar pedidos, mostrar un resumen claro, 
         enviar órdenes al backend y gestionar el estado de cada pedido. 
         La UI fue diseñada para ser extremadamente rápida, moderna y adaptable a escritorio, tablets o celulares. 
         La arquitectura incluye React para el frontend, Flask como backend ligero y Redis como capa de almacenamiento y cola."
@@ -48,10 +58,14 @@ export default function MvpBurgersCaseStudy() {
         ]}
 
         gallery={[
-          "/images/mvp-1.jpg",
-          "/images/mvp-2.jpg",
-          "/images/mvp-3.jpg",
-          "/images/mvp-4.jpg"
+          img1,
+          img2,
+          img3,
+          img4,
+          img5,
+          img8,
+          img6,
+          img7,
         ]}
 
         results="
@@ -59,6 +73,9 @@ export default function MvpBurgersCaseStudy() {
         y acelerar los tiempos en la preparación. Al ser un MVP, el cliente pudo validar el flujo completo 
         y sentar las bases para un sistema más robusto."
       />
+
+            <Footer />
+
     </>
 
   );

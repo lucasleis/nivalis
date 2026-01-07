@@ -1,4 +1,6 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { X } from "lucide-react";
 import { fadeUp, fadeIn, staggerContainer } from "../../../motion/variants";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { useParallax } from "../../scroll/useParallax";
@@ -34,6 +36,30 @@ export default function CaseStudyTemplate({
 }: CaseStudyProps) {
 
   const heroY = useParallax({ range: 300, offset: -10 });
+  const [activeImage, setActiveImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActiveImage(null);
+    };
+
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
+
+  useEffect(() => {
+    if (activeImage) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [activeImage]);
+
+
 
   return (
     <section className="pb-24 bg-white dark:bg-slate-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
@@ -117,7 +143,6 @@ export default function CaseStudyTemplate({
         </motion.div>
       </div>
 
-
       {/* CONTENT */}
       <div className="max-w-5xl mx-auto px-6 mt-20 flex flex-col gap-20">
 
@@ -165,13 +190,23 @@ export default function CaseStudyTemplate({
         {gallery && gallery.length > 0 && (
           <motion.div variants={staggerContainer} initial="initial" whileInView="animate">
             <motion.h2 variants={fadeUp} className="text-3xl font-bold mb-4">Galería</motion.h2>
-            <div className="grid md:grid-cols-2 gap-8 mt-3">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-3">
               {gallery.map((img, index) => (
                 <motion.img
                   key={index}
                   variants={fadeIn}
                   src={img}
-                  className="rounded-2xl shadow-lg"
+                  className="
+                    cursor-zoom-in
+                    rounded-xl
+                    shadow-md
+                    w-full
+                    max-h-48
+                    object-cover
+                    transition-transform
+                    hover:scale-[1.03]
+                  "
+                  onClick={() => setActiveImage(img)}
                 />
               ))}
             </div>
@@ -205,6 +240,68 @@ export default function CaseStudyTemplate({
           )}
         </motion.div>
       </div>
+
+      {activeImage && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="
+            fixed inset-0 z-[9999]
+            bg-black/80
+            flex items-center justify-center
+            p-6
+          "
+
+          onMouseDown={() => setActiveImage(null)}
+        >
+          <div
+            className="relative inline-block"
+            onMouseDown={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onMouseDown={(e) => {
+                e.stopPropagation();
+                setActiveImage(null);
+              }}
+              className="
+                absolute top-3 right-3 z-10
+                w-8 h-8
+                flex items-center justify-center
+                rounded-full
+                bg-white
+                text-black
+                shadow
+                hover:scale-105
+                transition
+              "
+              aria-label="Cerrar imagen"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <motion.img
+              src={activeImage}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="
+                max-w-[90vw]
+                max-h-[85vh]
+                rounded-2xl
+                shadow-2xl
+                cursor-zoom-out
+                block
+              "
+            />
+          </div>
+        </motion.div>
+      )}
+
+
+
     </section>
   );
 }
