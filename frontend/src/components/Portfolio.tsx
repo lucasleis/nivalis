@@ -12,21 +12,25 @@ const cases = [
     image: mvp,
     title: "MVP Burgers",
     subtitle: "Plataforma de pedidos · UX/UI · Desarrollo Web",
+    slug: "mvp-burgers",
   },
   {
     image: barberpay,
     title: "BarberPay",
     subtitle: "Sistema de gestión · Pagos · UX/UI",
+    slug: "barberpay",
   },
   {
     image: lupa,
     title: "Buscando con Lupa",
     subtitle: "Micrositio gamificado · Frontend",
+    slug: "buscando-con-lupa",
   },
   {
     image: temptation,
     title: "Temptation Lingerie",
     subtitle: "Pauta digital · Redes sociales",
+    slug: "temptation-lingerie",
   },
   /*
   {

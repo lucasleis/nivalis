@@ -1,58 +1,61 @@
+import { Link } from "react-router-dom"
+
 type CaseCardProps = {
   image: string
   title: string
   subtitle: string
+  slug: string
 }
 
 export default function CaseCard({
   image,
   title,
   subtitle,
+  slug,
 }: CaseCardProps) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl shadow-xl cursor-pointer">
-      {/* Imagen */}
-      <img
-        src={image}
-        alt={title}
-        className="h-[420px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
-      />
+    <Link to={`/case-study/${slug}`} className="group block">
+      <div className="relative overflow-hidden rounded-2xl shadow-xl cursor-pointer">
+        {/* Imagen */}
+        <img
+          src={image}
+          alt={title}
+          className="h-[420px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
 
-      {/* Cortina inferior */}
-      <div
-        className="
-          absolute bottom-0 left-0 w-full
-          h-1/3
-          bg-black/85
-          opacity-0
-          transition-opacity duration-500 ease-out
-          group-hover:opacity-100
-        "
-      >
-        <div className="flex h-full flex-col justify-between p-6">
-          <div>
-            <h3 className="text-xl font-bold text-white">
-              {title}
-            </h3>
-            <p className="mt-1 text-sm text-gray-300">
-              {subtitle}
-            </p>
+        {/* Overlay */}
+        <div
+          className="
+            absolute bottom-0 left-0 w-full
+            h-1/3
+            bg-black/85
+            opacity-0
+            transition-opacity duration-500 ease-out
+            group-hover:opacity-100
+          "
+        >
+          <div className="flex h-full flex-col justify-between p-6">
+            <div>
+              <h3 className="text-xl font-bold text-white">
+                {title}
+              </h3>
+              <p className="mt-1 text-sm text-gray-300">
+                {subtitle}
+              </p>
+            </div>
+
+            <span
+              className="
+                w-fit rounded-full
+                bg-[#fd6647] px-5 py-2
+                text-sm font-semibold text-white
+              "
+            >
+              Ver proyecto
+            </span>
           </div>
-
-          <button
-            className="
-              w-fit rounded-full
-              bg-[#fd6647] px-5 py-2
-              text-sm font-semibold text-white
-              transition-all duration-300
-              hover:bg-[#e85a3f]
-              hover:scale-[1.03]
-            "
-          >
-            Ver proyecto
-          </button>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }

@@ -34,61 +34,64 @@ export default function CaseStudyTemplate({
   const heroY = useParallax({ range: 300, offset: -10 });
 
   return (
-    <section className="pt-32 pb-24 bg-white dark:bg-slate-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <section className="pb-24 bg-white dark:bg-slate-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
 
-      {/* HERO */}
-      <motion.div
-        variants={staggerContainer}
-        initial="initial"
-        animate="animate"
-        className="max-w-6xl mx-auto px-6 text-center"
-        style={{ y: heroY }}
-      >
-        <motion.p variants={fadeUp} className="uppercase text-sm tracking-[0.2em] text-gray-500 dark:text-gray-400">
-          {category}
-        </motion.p>
-
-        <motion.h1
-          variants={fadeUp}
-          className="
-            text-5xl md:text-7xl font-extrabold 
-            bg-clip-text text-transparent 
-            bg-gradient-to-r from-nivOrange to-nivBlue 
-            mt-4 leading-tight
-          "
+      <div className="pt-48">
+        {/* HERO */}
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          animate="animate"
+          className="max-w-6xl mx-auto px-6 text-center"
+          style={{ y: heroY }}
         >
-          {title.includes("–") ? (
-            <>
-              {title.split("–")[0].trim()}
-              <br />
-              <span className="
-                bg-gradient-to-r from-nivOrange to-nivBlue 
-                bg-clip-text text-transparent 
-                font-semibold
-              ">
-                {title.split("–")[1].trim()}
-              </span>
-            </>
-          ) : (
-            title
-          )}
-        </motion.h1>
-
-        {subtitle && (
-          <motion.p variants={fadeUp} className="text-xl mt-6 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            {subtitle}
+          <motion.p variants={fadeUp} className="uppercase text-sm tracking-[0.2em] text-gray-500 dark:text-gray-400">
+            {category}
           </motion.p>
-        )}
 
-        {heroImage && (
-          <motion.img
-            variants={fadeIn}
-            src={heroImage}
-            alt={title}
-            className="mt-12 w-full rounded-3xl shadow-lg"
-          />
-        )}
-      </motion.div>
+          <motion.h1
+            variants={fadeUp}
+            className="
+              text-5xl md:text-7xl font-extrabold 
+              bg-clip-text text-transparent 
+              bg-gradient-to-r from-nivOrange to-nivBlue 
+              mt-4 leading-tight
+            "
+          >
+            {title.includes("–") ? (
+              <>
+                {title.split("–")[0].trim()}
+                <br />
+                <span className="
+                  bg-gradient-to-r from-nivOrange to-nivBlue 
+                  bg-clip-text text-transparent 
+                  font-semibold
+                ">
+                  {title.split("–")[1].trim()}
+                </span>
+              </>
+            ) : (
+              title
+            )}
+          </motion.h1>
+
+          {subtitle && (
+            <motion.p variants={fadeUp} className="text-xl mt-6 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              {subtitle}
+            </motion.p>
+          )}
+
+          {heroImage && (
+            <motion.img
+              variants={fadeIn}
+              src={heroImage}
+              alt={title}
+              className="mt-12 w-full rounded-3xl shadow-lg"
+            />
+          )}
+        </motion.div>
+      </div>
+
 
       {/* CONTENT */}
       <div className="max-w-5xl mx-auto px-6 mt-20 flex flex-col gap-20">
