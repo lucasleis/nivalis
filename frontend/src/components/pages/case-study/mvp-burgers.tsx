@@ -17,7 +17,7 @@ export default function MvpBurgersCaseStudy() {
 
       <CaseStudyTemplate
         title="MVP Burgers"
-        category="E-commerce"
+        category=""
         subtitle="Plataforma de pedidos · UX/UI · Desarrollo Web"
         // brandLogo="/assets/logos/mvp-burgers.svg"
         heroImage="/assets/cases/mvp-hero.jpg"

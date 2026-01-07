@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { fadeUp, fadeIn, staggerContainer } from "../../../motion/variants";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+// import { ArrowLeft, ExternalLink } from "lucide-react";
 import { useParallax } from "../../scroll/useParallax";
 import ContactForm from "../../ContactForm";
 import Header from "../../Header";

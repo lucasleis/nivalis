@@ -10,7 +10,7 @@ import Home from "./pages/Home";
 // Case Studies
 import MvpBurgersCaseStudy from "./components/pages/case-study/mvp-burgers";
 import LupaCaseStudy from "./components/pages/case-study/lupa";
-import PagosCaseStudy from "./components/pages/case-study/pagos";
+import PagosCaseStudy from "./components/pages/case-study/barberpay";
 
 export default function App() {
   return (
@@ -28,7 +28,7 @@ export default function App() {
               {/* Case Studies */}
               <Route path="/case-study/mvp-burgers" element={<MvpBurgersCaseStudy />} />
               <Route path="/case-study/lupa" element={<LupaCaseStudy />} />
-              <Route path="/case-study/pagos" element={<PagosCaseStudy />} />
+              <Route path="/case-study/barberpay" element={<PagosCaseStudy />} />
 
             </Route>
 
