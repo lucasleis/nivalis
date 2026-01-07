@@ -1,5 +1,3 @@
-import Header from "../../Header";
-import Footer from "../../Footer";
 import CaseStudyTemplate from "./CaseStudyTemplate";
 
 import mvpLogo from "../../../assets/portfolio/mascota_sinfondo_volteada.ico";
@@ -17,8 +15,6 @@ export default function MvpBurgersCaseStudy() {
   return (
     <>
 
-      <Header />
-
       <CaseStudyTemplate
         title="MVP Burgers"
         category="E-commerce"
@@ -28,15 +24,14 @@ export default function MvpBurgersCaseStudy() {
         logo={mvpLogo}
 
         problem="
-        El cliente necesitaba digitalizar completamente su flujo de pedidos para evitar confusiones, 
-        optimizar los tiempos de preparación y centralizar la gestión de pedidos tanto en salón como en cocina. 
-        Los sistemas manuales ya no permitían escalar."
+          El negocio gestionaba los pedidos de forma manual, lo que generaba errores, confusión entre el mostrador y la cocina y demoras en la preparación.
+          Este enfoque funcionaba al inicio, pero se volvía insostenible a medida que el volumen de pedidos crecía, afectando la atención y provocando pérdida de ventas en horarios pico.
+        "
         
         solution="
-        Desarrollamos un MVP completo que permite tomar pedidos, mostrar un resumen claro, 
-        enviar órdenes al backend y gestionar el estado de cada pedido. 
-        La UI fue diseñada para ser extremadamente rápida, moderna y adaptable a escritorio, tablets o celulares. 
-        La arquitectura incluye React para el frontend, Flask como backend ligero y Redis como capa de almacenamiento y cola."
+          Diseñamos una plataforma de pedidos simple y ordenada que unifica la experiencia del cliente con la operación interna.
+          El sistema permite confirmar pedidos con claridad y enviarlos automáticamente al equipo, eliminando pasos manuales.
+        "
         
         stack={[
           "React", 
@@ -49,12 +44,12 @@ export default function MvpBurgersCaseStudy() {
         ]}
 
         highlights={[
-          "Carrito persistente con gestión de estado global",
-          "Order Summary Modal con métodos de entrega (Take Away / Delivery)",
-          "Mapa interactivo con Leaflet para entrega por dirección",
-          "Backend en Flask con API REST para registrar pedidos",
-          "Integración con Redis para manejo rápido de datos",
-          "UI adaptada para mostrarse en kiosko o mostrador"
+          "El pedido no se pierde aunque el cliente recargue o se equivoque.",
+          "El cliente revisa y confirma su pedido antes de enviarlo.",
+          "Posibilidad de pedidos con entrega a domicilio mediante ubicación.",
+          "Sistema preparado para integrarse con otros servicios.",
+          "Respuesta rápida incluso en momentos de alta demanda.",
+          "Funciona correctamente en mostrador, tablet o kiosco."
         ]}
 
         gallery={[
@@ -69,12 +64,10 @@ export default function MvpBurgersCaseStudy() {
         ]}
 
         results="
-        El sistema permitió eliminar errores en los pedidos, mejorar la comunicación entre salón y cocina, 
-        y acelerar los tiempos en la preparación. Al ser un MVP, el cliente pudo validar el flujo completo 
-        y sentar las bases para un sistema más robusto."
+          La implementación del sistema trajo mayor previsibilidad y control en la gestión de pedidos.
+          El negocio dejó de depender de procesos manuales y ganó una base sólida para crecer de forma organizada.
+        "
       />
-
-            <Footer />
 
     </>
 
