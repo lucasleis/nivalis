@@ -1,6 +1,8 @@
 import Header from "../../Header";
 import CaseStudyTemplate from "./CaseStudyTemplate";
 
+import mvpLogo from "../../../assets/portfolio/mascota_sinfondo_volteada.ico";
+
 export default function MvpBurgersCaseStudy() {
   return (
     <>
@@ -13,6 +15,7 @@ export default function MvpBurgersCaseStudy() {
         subtitle="Plataforma de pedidos · UX/UI · Desarrollo Web"
         // brandLogo="/assets/logos/mvp-burgers.svg"
         heroImage="/assets/cases/mvp-hero.jpg"
+        logo={mvpLogo}
 
         problem="
         El cliente necesitaba digitalizar completamente su flujo de pedidos para evitar confusiones, 

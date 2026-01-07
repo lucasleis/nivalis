@@ -15,6 +15,7 @@ interface CaseStudyProps {
   gallery?: string[];
   results: string;
   externalLink?: string;
+  logo?: string;
 }
 
 export default function CaseStudyTemplate({
@@ -28,7 +29,8 @@ export default function CaseStudyTemplate({
   highlights,
   gallery,
   results,
-  externalLink
+  externalLink,
+  logo,
 }: CaseStudyProps) {
 
   const heroY = useParallax({ range: 300, offset: -10 });
@@ -42,53 +44,76 @@ export default function CaseStudyTemplate({
           variants={staggerContainer}
           initial="initial"
           animate="animate"
-          className="max-w-6xl mx-auto px-6 text-center"
+          className="max-w-5xl mx-auto px-6"
           style={{ y: heroY }}
         >
-          <motion.p variants={fadeUp} className="uppercase text-sm tracking-[0.2em] text-gray-500 dark:text-gray-400">
-            {category}
-          </motion.p>
+          {/* Category */}
+          {/*
+            <motion.p
+              variants={fadeUp}
+              className="uppercase text-sm tracking-[0.2em] text-gray-500 dark:text-gray-400 mb-6"
+            >
+              {category}
+            </motion.p>
+          */}
 
-          <motion.h1
-            variants={fadeUp}
-            className="
-              text-5xl md:text-7xl font-extrabold 
-              bg-clip-text text-transparent 
-              bg-gradient-to-r from-nivOrange to-nivBlue 
-              mt-4 leading-tight
-            "
-          >
-            {title.includes("–") ? (
-              <>
-                {title.split("–")[0].trim()}
-                <br />
-                <span className="
-                  bg-gradient-to-r from-nivOrange to-nivBlue 
-                  bg-clip-text text-transparent 
-                  font-semibold
-                ">
-                  {title.split("–")[1].trim()}
-                </span>
-              </>
-            ) : (
-              title
+        {/* Logo + Title */}
+        <div className="flex flex-col gap-4">
+
+          {/* FILA: logo + título */}
+          <div className="flex items-center gap-6">
+            {logo && (
+              <motion.img
+                variants={fadeUp}
+                src={logo}
+                alt={title}
+                className="
+                  h-24 md:h-28 lg:h-32
+                  w-auto object-contain
+                  flex-shrink-0
+                  self-start
+                "
+              />
             )}
-          </motion.h1>
 
+            <motion.h1
+              variants={fadeUp}
+              className="
+                relative
+                text-4xl md:text-6xl font-bold leading-tight
+                text-gray-900 dark:text-white
+              "
+            >
+              <span className="relative z-10">{title}</span>
+
+              {/* subrayado naranja */}
+              <span
+                className="
+                  absolute left-0 -bottom-2
+                  h-[6px] w-24 bg-nivOrange/80 rounded-full
+                "
+              />
+            </motion.h1>
+          </div>
+
+          {/* SUBTÍTULO */}
           {subtitle && (
-            <motion.p variants={fadeUp} className="text-xl mt-6 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <motion.p
+              variants={fadeUp}
+              className="
+                mt-2
+                text-base md:text-lg
+                text-gray-600 dark:text-gray-300
+                max-w-3xl
+                flex items-center gap-3
+              "
+            >
+              <span className="inline-block h-1 w-6 bg-nivOrange rounded-full" />
               {subtitle}
             </motion.p>
           )}
+        </div>
 
-          {heroImage && (
-            <motion.img
-              variants={fadeIn}
-              src={heroImage}
-              alt={title}
-              className="mt-12 w-full rounded-3xl shadow-lg"
-            />
-          )}
         </motion.div>
       </div>
 
