@@ -138,8 +138,14 @@ export default function Footer() {
 
           {/* COLUMNA 4 */}
           <div className="flex flex-col items-center justify-center gap-1 font-medium">
-            <a
-              href="#inicio"
+            <button
+              type="button"
+              onClick={() =>
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                })
+              }
               className="
                 group
                 flex flex-col items-center
@@ -158,7 +164,7 @@ export default function Footer() {
                   group-hover:-translate-y-[1px]
                 "
               >
-                Back to top
+                BACK TO TOP
               </span>
 
               {/* FLECHA */}
@@ -185,7 +191,7 @@ export default function Footer() {
                   "
                 />
               </span>
-            </a>
+            </button>
 
           </div>
           
