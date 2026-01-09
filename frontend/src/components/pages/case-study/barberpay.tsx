@@ -1,12 +1,12 @@
 import CaseStudyTemplate from "./CaseStudyTemplate";
 
-import logo from "../../../assets/portfolio/Barba&Co_logo.png";
+import logo from "../../../assets/portfolio/Barba&Co_logo-negro.png";
 
 
 export default function PagosCaseStudy() {
   return (
     <CaseStudyTemplate
-      title="Sistema de gestión y pagos"
+      title="Sist. de gestión y pagos"
       category=""
       subtitle="Aplicación de control de caja · UX/UI · Desarrollo Web"
       heroImage="/images/case-pagos-hero.jpg"

@@ -1,7 +1,7 @@
 import CaseCard from "./common/CaseCard"
 
 // imágenes locales (mejor práctica, ya lo venís haciendo)
-import mvp from "../assets/portfolio/test_mvp.webp"
+import mvp from "../assets/portfolio/mvp-burgers.webp"
 import barberpay from "../assets/portfolio/barberpay.webp"
 import lupa from "../assets/portfolio/lupa.webp"
 import temptation from "../assets/portfolio/temptation.webp"
