@@ -4,6 +4,7 @@ import { Menu, MessageCircle, Calendar } from "lucide-react";
 //import ThemeToggle from "./theme/ThemeToggle";
 import { useParallax } from "./scroll/useParallax";
 import FullscreenMenu from "./FullscreenMenu";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import logo from "../assets/logos/A6.png";
 import logo_mini from "../assets/logos/A6.png";
@@ -22,6 +23,10 @@ const primaryButtonClasses =
   "hover:scale-105";
 
 export default function Header() {
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
   // ===== MENU STATE =====
   const [open, setOpen] = useState(false);
   const toggleMenu = () => setOpen((v) => !v);
@@ -42,14 +47,40 @@ export default function Header() {
   }, []);
 
   // ===== SCROLL TO =====
-  const handleNavClick = useCallback((href: string) => {
-    closeMenu();
-    const el = document.querySelector(href);
+  const handleNavClick = useCallback(
+    (href: string) => {
+      closeMenu();
+
+      // Si estoy en la home → scroll
+      if (location.pathname === "/") {
+        const el = document.querySelector(href);
+        if (!el) return;
+
+        const y = el.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      } else {
+        // Si no estoy en la home → ir a / y luego scrollear
+        navigate("/", { state: { scrollTo: href } });
+      }
+    },
+    [location.pathname, navigate]
+  );
+
+
+  const handleLogoClick = useCallback(() => {
+  // Si ya estoy en la home
+  if (location.pathname === "/") {
+    const el = document.querySelector("#inicio");
     if (!el) return;
 
     const y = el.getBoundingClientRect().top + window.scrollY - 80;
     window.scrollTo({ top: y, behavior: "smooth" });
-  }, []);
+  } else {
+    // Si estoy en otra página → voy a la home
+    navigate("/");
+  }
+}, [location.pathname, navigate]);
+
 
   // ===== HOVER / TRANSITION DE LOGOS =====
   const logoTransition = {
@@ -74,7 +105,7 @@ export default function Header() {
               <AnimatePresence>
                 {isTop && (
                   <motion.button
-                    onClick={() => handleNavClick("#inicio")}
+                    onClick={handleLogoClick}
                     className="relative flex items-center"
                     style={{ y: logoY }}
                     initial={{ opacity: 0, y: -10 }}
@@ -156,7 +187,7 @@ export default function Header() {
           <AnimatePresence>
             {!isTop && (
               <motion.button
-                onClick={() => handleNavClick("#inicio")}
+                onClick={handleLogoClick}
                 className="
                   fixed top-4 left-4 z-[100]
                   group
