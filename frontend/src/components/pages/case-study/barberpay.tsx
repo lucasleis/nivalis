@@ -2,6 +2,12 @@ import CaseStudyTemplate from "./CaseStudyTemplate";
 
 import logo from "../../../assets/logos-portfolio/logo-barba&co.png";
 
+// imgs
+import img1 from "../../../assets/imgs/barba-img-1.png";
+import img2 from "../../../assets/imgs/barba-img-2.png";
+import img3 from "../../../assets/imgs/barba-img-3.png";
+import img4 from "../../../assets/imgs/barba-img-4.png";
+
 
 export default function PagosCaseStudy() {
   return (
@@ -42,10 +48,11 @@ export default function PagosCaseStudy() {
       ]}
 
       gallery={[
-        "/images/pagos-1.jpg",
-        "/images/pagos-2.jpg",
-        "/images/pagos-3.jpg"
-      ]}
+          img1,
+          img3,
+          img2,
+          img4,
+        ]}
 
       results="
         El sistema permitió ordenar la gestión diaria de la peluquería y reducir errores en el registro de pagos.
