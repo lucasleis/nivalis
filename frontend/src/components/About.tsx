@@ -37,6 +37,7 @@ export default function About() {
             variants={fadeScale}
             style={{ y: imageY }}
             className="
+              order-2 md:order-1
               relative w-full h-[420px] md:h-[520px]
               rounded-3xl overflow-hidden shadow-xl
             "
@@ -52,7 +53,10 @@ export default function About() {
           <motion.div
             variants={fadeUp}
             style={{ y: textY }}
-            className="text-left"
+            className="
+              order-1 md:order-2
+              text-center md:text-left
+            "
           >
             <motion.h2
               variants={fadeUp}
@@ -74,6 +78,8 @@ export default function About() {
                 font-body text-xl md:text-2xl 
                 text-gray-700 dark:text-gray-300 
                 leading-relaxed max-w-xl
+                mx-auto md:mx-0
+                text-center md:text-left
               "
             >
               Nuestro equipo con base en Buenos Aires responde a las

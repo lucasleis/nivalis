@@ -19,35 +19,102 @@ export default function Hero() {
   return (
     <section id="services" className="min-h-screen flex items-center bg-white">
       <div className="max-w-6xl mx-auto px-6 w-full">
+        
         <p className="text-sm tracking-[0.25em] text-gray-500 mb-10">
           AGENCIA DIGITAL CON VISIÓN 360
         </p>
 
         <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-medium text-gray-900 leading-tight">
-          Creamos{" "}
-          <span className="relative inline-flex align-baseline px-1 -mx-1">
-            <span className="relative inline-block overflow-hidden h-[1.2em] align-bottom">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={index}
-                  initial={{ y: "110%" }}
-                  animate={{ y: "0%" }}
-                  exit={{ y: "-110%" }}
-                  transition={{
-                    duration: 0.5,
-                    ease: [0.4, 0, 0.2, 1],
-                  }}
-                  className="acumin-ultrablack block will-change-transform text-[#fd6647]"
-                >
-                  {words[index]}
-                </motion.span>
-              </AnimatePresence>
+          
+          {/* DESKTOP */}
+          <span className="hidden md:inline">
+            Creamos{" "}
+            <span className="relative inline-flex align-baseline px-1 -mx-1">
+              <span className="relative inline-block overflow-hidden h-[1.2em] align-bottom">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={index}
+                    initial={{ y: "110%" }}
+                    animate={{ y: "0%" }}
+                    exit={{ y: "-110%" }}
+                    transition={{
+                      duration: 0.5,
+                      ease: [0.4, 0, 0.2, 1],
+                    }}
+                    className="
+                      acumin-ultrablack
+                      block
+                      will-change-transform
+                      text-[#fd6647]
+                    "
+                  >
+                    {words[index]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
             </span>
           </span>
+
+          {/* MOBILE */}
+          <div className="block md:hidden">
+            <div>Creamos</div>
+
+            <div className="relative inline-flex items-center px-1 -mx-1">
+
+              <span
+                className="
+                  relative
+                  inline-flex
+                  items-center
+                  overflow-hidden
+                  h-[1em]
+                  md:align-bottom
+                "
+              >
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={index}
+                    initial={{ y: "130%" }}
+                    animate={{ y: "0%" }}
+                    exit={{ y: "-140%" }}
+
+                    transition={{
+                      duration: 0.5,
+                      ease: [0.4, 0, 0.2, 1],
+                    }}
+                    className="
+                      acumin-ultrablack
+                      block
+                      will-change-transform
+                      text-[#fd6647]
+                      text-3xl md:text-inherit leading-none md:leading-normal
+                    "
+                  >
+                    {words[index]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+
+            </div>
+            
+          </div>
+
         </h1>
 
         <p className="mt-6 text-5xl md:text-6xl lg:text-7xl font-display font-medium text-gray-900">
-          A medida. A tiempo. A otro nivel
+          
+          {/* DESKTOP */}
+          <span className="hidden md:inline">
+            A medida. A tiempo. A otro nivel
+          </span>
+
+          {/* MOBILE */}
+          <span className="block md:hidden">
+            A medida.<br />
+            A tiempo.<br />
+            A otro nivel
+          </span>
+
         </p>
 
         <div className="mt-10">

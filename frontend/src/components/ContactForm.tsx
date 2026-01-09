@@ -11,14 +11,14 @@ export default function ContactForm() {
     if (!name || !contact || !message) return
 
     const whatsappMessage = `
-Hola! 👋
-Te escribo desde el sitio de Nivalis.
+      Hola! 👋
+      Te escribo desde el sitio de Nivalis.
 
-Nombre: ${name}
-Contacto: ${contact}
+      Nombre: ${name}
+      Contacto: ${contact}
 
-Mensaje:
-${message}
+      Mensaje:
+      ${message}
     `
 
     const phone = "5491151232153"
@@ -37,15 +37,24 @@ ${message}
           {/* ======================
               COLUMNA IZQUIERDA
           ====================== */}
-          <div className="flex flex-col gap-10">
-
+          <div
+            className="
+              flex flex-col gap-10
+              text-center lg:text-left
+              items-center lg:items-start
+            "
+          >
             <p className="text-2xl leading-snug max-w-md">
               Contáctanos hoy mismo y empecemos una conversación
               sobre tu proyecto.
             </p>
 
-            <div className="flex flex-col gap-6 text-xl font-medium">
-
+            <div
+              className="
+                flex flex-col gap-6 text-xl font-medium
+                items-center lg:items-start
+              "
+            >
               {/* Email */}
               <a
                 href="mailto:nivalis.techlab@gmail.com"
@@ -107,7 +116,6 @@ ${message}
                   "
                 />
               </a>
-
             </div>
           </div>
 
@@ -115,12 +123,14 @@ ${message}
               COLUMNA DERECHA
           ====================== */}
           <form
-            className="flex flex-col gap-8"
+            className="
+              flex flex-col gap-8
+              items-center lg:items-stretch
+            "
             onSubmit={handleSubmit}
           >
-
             {/* Nombre */}
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 w-full">
               <label className="text-lg font-medium">
                 Nombre:
               </label>
@@ -143,7 +153,7 @@ ${message}
             </div>
 
             {/* Email / Teléfono */}
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 w-full">
               <label className="text-lg font-medium">
                 Email/Telefono de contacto:
               </label>
@@ -166,7 +176,7 @@ ${message}
             </div>
 
             {/* Mensaje */}
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 w-full">
               <label className="text-lg font-medium">
                 Mensaje:
               </label>
@@ -216,7 +226,6 @@ ${message}
             >
               ENVIAR MENSAJE
             </button>
-
           </form>
 
         </div>

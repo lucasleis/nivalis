@@ -25,16 +25,16 @@ interface CaseStudyProps {
 
 export default function CaseStudyTemplate({
   title,
-  category,
+  // category,
   subtitle,
-  heroImage,
+  // heroImage,
   problem,
   solution,
   stack,
   highlights,
   gallery,
   results,
-  externalLink,
+  // externalLink,
   logo,
 }: CaseStudyProps) {
 
@@ -162,74 +162,88 @@ export default function CaseStudyTemplate({
               </motion.p>
             */}
 
-          {/* Logo + Title */}
-          <div className="flex flex-col gap-6">
+            {/* Logo + Title */}
+            <div className="flex flex-col gap-6">
 
-            {/* FILA: logo + título */}
-            <div className="flex items-center gap-6">
-              {logo && (
-                <motion.div
+              {/* FILA: logo + título */}
+              <div
+                className="
+                  flex flex-col md:flex-row
+                  items-center md:items-center
+                  gap-6
+                  text-center md:text-left
+                "
+              >
+                {logo && (
+                  <motion.div
+                    variants={fadeUp}
+                    className="
+                      flex-shrink-0
+                      max-w-[160px] md:max-w-[200px]
+                      max-h-[96px] md:max-h-[112px]
+                      flex items-center justify-center
+                    "
+                  >
+                    <img
+                      src={logo}
+                      alt={title}
+                      className="
+                        w-auto
+                        h-auto
+                        max-w-full
+                        max-h-full
+                        object-contain
+                      "
+                    />
+                  </motion.div>
+                )}
+
+                <motion.h1
                   variants={fadeUp}
                   className="
-                    flex-shrink-0
-                    max-w-[160px] md:max-w-[200px]
-                    max-h-[96px] md:max-h-[112px]
-                    flex items-center
+                    relative
+                    text-4xl md:text-6xl
+                    font-bold leading-tight
+                    text-gray-900 dark:text-white
                   "
                 >
-                  <img
-                    src={logo}
-                    alt={title}
+                  <span className="relative z-10">{title}</span>
+
+                  {/* subrayado naranja */}
+                  <span
                     className="
-                      w-auto
-                      h-auto
-                      max-w-full
-                      max-h-full
-                      object-contain
+                      absolute
+                      left-1/2 md:left-0
+                      -translate-x-1/2 md:translate-x-0
+                      -bottom-2
+                      h-[6px] w-24
+                      bg-nivOrange/80
+                      rounded-full
                     "
                   />
-                </motion.div>
-              )}
+                </motion.h1>
+              </div>
 
-
-
-              <motion.h1
-                variants={fadeUp}
-                className="
-                  relative
-                  text-4xl md:text-6xl font-bold leading-tight
-                  text-gray-900 dark:text-white
-                "
-              >
-                <span className="relative z-10">{title}</span>
-
-                {/* subrayado naranja */}
-                <span
+              {/* SUBTÍTULO */}
+              {subtitle && (
+                <motion.p
+                  variants={fadeUp}
                   className="
-                    absolute left-0 -bottom-2
-                    h-[6px] w-24 bg-nivOrange/80 rounded-full
+                    mt-4
+                    text-base md:text-lg
+                    text-gray-600 dark:text-gray-300
+                    max-w-3xl
+                    flex items-center gap-3
+                    justify-center md:justify-start
+                    text-center md:text-left
                   "
-                />
-              </motion.h1>
+                >
+                  <span className="inline-block h-1 w-6 bg-nivOrange rounded-full" />
+                  {subtitle}
+                </motion.p>
+              )}
             </div>
 
-            {/* SUBTÍTULO */}
-            {subtitle && (
-              <motion.p
-                variants={fadeUp}
-                className="
-                  mt-4
-                  text-base md:text-lg
-                  text-gray-600 dark:text-gray-300
-                  max-w-3xl
-                  flex items-center gap-3
-                "
-              >
-                <span className="inline-block h-1 w-6 bg-nivOrange rounded-full" />
-                {subtitle}
-              </motion.p>
-            )}
-          </div>
 
           </motion.div>
         </div>
@@ -365,7 +379,9 @@ export default function CaseStudyTemplate({
                   type="button"
                   onClick={showPrev}
                   className="
-                    absolute top-1/2 -left-12 -translate-y-1/2
+                    absolute top-1/2
+                    left-2 md:-left-12
+                    -translate-y-1/2
                     w-10 h-10
                     flex items-center justify-center
                     rounded-full
@@ -387,7 +403,9 @@ export default function CaseStudyTemplate({
                   type="button"
                   onClick={showNext}
                   className="
-                    absolute top-1/2 -right-12 -translate-y-1/2
+                    absolute top-1/2
+                    right-2 md:-right-12
+                    -translate-y-1/2
                     w-10 h-10
                     flex items-center justify-center
                     rounded-full

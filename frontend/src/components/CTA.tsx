@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
-//import { MessageCircle } from "lucide-react";
 import nivalisGradient from "../assets/FONDO.jpg";
 
 import {
@@ -30,7 +29,7 @@ export default function CTA() {
         bg-white dark:bg-black
       "
     >
-      {/* BLOBS EXTERIORES (IGUAL QUE ANTES) */}
+      {/* BLOBS EXTERIORES */}
       <div className="absolute inset-0 pointer-events-none">
         {/* ORANGE */}
         <motion.div
@@ -81,13 +80,20 @@ export default function CTA() {
             backgroundImage: `url(${nivalisGradient})`,
           }}
         >
-          {/* OVERLAY MÍNIMO */}
+          {/* OVERLAY */}
           <div className="absolute inset-0 bg-black/10 pointer-events-none" />
 
           {/* CONTENIDO */}
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center text-white">
+            
             {/* LEFT */}
-            <div>
+            <div
+              className="
+                order-2 lg:order-1
+                text-center lg:text-left
+                flex flex-col items-center lg:items-start
+              "
+            >
               <motion.span
                 variants={fadeUp}
                 className="block mb-4 text-xs tracking-[0.3em] uppercase text-white/80"
@@ -97,7 +103,11 @@ export default function CTA() {
 
               <motion.p
                 variants={fadeUp}
-                className="text-lg md:text-xl text-white/85 mb-10 max-w-md"
+                className="
+                  text-lg md:text-xl text-white/85
+                  mb-10 max-w-md
+                  mx-auto lg:mx-0
+                "
               >
                 Construyendo el camino hacia un resultado plug and play.
               </motion.p>
@@ -125,6 +135,8 @@ export default function CTA() {
             <motion.h2
               variants={fadeUp}
               className="
+                order-1 lg:order-2
+                text-center lg:text-left
                 font-display font-black
                 text-5xl md:text-7xl
                 leading-tight
@@ -133,7 +145,7 @@ export default function CTA() {
                 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]
               "
             >
-              Hacemos todo <br /> en un solo lugar
+              Hacemos todo en un solo lugar
             </motion.h2>
           </div>
         </motion.div>

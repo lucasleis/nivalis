@@ -1,4 +1,4 @@
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, Instagram, Facebook } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -86,10 +86,18 @@ export default function Footer() {
                 ease-out
                 hover:text-nivOrange
                 hover:-translate-y-[1px]
+                flex items-center justify-center
               "
             >
-              Instagram
+              {/* Desktop */}
+              <span className="hidden md:block">
+                Instagram
+              </span>
+
+              {/* Mobile */}
+              <Instagram className="block md:hidden w-6 h-6" />
             </a>
+
             <a
               aria-hidden
               className="
@@ -117,9 +125,16 @@ export default function Footer() {
                 ease-out
                 hover:text-nivOrange
                 hover:-translate-y-[1px]
+                flex items-center justify-center
               "
             >
-              Facebook
+              {/* Desktop */}
+              <span className="hidden md:block">
+                Facebook
+              </span>
+
+              {/* Mobile */}
+              <Facebook className="block md:hidden w-6 h-6" />
             </a>
 
             <a
