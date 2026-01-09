@@ -25,7 +25,7 @@ export default function ServicesPage() {
           <section className="py-16">
 
             {/* TÍTULO DEL SERVICIO (FUERA DEL GRID) */}
-            <h2 className="text-4xl md:text-5xl font-medium text-gray-900 text-left">
+            <h2 className="behance text-4xl md:text-5xl font-medium text-gray-900 text-left">
               <span className="text-nivOrange">/</span> Websites
             </h2>
 
@@ -57,6 +57,7 @@ export default function ServicesPage() {
               </p>
 
             </div>
+
           </section>
 
           {/* DIVIDER */}
@@ -65,7 +66,7 @@ export default function ServicesPage() {
           {/* ========= SERVICIO 02 ========= */}
           <section className="py-16">
 
-            <h2 className="text-4xl md:text-5xl font-medium text-gray-900 text-left">
+            <h2 className="behance text-4xl md:text-5xl font-medium text-gray-900 text-left">
               <span className="text-nivOrange">/</span> Sistemas a medida
             </h2>
 
@@ -104,8 +105,8 @@ export default function ServicesPage() {
           {/* ========= SERVICIO 03 ========= */}
           <section className="py-16">
 
-            <h2 className="text-4xl md:text-5xl font-medium text-gray-900 text-left">
-              <span className="text-nivOrange">/</span> Marketing & Tecnología
+            <h2 className="behance text-4xl md:text-5xl font-medium text-gray-900 text-left">
+              <span className="text-nivOrange">/</span> Marketing & Tecnologia
             </h2>
 
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
@@ -133,6 +134,7 @@ export default function ServicesPage() {
               </p>
 
             </div>
+
           </section>
 
         </div>
