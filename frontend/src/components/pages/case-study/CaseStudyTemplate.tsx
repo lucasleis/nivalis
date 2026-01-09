@@ -163,23 +163,35 @@ export default function CaseStudyTemplate({
             */}
 
           {/* Logo + Title */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-6">
 
             {/* FILA: logo + título */}
             <div className="flex items-center gap-6">
               {logo && (
-                <motion.img
+                <motion.div
                   variants={fadeUp}
-                  src={logo}
-                  alt={title}
                   className="
-                    h-24 md:h-28 lg:h-32
-                    w-auto object-contain
                     flex-shrink-0
-                    self-start
+                    max-w-[160px] md:max-w-[200px]
+                    max-h-[96px] md:max-h-[112px]
+                    flex items-center
                   "
-                />
+                >
+                  <img
+                    src={logo}
+                    alt={title}
+                    className="
+                      w-auto
+                      h-auto
+                      max-w-full
+                      max-h-full
+                      object-contain
+                    "
+                  />
+                </motion.div>
               )}
+
+
 
               <motion.h1
                 variants={fadeUp}
@@ -206,7 +218,7 @@ export default function CaseStudyTemplate({
               <motion.p
                 variants={fadeUp}
                 className="
-                  mt-2
+                  mt-4
                   text-base md:text-lg
                   text-gray-600 dark:text-gray-300
                   max-w-3xl

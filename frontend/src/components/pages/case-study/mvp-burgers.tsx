@@ -1,6 +1,6 @@
 import CaseStudyTemplate from "./CaseStudyTemplate";
 
-import mvpLogo from "../../../assets/portfolio/mascota_sinfondo_volteada.ico";
+import mvpLogo from "../../../assets/portfolio/mvp-logo.png";
 import img1 from "../../../assets/imgs/mvp-img-1.png";
 import img2 from "../../../assets/imgs/mvp-img-2.png";
 import img3 from "../../../assets/imgs/mvp-img-3.png";

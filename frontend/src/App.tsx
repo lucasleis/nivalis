@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ScrollProvider } from "./components/scroll/ScrollProvider";
 import { ThemeProvider } from "./components/theme/ThemeProvider";
+import ScrollToTop from "./components/scroll/ScrollToTop";
 
 import AppShell from "./AppShell";
 
@@ -17,6 +18,7 @@ export default function App() {
     <ThemeProvider>
       <ScrollProvider>
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
 
             {/* Layout wrapper */}
