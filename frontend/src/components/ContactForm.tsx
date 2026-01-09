@@ -1,4 +1,34 @@
+import { useState } from "react"
+
 export default function ContactForm() {
+  const [name, setName] = useState("")
+  const [contact, setContact] = useState("")
+  const [message, setMessage] = useState("")
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+
+    if (!name || !contact || !message) return
+
+    const whatsappMessage = `
+Hola! 👋
+Te escribo desde el sitio de Nivalis.
+
+Nombre: ${name}
+Contacto: ${contact}
+
+Mensaje:
+${message}
+    `
+
+    const phone = "5491151232153"
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(
+      whatsappMessage
+    )}`
+
+    window.open(url, "_blank")
+  }
+
   return (
     <section className="w-full bg-white py-24">
       <div className="mx-auto max-w-7xl px-6">
@@ -16,76 +46,78 @@ export default function ContactForm() {
 
             <div className="flex flex-col gap-6 text-xl font-medium">
 
-                {/* Email */}
-                <a
-                    href="mailto:nivalis.techlab@gmail.com"
-                    className="
-                    group
-                    relative
-                    inline-block
-                    w-fit
-                    text-gray-900
-                    transition-colors
-                    duration-300
-                    hover:text-[#fd6647]
-                    "
-                >
-                    nivalis.techlab@gmail.com
+              {/* Email */}
+              <a
+                href="mailto:nivalis.techlab@gmail.com"
+                className="
+                  group
+                  relative
+                  inline-block
+                  w-fit
+                  text-gray-900
+                  transition-colors
+                  duration-300
+                  hover:text-[#fd6647]
+                "
+              >
+                nivalis.techlab@gmail.com
 
-                    <span
-                    className="
-                        underline-slide
-                        pointer-events-none
-                        absolute left-0 -bottom-[2px]
-                        h-[2px] w-full
-                        bg-gray-900
-                        transition-colors
-                        duration-300
-                        group-hover:bg-[#fd6647]
-                    "
-                    />
-                </a>
-
-                {/* Teléfono */}
-                <a
-                  href="https://wa.me/5491151232153"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <span
                   className="
-                    group
-                    relative
-                    inline-block
-                    w-fit
-                    text-gray-900
+                    underline-slide
+                    pointer-events-none
+                    absolute left-0 -bottom-[2px]
+                    h-[2px] w-full
+                    bg-gray-900
                     transition-colors
                     duration-300
-                    hover:text-[#fd6647]
+                    group-hover:bg-[#fd6647]
                   "
-                >
-                  +54 9 11 5123 2153
+                />
+              </a>
 
-                  <span
-                    className="
-                      underline-slide
-                      pointer-events-none
-                      absolute left-0 -bottom-[2px]
-                      h-[2px] w-full
-                      bg-gray-900
-                      transition-colors
-                      duration-300
-                      group-hover:bg-[#fd6647]
-                    "
-                  />
-                </a>
+              {/* Teléfono */}
+              <a
+                href="https://wa.me/5491151232153"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  group
+                  relative
+                  inline-block
+                  w-fit
+                  text-gray-900
+                  transition-colors
+                  duration-300
+                  hover:text-[#fd6647]
+                "
+              >
+                +54 9 11 5123 2153
+
+                <span
+                  className="
+                    underline-slide
+                    pointer-events-none
+                    absolute left-0 -bottom-[2px]
+                    h-[2px] w-full
+                    bg-gray-900
+                    transition-colors
+                    duration-300
+                    group-hover:bg-[#fd6647]
+                  "
+                />
+              </a>
 
             </div>
-
           </div>
 
           {/* ======================
               COLUMNA DERECHA
           ====================== */}
-          <form className="flex flex-col gap-8">
+          <form
+            className="flex flex-col gap-8"
+            onSubmit={handleSubmit}
+          >
 
             {/* Nombre */}
             <div className="flex flex-col gap-2">
@@ -94,6 +126,9 @@ export default function ContactForm() {
               </label>
               <input
                 type="text"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="Ingrese su nombre"
                 className="
                   w-full
@@ -107,13 +142,16 @@ export default function ContactForm() {
               />
             </div>
 
-            {/* Email */}
+            {/* Email / Teléfono */}
             <div className="flex flex-col gap-2">
               <label className="text-lg font-medium">
                 Email/Telefono de contacto:
               </label>
               <input
-                type="email"
+                type="text"
+                required
+                value={contact}
+                onChange={(e) => setContact(e.target.value)}
                 placeholder="Ingrese su email o numero de contacto"
                 className="
                   w-full
@@ -133,8 +171,11 @@ export default function ContactForm() {
                 Mensaje:
               </label>
               <textarea
-                placeholder="Ingrese su consulta o proyecto a desarrollar"
+                required
                 rows={6}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Ingrese su consulta o proyecto a desarrollar"
                 className="
                   w-full
                   rounded-xl
