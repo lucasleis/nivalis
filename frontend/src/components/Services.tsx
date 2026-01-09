@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const words = ["sistemas a medida", "websites", "campañas digitales"];
+const words = ["Sistemas a medida", "Websites", "Campañas digitales"];
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
@@ -19,7 +19,7 @@ export default function Hero() {
   return (
     <section id="services" className="min-h-screen flex items-center bg-white">
       <div className="max-w-6xl mx-auto px-6 w-full">
-        
+
         <p className="text-sm tracking-[0.25em] text-gray-500 mb-10">
           AGENCIA DIGITAL CON VISIÓN 360
         </p>
