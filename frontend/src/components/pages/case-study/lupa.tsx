@@ -1,52 +1,54 @@
 import CaseStudyTemplate from "./CaseStudyTemplate";
 
+import lupaLogo from "../../../assets/logos-portfolio/logo-lupa.png";
+
 export default function LupaCaseStudy() {
   return (
     <CaseStudyTemplate
-      title="Buscando con Lupa – Micrositio Gamificado"
-      category="Web & Gamification"
-      subtitle="Juego interactivo para impulsar la participación del público y aumentar el engagement de la marca."
+      title="Micrositio gamificado"
+      category=""
+      subtitle="Campaña interactiva · UX/UI · Desarrollo Web"
       heroImage="/images/case-lupa-hero.jpg"
-
+      logo={lupaLogo}
       problem="
-      Lupa Supermercados necesitaba lanzar una campaña interactiva para incentivar la participación de los usuarios,
-      ofrecer descuentos y aumentar el tráfico en su plataforma. El desafío principal era crear un juego atractivo,
-      rápido y accesible para todo tipo de público."
-      
+        Lupa Supermercados necesitaba lanzar una campaña interactiva que incremente la participación del público,
+        impulse el uso de beneficios y aumente el tráfico hacia sus canales digitales.
+        El desafío era lograr una experiencia entretenida, rápida y accesible, que funcione bien en distintos dispositivos,
+        manteniendo una estética de campaña cuidada y consistente.
+      "
       solution="
-      Desarrollé un micrositio gamificado compuesto por múltiples secciones, animaciones y lógica interactiva 
-      en tiempo real. Incluye sliders, pop-ups, animaciones, transiciones suaves, validaciones y un sistema de 
-      categorías con imágenes ocultas que los usuarios deben descubrir. Todo construido en PHP, MySQL y Javascript."
-      
+        Desarrollamos un micrositio gamificado con múltiples secciones y lógica interactiva en tiempo real.
+        La experiencia incluye animaciones, transiciones, pop-ups, sliders y validaciones, además de un sistema de categorías
+        con imágenes ocultas que el usuario debe descubrir para avanzar.
+        Se implementó un backend en PHP con Twig para reutilizar layouts y una base de datos para registrar actividad y métricas.
+      "
       stack={[
         "PHP",
         "Twig",
         "MySQL/MariaDB",
         "JavaScript",
         "CSS Animations",
-        "Docker"
+        "Docker",
       ]}
-
       highlights={[
-        "Micrositio de alto rendimiento con múltiples secciones temáticas",
-        "Sistema de pistas y ocultamiento de imágenes animado",
-        "Integración de sliders, pop-ups y efectos de transición estilo campaña",
-        "Backend en PHP con plantillas Twig para reutilizar layouts",
-        "Base de datos para registro de actividad de usuarios",
-        "Estructura dockerizada con ambientes para desarrollo y producción"
+        "Experiencia gamificada con navegación clara y ritmo dinámico.",
+        "Sistema de categorías con imágenes ocultas y mecánica de descubrimiento.",
+        "Animaciones y transiciones suaves pensadas para campaña.",
+        "Pop-ups, sliders y validaciones para guiar la interacción.",
+        "Templates con Twig para mantener consistencia visual y reutilización.",
+        "Persistencia de actividad en base de datos para análisis posterior.",
       ]}
-
       gallery={[
         "/images/lupa-1.jpg",
         "/images/lupa-2.jpg",
         "/images/lupa-3.jpg",
-        "/images/lupa-4.jpg"
+        "/images/lupa-4.jpg",
       ]}
-
       results="
-      El micrositio superó las expectativas de participación, generó miles de interacciones en los primeros días 
-      y fortaleció la imagen de Lupa como una marca dinámica. La experiencia visual logró captar y mantener la 
-      atención del público objetivo."
+        El micrositio logró una alta participación en los primeros días de campaña, aumentando las interacciones y el tiempo de permanencia.
+        La propuesta visual y la mecánica del juego ayudaron a reforzar el posicionamiento de la marca como dinámica e innovadora,
+        dejando además una base técnica reutilizable para futuras campañas.
+      "
     />
   );
 }

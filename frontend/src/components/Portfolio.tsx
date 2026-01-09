@@ -17,14 +17,14 @@ const cases = [
   {
     image: barberpay,
     title: "BarberPay",
-    subtitle: "Sistema de gestión · Pagos · UX/UI",
+    subtitle: "Sistema de gestión de pagos · UX/UI",
     slug: "barberpay",
   },
   {
     image: lupa,
     title: "Buscando con Lupa",
     subtitle: "Micrositio gamificado · Frontend",
-    slug: "buscando-con-lupa",
+    slug: "lupa",
   },
   {
     image: temptation,

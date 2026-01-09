@@ -1,6 +1,6 @@
 import CaseStudyTemplate from "./CaseStudyTemplate";
 
-import logo from "../../../assets/portfolio/Barba&Co_logo-negro.png";
+import logo from "../../../assets/logos-portfolio/logo-barba&co.png";
 
 
 export default function PagosCaseStudy() {
