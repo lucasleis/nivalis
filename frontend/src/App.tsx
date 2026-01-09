@@ -7,6 +7,9 @@ import AppShell from "./AppShell";
 
 // Pages
 import Home from "./pages/Home";
+import ServicesPage from "./components/ServicesPage";
+
+
 
 // Case Studies
 import MvpBurgersCaseStudy from "./components/pages/case-study/mvp-burgers";
@@ -31,6 +34,9 @@ export default function App() {
               <Route path="/case-study/mvp-burgers" element={<MvpBurgersCaseStudy />} />
               <Route path="/case-study/lupa" element={<LupaCaseStudy />} />
               <Route path="/case-study/barberpay" element={<PagosCaseStudy />} />
+
+              {/* Services Page */}
+              <Route path="/servicios" element={<ServicesPage />} />
 
             </Route>
 

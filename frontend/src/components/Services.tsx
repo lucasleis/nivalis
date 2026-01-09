@@ -52,7 +52,7 @@ export default function Hero() {
 
         <div className="mt-10">
           <a
-            href="#"
+            href="/servicios"
             className="
               group
               relative
@@ -80,6 +80,7 @@ export default function Hero() {
               "
             />
           </a>
+
 
         </div>
 
