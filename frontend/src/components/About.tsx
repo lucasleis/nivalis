@@ -63,7 +63,7 @@ export default function About() {
               "
             >
               Agencia <br />
-              <span className="text-nivOrange dark:text-nivLightBlue">
+              <span className="acumin-ultrablack text-nivOrange dark:text-nivLightBlue">
                 creativa digital
               </span>
             </motion.h2>

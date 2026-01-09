@@ -8,17 +8,209 @@
 /* ================================
    2) FUENTES LOCALES (OFICIALES)
 ================================ */
+/*
 @font-face {
   font-family: "NauryzRedKeds";
-  src: url("/src/assets/fonts/NauryzRedKeds.ttf") format("truetype");
+  src: url("/src/assets/fonts/behance.ttf") format("truetype");
   font-display: swap;
 }
+*/
+@font-face {
+  font-family: "Behance";
+  src: url("/src/assets/fonts/behance.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 @font-face {
   font-family: "AcuminPro";
   src: url("/src/assets/fonts/AcuminPro-Regular.otf") format("opentype");
   font-display: swap;
 }
+
+/* =========================
+   Acumin Pro – Regular
+========================= */
+@font-face {
+  font-family: "AcuminPro";
+  src: url("/src/assets/fonts/fonnts.com-AcuminPro-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================
+   Acumin Pro – Italic
+========================= */
+@font-face {
+  font-family: "AcuminPro";
+  src: url("/src/assets/fonts/fonnts.com-AcuminPro-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* =========================
+   Light / ExtraLight / Thin
+========================= */
+@font-face {
+  font-family: "AcuminPro";
+  src: url("/src/assets/fonts/fonnts.com-AcuminPro-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AcuminPro";
+  src: url("/src/assets/fonts/fonnts.com-AcuminPro-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AcuminPro";
+  src: url("/src/assets/fonts/fonnts.com-AcuminPro-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================
+   Medium / Semibold
+========================= */
+@font-face {
+  font-family: "AcuminPro";
+  src: url("/src/assets/fonts/fonnts.com-AcuminPro-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AcuminPro";
+  src: url("/src/assets/fonts/fonnts.com-AcuminPro-Semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================
+   Bold + Bold Italic
+========================= */
+@font-face {
+  font-family: "AcuminPro";
+  src: url("/src/assets/fonts/fonnts.com-AcuminPro-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AcuminPro";
+  src: url("/src/assets/fonts/fonnts.com-Acumin_Pro_Bold_Italic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* =========================
+   Black / UltraBlack
+========================= */
+@font-face {
+  font-family: "AcuminPro";
+  src: url("/src/assets/fonts/fonnts.com-AcuminPro-Black.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AcuminPro";
+  src: url("/src/assets/fonts/fonnts.com-AcuminPro-BlackItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AcuminPro";
+  src: url("/src/assets/fonts/fonnts.com-AcuminPro-UltraBlack.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================
+   Acumin Pro – Utility classes
+========================= */
+
+.acumin-thin {
+  font-family: "AcuminPro", sans-serif;
+  font-weight: 100;
+}
+
+.acumin-extralight {
+  font-family: "AcuminPro", sans-serif;
+  font-weight: 200;
+}
+
+.acumin-light {
+  font-family: "AcuminPro", sans-serif;
+  font-weight: 300;
+}
+
+.acumin-regular {
+  font-family: "AcuminPro", sans-serif;
+  font-weight: 400;
+}
+
+.acumin-italic {
+  font-family: "AcuminPro", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.acumin-medium {
+  font-family: "AcuminPro", sans-serif;
+  font-weight: 500;
+}
+
+.acumin-semibold {
+  font-family: "AcuminPro", sans-serif;
+  font-weight: 600;
+}
+
+.acumin-bold {
+  font-family: "AcuminPro", sans-serif;
+  font-weight: 700;
+}
+
+.acumin-bold-italic {
+  font-family: "AcuminPro", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.acumin-black {
+  font-family: "AcuminPro", sans-serif;
+  font-weight: 800;
+}
+
+.acumin-ultrablack {
+  font-family: "AcuminPro", sans-serif;
+  font-weight: 900;
+}
+
+.behance {
+  font-family: "Behance", sans-serif;
+  font-weight: 400;
+}
+
+
 
 /* ================================
    3) VARIABLES DE COLOR LIGHT/DARK
@@ -43,11 +235,13 @@ html {
 /* ================================
    5) TITULARES (Usan NauryzRedKeds)
 ================================ */
+/*
 h1, h2, h3, h4 {
-  font-family: "NauryzRedKeds", sans-serif;
+  font-family: "acumin-bold-italic", sans-serif;
   font-weight: 700;
   letter-spacing: -0.5px;
 }
+*/
 
 /* ================================
    6) TRANSICIÓN SMOOTH ENTRE MODOS

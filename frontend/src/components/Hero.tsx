@@ -33,14 +33,14 @@ export default function Hero() {
           {/* SUBTEXTO */}
           <span
             className="
-              font-nauryz
+              behance
               text-base
               text-nivOrange
               mb-4
               block
             "
           >
-            Marketing & Technology Lab
+            Marketing & Tech Lab
           </span>
 
           {/* TEXTO PRINCIPAL */}
@@ -53,8 +53,8 @@ export default function Hero() {
               mb-6
             "
           >
-            Construimos experiencias digitales
-            <span className="text-nivOrange"> con impacto real</span>
+            Construimos experiencias digitales con
+            <span className="acumin-ultrablack text-nivOrange"> impacto real</span>
           </h1>
 
           {/* BOTÓN */}

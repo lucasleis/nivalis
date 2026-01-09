@@ -9,7 +9,7 @@ export default function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % words.length);
-    }, 2750); // 2 segundos
+    }, 2500); // 2 segundos
 
     return () => clearInterval(interval);
   }, []);
@@ -37,7 +37,7 @@ export default function Hero() {
                     duration: 0.5,
                     ease: [0.4, 0, 0.2, 1],
                   }}
-                  className="block will-change-transform text-[#fd6647]"
+                  className="acumin-ultrablack block will-change-transform text-[#fd6647]"
                 >
                   {words[index]}
                 </motion.span>
@@ -54,6 +54,7 @@ export default function Hero() {
           <a
             href="/servicios"
             className="
+              acumin-extralight
               group
               relative
               inline-block

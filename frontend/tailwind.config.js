@@ -11,8 +11,19 @@ export default {
         nivLightBlue: "#83aefa",
       },
       fontFamily: {
-        display: ["NauryzRedKeds", "sans-serif"],
+        //display: ["Behance", "sans-serif"],
+        heading: ["AcuminPro", "sans-serif"],
         body: ["AcuminPro", "sans-serif"],
+      },
+      fontWeight: {
+        thin: "100",
+        light: "300",
+        normal: "400",
+        medium: "500",
+        semibold: "600",
+        bold: "700",
+        black: "800",
+        ultrablack: "900",
       },
       // footers hooverr animation 
       keyframes: {
