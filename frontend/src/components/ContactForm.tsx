@@ -1,14 +1,16 @@
-import { useState } from "react"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer } from "../motion/variants";
 
 export default function ContactForm() {
-  const [name, setName] = useState("")
-  const [contact, setContact] = useState("")
-  const [message, setMessage] = useState("")
+  const [name, setName] = useState("");
+  const [contact, setContact] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if (!name || !contact || !message) return
+    if (!name || !contact || !message) return;
 
     const whatsappMessage = `
       Hola! 👋
@@ -19,25 +21,32 @@ export default function ContactForm() {
 
       Mensaje:
       ${message}
-    `
+    `;
 
-    const phone = "5491151232153"
+    const phone = "5491151232153";
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(
       whatsappMessage
-    )}`
+    )}`;
 
-    window.open(url, "_blank")
-  }
+    window.open(url, "_blank");
+  };
 
   return (
-    <section className="w-full bg-white py-24">
+    <motion.section
+      className="w-full bg-white py-24"
+      variants={staggerContainer}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: false, amount: 0.3 }}
+    >
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
           {/* ======================
               COLUMNA IZQUIERDA
           ====================== */}
-          <div
+          <motion.div
+            variants={fadeUp}
             className="
               flex flex-col gap-10
               text-center lg:text-left
@@ -117,12 +126,13 @@ export default function ContactForm() {
                 />
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* ======================
               COLUMNA DERECHA
           ====================== */}
-          <form
+          <motion.form
+            variants={fadeUp}
             className="
               flex flex-col gap-8
               items-center lg:items-stretch
@@ -226,10 +236,10 @@ export default function ContactForm() {
             >
               ENVIAR MENSAJE
             </button>
-          </form>
+          </motion.form>
 
         </div>
       </div>
-    </section>
-  )
+    </motion.section>
+  );
 }

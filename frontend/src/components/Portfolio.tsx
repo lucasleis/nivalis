@@ -1,11 +1,12 @@
-import CaseCard from "./common/CaseCard"
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer } from "../motion/variants";
+import CaseCard from "./common/CaseCard";
 
-// imágenes locales (mejor práctica, ya lo venís haciendo)
-import mvp from "../assets/portfolio/mvp-burgers.webp"
-import barberpay from "../assets/portfolio/barberpay.webp"
-import lupa from "../assets/portfolio/lupa.webp"
-import temptation from "../assets/portfolio/temptation.webp"
-
+// imágenes locales
+import mvp from "../assets/portfolio/mvp-burgers.webp";
+import barberpay from "../assets/portfolio/barberpay.webp";
+import lupa from "../assets/portfolio/lupa.webp";
+import temptation from "../assets/portfolio/temptation.webp";
 
 const cases = [
   {
@@ -32,44 +33,46 @@ const cases = [
     subtitle: "Pauta digital · Redes sociales",
     slug: "temptation-lingerie",
   },
-  /*
-  {
-    image: nivalis,
-    title: "Nivalis TechLab",
-    subtitle: "Branding · Web · Animaciones",
-  },
-    {
-    image: nivalis,
-    title: "Nivalis TechLab",
-    subtitle: "Branding · Web · Animaciones",
-  },
-  */
-]
+];
 
 export default function Portfolio() {
   return (
-    <section
+    <motion.section
       id="portfolio"
       className="bg-white py-28 dark:bg-neutral-950"
+      variants={staggerContainer}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: false, amount: 0.25 }}
     >
       <div className="mx-auto max-w-7xl px-6">
-        {/* Header */}
-        <div className="mb-16 max-w-2xl">
+
+        {/* HEADER */}
+        <motion.div
+          variants={fadeUp}
+          className="mb-16 max-w-2xl"
+        >
           <p className="mt-4 text-gray-600 dark:text-gray-400">
             Casos de éxito
           </p>
           <h2 className="text-4xl font-nauryz font-bold text-gray-900 dark:text-gray-100">
             Últimos proyectos
           </h2>
-        </div>
+        </motion.div>
 
-        {/* Grid */}
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+        {/* GRID */}
+        <motion.div
+          variants={staggerContainer}
+          className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3"
+        >
           {cases.map((c, i) => (
-            <CaseCard key={i} {...c} />
+            <motion.div key={i} variants={fadeUp}>
+              <CaseCard {...c} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
+
       </div>
-    </section>
-  )
+    </motion.section>
+  );
 }

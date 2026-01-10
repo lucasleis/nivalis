@@ -1,39 +1,70 @@
+import { motion } from "framer-motion";
 import Header from "./Header";
 import Footer from "./Footer";
 import ContactForm from "./ContactForm";
+import { fadeUp, staggerContainer } from "../motion/variants";
+import { useParallax } from "./scroll/useParallax";
 
 export default function ServicesPage() {
+
+  // mismo parallax que en CaseStudyTemplate
+  const heroY = useParallax({ range: 300, offset: -10 });
+
   return (
     <>
       <Header />
 
       <main className="pt-40 pb-0 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-5xl mx-auto">
 
-          {/* TÍTULO */}
-          <h1 className="font-display text-5xl md:text-6xl font-medium text-gray-900">
-            Nuestros <span className="acumin-ultrablack text-nivOrange">Servicios</span>
-          </h1>
+          {/* HERO */}
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
+            style={{ y: heroY }}
+          >
+            {/* TÍTULO */}
+            <motion.h1
+              variants={fadeUp}
+              className="font-display text-5xl md:text-6xl font-medium text-gray-900"
+            >
+              Nuestros{" "}
+              <span className="acumin-ultrablack text-nivOrange">
+                Servicios
+              </span>
+            </motion.h1>
 
-          {/* BAJADA */}
-          <p className="mt-6 text-xl text-gray-600 max-w-2xl">
-            Diseñamos y desarrollamos soluciones digitales pensadas para
-            crecer con tu negocio, optimizar procesos y generar impacto real.
-          </p>
+            {/* BAJADA */}
+            <motion.p
+              variants={fadeUp}
+              className="mt-6 text-xl text-gray-600 max-w-2xl"
+            >
+              Diseñamos y desarrollamos soluciones digitales pensadas para
+              crecer con tu negocio, optimizar procesos y generar impacto real.
+            </motion.p>
+          </motion.div>
 
           {/* ========= SERVICIO 01 ========= */}
-          <section className="py-16">
-
-            {/* TÍTULO DEL SERVICIO (FUERA DEL GRID) */}
-            <h2 className="behance text-4xl md:text-5xl font-medium text-gray-900 text-left">
+          <motion.section
+            className="py-16"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+          >
+            <motion.h2
+              variants={fadeUp}
+              className="behance text-4xl md:text-5xl font-medium text-gray-900 text-left"
+            >
               <span className="text-nivOrange">/</span> Websites
-            </h2>
+            </motion.h2>
 
-            {/* GRID */}
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
 
-              {/* COLUMNA IZQUIERDA */}
-              <ul className="space-y-4 text-lg text-gray-700">
+              <motion.ul
+                variants={fadeUp}
+                className="space-y-4 text-lg text-gray-700"
+              >
                 {[
                   "Landing Pages",
                   "UX/UI Design",
@@ -48,31 +79,40 @@ export default function ServicesPage() {
                     {item}
                   </li>
                 ))}
-              </ul>
+              </motion.ul>
 
-              {/* COLUMNA DERECHA */}
-              <p className="text-xl text-gray-700 max-w-md">
+              <motion.p
+                variants={fadeUp}
+                className="text-xl text-gray-700 max-w-md"
+              >
                 Alcanzá tus metas comerciales con un website a medida,
                 rápida y responsive.
-              </p>
-
+              </motion.p>
             </div>
+          </motion.section>
 
-          </section>
-
-          {/* DIVIDER */}
           <div className="h-px bg-gradient-to-r from-transparent via-nivOrange/30 to-transparent" />
 
           {/* ========= SERVICIO 02 ========= */}
-          <section className="py-16">
-
-            <h2 className="behance text-4xl md:text-5xl font-medium text-gray-900 text-left">
+          <motion.section
+            className="py-16"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+          >
+            <motion.h2
+              variants={fadeUp}
+              className="behance text-4xl md:text-5xl font-medium text-gray-900 text-left"
+            >
               <span className="text-nivOrange">/</span> Sistemas a medida
-            </h2>
+            </motion.h2>
 
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
 
-              <ul className="space-y-4 text-lg text-gray-700">
+              <motion.ul
+                variants={fadeUp}
+                className="space-y-4 text-lg text-gray-700"
+              >
                 {[
                   "Automatización de procesos",
                   "Sistemas de gestión interna",
@@ -89,29 +129,40 @@ export default function ServicesPage() {
                     {item}
                   </li>
                 ))}
-              </ul>
+              </motion.ul>
 
-              <p className="text-xl text-gray-700 max-w-md">
+              <motion.p
+                variants={fadeUp}
+                className="text-xl text-gray-700 max-w-md"
+              >
                 Diseñamos herramientas digitales adaptadas
                 a la lógica real de tu negocio.
-              </p>
-
+              </motion.p>
             </div>
-          </section>
+          </motion.section>
 
-          {/* DIVIDER */}
           <div className="h-px bg-gradient-to-r from-transparent via-nivOrange/30 to-transparent" />
 
           {/* ========= SERVICIO 03 ========= */}
-          <section className="py-16">
-
-            <h2 className="behance text-4xl md:text-5xl font-medium text-gray-900 text-left">
+          <motion.section
+            className="py-16"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+          >
+            <motion.h2
+              variants={fadeUp}
+              className="behance text-4xl md:text-5xl font-medium text-gray-900 text-left"
+            >
               <span className="text-nivOrange">/</span> Marketing & Tecnologia
-            </h2>
+            </motion.h2>
 
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
 
-              <ul className="space-y-4 text-lg text-gray-700">
+              <motion.ul
+                variants={fadeUp}
+                className="space-y-4 text-lg text-gray-700"
+              >
                 {[
                   "Estrategia digital",
                   "Performance & analítica",
@@ -126,21 +177,26 @@ export default function ServicesPage() {
                     {item}
                   </li>
                 ))}
-              </ul>
+              </motion.ul>
 
-              <p className="text-xl text-gray-700 max-w-md">
+              <motion.p
+                variants={fadeUp}
+                className="text-xl text-gray-700 max-w-md"
+              >
                 Unimos diseño, datos y tecnología
                 para generar impacto real.
-              </p>
-
+              </motion.p>
             </div>
+          </motion.section>
 
-          </section>
+          {/* CONTACT FORM */}
+          <div className="mt-32">
+            <ContactForm />
+          </div>
 
         </div>
       </main>
 
-      <ContactForm />
       <Footer />
     </>
   );

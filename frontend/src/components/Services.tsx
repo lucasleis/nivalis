@@ -1,31 +1,45 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { fadeUp, staggerContainer } from "../motion/variants";
 
 const words = ["Sistemas a medida", "Websites", "Campañas digitales"];
 
-export default function Hero() {
+export default function Services() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % words.length);
-    }, 2500); // 2 segundos
+    }, 2500);
 
     return () => clearInterval(interval);
   }, []);
 
-  // const nextWord = () => setIndex((prev) => (prev + 1) % words.length);
-
   return (
-    <section id="services" className="min-h-screen flex items-center bg-white">
+    <motion.section
+      id="services"
+      className="min-h-screen flex items-center bg-white"
+      variants={staggerContainer}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: false, amount: 0.3 }}
+    >
       <div className="max-w-6xl mx-auto px-6 w-full">
 
-        <p className="text-sm tracking-[0.25em] text-gray-500 mb-10">
+        {/* EYEBROW */}
+        <motion.p
+          variants={fadeUp}
+          className="text-sm tracking-[0.25em] text-gray-500 mb-10"
+        >
           AGENCIA DIGITAL CON VISIÓN 360
-        </p>
+        </motion.p>
 
-        <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-medium text-gray-900 leading-tight">
-          
+        {/* TÍTULO */}
+        <motion.h1
+          variants={fadeUp}
+          className="font-display text-5xl md:text-6xl lg:text-7xl font-medium text-gray-900 leading-tight"
+        >
+
           {/* DESKTOP */}
           <span className="hidden md:inline">
             Creamos{" "}
@@ -60,7 +74,6 @@ export default function Hero() {
             <div>Creamos</div>
 
             <div className="relative inline-flex items-center px-1 -mx-1">
-
               <span
                 className="
                   relative
@@ -68,7 +81,6 @@ export default function Hero() {
                   items-center
                   overflow-hidden
                   h-[1em]
-                  md:align-bottom
                 "
               >
                 <AnimatePresence mode="wait">
@@ -77,7 +89,6 @@ export default function Hero() {
                     initial={{ y: "130%" }}
                     animate={{ y: "0%" }}
                     exit={{ y: "-140%" }}
-
                     transition={{
                       duration: 0.5,
                       ease: [0.4, 0, 0.2, 1],
@@ -87,22 +98,23 @@ export default function Hero() {
                       block
                       will-change-transform
                       text-[#fd6647]
-                      text-3xl md:text-inherit leading-none md:leading-normal
+                      text-3xl leading-none
                     "
                   >
                     {words[index]}
                   </motion.span>
                 </AnimatePresence>
               </span>
-
             </div>
-            
           </div>
 
-        </h1>
+        </motion.h1>
 
-        <p className="mt-6 text-5xl md:text-6xl lg:text-7xl font-display font-medium text-gray-900">
-          
+        {/* SUBTEXTO */}
+        <motion.p
+          variants={fadeUp}
+          className="mt-6 text-5xl md:text-6xl lg:text-7xl font-display font-medium text-gray-900"
+        >
           {/* DESKTOP */}
           <span className="hidden md:inline">
             A medida. A tiempo. A otro nivel
@@ -114,10 +126,10 @@ export default function Hero() {
             A tiempo.<br />
             A otro nivel
           </span>
+        </motion.p>
 
-        </p>
-
-        <div className="mt-10">
+        {/* LINK */}
+        <motion.div variants={fadeUp} className="mt-10">
           <a
             href="/servicios"
             className="
@@ -148,11 +160,9 @@ export default function Hero() {
               "
             />
           </a>
-
-
-        </div>
+        </motion.div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }
