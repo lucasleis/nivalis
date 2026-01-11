@@ -11,7 +11,7 @@ export default function About() {
     <section
       id="about"
       className="
-        py-32
+        
         bg-white
         dark:bg-slate-900
         transition-colors duration-300

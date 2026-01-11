@@ -33,7 +33,7 @@ export default function ContactForm() {
 
   return (
     <motion.section
-      className="w-full bg-white py-24"
+      className="w-full bg-white pb-24"
       variants={staggerContainer}
       initial="initial"
       whileInView="animate"

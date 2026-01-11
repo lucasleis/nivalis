@@ -39,11 +39,11 @@ export default function Portfolio() {
   return (
     <motion.section
       id="portfolio"
-      className="bg-white py-28 dark:bg-neutral-950"
+      className="bg-white dark:bg-neutral-950"
       variants={staggerContainer}
       initial="initial"
       whileInView="animate"
-      viewport={{ once: false, amount: 0.25 }}
+      viewport={{ once: false, amount: 0.01 }}
     >
       <div
         className="
