@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeUp, fadeScale, staggerContainer } from "../motion/variants";
 import { useParallax } from "../components/scroll/useParallax";
-import aboutImage from "../assets/licha.jpg"
-
+import aboutImage from "../assets/licha.jpg";
 
 export default function About() {
   const imageY = useParallax({ range: 300, offset: -10 });
@@ -12,26 +11,30 @@ export default function About() {
     <section
       id="about"
       className="
-        py-32 
+        py-32
         bg-white
         dark:bg-slate-900
         transition-colors duration-300
       "
     >
-      
-      <div className="max-w-7xl mx-auto px-6">
-
+      <div
+        className="
+          w-full
+          max-w-7xl
+          mx-auto
+          px-6 md:px-8 xl:px-10
+        "
+      >
         <motion.div
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
           viewport={{ once: false, amount: 0.3 }}
           className="
-            grid grid-cols-1 md:grid-cols-2 
+            grid grid-cols-1 md:grid-cols-2
             gap-14 items-center
           "
         >
-
           {/* IMAGEN IZQUIERDA */}
           <motion.div
             variants={fadeScale}
@@ -61,8 +64,8 @@ export default function About() {
             <motion.h2
               variants={fadeUp}
               className="
-                font-display font-bold 
-                text-5xl md:text-6xl 
+                font-display font-bold
+                text-5xl md:text-6xl
                 mb-6 text-gray-900 dark:text-white
               "
             >
@@ -75,11 +78,10 @@ export default function About() {
             <motion.p
               variants={fadeUp}
               className="
-                font-body text-xl md:text-2xl 
-                text-gray-700 dark:text-gray-300 
+                font-body text-xl md:text-2xl
+                text-gray-700 dark:text-gray-300
                 leading-relaxed max-w-xl
                 mx-auto md:mx-0
-                text-center md:text-left
               "
             >
               Nuestro equipo con base en Buenos Aires responde a las
@@ -88,7 +90,6 @@ export default function About() {
               resultados reales.
             </motion.p>
           </motion.div>
-
         </motion.div>
       </div>
     </section>

@@ -49,7 +49,15 @@ export default function CTA() {
       </div>
 
       {/* CARD */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <div
+        className="
+          relative z-10
+          w-full
+          max-w-7xl
+          mx-auto
+          px-6 md:px-8 xl:px-10
+        "
+      >
         <motion.div
           style={{
             y: contentY,
@@ -67,14 +75,22 @@ export default function CTA() {
           <div className="absolute inset-0 bg-black/10 pointer-events-none" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center text-white">
-
             {/* LEFT */}
-            <motion.div variants={fadeUp} className="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start">
-              <motion.span variants={fadeUp} className="block mb-4 text-xs tracking-[0.3em] uppercase text-white/80">
+            <motion.div
+              variants={fadeUp}
+              className="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start"
+            >
+              <motion.span
+                variants={fadeUp}
+                className="block mb-4 text-xs tracking-[0.3em] uppercase text-white/80"
+              >
                 Trabajemos juntos y en equipo
               </motion.span>
 
-              <motion.p variants={fadeUp} className="text-lg md:text-xl text-white/85 mb-10 max-w-md mx-auto lg:mx-0">
+              <motion.p
+                variants={fadeUp}
+                className="text-lg md:text-xl text-white/85 mb-10 max-w-md mx-auto lg:mx-0"
+              >
                 Construyendo el camino hacia un resultado plug and play.
               </motion.p>
 
@@ -97,7 +113,6 @@ export default function CTA() {
             >
               Hacemos todo en un solo lugar
             </motion.h2>
-
           </div>
         </motion.div>
       </div>

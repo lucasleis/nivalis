@@ -24,8 +24,14 @@ export default function Services() {
       whileInView="animate"
       viewport={{ once: false, amount: 0.3 }}
     >
-      <div className="max-w-6xl mx-auto px-6 w-full">
-
+      <div
+        className="
+          w-full
+          max-w-7xl
+          mx-auto
+          px-6 md:px-8 xl:px-10
+        "
+      >
         {/* EYEBROW */}
         <motion.p
           variants={fadeUp}
@@ -39,7 +45,6 @@ export default function Services() {
           variants={fadeUp}
           className="font-display text-5xl md:text-6xl lg:text-7xl font-medium text-gray-900 leading-tight"
         >
-
           {/* DESKTOP */}
           <span className="hidden md:inline">
             Creamos{" "}
@@ -107,7 +112,6 @@ export default function Services() {
               </span>
             </div>
           </div>
-
         </motion.h1>
 
         {/* SUBTEXTO */}
@@ -161,7 +165,6 @@ export default function Services() {
             />
           </a>
         </motion.div>
-
       </div>
     </motion.section>
   );

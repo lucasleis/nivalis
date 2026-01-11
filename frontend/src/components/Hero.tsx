@@ -14,7 +14,7 @@ export default function Hero() {
           w-full
           max-w-7xl
           mx-auto
-          px-8 md:px-6
+          px-6 md:px-8 xl:px-10
           grid grid-cols-1 md:grid-cols-2
           gap-16
         "
@@ -40,10 +40,11 @@ export default function Hero() {
           {/* TEXTO PRINCIPAL */}
           <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-gray-900 leading-tight mb-6">
             Construimos experiencias digitales con
-            <span className="acumin-ultrablack text-nivOrange"> impacto real</span>
+            <span className="acumin-ultrablack text-nivOrange">
+              {" "}impacto real
+            </span>
           </h1>
 
-          {/* BOTÓN */}
           <motion.div variants={fadeUp}>
             <a
               href="#contacto"

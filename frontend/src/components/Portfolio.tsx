@@ -45,8 +45,14 @@ export default function Portfolio() {
       whileInView="animate"
       viewport={{ once: false, amount: 0.25 }}
     >
-      <div className="mx-auto max-w-7xl px-6">
-
+      <div
+        className="
+          w-full
+          max-w-7xl
+          mx-auto
+          px-6 md:px-8 xl:px-10
+        "
+      >
         {/* HEADER */}
         <motion.div
           variants={fadeUp}
@@ -71,7 +77,6 @@ export default function Portfolio() {
             </motion.div>
           ))}
         </motion.div>
-
       </div>
     </motion.section>
   );

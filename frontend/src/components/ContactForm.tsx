@@ -39,9 +39,15 @@ export default function ContactForm() {
       whileInView="animate"
       viewport={{ once: false, amount: 0.3 }}
     >
-      <div className="mx-auto max-w-7xl px-6">
+      <div
+        className="
+          w-full
+          max-w-7xl
+          mx-auto
+          px-6 md:px-8 xl:px-10
+        "
+      >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-
           {/* ======================
               COLUMNA IZQUIERDA
           ====================== */}
@@ -237,7 +243,6 @@ export default function ContactForm() {
               ENVIAR MENSAJE
             </button>
           </motion.form>
-
         </div>
       </div>
     </motion.section>

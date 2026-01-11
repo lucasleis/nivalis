@@ -7,16 +7,21 @@ import { useParallax } from "./scroll/useParallax";
 
 export default function ServicesPage() {
 
-  // mismo parallax que en CaseStudyTemplate
   const heroY = useParallax({ range: 300, offset: -10 });
 
   return (
     <>
       <Header />
 
-      <main className="pt-40 pb-0 bg-white">
-        <div className="max-w-5xl mx-auto">
-
+      <main className="pt-48 pb-0 bg-white">
+        <div
+          className="
+            w-full
+            max-w-7xl
+            mx-auto
+            px-6 md:px-8 xl:px-10
+          "
+        >
           {/* HERO */}
           <motion.div
             variants={staggerContainer}
@@ -60,7 +65,6 @@ export default function ServicesPage() {
             </motion.h2>
 
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-
               <motion.ul
                 variants={fadeUp}
                 className="space-y-4 text-lg text-gray-700"
@@ -108,7 +112,6 @@ export default function ServicesPage() {
             </motion.h2>
 
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-
               <motion.ul
                 variants={fadeUp}
                 className="space-y-4 text-lg text-gray-700"
@@ -158,7 +161,6 @@ export default function ServicesPage() {
             </motion.h2>
 
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-
               <motion.ul
                 variants={fadeUp}
                 className="space-y-4 text-lg text-gray-700"
@@ -193,7 +195,6 @@ export default function ServicesPage() {
           <div className="mt-32">
             <ContactForm />
           </div>
-
         </div>
       </main>
 
