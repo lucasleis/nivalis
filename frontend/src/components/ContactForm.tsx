@@ -60,8 +60,7 @@ export default function ContactForm() {
             "
           >
             <p className="text-2xl leading-snug max-w-md">
-              Contáctanos hoy mismo y empecemos una conversación
-              sobre tu proyecto.
+              Contanos sobre tu proyecto y evaluemos juntos la mejor forma de llevarlo adelante.
             </p>
 
             <div
@@ -178,7 +177,7 @@ export default function ContactForm() {
                 required
                 value={contact}
                 onChange={(e) => setContact(e.target.value)}
-                placeholder="Ingrese su email o numero de contacto"
+                placeholder="Ingrese su email o número de contacto"
                 className="
                   w-full
                   rounded-xl
@@ -201,7 +200,7 @@ export default function ContactForm() {
                 rows={6}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="Ingrese su consulta o proyecto a desarrollar"
+                placeholder="Contanos brevemente sobre tu proyecto"
                 className="
                   w-full
                   rounded-xl
@@ -218,8 +217,7 @@ export default function ContactForm() {
             {/* Disclaimer */}
             <p className="text-sm text-gray-600 flex gap-2 max-w-xl">
               <span>ⓘ</span>
-              Todos los campos son obligatorios. Al enviar el formulario
-              aceptas los Términos y Condiciones y la Política de Privacidad.
+              Todos los campos son obligatorios. Al enviar el formulario aceptás nuestros Términos y Condiciones y la Política de Privacidad.
             </p>
 
             {/* Botón */}

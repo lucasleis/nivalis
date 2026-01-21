@@ -18,20 +18,13 @@ interface Props {
 
 const menuVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.35, ease: "easeOut" },
-  },
-  exit: {
-    opacity: 0,
-    transition: { duration: 0.2, ease: "easeIn" },
-  },
+  visible: { opacity: 1, transition: { duration: 0.35 } },
+  exit: { opacity: 0, transition: { duration: 0.2 } },
 };
 
 const contentVariants: Variants = {
-  hidden: { opacity: 0 },
+  hidden: {},
   visible: {
-    opacity: 1,
     transition: {
       staggerChildren: 0.08,
       delayChildren: 0.15,
@@ -41,18 +34,8 @@ const contentVariants: Variants = {
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.35 },
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.35 } },
 };
-
-const underlineVariants = {
-  rest: { scaleX: 0 },
-  hover: { scaleX: 1 },
-};
-
 
 export default function FullscreenMenu({
   open,
@@ -62,49 +45,16 @@ export default function FullscreenMenu({
   const [mounted, setMounted] = useState(false);
   const [hovered, setHovered] = useState<string | null>(null);
 
-  /* =========================
-     MOUNT (PORTAL SAFE)
-  ========================= */
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const isMobile = window.matchMedia("(max-width: 1024px)").matches;
-
-  /* =========================
-     SCROLL LOCK (GLOBAL)
-  ========================= */
   useEffect(() => {
-    const el = document.documentElement;
-    const isMobile = window.matchMedia("(max-width: 1024px)").matches;
-
-    if (open && !isMobile) {
-      // Desktop → bloquear scroll
-      el.style.overflow = "hidden";
-    } else {
-      // Mobile o cerrado → permitir scroll
-      el.style.overflow = "";
-    }
-
+    document.documentElement.style.overflow = open ? "hidden" : "";
     return () => {
-      el.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, [open]);
-
-  useEffect(() => {
-    const root = document.getElementById("root");
-
-    if (!root) return;
-
-    if (open) {
-      root.style.transform = "none";
-    }
-
-    return () => {
-      root.style.transform = "";
-    };
-  }, [open]);
-
 
   if (!mounted) return null;
 
@@ -116,52 +66,30 @@ export default function FullscreenMenu({
     { id: "contacto", label: "Contacto", href: "#contacto" },
   ];
 
-  const services = [
-    "Desarrollo web",
-    "E-commerce",
-    "Experiencia de Usuario (UX)",
-    "Desarrollo de apps y sistemas",
-    "Branding y diseño de marca",
-    "SEM - Google ads",
-    "Gestión de redes sociales",
-  ];
-
   return createPortal(
     <AnimatePresence>
       {open && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            zIndex: 9999,
-            transform: "none", 
-          }}
-          className="bg-nivalis-pattern text-white overflow-hidden"
-        >
+        <div className="fixed inset-0 z-[9999]">
 
-          {/* OVERLAY */}
+          {/* OVERLAY (debajo del contenido) */}
           <div
-            className="absolute inset-0 bg-black/40"
+            className="absolute inset-0 bg-black/40 z-0"
             onClick={onClose}
           />
 
-          {/* ANIMATED WRAPPER */}
+          {/* CONTENT */}
           <motion.div
             variants={menuVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="relative z-10 w-full h-full overflow-y-auto lg:overflow-hidden"
+            className="relative z-10 w-full h-full bg-nivalis-pattern text-white"
           >
-            {/* CONTENT */}
             <motion.div
               variants={contentVariants}
               initial="hidden"
               animate="visible"
-              className="min-h-full w-full"
+              className="w-full h-full"
             >
               {/* CLOSE */}
               <button
@@ -170,52 +98,66 @@ export default function FullscreenMenu({
                   absolute top-6 right-6
                   w-12 h-12
                   rounded-full
-                  bg-black text-white
+                  bg-black
                   text-xl
                   flex items-center justify-center
-                  transition-all duration-200 ease-out
                   hover:bg-nivOrange
-                  hover:scale-105
+                  transition
                 "
-                aria-label="Cerrar menú"
               >
                 ✕
               </button>
 
               {/* GRID */}
-              <div className=" min-h-full w-full grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16 px-6 pt-16 pb-24 lg:py-24 lg:px-20 ">
+              <div
+                className="
+                  h-full w-full
+                  grid
+                  grid-cols-1
+                  lg:grid-cols-3
+                  lg:grid-rows-[1fr_auto]
+                  gap-8
+                  px-6 pt-20 pb-16
+                  lg:px-20 lg:py-24
+                "
+              >
 
-                {/* LEFT */}
+                {/* LOGO */}
                 <motion.div
                   variants={itemVariants}
-                  className=" flex flex-col order-2 lg:order-1">
-                  <img src={logo} alt="Nivalis" className="w-40 mb-16 hidden lg:block"
-                />
-
-                  <h3 className="text-4xl mb-2 lg:mb-10">Servicios</h3>
-                  <ul className="space-y-1 lg:space-y-4 text-lg text-white/80">
-                    {services.map((service) => (
-                      <li key={service} className="hover:text-[#fd6647] transition">
-                        {service}
-                      </li>
-                    ))}
-                  </ul>
+                  className="hidden lg:flex col-start-1 row-start-1"
+                >
+                  <img
+                    src={logo}
+                    alt="Nivalis"
+                    className="
+                      w-auto
+                      max-w-[180px]
+                      max-h-[120px]
+                      object-contain
+                    "
+                  />
                 </motion.div>
 
-                {/* LOGO – SOLO MOBILE */}
-                <div className="mb-10 lg:hidden">
-                  <img src={logo} alt="Nivalis" className="w-24"/>
+                {/* LOGO MOBILE */}
+                <div className="lg:hidden">
+                  <img src={logo} alt="Nivalis" className="w-24 mb-10" />
                 </div>
 
-                {/* CENTER */}
+                {/* LINKS */}
                 <motion.div
                   variants={itemVariants}
-                  className=" flex flex-col text-4xl lg:text-6xl font-semibold space-y-1 lg:space-y-6 order-1 lg:order-2"
+                  className="
+                    flex flex-col
+                    text-4xl lg:text-6xl
+                    font-semibold
+                    space-y-2 lg:space-y-6
+                    lg:col-start-2 lg:row-start-1
+                  "
                 >
                   {navItems.map((item) => (
                     <div
                       key={item.id}
-                      className="relative inline-block"
                       onMouseEnter={() => setHovered(item.id)}
                       onMouseLeave={() => setHovered(null)}
                     >
@@ -224,10 +166,9 @@ export default function FullscreenMenu({
                           onClose();
                           onNavigate(item.href);
                         }}
-                        className="relative z-10"
                       >
-                        <span className="relative inline-block px-0.5 pb-2">
-                          <span className="relative z-10">{item.label}</span>
+                        <span className="relative inline-block pb-2">
+                          {item.label}
                           <LazoHover active={hovered === item.id} />
                         </span>
                       </button>
@@ -235,76 +176,44 @@ export default function FullscreenMenu({
                   ))}
                 </motion.div>
 
-                {/* RIGHT */}
+
+                {/* CTA */}
                 <motion.div
                   variants={itemVariants}
-                  className=" flex flex-col justify-end gap-1 lg:gap-6 order-3 text-right"
+                  className="
+                    flex flex-col
+                    items-end
+                    justify-end
+                    text-right
+                    lg:col-start-2 lg:col-span-2 lg:row-start-2
+                  "
                 >
-
-                  <p className=" text-2xl lg:text-4xl leading-tight whitespace-nowrap self-end">
+                  <p className="text-2xl lg:text-4xl mb-4 leading-tight">
                     ¿Tenés un proyecto en mente?
                   </p>
 
-                    <a
-                      href="https://wa.me/5491151232153"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={onClose}
-                      className="
-                        group
-                        relative
-                        mt-6
-                        self-end
-                        inline-block
-                        w-fit
-                        text-3xl lg:text-5xl
-                        text-white
-                        transition-colors
-                        duration-300
-                        hover:text-[#fd6647]
-                      "
-                    >
-                      <span className="inline-flex items-center gap-2">
-                        <span>Hablemos</span>
-
-                        <span
-                          className="
-                            inline-block
-                            transition-transform duration-300 ease-out
-                            group-hover:translate-x-1
-                          "
-                        >
-                          ↗
-                        </span>
-                      </span>
-
-                      <span
-                        className="
-                          pointer-events-none
-                          absolute left-0 -bottom-[4px]
-                          h-[3px] w-full
-                          bg-[#fd6647]
-                          origin-left
-                          scale-x-0
-                          transition-transform duration-300 ease-out
-                          group-hover:scale-x-100
-                        "
-                      />
-                    </a>
-
-
+                  <a
+                    href="https://wa.me/5491151232153"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={onClose}
+                    className="
+                      text-3xl lg:text-5xl
+                      hover:text-[#fd6647]
+                      transition
+                      self-end
+                    "
+                  >
+                    Hablemos ↗
+                  </a>
                 </motion.div>
-                
+
               </div>
-
             </motion.div>
-
           </motion.div>
-
         </div>
       )}
     </AnimatePresence>,
     document.body
   );
-
 }

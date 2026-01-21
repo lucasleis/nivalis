@@ -84,14 +84,14 @@ export default function CTA() {
                 variants={fadeUp}
                 className="block mb-4 text-xs tracking-[0.3em] uppercase text-white/80"
               >
-                Trabajemos juntos y en equipo
+                Hagamos crecer tu proyecto
               </motion.span>
 
               <motion.p
                 variants={fadeUp}
                 className="text-lg md:text-xl text-white/85 mb-10 max-w-md mx-auto lg:mx-0"
               >
-                Construyendo el camino hacia un resultado plug and play.
+                Te acompañamos de principio a fin, pensando cada solución desde tu negocio y la estrategia.
               </motion.p>
 
               <motion.div variants={fadeUpDelayed(0.2)}>
@@ -109,9 +109,9 @@ export default function CTA() {
             {/* RIGHT */}
             <motion.h2
               variants={fadeUp}
-              className="order-1 lg:order-2 text-center lg:text-left font-display font-black text-5xl md:text-7xl leading-tight uppercase text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+              className="order-1 lg:order-2 text-center lg:text-center font-display font-black text-4xl md:text-6xl leading-tight uppercase text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
             >
-              Hacemos todo en un solo lugar
+              Estrategia, diseño y tecnología para hacer crecer tu negocio
             </motion.h2>
           </div>
         </motion.div>

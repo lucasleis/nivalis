@@ -47,7 +47,7 @@ export default function About() {
           >
             <img
               src={aboutImage}
-              alt="Equipo creativo Nivalis"
+              alt="Equipo creativo de Nivalis Marketing & Tech Lab"
               className="w-full h-full object-cover"
             />
           </motion.div>
@@ -69,7 +69,7 @@ export default function About() {
                 mb-6 text-gray-900 dark:text-white
               "
             >
-              Agencia <br />
+              Estrategia <br />
               <span className="acumin-ultrablack text-nivOrange dark:text-nivLightBlue">
                 creativa digital
               </span>
@@ -84,10 +84,10 @@ export default function About() {
                 mx-auto md:mx-0
               "
             >
-              Nuestro equipo con base en Buenos Aires responde a las
-              necesidades de marcas que buscan destacarse en el mundo digital.
-              Diseñamos, desarrollamos y posicionamos experiencias con foco en
-              resultados reales.
+              Somos un equipo que acompaña a marcas que buscan crecer y destacarse en el entorno digital. 
+              <br /><br />
+              Combinamos estrategia, diseño y tecnología para crear experiencias pensadas desde el negocio 
+              y enfocadas en resultados reales.
             </motion.p>
           </motion.div>
         </motion.div>

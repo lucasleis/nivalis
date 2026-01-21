@@ -37,7 +37,7 @@ export default function Services() {
           variants={fadeUp}
           className="text-sm tracking-[0.25em] text-gray-500 mb-10"
         >
-          AGENCIA DIGITAL CON VISIÓN 360
+          SERVICIOS
         </motion.p>
 
         {/* TÍTULO */}
@@ -47,7 +47,7 @@ export default function Services() {
         >
           {/* DESKTOP */}
           <span className="hidden md:inline">
-            Creamos{" "}
+            Diseñamos{" "}
             <span className="relative inline-flex align-baseline px-1 -mx-1">
               <span className="relative inline-block overflow-hidden h-[1.2em] align-bottom">
                 <AnimatePresence mode="wait">
@@ -121,14 +121,15 @@ export default function Services() {
         >
           {/* DESKTOP */}
           <span className="hidden md:inline">
-            A medida. A tiempo. A otro nivel
+            A medida. A tiempo. <br />
+            Pensadas para crecer.
           </span>
 
           {/* MOBILE */}
           <span className="block md:hidden">
             A medida.<br />
             A tiempo.<br />
-            A otro nivel
+            Pensadas para crecer.
           </span>
         </motion.p>
 
@@ -149,8 +150,7 @@ export default function Services() {
               hover:text-[#fd6647]
             "
           >
-            Más detalles
-
+            Ver servicios
             <span
               className="
                 underline-slide

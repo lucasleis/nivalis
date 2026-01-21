@@ -182,7 +182,7 @@ export default function CaseStudyTemplate({
           {/* PROBLEM */}
           <motion.div variants={staggerContainer} initial="initial" whileInView="animate">
             <motion.h2 variants={fadeUp} className="text-3xl font-bold mb-4">
-              Desafío
+              <span className="text-nivOrange">/</span> Desafío
             </motion.h2>
             <motion.p variants={fadeUp} className="text-lg opacity-80 leading-relaxed">
               {problem}
@@ -192,7 +192,7 @@ export default function CaseStudyTemplate({
           {/* SOLUTION */}
           <motion.div variants={staggerContainer} initial="initial" whileInView="animate">
             <motion.h2 variants={fadeUp} className="text-3xl font-bold mb-4">
-              Solución
+              <span className="text-nivOrange">/</span> Solución
             </motion.h2>
             <motion.p variants={fadeUp} className="text-lg opacity-80 leading-relaxed">
               {solution}
@@ -202,7 +202,7 @@ export default function CaseStudyTemplate({
           {/* RESULTS */}
           <motion.div variants={staggerContainer} initial="initial" whileInView="animate">
             <motion.h2 variants={fadeUp} className="text-3xl font-bold mb-4">
-              Resultados
+              <span className="text-nivOrange">/</span> Resultados
             </motion.h2>
             <motion.p variants={fadeUp} className="text-lg opacity-80 leading-relaxed">
               {results}
@@ -212,7 +212,7 @@ export default function CaseStudyTemplate({
           {/* HIGHLIGHTS */}
           <motion.div variants={staggerContainer} initial="initial" whileInView="animate">
             <motion.h2 variants={fadeUp} className="text-3xl font-bold mb-4">
-              Beneficios
+              <span className="text-nivOrange">/</span> Beneficios
             </motion.h2>
             <motion.ul variants={fadeUp} className="grid md:grid-cols-2 gap-6 mt-3">
               {highlights.map((item, index) => (
@@ -230,7 +230,7 @@ export default function CaseStudyTemplate({
           {gallery && gallery.length > 0 && (
             <motion.div variants={staggerContainer} initial="initial" whileInView="animate">
               <motion.h2 variants={fadeUp} className="text-3xl font-bold mb-4">
-                Galería
+                <span className="text-nivOrange">/</span> Galería
               </motion.h2>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-3">
@@ -259,7 +259,7 @@ export default function CaseStudyTemplate({
           {/* STACK */}
           <motion.div variants={staggerContainer} initial="initial" whileInView="animate">
             <motion.h2 variants={fadeUp} className="text-3xl font-bold mb-4">
-              Tecnologías utilizadas
+              <span className="text-nivOrange">/</span> Tecnologías utilizadas
             </motion.h2>
 
             <motion.ul variants={fadeUp} className="flex flex-wrap gap-3 mt-3">

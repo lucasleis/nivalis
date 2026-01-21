@@ -59,7 +59,7 @@ export default function ServicesPage() {
           >
             <motion.h2
               variants={fadeUp}
-              className="behance text-4xl md:text-5xl font-medium text-gray-900 text-left"
+              className="text-4xl md:text-5xl font-medium text-gray-900 text-left"
             >
               <span className="text-nivOrange">/</span> Websites
             </motion.h2>
@@ -71,7 +71,7 @@ export default function ServicesPage() {
               >
                 {[
                   "Landing Pages",
-                  "UX/UI Design",
+                  "Diseño UX/UI",
                   "E-Commerce",
                   "Desarrollos a medida",
                 ].map((item) => (
@@ -89,8 +89,7 @@ export default function ServicesPage() {
                 variants={fadeUp}
                 className="text-xl text-gray-700 max-w-md"
               >
-                Alcanzá tus metas comerciales con un website a medida,
-                rápida y responsive.
+                Alcanzá tus objetivos comerciales con una website a medida, rápida y responsive.
               </motion.p>
             </div>
           </motion.section>
@@ -106,7 +105,7 @@ export default function ServicesPage() {
           >
             <motion.h2
               variants={fadeUp}
-              className="behance text-4xl md:text-5xl font-medium text-gray-900 text-left"
+              className="text-4xl md:text-5xl font-medium text-gray-900 text-left"
             >
               <span className="text-nivOrange">/</span> Sistemas a medida
             </motion.h2>
@@ -138,8 +137,8 @@ export default function ServicesPage() {
                 variants={fadeUp}
                 className="text-xl text-gray-700 max-w-md"
               >
-                Diseñamos herramientas digitales adaptadas
-                a la lógica real de tu negocio.
+                Diseñamos y desarrollamos sistemas digitales a medida para optimizar procesos y 
+                acompañar el crecimiento de tu negocio.
               </motion.p>
             </div>
           </motion.section>
@@ -155,9 +154,9 @@ export default function ServicesPage() {
           >
             <motion.h2
               variants={fadeUp}
-              className="behance text-4xl md:text-5xl font-medium text-gray-900 text-left"
+              className="text-4xl md:text-5xl font-medium text-gray-900 text-left"
             >
-              <span className="text-nivOrange">/</span> Marketing & Tecnologia
+              <span className="text-nivOrange">/</span> Marketing & Tecnología
             </motion.h2>
 
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
@@ -167,7 +166,7 @@ export default function ServicesPage() {
               >
                 {[
                   "Estrategia digital",
-                  "Performance & analítica",
+                  "Performance y analítica",
                   "UX/UI",
                   "Optimización continua",
                 ].map((item) => (
@@ -185,8 +184,7 @@ export default function ServicesPage() {
                 variants={fadeUp}
                 className="text-xl text-gray-700 max-w-md"
               >
-                Unimos diseño, datos y tecnología
-                para generar impacto real.
+                Integramos marketing, diseño y tecnología para acompañar el crecimiento de tu negocio.
               </motion.p>
             </div>
           </motion.section>

@@ -34,12 +34,12 @@ export default function Hero() {
         >
           {/* SUBTEXTO */}
           <span className="behance text-base text-nivOrange mb-4 block">
-            Marketing & Tech Lab
+            Estrategia - Design - Tecnologia
           </span>
 
           {/* TEXTO PRINCIPAL */}
           <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-gray-900 leading-tight mb-6">
-            Construimos experiencias digitales con
+            Transformamos ideas en experiencias digitales con 
             <span className="acumin-ultrablack text-nivOrange">
               {" "}impacto real
             </span>
@@ -68,7 +68,7 @@ export default function Hero() {
               </span>
 
               <span className="inline-block transition-transform duration-300 ease-out group-hover:translate-x-1">
-                Hablemos
+                Hablemos de tu proyecto
               </span>
 
               <span className="inline-flex items-center ml-2 transition-all duration-300 ease-out group-hover:opacity-0 group-hover:translate-x-3">
@@ -89,7 +89,7 @@ export default function Hero() {
         >
           <img
             src={logo}
-            alt="Nivalis Marketing & Tech Lab"
+            alt="Logo de Nivalis Marketing & Tech Lab"
             className="w-[180px] md:w-[300px] opacity-80 mb-8 md:mb-0"
           />
         </motion.div>

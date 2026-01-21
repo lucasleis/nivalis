@@ -59,10 +59,10 @@ export default function Portfolio() {
           className="mb-16 max-w-2xl"
         >
           <p className="mt-4 text-gray-600 dark:text-gray-400">
-            Casos de éxito
+            P O R T F O L I O
           </p>
           <h2 className="text-4xl font-nauryz font-bold text-gray-900 dark:text-gray-100">
-            Últimos proyectos
+            Proyectos destacados
           </h2>
         </motion.div>
 
