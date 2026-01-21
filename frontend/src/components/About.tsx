@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeUp, fadeScale, staggerContainer } from "../motion/variants";
 import { useParallax } from "../components/scroll/useParallax";
-import aboutImage from "../assets/licha.jpg";
+import aboutImage from "../assets/perritos.png";
 
 export default function About() {
   const imageY = useParallax({ range: 300, offset: -10 });
