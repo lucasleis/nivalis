@@ -12,24 +12,26 @@ import img5 from "../../../assets/imgs/lupa-img-5.png";
 export default function LupaCaseStudy() {
   return (
     <CaseStudyTemplate
-      title="Micrositio gamificado"
-      category=""
+      title="Micrositio de campaña interactiva"
+      category="Campañas digitales"
       subtitle="Campaña interactiva · UX/UI · Desarrollo Web"
       heroImage="/images/case-lupa-hero.jpg"
       logo={lupaLogo}
 
       problem="
-        Lupa Supermercados necesitaba lanzar una campaña interactiva que incremente la participación del público,
-        impulse el uso de beneficios y aumente el tráfico hacia sus canales digitales.
-        El desafío era lograr una experiencia entretenida, rápida y accesible, que funcione bien en distintos dispositivos,
-        manteniendo una estética de campaña cuidada y consistente.
+        Lupa Supermercados necesitaba contar con un sitio web para una campaña digital interactiva, que acompañe la estrategia 
+        de la marca e incentive la participación del público, el uso de beneficios y el tráfico hacia sus canales digitales. 
+
+        El desafío era desarrollar una experiencia atractiva, ágil y accesible, que funcione correctamente en distintos 
+        dispositivos y mantenga una estética de campaña cuidada y consistente a lo largo del tiempo.
       "
 
       solution="
-        Desarrollamos un micrositio gamificado con múltiples secciones y lógica interactiva en tiempo real.
-        La experiencia incluye animaciones, transiciones, pop-ups, sliders y validaciones, además de un sistema de categorías
-        con imágenes ocultas que el usuario debe descubrir para avanzar.
-        Se implementó un backend en PHP con Twig para reutilizar layouts y una base de datos para registrar actividad y métricas.
+        Desarrollamos el sitio web de la campaña, con múltiples secciones y componentes interactivos pensados para acompañar la experiencia del usuario. 
+        
+        La solución incluye animaciones, transiciones, pop-ups, sliders y validaciones que guían la navegación, junto a un sistema de categorías con contenido dinámico. 
+        
+        Se implementó un backend en PHP con Twig para facilitar la reutilización de layouts y una base de datos para registrar la actividad y métricas de uso.
       "
 
       stack={[
@@ -39,16 +41,20 @@ export default function LupaCaseStudy() {
         "JavaScript",
         "CSS Animations",
         "Docker",
+        "Centos7",
+        "Apache",
+        "SMTP"
       ]}
 
       highlights={[
-        "Experiencia gamificada con navegación clara y ritmo dinámico.",
-        "Sistema de categorías con imágenes ocultas y mecánica de descubrimiento.",
-        "Animaciones y transiciones suaves pensadas para campaña.",
-        "Pop-ups, sliders y validaciones para guiar la interacción.",
+        "Experiencia interactiva con navegación clara y ritmo dinámico.",
+        "Sistema de secciones y categorías con contenido dinámico.",
+        "Animaciones y transiciones pensadas para acompañar la campaña.",
+        "Pop-ups, sliders y validaciones para guiar la interacción del usuario.",
         "Templates con Twig para mantener consistencia visual y reutilización.",
-        "Persistencia de actividad en base de datos para análisis posterior.",
+        "Registro de actividad en base de datos para análisis y métricas.",
       ]}
+
 
       gallery={[
           img1,
@@ -58,10 +64,11 @@ export default function LupaCaseStudy() {
         ]}
 
       results="
-        El micrositio logró una alta participación en los primeros días de campaña, aumentando las interacciones y el tiempo de permanencia.
-        La propuesta visual y la mecánica del juego ayudaron a reforzar el posicionamiento de la marca como dinámica e innovadora,
-        dejando además una base técnica reutilizable para futuras campañas.
+        El sitio web de la campaña logró una alta participación en los primeros días, aumentando las interacciones y el tiempo de permanencia. 
+        La propuesta visual y la experiencia interactiva contribuyeron a reforzar el posicionamiento de la marca como dinámica e innovadora, 
+        dejando además una base técnica reutilizable para futuras campañas y activaciones digitales.
       "
+      
     />
   );
 }
