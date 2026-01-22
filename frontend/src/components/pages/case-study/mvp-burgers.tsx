@@ -40,12 +40,11 @@ export default function MvpBurgersCaseStudy() {
         "
         
         stack={[
-          "React", 
-          "Flask", 
-          "Redis", 
-          "Python", 
+          "React",
+          "Flask",
           "PostgreSQL",
-          "Tailwind CSS", 
+          "Docker",
+          "Tailwind CSS",
           "API REST"
         ]}
 
