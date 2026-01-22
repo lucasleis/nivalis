@@ -37,14 +37,14 @@ export default function LupaCaseStudy() {
       stack={[
         "PHP",
         "Twig",
-        "MySQL/MariaDB",
+        "MySQL / MariaDB",
         "JavaScript",
-        "CSS Animations",
+        "CSS",
         "Docker",
-        "Centos7",
         "Apache",
-        "SMTP"
+        "Email (SMTP)"
       ]}
+
 
       highlights={[
         "Experiencia interactiva con navegación clara y ritmo dinámico.",
