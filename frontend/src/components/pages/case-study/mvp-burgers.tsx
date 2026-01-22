@@ -16,21 +16,27 @@ export default function MvpBurgersCaseStudy() {
     <>
 
       <CaseStudyTemplate
-        title="Plataforma de pedidos"
-        category=""
-        subtitle="UX/UI · Desarrollo Web"
-        // brandLogo="/assets/logos/mvp-burgers.svg"
+        title="Plataforma integral de pedidos"
+        category="Plataformas digitales"
+        subtitle="UX/UI · Desarrollo web · Plataforma a medida"
         heroImage="/assets/cases/mvp-hero.jpg"
         logo={mvpLogo}
 
         problem="
-          El negocio gestionaba los pedidos de forma manual, lo que generaba errores, confusión entre el mostrador y la cocina y demoras en la preparación.
-          Este enfoque funcionaba al inicio, pero se volvía insostenible a medida que el volumen de pedidos crecía, afectando la atención y provocando pérdida de ventas en horarios pico.
+          MVP Burgers gestionaba los pedidos de forma manual, lo que generaba errores, confusión entre el mostrador y la cocina y demoras en la preparación. 
+          
+          A medida que el volumen de pedidos crecía, este enfoque se volvió insostenible: faltaba control sobre el estado de las comandas, 
+          se perdían pedidos en momentos de alta demanda y la experiencia del cliente se veía afectada.
         "
         
+        
         solution="
-          Diseñamos una plataforma de pedidos simple y ordenada que unifica la experiencia del cliente con la operación interna.
-          El sistema permite confirmar pedidos con claridad y enviarlos automáticamente al equipo, eliminando pasos manuales.
+          Diseñamos y desarrollamos una plataforma integral de pedidos que unifica la experiencia del cliente con la operación interna del local. 
+          
+          El sistema cuenta con un backend administrativo para gestionar el menú, controlar la disponibilidad de pedidos y visualizar las comandas 
+          enviadas y pendientes, y un frontend de pedidos donde los clientes pueden armar su pedido, elegir el método de entrega y seleccionar la forma de pago. 
+          
+          Esta integración eliminó pasos manuales y permitió ordenar el flujo entre mostrador y cocina.
         "
         
         stack={[
@@ -39,18 +45,20 @@ export default function MvpBurgersCaseStudy() {
           "Redis", 
           "Python", 
           "PostgreSQL",
-          "TailwindCSS", 
+          "Tailwind CSS", 
           "API REST"
         ]}
 
+
         highlights={[
-          "El pedido no se pierde aunque el cliente recargue o se equivoque.",
-          "El cliente revisa y confirma su pedido antes de enviarlo.",
-          "Posibilidad de pedidos con entrega a domicilio mediante ubicación.",
-          "Sistema preparado para integrarse con otros servicios.",
+          "Persistencia del pedido ante recargas o errores del usuario.",
+          "Confirmación clara del pedido antes de su envío.",
+          "Pedidos con entrega a domicilio mediante selección de ubicación.",
+          "Arquitectura preparada para integrarse con otros servicios.",
           "Respuesta rápida incluso en momentos de alta demanda.",
-          "Funciona correctamente en mostrador, tablet o kiosco."
+          "Funcionamiento estable en mostrador, tablet o kiosco.",
         ]}
+
 
         gallery={[
           img1,
@@ -64,8 +72,8 @@ export default function MvpBurgersCaseStudy() {
         ]}
 
         results="
-          La implementación del sistema trajo mayor previsibilidad y control en la gestión de pedidos.
-          El negocio dejó de depender de procesos manuales y ganó una base sólida para crecer de forma organizada.
+          La implementación de la plataforma aportó mayor previsibilidad y control en la gestión de pedidos. 
+          El negocio dejó de depender de procesos manuales, ordenó el flujo entre mostrador y cocina y obtuvo una base sólida para crecer de forma organizada.
         "
       />
 
