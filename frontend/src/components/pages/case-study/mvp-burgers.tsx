@@ -42,7 +42,7 @@ export default function MvpBurgersCaseStudy() {
         stack={[
           "React",
           "Flask",
-          "PostgreSQL",
+          "Redis",
           "Docker",
           "Tailwind CSS",
           "API REST"
