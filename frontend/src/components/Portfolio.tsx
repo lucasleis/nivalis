@@ -1,13 +1,12 @@
+
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "../motion/variants";
 import CaseCard from "./common/CaseCard";
-
 // imágenes locales
 import mvp from "../assets/portfolio/mvp-burgers.webp";
 import barberpay from "../assets/portfolio/barberpay.webp";
 import lupa from "../assets/portfolio/lupa.webp";
-import temptation from "../assets/portfolio/temptation.webp";
-
+// import temptation from "../assets/portfolio/temptation.webp";
 const cases = [
   {
     image: mvp,
@@ -27,14 +26,13 @@ const cases = [
     subtitle: "Micrositio gamificado · Frontend",
     slug: "lupa",
   },
-  {
-    image: temptation,
-    title: "Temptation Lingerie",
-    subtitle: "Pauta digital · Redes sociales",
-    slug: "temptation-lingerie",
-  },
+  // {
+  //   image: temptation,
+  //   title: "Temptation Lingerie",
+  //   subtitle: "Pauta digital · Redes sociales",
+  //   slug: "temptation-lingerie",
+  // },
 ];
-
 export default function Portfolio() {
   return (
     <motion.section
@@ -65,7 +63,6 @@ export default function Portfolio() {
             Proyectos destacados
           </h2>
         </motion.div>
-
         {/* GRID */}
         <motion.div
           variants={staggerContainer}
