@@ -1,228 +1,131 @@
-import { ArrowUp, Instagram, Facebook } from "lucide-react";
+import { ArrowUp, Instagram, Facebook, Mail, Sparkles, Phone } from "lucide-react";
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const servicesLinks = [
+    { label: "Desarrollo Web", href: "/servicios#web" },
+    { label: "Diseño UI/UX", href: "/servicios#diseno" },
+    { label: "Automatización", href: "/servicios#automatizacion" },
+    { label: "Consultoría", href: "/servicios#consultoria" },
+  ];
+
+  const portfolioLinks = [
+    { label: "MVP Burgers", href: "/proyectos/mvp-burgers" },
+    { label: "BarberPay", href: "/proyectos/barberpay" },
+    { label: "Lupa", href: "/proyectos/lupa" },
+  ];
+
+  const socialLinks = [
+    { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/nivalis.techlab/" },
+    { icon: Facebook, label: "Facebook", href: "https://www.facebook.com/nivalis.techlab" },
+  ];
+
   return (
-    <footer className="bg-black text-white">
-      
-      {/* FRANJA NEGRA SUPERIOR */}
-      <div className="h-8" />
+    <footer className="bg-neutral-950 text-white">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-6 h-6 text-nivOrange" />
+              <span className="font-nauryz text-xl font-bold">Nivalis</span>
+            </div>
+            <p className="text-sm text-gray-400 leading-relaxed">
+              Agencia de marketing y tecnología para proyectos que quieren destacar en el mercado digital.
+            </p>
+            <div className="flex flex-col gap-2 mt-2">
+              <a
+                href="mailto:lucas@nivalis.com.ar"
+                className="flex items-center gap-2 text-sm text-gray-400 hover:text-nivOrange transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                lucas@nivalis.com.ar
+              </a>
+              <a
+                href="https://wa.me/5491151232153"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-gray-400 hover:text-nivOrange transition-colors"
+              >
+                <Phone className="w-4 h-4" />
+                +54 9 11 5123-2153
+              </a>
+            </div>
+          </div>
 
-      {/* CONTENIDO */}
-      <div className="w-[90vw] mx-auto py-8">
-        <div
-          className="
-            grid
-            grid-cols-4
-            w-full
-            h-32
-            text-sm
-            uppercase
-            tracking-wide
-          "
-        >
-          {/* COLUMNA 1 */}
-          <div className="group flex flex-col items-center justify-center gap-1 font-medium">
+          <div className="flex flex-col gap-4">
+            <h4 className="font-nauryz font-semibold text-lg">Servicios</h4>
+            <ul className="flex flex-col gap-2">
+              {servicesLinks.map((link, i) => (
+                <li key={i}>
+                  <a href={link.href} className="text-sm text-gray-400 hover:text-nivOrange transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* TEXTO */}
+          <div className="flex flex-col gap-4">
+            <h4 className="font-nauryz font-semibold text-lg">Proyectos</h4>
+            <ul className="flex flex-col gap-2">
+              {portfolioLinks.map((link, i) => (
+                <li key={i}>
+                  <a href={link.href} className="text-sm text-gray-400 hover:text-nivOrange transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <h4 className="font-nauryz font-semibold text-lg">¿Hablamos?</h4>
+            <p className="text-sm text-gray-400">
+              ¿Tenés un proyecto en mente? Escribinos y te respondemos hoy.
+            </p>
             <a
               href="https://wa.me/5491151232153"
               target="_blank"
               rel="noopener noreferrer"
-              className="
-                transition-all
-                duration-300
-                ease-out
-                group-hover:text-nivOrange
-                group-hover:-translate-y-[1px]
-              "
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-nivOrange text-white font-body text-sm font-medium hover:bg-[#e95b40] transition-colors w-fit"
             >
-              ¿Tenés un proyecto?
-            </a>
-
-            {/* BOTÓN */}
-            <a
-              href="https://wa.me/5491151232153"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                px-5 py-2
-                rounded-full
-                bg-white
-                text-black
-                text-xs
-                font-semibold
-                transition-colors
-                duration-300
-                ease-out
-                group-hover:bg-nivOrange
-                overflow-hidden
-              "
-            >
-              <span
-                className="
-                  inline-block
-                  text-black
-                  transition-transform
-                  duration-300
-                  ease-out
-                  group-hover:animate-arrowUpLoop
-                "
-              >
-                Hablemos!
-              </span>
-            </a>
-
-          </div>
-
-          {/* COLUMNA 2 */}
-          <div className="flex flex-col items-center justify-center gap-1 font-medium">
-            <a
-              href="https://www.instagram.com/nivalis.techlab/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                transition-all
-                duration-300
-                ease-out
-                hover:text-nivOrange
-                hover:-translate-y-[1px]
-                flex items-center justify-center
-              "
-            >
-              {/* Desktop */}
-              <span className="hidden md:block">
-                Instagram
-              </span>
-
-              {/* Mobile */}
-              <Instagram className="block md:hidden w-6 h-6" />
-            </a>
-
-            <a
-              aria-hidden
-              className="
-                px-5 py-2
-                rounded-full
-                text-xs
-                font-semibold
-                invisible
-              "
-            >
-              Hablemos!
+              Enviar mensaje
             </a>
           </div>
-
-          {/* COLUMNA 3 */}
-          <div className="flex flex-col items-center justify-center gap-1 font-medium">
-
-            <a
-              href="https://www.facebook.com/nivalis.techlab"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                transition-all
-                duration-300
-                ease-out
-                hover:text-nivOrange
-                hover:-translate-y-[1px]
-                flex items-center justify-center
-              "
-            >
-              {/* Desktop */}
-              <span className="hidden md:block">
-                Facebook
-              </span>
-
-              {/* Mobile */}
-              <Facebook className="block md:hidden w-6 h-6" />
-            </a>
-
-            <a
-              aria-hidden
-              className="
-                px-5 py-2
-                rounded-full
-                text-xs
-                font-semibold
-                invisible
-              "
-            >
-              Hablemos!
-            </a>
-          </div>
-
-          {/* COLUMNA 4 */}
-          <div className="flex flex-col items-center justify-center gap-1 font-medium">
-            <button
-              type="button"
-              onClick={() =>
-                window.scrollTo({
-                  top: 0,
-                  behavior: "smooth",
-                })
-              }
-              className="
-                group
-                flex flex-col items-center
-                transition-all
-                duration-300
-                ease-out
-                hover:text-nivOrange
-              "
-            >
-              {/* TEXTO */}
-              <span
-                className="
-                  transition-transform
-                  duration-300
-                  ease-out
-                  group-hover:-translate-y-[1px]
-                "
-              >
-                BACK TO TOP
-              </span>
-
-              {/* FLECHA */}
-              <span
-                className="
-                  mt-1
-                  w-8 h-8
-                  flex items-center justify-center
-                  rounded-full
-                  bg-white
-                  transition-colors
-                  duration-300
-                  ease-out
-                  group-hover:bg-nivOrange
-                  overflow-hidden
-                "
-              >
-                <ArrowUp
-                  strokeWidth={3}
-                  className="
-                    w-4 h-4
-                    text-black
-                    group-hover:animate-arrowUpLoop
-                  "
-                />
-              </span>
-            </button>
-
-          </div>
-          
         </div>
+      </div>
 
-        {/* COPYRIGHT (ya dentro del fondo negro) */}
-        <div className="mt-6 text-center text-xs text-white/60">
-          © 2026 Nivalis Marketing and Tech Lab {/* · All rights reserved ·{" "} */}
-          {/*
-            <a
-              href="/terminos-y-condiciones"
-              className="hover:text-nivOrange transition-colors"
+      <div className="border-t border-white/10">
+        <div className="w-full max-w-7xl mx-auto px-6 md:px-8 py-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              {socialLinks.map((social, i) => (
+                <a
+                  key={i}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-400 hover:text-nivOrange hover:bg-white/20 transition-all duration-200"
+                  aria-label={social.label}
+                >
+                  <social.icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
+
+            <p className="text-sm text-gray-500">© 2026 Nivalis Marketing and Tech Lab</p>
+
+            <button
+              onClick={scrollToTop}
+              className="group flex items-center gap-2 text-sm text-gray-400 hover:text-nivOrange transition-colors"
             >
-              Términos y Condiciones
-            </a>
-          */}
+              <span>Volver arriba</span>
+              <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
+            </button>
+          </div>
         </div>
       </div>
     </footer>

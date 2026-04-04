@@ -14,14 +14,7 @@ export default function ServicesPage() {
       <Header />
 
       <main className="pt-48 pb-0 bg-white">
-        <div
-          className="
-            w-full
-            max-w-7xl
-            mx-auto
-            px-6 md:px-8 xl:px-10
-          "
-        >
+        <div className="w-full max-w-7xl mx-auto px-6 md:px-8 xl:px-10">
           {/* HERO */}
           <motion.div
             variants={staggerContainer}
@@ -29,7 +22,6 @@ export default function ServicesPage() {
             animate="animate"
             style={{ y: heroY }}
           >
-            {/* TÍTULO */}
             <motion.h1
               variants={fadeUp}
               className="font-display text-5xl md:text-6xl font-medium text-gray-900"
@@ -40,13 +32,12 @@ export default function ServicesPage() {
               </span>
             </motion.h1>
 
-            {/* BAJADA */}
             <motion.p
               variants={fadeUp}
               className="mt-6 text-xl text-gray-600 max-w-2xl"
             >
               Diseñamos y desarrollamos soluciones digitales pensadas para
-              crecer con tu negocio, optimizar procesos y generar impacto real.
+              hacer crecer tu negocio.
             </motion.p>
           </motion.div>
 
@@ -61,7 +52,7 @@ export default function ServicesPage() {
               variants={fadeUp}
               className="text-4xl md:text-5xl font-medium text-gray-900 text-left"
             >
-              <span className="text-nivOrange">/</span> Websites
+              <span className="text-nivOrange">/</span> Desarrollo Web
             </motion.h2>
 
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
@@ -70,10 +61,11 @@ export default function ServicesPage() {
                 className="space-y-4 text-lg text-gray-700"
               >
                 {[
-                  "Landing Pages",
-                  "Diseño UX/UI",
+                  "Sitios web profesionales",
+                  "Landing Pages de conversión",
                   "E-Commerce",
-                  "Desarrollos a medida",
+                  "Aplicaciones web",
+                  "Diseño UX/UI",
                 ].map((item) => (
                   <li
                     key={item}
@@ -89,7 +81,7 @@ export default function ServicesPage() {
                 variants={fadeUp}
                 className="text-xl text-gray-700 max-w-md"
               >
-                Alcanzá tus objetivos comerciales con una website a medida, rápida y responsive.
+                Creamos sitios y aplicaciones web que representan tu marca y ayudan a alcanzar tus objetivos comerciales.
               </motion.p>
             </div>
           </motion.section>
@@ -137,8 +129,7 @@ export default function ServicesPage() {
                 variants={fadeUp}
                 className="text-xl text-gray-700 max-w-md"
               >
-                Diseñamos y desarrollamos sistemas digitales a medida para optimizar procesos y 
-                acompañar el crecimiento de tu negocio.
+                Diseñamos y desarrollamos sistemas digitales a medida para optimizar procesos y acompañar el crecimiento de tu negocio.
               </motion.p>
             </div>
           </motion.section>
@@ -156,7 +147,7 @@ export default function ServicesPage() {
               variants={fadeUp}
               className="text-4xl md:text-5xl font-medium text-gray-900 text-left"
             >
-              <span className="text-nivOrange">/</span> Marketing & Tecnología
+              <span className="text-nivOrange">/</span> Automatización
             </motion.h2>
 
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
@@ -165,10 +156,11 @@ export default function ServicesPage() {
                 className="space-y-4 text-lg text-gray-700"
               >
                 {[
-                  "Estrategia digital",
-                  "Performance y analítica",
-                  "UX/UI",
-                  "Optimización continua",
+                  "Automatización de tareas repetitivas",
+                  "Workflows personalizados",
+                  "Integración con herramientas existentes",
+                  "Reportes automáticos",
+                  "Notificaciones y alertas",
                 ].map((item) => (
                   <li
                     key={item}
@@ -184,7 +176,54 @@ export default function ServicesPage() {
                 variants={fadeUp}
                 className="text-xl text-gray-700 max-w-md"
               >
-                Integramos marketing, diseño y tecnología para acompañar el crecimiento de tu negocio.
+                Automatizamos procesos para que tu equipo se enfoque en lo importante: hacer crecer tu negocio.
+              </motion.p>
+            </div>
+          </motion.section>
+
+          <div className="h-px bg-gradient-to-r from-transparent via-nivOrange/30 to-transparent" />
+
+          {/* ========= SERVICIO 04 ========= */}
+          <motion.section
+            className="py-16"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+          >
+            <motion.h2
+              variants={fadeUp}
+              className="text-4xl md:text-5xl font-medium text-gray-900 text-left"
+            >
+              <span className="text-nivOrange">/</span> Consultoría Tech
+            </motion.h2>
+
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+              <motion.ul
+                variants={fadeUp}
+                className="space-y-4 text-lg text-gray-700"
+              >
+                {[
+                  "Arquitectura tecnológica",
+                  "Evaluación de infraestructura",
+                  "Planificación de migración",
+                  "Seguridad y protección de datos",
+                  "Capacitación de equipos",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 hover:text-nivOrange transition-colors duration-200"
+                  >
+                    <span className="text-nivOrange">•</span>
+                    {item}
+                  </li>
+                ))}
+              </motion.ul>
+
+              <motion.p
+                variants={fadeUp}
+                className="text-xl text-gray-700 max-w-md"
+              >
+                Te asesoramos para que tomes decisiones tecnológicas correctas para tu negocio.
               </motion.p>
             </div>
           </motion.section>

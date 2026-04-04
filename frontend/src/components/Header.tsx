@@ -1,261 +1,186 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, MessageCircle, Calendar } from "lucide-react";
-//import ThemeToggle from "./theme/ThemeToggle";
+import { Menu, MessageCircle } from "lucide-react";
 import { useParallax } from "./scroll/useParallax";
 import FullscreenMenu from "./FullscreenMenu";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import logo from "../assets/logos/A6.png";
-import logo_mini from "../assets/logos/A6.png";
-import logo_mini_orange from "../assets/logos/A1.png";
 
+const navSections = [
+  { id: "inicio", label: "Inicio", href: "#inicio" },
+  { id: "about", label: "Nivalis", href: "#about" },
+  { id: "services", label: "Servicios", href: "#services" },
+  { id: "portfolio", label: "Proyectos", href: "#portfolio" },
+  { id: "contacto", label: "Contacto", href: "#contacto" },
+];
 
-// ======== BUTTON STYLE ==========
 const primaryButtonClasses =
   "inline-flex items-center justify-center " +
-  "px-7 py-3 rounded-full " +
+  "px-5 py-2 rounded-full " +
   "border border-black " +
   "bg-transparent text-black " +
-  "font-nauryz text-base " +
+  "font-nauryz text-sm " +
   "transition-all duration-200 ease-out " +
   "hover:bg-nivOrange hover:text-white hover:border-nivOrange " +
   "hover:scale-105";
 
-export default function Header() {
+function NavLink({
+  label,
+  isActive,
+  onClick,
+}: {
+  label: string;
+  isActive: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`
+        relative font-nauryz text-sm py-3 px-3
+        transition-colors duration-200
+        ${isActive ? "text-nivOrange" : "text-gray-700 dark:text-gray-300 hover:text-nivOrange"}
+      `}
+    >
+      {label}
+      <motion.span
+        className="absolute bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-nivOrange rounded-full"
+        initial={{ width: "0%" }}
+        animate={{ width: isActive ? "80%" : "0%" }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+      />
+    </button>
+  );
+}
 
+export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
-
-  // ===== MENU STATE =====
   const [open, setOpen] = useState(false);
   const toggleMenu = () => setOpen((v) => !v);
   const closeMenu = () => setOpen(false);
-
-  // ===== SCROLL STATE =====
-  const [isTop, setIsTop] = useState(true);
-
-  // ===== PARALLAX =====
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("inicio");
   const logoY = useParallax({ range: 250, offset: -6 });
 
-  // ===== DETECT TOP =====
   useEffect(() => {
-    const onScroll = () => setIsTop(window.scrollY === 0);
+    const onScroll = () => setIsScrolled(window.scrollY > 20);
     onScroll();
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // ===== SCROLL TO =====
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.4) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: [0.4] }
+    );
+
+    navSections.forEach(({ id, href }) => {
+      const el = document.querySelector(href);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const handleNavClick = useCallback(
     (href: string) => {
       closeMenu();
-
-      // Si estoy en la home → scroll
       if (location.pathname === "/") {
         const el = document.querySelector(href);
         if (!el) return;
-
         const y = el.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top: y, behavior: "smooth" });
       } else {
-        // Si no estoy en la home → ir a / y luego scrollear
         navigate("/", { state: { scrollTo: href } });
       }
     },
     [location.pathname, navigate]
   );
 
-
   const handleLogoClick = useCallback(() => {
-  // Si ya estoy en la home
-  if (location.pathname === "/") {
-    const el = document.querySelector("#inicio");
-    if (!el) return;
+    if (location.pathname === "/") {
+      const el = document.querySelector("#inicio");
+      if (!el) return;
+      const y = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    } else {
+      navigate("/");
+    }
+  }, [location.pathname, navigate]);
 
-    const y = el.getBoundingClientRect().top + window.scrollY - 80;
-    window.scrollTo({ top: y, behavior: "smooth" });
-  } else {
-    // Si estoy en otra página → voy a la home
-    navigate("/");
-  }
-}, [location.pathname, navigate]);
-
-
-  // ===== HOVER / TRANSITION DE LOGOS =====
   const logoTransition = {
     duration: 0.8,
     ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
   };
 
+  const isActive = (id: string) => activeSection === id;
+
   return (
     <>
-      {/* ================= HEADER ================= */}
       <motion.header
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.25 }}
-        className="fixed top-0 left-0 w-full z-[100] bg-transparent"
+        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
+          isScrolled
+            ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50 shadow-sm"
+            : "bg-transparent"
+        }`}
       >
-        <div className={`w-full ${isTop ? "py-0" : "py-2"}`}>
+        <div className={`w-full ${isScrolled ? "py-2" : "py-4"}`}>
           <div className="max-w-7xl mx-auto px-6">
-            <div className="flex items-center justify-between h-24">
+            <div className="flex items-center justify-between h-16">
 
-              {/* ================= LOGO TOP ================= */}
-              <AnimatePresence>
-                {isTop && (
-                  <motion.button
-                    onClick={handleLogoClick}
-                    className="relative flex items-center"
-                    style={{ y: logoY }}
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={logoTransition}
-                  >
-                    <img
-                      src={logo}
-                      alt="Nivalis Logo"
-                      className="h-14 w-auto object-contain"
-                    />
-                  </motion.button>
-                )}
-              </AnimatePresence>
-
-              {/* ================= BOTONES TOP ================= */}
-              <AnimatePresence>
-                {isTop && (
-                  <motion.div
-                    className="flex items-center gap-4"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={logoTransition}
-                  >
-                    <a
-                      href="https://calendly.com/lucas-mateo-leis/30min"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`${primaryButtonClasses} hidden md:inline-flex`}
-                    >
-                      Agendar una reunión
-                    </a>
-
-                    <a
-                      href="https://wa.me/5491151232153"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="
-                        w-11 h-11
-                        rounded-full
-                        bg-green-500 text-white
-                        flex items-center justify-center
-                        transition-all duration-200 ease-out
-                        hover:bg-nivOrange
-                        hover:scale-105
-                      "
-                      aria-label="WhatsApp"
-                    >
-                      <MessageCircle size={22} />
-                    </a>
-
-
-                    <button
-                      onClick={toggleMenu}
-                      className="
-                        w-11 h-11
-                        rounded-full
-                        bg-black text-white
-                        flex items-center justify-center
-                        transition-all duration-200 ease-out
-                        hover:bg-nivOrange
-                        hover:scale-105
-                      "
-                      aria-label="Abrir menú"
-                    >
-                      <Menu size={22} />
-                    </button>
-
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-            </div>
-          </div>
-
-          {/* ================= LOGO SCROLL ================= */}
-          <AnimatePresence>
-            {!isTop && (
               <motion.button
                 onClick={handleLogoClick}
-                className="
-                  fixed top-4 left-4 z-[100]
-                  group
-                  flex items-center
-                "
-                initial={{ opacity: 0, y: -20 }}
+                className="relative flex items-center"
+                style={{ y: isScrolled ? 0 : logoY }}
+                initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
                 transition={logoTransition}
-                aria-label="Volver al inicio"
               >
-                {/* Logo normal */}
                 <img
-                  src={logo_mini}
+                  src={logo}
                   alt="Nivalis Logo"
-                  className="
-                    h-10 w-auto object-contain
-                    transition-opacity duration-200 ease-out
-                    group-hover:opacity-0
-                  "
-                />
-
-                {/* Logo naranja */}
-                <img
-                  src={logo_mini_orange}
-                  alt="Nivalis Logo Hover"
-                  className="
-                    h-10 w-auto object-contain
-                    absolute
-                    opacity-0
-                    transition-all duration-200 ease-out
-                    group-hover:opacity-100
-                    group-hover:scale-105
-                  "
+                  className={`w-auto object-contain transition-all duration-300 ${
+                    isScrolled ? "h-10" : "h-12"
+                  }`}
                 />
               </motion.button>
-            )}
-          </AnimatePresence>
 
-          {/* ================= BOTONES SCROLL ================= */}
-          <AnimatePresence>
-            {!isTop && (
+              <nav className="hidden lg:flex items-center gap-1">
+                {navSections.map((item) => (
+                  <NavLink
+                    key={item.id}
+                    label={item.label}
+                    isActive={isActive(item.id)}
+                    onClick={() => handleNavClick(item.href)}
+                  />
+                ))}
+              </nav>
+
               <motion.div
-                className="fixed top-4 right-4 z-[100] flex items-center gap-3"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
+                className="flex items-center gap-3"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={logoTransition}
               >
                 <a
                   href="https://calendly.com/lucas-mateo-leis/30min"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="
-                    w-11 h-11
-                    rounded-full
-                    border border-black
-                    text-black
-                    flex items-center justify-center
-                    transition-all duration-200 ease-out
-                    hover:bg-nivOrange
-                    hover:text-white
-                    hover:border-nivOrange
-                    hover:scale-105
-                  "
-                  aria-label="Agendar reunión"
+                  className={`${primaryButtonClasses} hidden md:inline-flex`}
                 >
-                  <Calendar size={20} />
+                  Agendar
                 </a>
 
                 <a
@@ -263,43 +188,40 @@ export default function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="
-                    w-11 h-11
+                    w-10 h-10
                     rounded-full
                     bg-green-500 text-white
                     flex items-center justify-center
                     transition-all duration-200 ease-out
-                    hover:bg-nivOrange
-                    hover:scale-105
+                    hover:bg-nivOrange hover:scale-105
                   "
                   aria-label="WhatsApp"
                 >
-                  <MessageCircle size={22} />
+                  <MessageCircle size={20} />
                 </a>
 
                 <button
                   onClick={toggleMenu}
                   className="
-                    w-11 h-11
+                    w-10 h-10
                     rounded-full
                     bg-black text-white
                     flex items-center justify-center
                     transition-all duration-200 ease-out
-                    hover:bg-nivOrange
-                    hover:scale-105
+                    hover:bg-nivOrange hover:scale-105
                   "
                   aria-label="Abrir menú"
                 >
-                  <Menu size={22} />
+                  <Menu size={20} />
                 </button>
 
               </motion.div>
-            )}
-          </AnimatePresence>
 
+            </div>
+          </div>
         </div>
       </motion.header>
 
-      {/* ================= FULLSCREEN MENU ================= */}
       <FullscreenMenu
         open={open}
         onClose={closeMenu}

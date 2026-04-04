@@ -1,15 +1,94 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nivalis Marketing & Tech Lab</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Nivalis | Marketing Digital & Desarrollo Web</title>
+    <meta name="title" content="Nivalis | Marketing Digital & Desarrollo Web">
+    <meta name="description" content="Agencia de marketing y tecnología. Creamos sitios web, apps y campañas digitales que generan resultados reales para tu negocio.">
+    <meta name="keywords" content="marketing digital, desarrollo web, diseño UI/UX, apps, sitios web, agencia digital, Argentina">
+    <meta name="author" content="Nivalis Marketing & Tech Lab">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nivalis.com.ar">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nivalis.com.ar">
+    <meta property="og:title" content="Nivalis | Marketing Digital & Desarrollo Web">
+    <meta property="og:description" content="Creamos soluciones digitales que generan resultados reales. Desarrollo web, diseño UI/UX y marketing digital.">
+    <meta property="og:image" content="https://nivalis.com.ar/og-image.png">
+    <meta property="og:site_name" content="Nivalis">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://nivalis.com.ar">
+    <meta property="twitter:title" content="Nivalis | Marketing Digital & Desarrollo Web">
+    <meta property="twitter:description" content="Creamos soluciones digitales que generan resultados reales. Desarrollo web, diseño UI/UX y marketing digital.">
+    <meta property="twitter:image" content="https://nivalis.com.ar/og-image.png">
+
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/logo-nivalis.ico">
-    <meta property="og:image" content="https://bolt.new/static/og_default.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
-</head>
+
+    <!-- Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Nivalis Marketing & Tech Lab",
+      "url": "https://nivalis.com.ar",
+      "logo": "https://nivalis.com.ar/logo.png",
+      "description": "Agencia de marketing y tecnología especializada en desarrollo web, diseño UI/UX y marketing digital.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Buenos Aires",
+        "addressCountry": "AR"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+5491151232153",
+        "contactType": "customer service",
+        "availableTime": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      },
+      "sameAs": [
+        "https://www.instagram.com/nivalis.techlab/",
+        "https://www.facebook.com/nivalis.techlab"
+      ]
+    }
+    </script>
+
+    <!-- Structured Data - LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Nivalis",
+      "image": "https://nivalis.com.ar/logo.png",
+      "telephone": "+5491151232153",
+      "email": "lucas@nivalis.com.ar",
+      "url": "https://nivalis.com.ar",
+      "priceRange": "$$",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Buenos Aires"
+      },
+      "serviceType": ["Desarrollo Web", "Diseño UI/UX", "Marketing Digital", "Consultoría Tech"]
+    }
+    </script>
+  </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>

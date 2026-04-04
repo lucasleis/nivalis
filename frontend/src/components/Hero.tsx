@@ -87,10 +87,16 @@ export default function Hero() {
             mt-12 md:mt-0
           "
         >
-          <img
+          <motion.img
             src={logo}
             alt="Logo de Nivalis Marketing & Tech Lab"
             className="w-[180px] md:w-[300px] opacity-80 mb-8 md:mb-0"
+            initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
+            animate={{ opacity: 0.8, scale: 1, rotate: 0 }}
+            transition={{ 
+              duration: 0.8, 
+              ease: [0.22, 1, 0.36, 1] 
+            }}
           />
         </motion.div>
       </motion.div>
