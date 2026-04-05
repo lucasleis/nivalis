@@ -43,6 +43,7 @@ export default function ServicesPage() {
 
           {/* ========= SERVICIO 01 ========= */}
           <motion.section
+            id="desarrollo-web"
             className="py-16"
             variants={staggerContainer}
             initial="initial"
@@ -90,6 +91,7 @@ export default function ServicesPage() {
 
           {/* ========= SERVICIO 02 ========= */}
           <motion.section
+            id="sistemas-medida"
             className="py-16"
             variants={staggerContainer}
             initial="initial"
@@ -138,6 +140,7 @@ export default function ServicesPage() {
 
           {/* ========= SERVICIO 03 ========= */}
           <motion.section
+            id="automatizacion"
             className="py-16"
             variants={staggerContainer}
             initial="initial"
@@ -185,6 +188,7 @@ export default function ServicesPage() {
 
           {/* ========= SERVICIO 04 ========= */}
           <motion.section
+            id="consultoria"
             className="py-16"
             variants={staggerContainer}
             initial="initial"
@@ -229,7 +233,7 @@ export default function ServicesPage() {
           </motion.section>
 
           {/* CONTACT FORM */}
-          <div className="mt-32">
+          <div id="contacto" className="mt-32">
             <ContactForm />
           </div>
         </div>

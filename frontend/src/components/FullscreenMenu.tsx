@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
+import { useLocation } from "react-router-dom";
 import LazoHover from "./LazoHover";
 
 import logo from "../assets/logos/A5.png";
@@ -44,6 +45,7 @@ export default function FullscreenMenu({
 }: Props) {
   const [mounted, setMounted] = useState(false);
   const [hovered, setHovered] = useState<string | null>(null);
+  const location = useLocation();
 
   useEffect(() => {
     setMounted(true);
@@ -58,13 +60,24 @@ export default function FullscreenMenu({
 
   if (!mounted) return null;
 
-  const navItems = [
-    { id: "inicio", label: "Inicio", href: "#inicio" },
-    { id: "about", label: "Nivalis", href: "#about" },
-    { id: "services", label: "Servicios", href: "#services" },
-    { id: "portfolio", label: "Proyectos", href: "#portfolio" },
-    { id: "contacto", label: "Contacto", href: "#contacto" },
-  ];
+  const isServicesPage = location.pathname === "/servicios";
+
+  const navItems = isServicesPage
+    ? [
+        { id: "inicio", label: "Inicio", href: "/" },
+        { id: "desarrollo-web", label: "Desarrollo Web", href: "#desarrollo-web" },
+        { id: "sistemas-medida", label: "Sistemas a medida", href: "#sistemas-medida" },
+        { id: "automatizacion", label: "Automatización", href: "#automatizacion" },
+        { id: "consultoria", label: "Consultoría", href: "#consultoria" },
+        { id: "contacto", label: "Contacto", href: "#contacto" },
+      ]
+    : [
+        { id: "inicio", label: "Inicio", href: "#inicio" },
+        { id: "about", label: "Nivalis", href: "#about" },
+        { id: "services", label: "Servicios", href: "#services" },
+        { id: "portfolio", label: "Proyectos", href: "#portfolio" },
+        { id: "contacto", label: "Contacto", href: "#contacto" },
+      ];
 
   return createPortal(
     <AnimatePresence>

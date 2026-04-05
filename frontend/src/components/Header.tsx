@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
+import { motion } from "framer-motion";
 import { Menu, MessageCircle } from "lucide-react";
 import { useParallax } from "./scroll/useParallax";
 import FullscreenMenu from "./FullscreenMenu";
@@ -7,11 +7,20 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import logo from "../assets/logos/A6.png";
 
-const navSections = [
+const navSectionsHome = [
   { id: "inicio", label: "Inicio", href: "#inicio" },
   { id: "about", label: "Nivalis", href: "#about" },
   { id: "services", label: "Servicios", href: "#services" },
   { id: "portfolio", label: "Proyectos", href: "#portfolio" },
+  { id: "contacto", label: "Contacto", href: "#contacto" },
+];
+
+const navSectionsServices = [
+  { id: "inicio", label: "Inicio", href: "/" },
+  { id: "desarrollo-web", label: "Desarrollo Web", href: "#desarrollo-web" },
+  { id: "sistemas-medida", label: "Sistemas a medida", href: "#sistemas-medida" },
+  { id: "automatizacion", label: "Automatización", href: "#automatizacion" },
+  { id: "consultoria", label: "Consultoría", href: "#consultoria" },
   { id: "contacto", label: "Contacto", href: "#contacto" },
 ];
 
@@ -64,6 +73,9 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState("inicio");
   const logoY = useParallax({ range: 250, offset: -6 });
 
+  const isServicesPage = location.pathname === "/servicios";
+  const navSections = isServicesPage ? navSectionsServices : navSectionsHome;
+
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 20);
     onScroll();
@@ -83,31 +95,39 @@ export default function Header() {
       { threshold: [0.4] }
     );
 
-    navSections.forEach(({ id, href }) => {
+    navSections.forEach(({ href }) => {
+      if (href.startsWith("/")) return;
       const el = document.querySelector(href);
       if (el) observer.observe(el);
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [navSections, location.pathname]);
 
   const handleNavClick = useCallback(
     (href: string) => {
       closeMenu();
-      if (location.pathname === "/") {
+      // /#section → navigate al home con estado para scroll
+      if (href.startsWith("/#")) {
+        const anchor = href.slice(1); // "#section"
+        navigate("/", { state: { scrollTo: anchor } });
+      } else if (href.startsWith("/")) {
+        navigate(href);
+      } else {
+        // ancla local (#section) — scroll en la misma página
         const el = document.querySelector(href);
         if (!el) return;
         const y = el.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top: y, behavior: "smooth" });
-      } else {
-        navigate("/", { state: { scrollTo: href } });
       }
     },
-    [location.pathname, navigate]
+    [navigate, closeMenu]
   );
 
   const handleLogoClick = useCallback(() => {
-    if (location.pathname === "/") {
+    if (location.pathname === "/servicios") {
+      navigate("/");
+    } else if (location.pathname === "/") {
       const el = document.querySelector("#inicio");
       if (!el) return;
       const y = el.getBoundingClientRect().top + window.scrollY - 80;
