@@ -1,8 +1,8 @@
 import CaseStudyTemplate from "./CaseStudyTemplate";
 
 import mvpLogo from "../../../assets/logos-portfolio/logo-mvp-burgers.png";
-import img1 from "../../../assets/imgs/mvp-img-1.png";
-import img2 from "../../../assets/imgs/mvp-img-2.png";
+import img1 from "../../../assets/imgs/mvp-img-1.webp";
+import img2 from "../../../assets/imgs/mvp-img-2.webp";
 import img3 from "../../../assets/imgs/mvp-img-3.png";
 import img4 from "../../../assets/imgs/mvp-img-4.png";
 import img5 from "../../../assets/imgs/mvp-img-5.png";

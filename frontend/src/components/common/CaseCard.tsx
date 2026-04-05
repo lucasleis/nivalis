@@ -20,6 +20,9 @@ export default function CaseCard({
         <img
           src={image}
           alt={title}
+          width={400}
+          height={420}
+          loading="lazy"
           className="h-[420px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
 

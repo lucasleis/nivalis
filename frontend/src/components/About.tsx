@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { fadeUp, fadeScale, staggerContainer } from "../motion/variants";
 import { useParallax } from "../components/scroll/useParallax";
 import { ArrowRight } from "lucide-react";
-import aboutImage from "../assets/perritos.png";
+import aboutImage from "../assets/perritos.webp";
 
 export default function About() {
   const imageY = useParallax({ range: 300, offset: -10 });
@@ -32,7 +32,7 @@ export default function About() {
             style={{ y: imageY }}
             className="order-2 md:order-1 relative w-full h-[420px] md:h-[520px] rounded-3xl overflow-hidden shadow-xl"
           >
-            <img src={aboutImage} alt="Equipo creativo de Nivalis" className="w-full h-full object-cover" />
+            <img src={aboutImage} alt="Equipo creativo de Nivalis" width={520} height={520} loading="lazy" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">
               <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-2xl p-4 inline-flex items-center gap-3">

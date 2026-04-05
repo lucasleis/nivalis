@@ -3,9 +3,9 @@ import CaseStudyTemplate from "./CaseStudyTemplate";
 import lupaLogo from "../../../assets/logos-portfolio/logo-lupa.png";
 
 // imgs
-import img1 from "../../../assets/imgs/lupa-img-1.png";
-import img2 from "../../../assets/imgs/lupa-img-2.png";
-import img3 from "../../../assets/imgs/lupa-img-3.png";
+import img1 from "../../../assets/imgs/lupa-img-1.webp";
+import img2 from "../../../assets/imgs/lupa-img-2.webp";
+import img3 from "../../../assets/imgs/lupa-img-3.webp";
 import img5 from "../../../assets/imgs/lupa-img-5.png";
 
 export default function LupaCaseStudy() {

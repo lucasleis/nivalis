@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
-import nivalisGradient from "../assets/FONDO.jpg";
+import nivalisGradient from "../assets/FONDO.webp";
 import { fadeUp, fadeUpDelayed, staggerContainer } from "../motion/variants";
 import { useParallax } from "../components/scroll/useParallax";
 
