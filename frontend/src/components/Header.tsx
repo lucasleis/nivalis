@@ -24,6 +24,15 @@ const navSectionsServices = [
   { id: "contacto", label: "Contacto", href: "#contacto" },
 ];
 
+const navSectionsCaseStudy = [
+  { id: "inicio", label: "Inicio", href: "/" },
+  { id: "desafio", label: "Desafío", href: "#desafio" },
+  { id: "solucion", label: "Solución", href: "#solucion" },
+  { id: "resultados", label: "Resultados", href: "#resultados" },
+  { id: "beneficios", label: "Beneficios", href: "#beneficios" },
+  { id: "contacto", label: "Contacto", href: "#contacto" },
+];
+
 const primaryButtonClasses =
   "inline-flex items-center justify-center " +
   "px-5 py-2 rounded-full " +
@@ -74,7 +83,12 @@ export default function Header() {
   const logoY = useParallax({ range: 250, offset: -6 });
 
   const isServicesPage = location.pathname === "/servicios";
-  const navSections = isServicesPage ? navSectionsServices : navSectionsHome;
+  const isCaseStudyPage = location.pathname.startsWith("/case-study/");
+  const navSections = isCaseStudyPage
+    ? navSectionsCaseStudy
+    : isServicesPage
+    ? navSectionsServices
+    : navSectionsHome;
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 20);

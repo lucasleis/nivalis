@@ -180,7 +180,7 @@ export default function CaseStudyTemplate({
           "
         >
           {/* PROBLEM */}
-          <motion.div variants={staggerContainer} initial="initial" whileInView="animate">
+          <motion.div id="desafio" variants={staggerContainer} initial="initial" whileInView="animate">
             <motion.h2 variants={fadeUp} className="text-3xl font-bold mb-4">
               <span className="text-nivOrange">/</span> Desafío
             </motion.h2>
@@ -190,7 +190,7 @@ export default function CaseStudyTemplate({
           </motion.div>
 
           {/* SOLUTION */}
-          <motion.div variants={staggerContainer} initial="initial" whileInView="animate">
+          <motion.div id="solucion" variants={staggerContainer} initial="initial" whileInView="animate">
             <motion.h2 variants={fadeUp} className="text-3xl font-bold mb-4">
               <span className="text-nivOrange">/</span> Solución
             </motion.h2>
@@ -200,7 +200,7 @@ export default function CaseStudyTemplate({
           </motion.div>
 
           {/* RESULTS */}
-          <motion.div variants={staggerContainer} initial="initial" whileInView="animate">
+          <motion.div id="resultados" variants={staggerContainer} initial="initial" whileInView="animate">
             <motion.h2 variants={fadeUp} className="text-3xl font-bold mb-4">
               <span className="text-nivOrange">/</span> Resultados
             </motion.h2>
@@ -210,7 +210,7 @@ export default function CaseStudyTemplate({
           </motion.div>
 
           {/* HIGHLIGHTS */}
-          <motion.div variants={staggerContainer} initial="initial" whileInView="animate">
+          <motion.div id="beneficios" variants={staggerContainer} initial="initial" whileInView="animate">
             <motion.h2 variants={fadeUp} className="text-3xl font-bold mb-4">
               <span className="text-nivOrange">/</span> Beneficios
             </motion.h2>
@@ -281,7 +281,7 @@ export default function CaseStudyTemplate({
           </motion.div>
 
           {/* CONTACT FORM */}
-          <div className="mt-32">
+          <div id="contacto" className="mt-32">
             <ContactForm />
           </div>
         </div>

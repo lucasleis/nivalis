@@ -61,8 +61,18 @@ export default function FullscreenMenu({
   if (!mounted) return null;
 
   const isServicesPage = location.pathname === "/servicios";
+  const isCaseStudyPage = location.pathname.startsWith("/case-study/");
 
-  const navItems = isServicesPage
+  const navItems = isCaseStudyPage
+    ? [
+        { id: "inicio", label: "Inicio", href: "/" },
+        { id: "desafio", label: "Desafío", href: "#desafio" },
+        { id: "solucion", label: "Solución", href: "#solucion" },
+        { id: "resultados", label: "Resultados", href: "#resultados" },
+        { id: "beneficios", label: "Beneficios", href: "#beneficios" },
+        { id: "contacto", label: "Contacto", href: "#contacto" },
+      ]
+    : isServicesPage
     ? [
         { id: "inicio", label: "Inicio", href: "/" },
         { id: "desarrollo-web", label: "Desarrollo Web", href: "#desarrollo-web" },
