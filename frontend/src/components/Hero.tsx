@@ -39,11 +39,14 @@ export default function Hero() {
 
           {/* TEXTO PRINCIPAL */}
           <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-gray-900 leading-tight mb-6">
-            Transformamos ideas en experiencias digitales con 
+            Desarrollo web moderno con 
             <span className="acumin-ultrablack text-nivOrange">
               {" "}impacto real
             </span>
           </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-lg">
+            Creamos sitios web, apps y soluciones digitales que generan resultados reales para tu negocio. Diseño UI/UX profesional y desarrollo web moderno.
+          </p>
 
           <motion.div variants={fadeUp}>
             <a

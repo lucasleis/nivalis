@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nivalis.com.ar/sitemap.xml
+
+# Rutas bloqueadas (si corresponde)
+# Disallow: /admin/
+# Disallow: /private/
