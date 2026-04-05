@@ -13,9 +13,9 @@ export default function Footer() {
   ];
 
   const portfolioLinks = [
-    { label: "MVP Burgers", href: "/proyectos/mvp-burgers" },
-    { label: "BarberPay", href: "/proyectos/barberpay" },
-    { label: "Lupa", href: "/proyectos/lupa" },
+    { label: "MVP Burgers", href: "/case-study/mvp-burgers" },
+    { label: "BarberPay", href: "/case-study/barberpay" },
+    { label: "Lupa", href: "/case-study/lupa" },
   ];
 
   const socialLinks = [
