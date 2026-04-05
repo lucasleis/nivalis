@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { fadeUp, staggerContainer } from "../motion/variants";
-import logo from "../assets/logos/logo6.png";
+import logo from "../assets/vector/nivalisT&D.svg";
 
 export default function Hero() {
   return (
@@ -90,7 +90,7 @@ export default function Hero() {
           <motion.img
             src={logo}
             alt="Logo de Nivalis Marketing & Tech Lab"
-            className="w-[180px] md:w-[300px] opacity-80 mb-8 md:mb-0"
+            className="w-[280px] md:w-[450px] opacity-90 mb-8 md:mb-0"
             initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
             animate={{ opacity: 0.8, scale: 1, rotate: 0 }}
             transition={{ 

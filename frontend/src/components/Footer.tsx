@@ -116,7 +116,7 @@ export default function Footer() {
               ))}
             </div>
 
-            <p className="text-sm text-gray-500">© 2026 Nivalis Marketing and Tech Lab</p>
+            <p className="text-sm text-gray-500">© 2026 Nivalis Tech & Digital Lab</p>
 
             <button
               onClick={scrollToTop}
