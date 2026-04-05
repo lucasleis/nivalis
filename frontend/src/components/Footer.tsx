@@ -37,11 +37,11 @@ export default function Footer() {
             </p>
             <div className="flex flex-col gap-2 mt-2">
               <a
-                href="mailto:lucas@nivalis.com.ar"
+                href="mailto:nivalis.techlab@gmail.com"
                 className="flex items-center gap-2 text-sm text-gray-400 hover:text-nivOrange transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                lucas@nivalis.com.ar
+                nivalis.techlab@gmail.com
               </a>
               <a
                 href="https://wa.me/5491151232153"
