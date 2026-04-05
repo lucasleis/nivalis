@@ -6,7 +6,6 @@ import lupaLogo from "../../../assets/logos-portfolio/logo-lupa.png";
 import img1 from "../../../assets/imgs/lupa-img-1.png";
 import img2 from "../../../assets/imgs/lupa-img-2.png";
 import img3 from "../../../assets/imgs/lupa-img-3.png";
-import img4 from "../../../assets/imgs/lupa-img-4.png";
 import img5 from "../../../assets/imgs/lupa-img-5.png";
 
 export default function LupaCaseStudy() {

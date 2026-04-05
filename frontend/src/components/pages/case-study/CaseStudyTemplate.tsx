@@ -214,16 +214,21 @@ export default function CaseStudyTemplate({
             <motion.h2 variants={fadeUp} className="text-3xl font-bold mb-4">
               <span className="text-nivOrange">/</span> Beneficios
             </motion.h2>
-            <motion.ul variants={fadeUp} className="grid md:grid-cols-2 gap-6 mt-3">
+            <motion.div variants={fadeUp} className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-3">
               {highlights.map((item, index) => (
-                <li
+                <div
                   key={index}
-                  className="bg-gray-100 dark:bg-slate-800 p-6 rounded-2xl shadow-md"
+                  className="group relative bg-gray-50 dark:bg-slate-800/50 p-6 rounded-xl border border-gray-100 dark:border-slate-700/30 hover:border-nivOrange/40 hover:shadow-lg hover:shadow-nivOrange/5 transition-all duration-300"
                 >
-                  {item}
-                </li>
+                  <div className="absolute top-4 right-4 w-7 h-7 bg-nivOrange/10 rounded-full flex items-center justify-center text-nivOrange font-bold text-xs">
+                    {String(index + 1).padStart(2, "0")}
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed pr-8 text-base">
+                    {item}
+                  </p>
+                </div>
               ))}
-            </motion.ul>
+            </motion.div>
           </motion.div>
 
           {/* GALLERY */}
@@ -233,7 +238,7 @@ export default function CaseStudyTemplate({
                 <span className="text-nivOrange">/</span> Galería
               </motion.h2>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-3">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-3">
                 {gallery.map((img, index) => (
                   <motion.img
                     key={index}
@@ -242,12 +247,13 @@ export default function CaseStudyTemplate({
                     className="
                       cursor-zoom-in
                       rounded-xl
-                      shadow-md
+                      shadow-sm
                       w-full
-                      max-h-48
+                      h-40 md:h-48
                       object-cover
-                      transition-transform
-                      hover:scale-[1.03]
+                      transition-all duration-300
+                      hover:scale-[1.02]
+                      hover:shadow-lg
                     "
                     onClick={() => setActiveImage(img)}
                   />
@@ -262,16 +268,16 @@ export default function CaseStudyTemplate({
               <span className="text-nivOrange">/</span> Tecnologías utilizadas
             </motion.h2>
 
-            <motion.ul variants={fadeUp} className="flex flex-wrap gap-3 mt-3">
+            <motion.div variants={fadeUp} className="flex flex-wrap gap-3 mt-3">
               {stack.map((item, index) => (
-                <li
+                <span
                   key={index}
-                  className="px-4 py-2 bg-gray-100 dark:bg-slate-800 rounded-full text-sm"
+                  className="px-5 py-2.5 bg-gray-100 dark:bg-slate-800 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300"
                 >
                   {item}
-                </li>
+                </span>
               ))}
-            </motion.ul>
+            </motion.div>
           </motion.div>
 
           {/* CONTACT FORM */}
@@ -285,46 +291,51 @@ export default function CaseStudyTemplate({
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="fixed inset-0 z-[9999] bg-black/80 flex items-center justify-center p-6"
-            onMouseDown={() => setActiveImage(null)}
+            className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 md:p-8"
+            onClick={() => setActiveImage(null)}
           >
             <div
-              className="relative inline-block"
-              onMouseDown={(e) => e.stopPropagation()}
+              className="relative"
+              onClick={(e) => e.stopPropagation()}
             >
               {activeIndex > 0 && (
                 <button
                   onClick={showPrev}
-                  className="absolute top-1/2 left-2 md:-left-12 -translate-y-1/2 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow"
+                  className="absolute top-1/2 -left-16 md:-left-20 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
+                  aria-label="Imagen anterior"
                 >
-                  <ChevronLeft />
+                  <ChevronLeft className="w-6 h-6" />
                 </button>
               )}
 
               {gallery && activeIndex < gallery.length - 1 && (
                 <button
                   onClick={showNext}
-                  className="absolute top-1/2 right-2 md:-right-12 -translate-y-1/2 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow"
+                  className="absolute top-1/2 -right-16 md:-right-20 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
+                  aria-label="Siguiente imagen"
                 >
-                  <ChevronRight />
+                  <ChevronRight className="w-6 h-6" />
                 </button>
               )}
 
-              {scale === 1 && (
-                <button
-                  onClick={() => setActiveImage(null)}
-                  className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white flex items-center justify-center shadow"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              )}
+              <button
+                onClick={() => setActiveImage(null)}
+                className="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+                aria-label="Cerrar"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <p className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-white/60 text-sm">
+                {activeIndex + 1} / {gallery?.length}
+              </p>
 
               <motion.img
                 src={activeImage}
                 onWheel={handleWheel}
                 onDoubleClick={handleDoubleClick}
                 style={{ scale, transformOrigin: `${origin.x} ${origin.y}` }}
-                className={`max-w-[90vw] max-h-[85vh] rounded-2xl shadow-2xl select-none ${
+                className={`max-w-[90vw] max-h-[75vh] rounded-2xl shadow-2xl select-none object-contain ${
                   scale > 1 ? "cursor-zoom-out" : "cursor-zoom-in"
                 }`}
               />
