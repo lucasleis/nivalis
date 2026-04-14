@@ -3,6 +3,7 @@ import { useRef } from "react";
 import nivalisGradient from "../assets/FONDO.webp";
 import { fadeUp, fadeUpDelayed, staggerContainer } from "../motion/variants";
 import { useParallax } from "../components/scroll/useParallax";
+import CalendlyWidget from "./CalendlyWidget";
 
 export default function CTA() {
   const ref = useRef(null);
@@ -74,12 +75,19 @@ export default function CTA() {
         >
           <div className="absolute inset-0 bg-black/10 pointer-events-none" />
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center text-white">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start text-white">
             {/* LEFT */}
             <motion.div
               variants={fadeUp}
               className="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start"
             >
+              <motion.h2
+                variants={fadeUp}
+                className="font-display font-black text-4xl md:text-5xl leading-tight uppercase text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] mb-6"
+              >
+                Estrategia, diseño y tecnología para hacer crecer tu negocio
+              </motion.h2>
+
               <motion.span
                 variants={fadeUp}
                 className="block mb-4 text-xs tracking-[0.3em] uppercase text-white/80"
@@ -106,13 +114,13 @@ export default function CTA() {
               </motion.div>
             </motion.div>
 
-            {/* RIGHT */}
-            <motion.h2
+            {/* RIGHT — Calendly */}
+            <motion.div
               variants={fadeUp}
-              className="order-1 lg:order-2 text-center lg:text-center font-display font-black text-4xl md:text-6xl leading-tight uppercase text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+              className="order-1 lg:order-2 w-full"
             >
-              Estrategia, diseño y tecnología para hacer crecer tu negocio
-            </motion.h2>
+              <CalendlyWidget url="https://calendly.com/TU-USUARIO" className="w-full" />
+            </motion.div>
           </div>
         </motion.div>
       </div>
