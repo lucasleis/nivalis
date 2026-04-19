@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useRef, useState, useEffect, useCallback } from "react";
 import nivalisGradient from "../assets/FONDO.webp";
 import { fadeUp, fadeUpDelayed, staggerContainer } from "../motion/variants";
 import { useParallax } from "../components/scroll/useParallax";
@@ -7,6 +7,7 @@ import { useParallax } from "../components/scroll/useParallax";
 export default function CTA() {
   const ref = useRef(null);
   const [showCalendly, setShowCalendly] = useState(false);
+  const [calendlyPreloaded, setCalendlyPreloaded] = useState(false);
 
   const blobOrangeY = useParallax({ range: 700, offset: 35 });
   const blobBlueY = useParallax({ range: 700, offset: -35 });
@@ -18,17 +19,42 @@ export default function CTA() {
   );
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
-  // Bloquear scroll cuando el modal está abierto
+  // DNS preconnect on mount — resolves before user clicks
   useEffect(() => {
-    if (showCalendly) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    const hints = [
+      { rel: "preconnect", href: "https://calendly.com" },
+      { rel: "dns-prefetch", href: "https://calendly.com" },
+      { rel: "preconnect", href: "https://assets.calendly.com" },
+      { rel: "dns-prefetch", href: "https://assets.calendly.com" },
+    ];
+    const nodes = hints.map(({ rel, href }) => {
+      const link = document.createElement("link");
+      link.rel = rel;
+      link.href = href;
+      document.head.appendChild(link);
+      return link;
+    });
+    return () => nodes.forEach((n) => document.head.removeChild(n));
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = showCalendly ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [showCalendly]);
+
+  // Start loading iframe on hover — by the time user clicks it's already fetched
+  const handlePreload = useCallback(() => {
+    if (!calendlyPreloaded) setCalendlyPreloaded(true);
+  }, [calendlyPreloaded]);
+
+  const openCalendly = useCallback(() => {
+    setCalendlyPreloaded(true);
+    setShowCalendly(true);
+  }, []);
+
+  const closeCalendly = useCallback(() => setShowCalendly(false), []);
 
   return (
     <>
@@ -108,7 +134,9 @@ export default function CTA() {
                   </a>
 
                   <button
-                    onClick={() => setShowCalendly(true)}
+                    onMouseEnter={handlePreload}
+                    onFocus={handlePreload}
+                    onClick={openCalendly}
                     className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white text-black hover:bg-white/90 transition-all font-medium"
                   >
                     Agendar reunión
@@ -128,57 +156,61 @@ export default function CTA() {
         </div>
       </motion.section>
 
-      {/* CALENDLY MODAL */}
-      <AnimatePresence>
-        {showCalendly && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setShowCalendly(false)}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      {/* CALENDLY MODAL
+          Stays mounted in the DOM once preloaded so the iframe never reloads.
+          CSS visibility/opacity handles show/hide instead of unmounting. */}
+      {calendlyPreloaded && (
+        <div
+          aria-modal="true"
+          aria-label="Agendar reunión"
+          role="dialog"
+          style={{
+            visibility: showCalendly ? "visible" : "hidden",
+            opacity: showCalendly ? 1 : 0,
+            pointerEvents: showCalendly ? "auto" : "none",
+            transition: "opacity 0.2s ease, visibility 0.2s ease",
+          }}
+          onClick={closeCalendly}
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[200] flex items-center justify-center p-4"
+        >
+          <div
+            style={{
+              transform: showCalendly ? "scale(1)" : "scale(0.95)",
+              transition: "transform 0.2s ease",
+            }}
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white rounded-2xl w-full max-w-4xl h-[90vh] max-h-[800px] overflow-hidden shadow-2xl relative"
           >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-2xl w-full max-w-4xl h-[90vh] max-h-[800px] overflow-hidden shadow-2xl relative"
+            <button
+              onClick={closeCalendly}
+              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/10 hover:bg-black/20 flex items-center justify-center transition-colors"
+              aria-label="Cerrar"
             >
-              {/* Close button */}
-              <button
-                onClick={() => setShowCalendly(false)}
-                className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/10 hover:bg-black/20 flex items-center justify-center transition-colors"
-                aria-label="Cerrar"
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              </button>
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
 
-              {/* Calendly iframe */}
-              <iframe
-                src="https://calendly.com/lucas-mateo-leis/30min"
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                title="Agendar reunión con NIVALIS"
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <iframe
+              src="https://calendly.com/lucas-mateo-leis/30min"
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              title="Agendar reunión con NIVALIS"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }
