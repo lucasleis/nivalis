@@ -56,7 +56,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h4 className="font-nauryz font-semibold text-lg">Servicios</h4>
+            <h3 className="font-nauryz font-semibold text-lg">Servicios</h3>
             <ul className="flex flex-col gap-2">
               {servicesLinks.map((link, i) => (
                 <li key={i}>
@@ -69,7 +69,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h4 className="font-nauryz font-semibold text-lg">Proyectos</h4>
+            <h3 className="font-nauryz font-semibold text-lg">Proyectos</h3>
             <ul className="flex flex-col gap-2">
               {portfolioLinks.map((link, i) => (
                 <li key={i}>
@@ -82,7 +82,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h4 className="font-nauryz font-semibold text-lg">¿Hablamos?</h4>
+            <h3 className="font-nauryz font-semibold text-lg">¿Hablamos?</h3>
             <p className="text-sm text-gray-400">
               ¿Tenés un proyecto en mente? Escribinos y te respondemos hoy.
             </p>

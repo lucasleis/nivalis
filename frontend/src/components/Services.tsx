@@ -57,7 +57,7 @@ export default function Services() {
         </motion.p>
 
         {/* TÍTULO */}
-        <motion.h1
+        <motion.h2
           variants={fadeUp}
           className="font-display text-5xl md:text-6xl lg:text-7xl font-medium text-gray-900 dark:text-white leading-tight"
         >
@@ -100,7 +100,7 @@ export default function Services() {
               </span>
             </div>
           </div>
-        </motion.h1>
+        </motion.h2>
 
         {/* SUBTEXTO */}
         <motion.p

@@ -244,6 +244,7 @@ export default function CaseStudyTemplate({
                     key={index}
                     variants={fadeIn}
                     src={img}
+                    alt={`Captura del proyecto, imagen ${index + 1}`}
                     className="
                       cursor-zoom-in
                       rounded-xl
@@ -332,6 +333,7 @@ export default function CaseStudyTemplate({
 
               <motion.img
                 src={activeImage}
+                alt="Imagen del proyecto ampliada"
                 onWheel={handleWheel}
                 onDoubleClick={handleDoubleClick}
                 style={{ scale, transformOrigin: `${origin.x} ${origin.y}` }}
