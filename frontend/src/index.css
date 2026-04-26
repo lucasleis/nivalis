@@ -132,6 +132,14 @@
   font-weight: 400;
 }
 
+.hero-eyebrow {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 
 
 /* ================================

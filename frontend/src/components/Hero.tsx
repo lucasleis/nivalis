@@ -33,7 +33,7 @@ export default function Hero() {
           "
         >
           {/* SUBTEXTO */}
-          <span className="behance text-base text-nivOrange mb-4 block">
+          <span className="hero-eyebrow text-nivOrange mb-4 block">
             Estrategia - Design - Tecnologia
           </span>
 
