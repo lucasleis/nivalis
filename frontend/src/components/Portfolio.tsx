@@ -14,7 +14,7 @@ interface Case {
   title: string;
   subtitle: string;
   slug: string;
-  category: Category;
+  categories: Category[];
 }
 
 const cases: Case[] = [
@@ -23,21 +23,21 @@ const cases: Case[] = [
     title: "MVP Burgers",
     subtitle: "Plataforma de pedidos · UX/UI · Desarrollo Web",
     slug: "mvp-burgers",
-    category: "web-app",
+    categories: ["web-app"],
   },
   {
     image: barberpay,
     title: "BarberPay",
     subtitle: "Sistema de gestión de pagos · UX/UI",
     slug: "barberpay",
-    category: "gestion",
+    categories: ["gestion", "web-app"],
   },
   {
     image: lupa,
     title: "Buscando con Lupa",
     subtitle: "Micrositio gamificado · Frontend",
     slug: "lupa",
-    category: "campana",
+    categories: ["campana"],
   },
 ];
 
@@ -53,7 +53,7 @@ export default function Portfolio() {
 
   const filteredCases = activeFilter === "todos"
     ? cases
-    : cases.filter((c) => c.category === activeFilter);
+    : cases.filter((c) => c.categories.includes(activeFilter));
 
   return (
     <motion.section
