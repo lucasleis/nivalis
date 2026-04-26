@@ -11,6 +11,7 @@ import img5 from "../../../assets/imgs/lupa-img-5.png";
 export default function LupaCaseStudy() {
   return (
     <CaseStudyTemplate
+      slug="lupa"
       title="Micrositio de campaña interactiva"
       category="Campañas digitales"
       subtitle="Campaña interactiva · UX/UI · Desarrollo Web"

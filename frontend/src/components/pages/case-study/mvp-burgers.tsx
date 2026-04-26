@@ -16,6 +16,7 @@ export default function MvpBurgersCaseStudy() {
     <>
 
       <CaseStudyTemplate
+        slug="mvp-burgers"
         title="Plataforma integral de pedidos"
         category="Plataformas digitales"
         subtitle="UX/UI · Desarrollo web · Plataforma a medida"

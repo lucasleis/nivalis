@@ -12,6 +12,7 @@ import img4 from "../../../assets/imgs/barba-img-4.png";
 export default function PagosCaseStudy() {
   return (
     <CaseStudyTemplate
+      slug="barberpay"
       title="Sistema de gestión de pagos"
       category="Sistemas a medida"
       subtitle="Sistema administrativo de control de caja · UX/UI · Desarrollo web"

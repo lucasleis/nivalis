@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { fadeUp, fadeIn, staggerContainer } from "../../../motion/variants";
 import { useParallax } from "../../scroll/useParallax";
 import ContactForm from "../../ContactForm";
 import Header from "../../Header";
 import Footer from "../../Footer";
+import { testimonials } from "../../../data/testimonials.data";
 
 interface CaseStudyProps {
+  slug: string;
   title: string;
   category: string;
   subtitle?: string;
@@ -23,6 +25,7 @@ interface CaseStudyProps {
 }
 
 export default function CaseStudyTemplate({
+  slug,
   title,
   subtitle,
   problem,
@@ -33,6 +36,7 @@ export default function CaseStudyTemplate({
   results,
   logo,
 }: CaseStudyProps) {
+  const testimonial = testimonials.find((t) => t.slug === slug) ?? null;
   const heroY = useParallax({ range: 300, offset: -10 });
 
   const [activeImage, setActiveImage] = useState<string | null>(null);
@@ -280,6 +284,41 @@ export default function CaseStudyTemplate({
               ))}
             </motion.div>
           </motion.div>
+
+          {/* TESTIMONIO */}
+          {testimonial && (
+            <motion.div
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <motion.div
+                variants={fadeUp}
+                className="
+                  flex flex-col md:flex-row md:items-center gap-8
+                  bg-gray-50 dark:bg-slate-800/50
+                  border border-gray-100 dark:border-slate-700/30
+                  rounded-2xl px-8 py-10
+                "
+              >
+                <Quote className="shrink-0 w-10 h-10 text-nivOrange opacity-80" aria-hidden="true" />
+
+                <blockquote className="flex-1 text-lg md:text-xl text-gray-700 dark:text-gray-200 leading-relaxed italic">
+                  "{testimonial.quote}"
+                </blockquote>
+
+                <div className="md:border-l md:border-gray-200 dark:md:border-slate-600 md:pl-8 flex flex-col gap-1 shrink-0">
+                  <cite className="not-italic font-semibold text-gray-900 dark:text-white text-sm">
+                    {testimonial.company}
+                  </cite>
+                  <span className="text-xs text-gray-500 dark:text-gray-400 tracking-wide">
+                    {testimonial.type}
+                  </span>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
 
           {/* CONTACT FORM */}
           <div id="contacto" className="mt-32">
