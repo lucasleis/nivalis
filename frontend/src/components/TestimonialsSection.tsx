@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Quote } from "lucide-react";
@@ -6,6 +7,7 @@ import { Quote } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 
 type Testimonial = {
+  slug: string;
   quote: string;
   company: string;
   type: string;
@@ -13,18 +15,21 @@ type Testimonial = {
 
 const testimonials: Testimonial[] = [
   {
+    slug: "lupa",
     quote:
       "El proyecto quedó muy bien y en tiempo récord. Buena disposición y eficiencia de principio a fin.",
     company: "Burns Agency · Lupa Supermercados",
     type: "Campaña Buscando con Lupa",
   },
   {
+    slug: "barberpay",
     quote:
       "Pasé de pelearme con planillas cada quincena a tener, en dos clics, el desglose exacto de lo que le corresponde a cada barbero. Simple, preciso y sin errores. El tiempo que me ahorra solo ya justifica todo.",
     company: "Barba & Co.",
     type: "Sistema de gestión de pagos",
   },
   {
+    slug: "mvp-burgers",
     quote:
       "Tiene todo lo que necesito: los clientes hacen pedidos online, manejo el menú y los precios desde el panel de admin, y las notificaciones me llegan directo a Telegram. La interfaz quedó espectacular y es súper fácil de usar. Se nota el laburo que le metieron.",
     company: "MVP Burgers",
@@ -176,9 +181,12 @@ export default function TestimonialsSection() {
                 <cite className="not-italic font-nauryz font-semibold text-gray-900 dark:text-white text-sm">
                   {t.company}
                 </cite>
-                <span className="font-nauryz text-xs tracking-wide bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-full">
+                <Link
+                  to={`/case-study/${t.slug}`}
+                  className="rounded-full bg-[#fd6647] px-5 py-2 text-sm font-semibold text-white hover:bg-[#e95b40] transition-colors duration-300 cursor-pointer"
+                >
                   {t.type}
-                </span>
+                </Link>
               </div>
             </div>
           ))}
