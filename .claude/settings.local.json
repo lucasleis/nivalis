@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:skills.sh)",
+      "Bash(npx skills *)",
+      "Bash(npx tsc *)",
+      "Bash(sed -n '42,46p' /mnt/c/Users/lucas/Codigos/nivalis/frontend/src/components/Services.tsx)",
+      "Bash(sed -n '59,63p' /mnt/c/Users/lucas/Codigos/nivalis/frontend/src/components/Portfolio.tsx)",
+      "Bash(git *)",
+      "Bash(sed -n '180,195p' /mnt/c/Users/lucas/Codigos/nivalis/frontend/src/components/Header.tsx)",
+      "Bash(sed -n '148,165p' /mnt/c/Users/lucas/Codigos/nivalis/frontend/src/components/FullscreenMenu.tsx)",
+      "Bash(sed -n '15,30p' /mnt/c/Users/lucas/Codigos/nivalis/frontend/src/components/common/CaseCard.tsx)",
+      "Bash(sed -n '240,265p' /mnt/c/Users/lucas/Codigos/nivalis/frontend/src/components/pages/case-study/CaseStudyTemplate.tsx)",
+      "Bash(python3 *)",
+      "Bash(sed -n '56,70p' /mnt/c/Users/lucas/Codigos/nivalis/frontend/src/components/Services.tsx)",
+      "Bash(sed -n '100,108p' /mnt/c/Users/lucas/Codigos/nivalis/frontend/src/components/Services.tsx)",
+      "Bash(sudo deploy-nivalis *)"
+    ]
+  }
+}
