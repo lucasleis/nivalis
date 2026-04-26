@@ -7,7 +7,7 @@ import mvp from "../assets/portfolio/mvp-burgers.webp";
 import barberpay from "../assets/portfolio/barberpay.webp";
 import lupa from "../assets/portfolio/lupa.webp";
 
-type Category = "todos" | "web" | "branding" | "ia" | "marketing";
+type Category = "todos" | "web-app" | "gestion" | "campana";
 
 interface Case {
   image: string;
@@ -23,29 +23,29 @@ const cases: Case[] = [
     title: "MVP Burgers",
     subtitle: "Plataforma de pedidos · UX/UI · Desarrollo Web",
     slug: "mvp-burgers",
-    category: "web",
+    category: "web-app",
   },
   {
     image: barberpay,
     title: "BarberPay",
     subtitle: "Sistema de gestión de pagos · UX/UI",
     slug: "barberpay",
-    category: "web",
+    category: "gestion",
   },
   {
     image: lupa,
     title: "Buscando con Lupa",
     subtitle: "Micrositio gamificado · Frontend",
     slug: "lupa",
-    category: "web",
+    category: "campana",
   },
 ];
 
 const categories: { id: Category; label: string }[] = [
   { id: "todos", label: "Todos" },
-  { id: "web", label: "Web" },
-  { id: "branding", label: "Branding" },
-  { id: "ia", label: "IA" },
+  { id: "web-app", label: "Web App" },
+  { id: "gestion", label: "Gestión" },
+  { id: "campana", label: "Campaña" },
 ];
 
 export default function Portfolio() {
