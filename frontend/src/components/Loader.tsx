@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "../assets/logos/A6.png";
+const logo = "/logo-A6.png";
 
 interface LoaderProps {
   onComplete?: () => void;
@@ -39,6 +39,9 @@ export default function Loader({ onComplete }: LoaderProps) {
             <motion.img
               src={logo}
               alt="Nivalis"
+              width={128}
+              height={121}
+              fetchPriority="high"
               className="w-24 md:w-32"
               animate={{
                 scale: [1, 1.1, 0.95, 1.05, 1],

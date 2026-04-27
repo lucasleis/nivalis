@@ -19,23 +19,6 @@ export default function CTA() {
   );
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
-  // DNS preconnect on mount — resolves before user clicks
-  useEffect(() => {
-    const hints = [
-      { rel: "preconnect", href: "https://calendly.com" },
-      { rel: "dns-prefetch", href: "https://calendly.com" },
-      { rel: "preconnect", href: "https://assets.calendly.com" },
-      { rel: "dns-prefetch", href: "https://assets.calendly.com" },
-    ];
-    const nodes = hints.map(({ rel, href }) => {
-      const link = document.createElement("link");
-      link.rel = rel;
-      link.href = href;
-      document.head.appendChild(link);
-      return link;
-    });
-    return () => nodes.forEach((n) => document.head.removeChild(n));
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = showCalendly ? "hidden" : "unset";
@@ -44,9 +27,17 @@ export default function CTA() {
     };
   }, [showCalendly]);
 
-  // Start loading iframe on hover — by the time user clicks it's already fetched
+  // On hover/focus: add DNS hints and start loading the iframe
   const handlePreload = useCallback(() => {
-    if (!calendlyPreloaded) setCalendlyPreloaded(true);
+    if (!calendlyPreloaded) {
+      ["https://calendly.com", "https://assets.calendly.com"].forEach((href) => {
+        const pc = document.createElement("link");
+        pc.rel = "preconnect";
+        pc.href = href;
+        document.head.appendChild(pc);
+      });
+      setCalendlyPreloaded(true);
+    }
   }, [calendlyPreloaded]);
 
   const openCalendly = useCallback(() => {

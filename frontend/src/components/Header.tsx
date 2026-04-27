@@ -5,7 +5,7 @@ import { useParallax } from "./scroll/useParallax";
 import FullscreenMenu from "./FullscreenMenu";
 import { useNavigate, useLocation } from "react-router-dom";
 
-import logo from "../assets/logos/A6.png";
+const logo = "/logo-A6.png";
 
 const navSectionsHome = [
   { id: "inicio", label: "Inicio", href: "#inicio" },
@@ -185,6 +185,8 @@ export default function Header() {
                 <img
                   src={logo}
                   alt="Nivalis Logo"
+                  width={560}
+                  height={528}
                   className={`w-auto object-contain transition-all duration-300 ${
                     isScrolled ? "h-10" : "h-12"
                   }`}
