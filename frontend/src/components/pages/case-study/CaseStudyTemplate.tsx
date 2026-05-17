@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { fadeUp, fadeIn, staggerContainer } from "../../../motion/variants";
@@ -113,6 +114,10 @@ export default function CaseStudyTemplate({
 
   return (
     <>
+      <Helmet>
+        <title>{title} | Nivalis</title>
+        <meta name="description" content={subtitle ?? `Caso de estudio: ${title}. Conocé el proceso, solución y resultados de este proyecto desarrollado por Nivalis.`} />
+      </Helmet>
       <Header />
 
       <section className="pb-24 bg-white dark:bg-slate-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">

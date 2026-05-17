@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import Header from "./Header";
 import Footer from "./Footer";
 import ContactForm from "./ContactForm";
@@ -11,6 +12,15 @@ export default function ServicesPage() {
 
   return (
     <>
+      <Helmet>
+        <title>Servicios de Desarrollo Web, Automatización y Consultoría | Nivalis</title>
+        <meta name="description" content="Desarrollo web a medida, automatizaciones digitales y consultoría tecnológica para empresas en Argentina. Conocé todos nuestros servicios." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nivalistechlab.com/servicios" />
+        <meta property="og:title" content="Servicios de Desarrollo Web, Automatización y Consultoría | Nivalis" />
+        <meta property="og:description" content="Desarrollo web a medida, automatizaciones digitales y consultoría tecnológica para empresas en Argentina. Conocé todos nuestros servicios." />
+        <meta property="og:image" content="https://nivalistechlab.com/og-image.png" />
+      </Helmet>
       <Header />
 
       <main className="pt-48 pb-0 bg-white">
