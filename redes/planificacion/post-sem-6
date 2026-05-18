@@ -1,0 +1,162 @@
+Week 6 — Carousel: Caso Lupa Supermercados (5 slides)
+
+---
+SLIDE 1 — El desafío
+
+Headline:
+Una campaña estacional con un problema clásico: poca participación.
+
+Body:
+Lupa Supermercados necesitaba una campaña que conectara con su público —
+no solo que informara.
+El desafío: convertir una promoción de temporada en una experiencia que la
+ gente quisiera usar.
+
+Visual Direction:
+- Fondo: gradiente coral/naranja → azul, dirección diagonal
+- Headline en bold, blanco, tamaño grande
+- Body en regular, blanco, debajo
+- Elemento gráfico: ícono minimalista de lupa (guiño al nombre del
+cliente, trazo blanco, esquina inferior derecha) — funciona como firma
+visual del caso y elemento narrativo
+- Logo Nivalis esquina superior derecha, pequeño
+- Indicador de swipe ("→" o "deslizá") esquina inferior izquierda
+
+▎ Production note: No requiere asset externo. El ícono de lupa es un SVG
+▎ simple reutilizable a lo largo del carousel para dar coherencia visual
+▎ al caso.
+
+---
+SLIDE 2 — La mecánica
+
+Headline:
+La solución: un micrositio de campaña interactivo.
+
+Body:
+Diseñamos y desarrollamos una plataforma dedicada a la campaña — con
+mecánica de participación integrada, experiencia optimizada para mobile y
+flujo pensado para maximizar el tiempo que cada usuario pasaba adentro.
+
+Visual Direction:
+- Fondo: gradiente azul → coral (invertido para marcar transición de
+problema a solución)
+- Texto en columna izquierda (55% del ancho)
+- Columna derecha (45%): mockup del micrositio en frame de celular (vista
+mobile, dado que estaba optimizado para mobile)
+- Si no hay screenshot disponible: frame de celular con pantalla en color
+sólido oscuro y logo de Lupa centrado como placeholder
+
+▎ Production note: ⚠️ Este slide gana significativamente con un screenshot
+▎real del micrositio o de la campaña activa. Si Lucas tiene capturas del
+▎proyecto, este es el lugar prioritario para usarlas. Sin screenshot,
+▎ usar mockup de celular con diseño placeholder.
+
+---
+SLIDE 3 — El micrositio en vivo
+
+Headline:
+Cada detalle pensado para que el usuario se quedara.
+
+Body:
+Navegación intuitiva, carga rápida, experiencia sin fricciones.
+El resultado: más tiempo en el sitio, más interacciones por visita y una
+marca que se sentía moderna — no solo presente.
+
+Visual Direction:
+- Fondo: gradiente coral/naranja → azul (retoma dirección del slide 1)
+- Texto en la mitad inferior o columna izquierda
+- Mitad superior o columna derecha: segundo screenshot del micrositio
+(vista de interacción o pantalla de participación) o mockup de
+tablet/desktop si el sitio tenía versión escritorio
+- Ícono de lupa pequeño presente como elemento decorativo consistente con
+el resto del carousel
+
+▎ Production note: ⚠️ Segunda instancia donde un screenshot real del
+▎ proyecto suma credibilidad. Si solo hay una imagen disponible, priorizar
+▎usarla en el slide 2 y usar mockup aquí.
+
+---
+SLIDE 4 — Los resultados
+
+Headline:
+Alta participación desde los primeros días.
+
+Body (lista):
+→ Aumento de interacciones y tiempo de permanencia en el sitio.
+→ La marca se posicionó como dinámica e innovadora frente a su público.
+→ Base técnica reutilizable — la infraestructura queda lista para la
+próxima campaña.
+
+Visual Direction:
+- Fondo: gradiente azul → coral
+- Headline en bold, blanco, parte superior
+- Lista con flechas (→) debajo — mismo estilo que Week 3 slide 2 para
+consistencia de lenguaje visual de Nivalis
+- Ícono de lupa pequeño en esquina inferior derecha, manteniendo
+coherencia del carousel
+- Sin elementos adicionales — el contenido es el protagonista
+
+▎ Production note: Si existen métricas numéricas reales del proyecto (% de
+▎aumento de participación, número de visitas, duración promedio de
+▎ sesión), reemplazar o complementar los ítems de la lista con esos datos.
+▎Los números concretos siempre superan en credibilidad a las
+▎ afirmaciones cualitativas.
+
+---
+SLIDE 5 — Testimonial
+
+Headline:
+Lo que dijo el cliente.
+
+Testimonial (verbatim):
+"El proyecto quedó muy bien y en tiempo récord. Buena disposición y
+eficiencia de principio a fin."
+
+Attribution:
+— Cliente de Lupa Supermercados
+
+Cierre (debajo de la atribución):
+¿Tu campaña merece el mismo impacto?
+
+Visual Direction:
+- Fondo: blanco o blanco roto — mismo tratamiento que el slide 4 de Week 1
+ (Barba & Co.), deliberadamente fuera del gradiente para crear énfasis
+visual
+- Comillas tipográficas grandes en coral/naranja como elemento decorativo
+de apertura
+- Testimonial en negro o gris oscuro, centrado, tamaño de lectura cómoda
+- Attribution en gris medio, tamaño pequeño
+- Línea de cierre ("¿Tu campaña merece el mismo impacto?") en bold negro o
+ coral, separada por espacio generoso — funciona como transición hacia la
+CTA del caption
+- Recuadro o botón visual con "Agendá ahora →" y URL de Calendly en tamaño
+ pequeño, anclado en la parte inferior
+- Logo Nivalis esquina inferior derecha en versión oscura
+
+▎ Production note: No requiere asset externo. Si Lucas tiene foto o logo
+▎ de Lupa Supermercados y tiene autorización para usarlo, incluirlo como
+▎ elemento secundario junto a la atribución refuerza la credibilidad del
+▎ testimonio.
+
+---
+CAPTION
+
+Texto:
+Lupa Supermercados necesitaba más que una página de campaña. Necesitaba
+una experiencia.
+
+Desarrollamos un micrositio interactivo diseñado para que cada visita se
+convirtiera en participación: navegación intuitiva, flujo sin fricciones y
+ una base técnica que quedó lista para reutilizar en la próxima campaña.
+
+El resultado: alta participación desde los primeros días, más tiempo de
+permanencia y una marca que reforzó su posicionamiento como dinámica e
+innovadora.
+
+¿Tenés una campaña en mente? Agendá 30 min y la hacemos realidad 👇
+calendly.com/lucas-mateo-leis/30min
+
+Hashtags:
+#MarketingDigital #CampañaDigital #DesarrolloWeb #CasosDeÉxito #Nivalis
+
+---
