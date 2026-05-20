@@ -14,7 +14,9 @@
       "Bash(python3 *)",
       "Bash(sed -n '56,70p' /mnt/c/Users/lucas/Codigos/nivalis/frontend/src/components/Services.tsx)",
       "Bash(sed -n '100,108p' /mnt/c/Users/lucas/Codigos/nivalis/frontend/src/components/Services.tsx)",
-      "Bash(sudo deploy-nivalis *)"
+      "Bash(sudo deploy-nivalis *)",
+      "Bash(npm install *)",
+      "Bash(npm run *)"
     ]
   }
 }
